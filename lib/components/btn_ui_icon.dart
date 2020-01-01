@@ -74,14 +74,24 @@ class _BtnUIIconState extends State<BtnUIIcon>
             color: widget.color,
             borderRadius: BorderRadius.circular(27.0),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:<Widget> [
-              widget.icon,
-              Text(
-                widget.text,
-                style: TextStyle(color: widget.textColor,fontSize: 16,fontFamily: 'Montserrat'),
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child:Text(
+                  widget.text,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: widget.textColor,fontSize: 16,fontFamily: 'Montserrat'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 12),
+                      child: widget.icon),
+                ),
               ),
             ],
           ),

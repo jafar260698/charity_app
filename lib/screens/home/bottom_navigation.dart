@@ -1,6 +1,7 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:charity_app/components/text_field_ui.dart';
+import 'package:charity_app/screens/home/favourite_screen.dart';
 import 'package:charity_app/screens/home/forum_screen.dart';
 import 'package:charity_app/screens/home/home_screen.dart';
 import 'package:charity_app/screens/home/profile_screen.dart';
@@ -36,7 +37,7 @@ class _BottomNavigation extends State<BottomNavigation> {
     HomeScreen(),
     ArticleScreen(),
     SearchScreen(),
-    CommentScreen(),
+    FavouriteScreen(),
     ForumScreen(),
   ];
 

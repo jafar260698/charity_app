@@ -7,6 +7,7 @@ import 'package:charity_app/screens/home/profile_screen.dart';
 import 'package:charity_app/screens/home/search_screen.dart';
 import 'package:charity_app/screens/other/comment_screen.dart';
 import 'package:charity_app/theme/themes.dart';
+import 'package:charity_app/widgets/avatar_iamge.dart';
 import 'package:charity_app/widgets/custom/custom_service_category_expansion.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:fleva_icons/fleva_icons.dart';
@@ -42,32 +43,22 @@ class _HomeScreen extends State<HomeScreen> {
         child: Column(
           children: [
             Container(
-                child: CarouselSlider.builder(
-                  options: CarouselOptions(
-                    aspectRatio: 2.0,
-                    enlargeCenterPage: false,
-                    viewportFraction: 1,
+              height: 200,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.only(left: 20,right: 10),
+                  itemCount: imgList.length,
+                  itemBuilder: (context,index){
+                return Container(
+                  margin: EdgeInsets.only(right: 10),
+                  height: 200,
+                  width: MediaQuery.of(context).size.width*0.9,
+                  decoration: BoxDecoration(
+                    color: Colors.blueAccent,
+                    borderRadius: BorderRadius.circular(28)
                   ),
-                  itemCount: (imgList.length / 2).round(),
-                  itemBuilder: (context, index, realIdx) {
-                    final int first = index * 2;
-                    final int second = first + 1;
-                    return Row(
-                      children: [first, second].map((idx) {
-                        return Expanded(
-                          flex: 1,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(30))
-                            ),
-                            margin: EdgeInsets.symmetric(horizontal: 10),
-                            child: Image.network(imgList[idx], fit: BoxFit.cover),
-                          ),
-                        );
-                      }).toList(),
-                    );
-                  },
-                )
+                );
+              }),
             ),
             Padding(
               padding: EdgeInsets.all(20),
@@ -86,17 +77,6 @@ class _HomeScreen extends State<HomeScreen> {
                 ),
               ),
             ),
-            // ListView.builder(
-            //   padding: const EdgeInsets.only(
-            //       bottom: 60.0, left: 13.0, top: 13.0, right: 13.0),
-            //   controller: new ScrollController(keepScrollOffset: false),
-            //   physics: BouncingScrollPhysics(),
-            //   scrollDirection: Axis.vertical,
-            //   itemCount: servicesGroup(context).length,
-            //   itemBuilder: (BuildContext context, index) {
-            //     return servicesGroup(context)[index];
-            //   },
-            // ),
           ],
         ),
       ),

@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
 
   startTime(bool success) {
-    var _duration = new Duration(seconds: 2);
+    var _duration = new Duration(seconds: 1);
 
     if (success)
       return new Timer(_duration, nextToScreen);

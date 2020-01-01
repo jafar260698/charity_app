@@ -433,4 +433,10 @@ class _ArticleScreen extends State<ArticleScreen> {
     );
   }
 
+  getSecondUI(context){
+    return Center(
+      child: Text("Maxmud"),
+    );
+  }
+
 }
