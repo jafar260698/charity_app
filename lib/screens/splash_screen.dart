@@ -1,4 +1,5 @@
 
+import 'package:charity_app/widgets/get_widget_family.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,11 @@ class _SplashScreenState extends State<SplashScreen> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SafeArea(
+                child: Center(
+                  child: getWidgetLogo,
+                ),
+              ),
               CupertinoActivityIndicator(),
             ],
           ),
