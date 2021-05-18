@@ -1,27 +1,20 @@
 
 import 'package:charity_app/components/btn_ui.dart';
-import 'package:charity_app/theme/themes.dart';
 import 'package:charity_app/widgets/custom/getWidgetLogoHorizontal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../widgets/get_widget_family.dart';
-import '../widgets/get_widget_logo.dart';
 
-class RegisterScreen extends StatefulWidget {
+class PermissionForNotification extends StatefulWidget {
   @override
-  _RegisterScreen createState() => _RegisterScreen();
+  _PermissionForNotification createState() => _PermissionForNotification();
 }
 
-class _RegisterScreen extends State<RegisterScreen> {
+class _PermissionForNotification extends State<PermissionForNotification> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              SafeArea(
+      body: Center(
                 child: Column(
                   children: [
                     getWidgetLogoHorizontal,
@@ -64,31 +57,7 @@ class _RegisterScreen extends State<RegisterScreen> {
                       ),
                     ),
                     SizedBox(height: 50),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          Positioned(
-            bottom: 10.0,
-            left: 20.0,
-            right: 20.0,
-            child: Column(
-              children: [
-                BtnUI(
-                  height: 55,
-                  isLoading: false,
-                  textColor: Colors.white,
-                  color: Color.fromRGBO(98, 190, 184, 1),
-                  text: 'СОЗДАТЬ',
-                  ontap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
+                  ],),
       ),
     );
   }

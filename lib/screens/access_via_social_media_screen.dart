@@ -1,5 +1,6 @@
 
 import 'package:charity_app/components/btn_ui.dart';
+import 'package:charity_app/screens/login_screen.dart';
 import 'package:charity_app/theme/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                               color: Color.fromRGBO(98, 190, 184, 1),
                               text: 'Вход через Apple',
                               ontap: () {
-
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
                               },
                             ),
                             SizedBox(height:8),
@@ -60,7 +61,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                               color: Color.fromRGBO(240, 131, 144, 1),
                               text: 'Вход через Google',
                               ontap: () {
-
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
                               },
                             ),
                             SizedBox(height:8),
@@ -71,7 +72,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                               color: Color.fromRGBO(108, 187, 217, 1),
                               text: 'Вход через Facebook',
                               ontap: () {
-
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
                               },
                             ),
                             SizedBox(height:8),
@@ -82,7 +83,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                               color: Color.fromRGBO(254, 205, 131, 1),
                               text: 'Вход через Email',
                               ontap: () {
-
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
                               },
                             ),
                             SizedBox(height:20),
