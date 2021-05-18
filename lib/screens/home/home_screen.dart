@@ -34,7 +34,7 @@ class _HomeScreen extends State<HomeScreen> {
             onPressed: () => Navigator.of(context).pushNamed('/bar'),
           )),
       bottomNavigationBar: ConvexAppBar(
-        style: TabStyle.react,
+        style: TabStyle.reactCircle,
         items: [
           TabItem(icon: FlevaIcons.home_outline),
           TabItem(icon: FlevaIcons.book),
