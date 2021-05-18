@@ -1,5 +1,6 @@
 
 import 'package:charity_app/components/btn_ui.dart';
+import 'package:charity_app/screens/home/home_screen.dart';
 import 'package:charity_app/widgets/custom/getWidgetLogoHorizontal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +45,9 @@ class _PermissionForNotification extends State<PermissionForNotification> {
                       ),
                     ),
                     TextField(
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+                      },
                       decoration: InputDecoration(
                         hintText: 'E-MAIL',
                         suffixIcon: Icon(Icons.email),

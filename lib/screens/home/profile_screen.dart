@@ -1,19 +1,20 @@
 
+
+
 import 'package:charity_app/components/btn_ui.dart';
-import 'package:charity_app/screens/permission_for_notification.dart';
+import 'package:charity_app/screens/register_screen.dart';
 import 'package:charity_app/theme/themes.dart';
 import 'package:charity_app/widgets/custom/getWidgetLogoHorizontal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../widgets/get_widget_family.dart';
-import '../widgets/get_widget_logo.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class RegisterScreen extends StatefulWidget {
+class ProfileScreen extends StatefulWidget {
   @override
-  _RegisterScreen createState() => _RegisterScreen();
+  _ProfileScreen createState() => _ProfileScreen();
 }
 
-class _RegisterScreen extends State<RegisterScreen> {
+class _ProfileScreen extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -27,22 +28,10 @@ class _RegisterScreen extends State<RegisterScreen> {
                   children: [
                     getWidgetLogoHorizontal,
                     Text(
-                      'Создать аккаунт',
+                      'Вход',
                       style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'E-MAIL',
-                        suffixIcon: Icon(Icons.email),
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'E-MAIL',
-                        suffixIcon: Icon(Icons.email),
                       ),
                     ),
                     TextField(
@@ -65,6 +54,16 @@ class _RegisterScreen extends State<RegisterScreen> {
                       ),
                     ),
                     SizedBox(height: 50),
+                    BtnUI(
+                      height: 55,
+                      isLoading: false,
+                      textColor: Colors.white,
+                      color: Color.fromRGBO(98, 190, 184, 1),
+                      text: 'ВХОД',
+                      ontap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -76,16 +75,16 @@ class _RegisterScreen extends State<RegisterScreen> {
             right: 20.0,
             child: Column(
               children: [
-                BtnUI(
-                  height: 55,
-                  isLoading: false,
-                  textColor: Colors.white,
-                  color: Color.fromRGBO(98, 190, 184, 1),
-                  text: 'СОЗДАТЬ',
-                  ontap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
-                  },
-                ),
+                SvgPicture.asset('assets/svg/welcome.svg',height: 200,),
+                SizedBox(height: 10),
+                Opacity(
+                  opacity: 0.5,
+                  child: Text(
+                    'Еще нет акаунта? Зарегистрироваться сейчас!',
+                    style: AppThemeStyle.text14_600,
+                    textAlign: TextAlign.center,
+                  ),
+                )
               ],
             ),
           ),
