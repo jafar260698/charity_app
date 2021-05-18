@@ -1,0 +1,27 @@
+<svg id="Component_9" data-name="Component 9" xmlns="http://www.w3.org/2000/svg" width="197.36" height="26.565" viewBox="0 0 197.36 26.565">
+  <g id="Group_2973" data-name="Group 2973" transform="translate(0 1)">
+    <g id="Group_2968" data-name="Group 2968" transform="translate(6.716 16.905)">
+      <circle id="Ellipse_1163" data-name="Ellipse 1163" cx="2.222" cy="2.222" r="2.222" transform="translate(4.94 1.713)" fill="#fff"/>
+      <path id="Path_9244" data-name="Path 9244" d="M173.252,340.056a8.173,8.173,0,0,0,13.622-6,.568.568,0,0,0-1.076-.255,10.227,10.227,0,0,1-2.9,3.542,2.676,2.676,0,0,1-4.536,2,10.227,10.227,0,0,1-4.571-.249A.568.568,0,0,0,173.252,340.056Z" transform="translate(-173.061 -333.48)" fill="#fff" style="isolation: isolate"/>
+    </g>
+    <g id="Group_2969" data-name="Group 2969" transform="translate(0 9.751)">
+      <circle id="Ellipse_1164" data-name="Ellipse 1164" cx="2.222" cy="2.222" r="2.222" transform="translate(3.14 3.928)" fill="#fff"/>
+      <path id="Path_9245" data-name="Path 9245" d="M151.473,310.078a8.173,8.173,0,0,0,9.92,11.1.568.568,0,0,0-.09-1.1,10.228,10.228,0,0,1-4.265-1.664,2.676,2.676,0,0,1-3.3-3.7,10.225,10.225,0,0,1-1.176-4.424A.568.568,0,0,0,151.473,310.078Z" transform="translate(-150.778 -309.741)" fill="#fff" style="isolation: isolate"/>
+    </g>
+    <g id="Group_2970" data-name="Group 2970" transform="translate(2.511)">
+      <circle id="Ellipse_1165" data-name="Ellipse 1165" cx="2.222" cy="2.222" r="2.222" transform="translate(2.695 4.054)" fill="#fff"/>
+      <path id="Path_9246" data-name="Path 9246" d="M168.113,277.429a8.173,8.173,0,0,0-7.491,12.865.567.567,0,0,0,1.02-.426,10.23,10.23,0,0,1,.265-4.57,2.676,2.676,0,0,1,2.494-4.284,10.229,10.229,0,0,1,3.844-2.486A.567.567,0,0,0,168.113,277.429Z" transform="translate(-159.11 -277.387)" fill="#fff" style="isolation: isolate"/>
+    </g>
+    <g id="Group_2971" data-name="Group 2971" transform="translate(9.746 0.776)">
+      <circle id="Ellipse_1166" data-name="Ellipse 1166" cx="2.222" cy="2.222" r="2.222" transform="translate(5.252 2.269)" fill="#fff"/>
+      <path id="Path_9247" data-name="Path 9247" d="M197.782,286.412a8.173,8.173,0,0,0-14.55-3.149.568.568,0,0,0,.721.839,10.229,10.229,0,0,1,4.428-1.161,2.677,2.677,0,0,1,4.845,1.049,10.228,10.228,0,0,1,3.552,2.888A.568.568,0,0,0,197.782,286.412Z" transform="translate(-183.117 -279.961)" fill="#fff" style="isolation: isolate"/>
+    </g>
+    <g id="Group_2972" data-name="Group 2972" transform="translate(18.984 6.869)">
+      <circle id="Ellipse_1167" data-name="Ellipse 1167" cx="2.222" cy="2.222" r="2.222" transform="translate(0 5.176)" fill="#fff"/>
+      <path id="Path_9248" data-name="Path 9248" d="M217.113,315.024a8.173,8.173,0,0,0-1.5-14.811.568.568,0,0,0-.575.945,10.223,10.223,0,0,1,2.472,3.853,2.676,2.676,0,0,1,.5,4.932,10.229,10.229,0,0,1-1.649,4.271A.568.568,0,0,0,217.113,315.024Z" transform="translate(-214.534 -300.181)" fill="#fff" style="isolation: isolate"/>
+    </g>
+  </g>
+  <g id="Group_3002" data-name="Group 3002" transform="translate(28.559 5.562)">
+    <text id="ZIM_PLATFORM" data-name="ZIM PLATFORM" transform="translate(83.801 15.438)" fill="#fff" font-size="20" font-family="Futura-Bold, Futura" font-weight="700" letter-spacing="0.02em"><tspan x="-84.24" y="0">ZIM PLATFORM</tspan></text>
+  </g>
+</svg>
