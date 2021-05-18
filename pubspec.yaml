@@ -23,6 +23,17 @@ dependencies:
   convex_bottom_bar: ^3.0.0
 
 
+  # Provider + Stack pattern
+  provider: ^5.0.0
+  get_it: ^6.0.0
+  auto_route: ^0.6.9
+  injectable: ^1.0.7
+  stacked: ^2.1.1
+  stacked_services: ^0.6.7
+
+  # Network
+  connectivity: ^2.0.2
+
   #UI plugin
   auto_size_text: ^2.1.0
   theme_provider: ^0.5.0

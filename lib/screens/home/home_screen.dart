@@ -1,5 +1,4 @@
 
-
 import 'package:charity_app/screens/home/main_screen.dart';
 import 'package:charity_app/screens/home/profile_screen.dart';
 import 'package:charity_app/screens/home/search_screen.dart';
@@ -8,7 +7,6 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'article_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -46,7 +44,7 @@ class _HomeScreen extends State<HomeScreen> {
         ],
         initialActiveIndex: 1,
         onTap: (int i) => {
-          ProfileScreen()
+
         },
       ),
     );

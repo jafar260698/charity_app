@@ -50,16 +50,35 @@ widgetAppBarAuthTitle(context) {
       '',
       style: AppThemeStyle.appBarStyle,
     ),
+      leading: IconButton(
+      splashRadius: 20,
+      icon: Icon(Icons.notifications_none),
+      onPressed: () => Navigator.of(context).pop(),
+    ),
+    elevation: 0,
+    actions: <Widget>[
+      Padding(
+          padding: EdgeInsets.only(right: 20),
+          child: Icon(Icons.menu),
+      )
+    ],
+  );
+}
+
+widgetAppBarTitle(
+    context, {
+      String title = '',
+    }) {
+  return AppBar(
+    centerTitle: true,
+    elevation: 0,
+    title: Text(title, style: AppThemeStyle.appBarStyle),
     leading: IconButton(
       iconSize: 18.0,
       splashRadius: 20,
       icon: Icon(Icons.arrow_back_ios),
       onPressed: () => Navigator.of(context).pop(),
     ),
-    elevation: 0,
-    actions: <Widget>[
-      Icon(Icons.menu)
-    ],
   );
 }
 

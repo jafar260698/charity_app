@@ -2,6 +2,7 @@
 import 'package:charity_app/components/btn_ui.dart';
 import 'package:charity_app/screens/register_screen.dart';
 import 'package:charity_app/theme/themes.dart';
+import 'package:charity_app/widgets/app_bar_auth.dart';
 import 'package:charity_app/widgets/custom/getWidgetLogoHorizontal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class _LoginScreen extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: widgetAppBarTitle(context),
       body: Stack(
         children: <Widget>[
           Column(
@@ -72,15 +74,18 @@ class _LoginScreen extends State<LoginScreen> {
             left: 20.0,
             right: 20.0,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SvgPicture.asset('assets/svg/welcome.svg',height: 200,),
-                SizedBox(height: 10),
-                Opacity(
-                  opacity: 0.5,
-                  child: Text(
-                    'Еще нет акаунта? Зарегистрироваться сейчас!',
-                    style: AppThemeStyle.text14_600,
-                    textAlign: TextAlign.center,
+                SvgPicture.asset('assets/svg/welcome.svg',height: 200),
+                Padding(
+                  padding: EdgeInsets.only(left: 10,right: 10),
+                  child: Opacity(
+                    opacity: 0.5,
+                    child: Text(
+                      'Еще нет акаунта? Зарегистрироваться сейчас!',
+                      style: AppThemeStyle.text14_600,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 )
               ],

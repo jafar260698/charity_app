@@ -14,17 +14,11 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: <Widget>[
           Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               SafeArea(
                 child: Column(
@@ -44,6 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
             right: 20.0,
             child: Column(
               children: [
+                SizedBox(height:8),
                 BtnUI(
                   height: 55,
                   isLoading: false,

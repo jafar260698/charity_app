@@ -2,6 +2,7 @@
 import 'package:charity_app/components/btn_ui.dart';
 import 'package:charity_app/screens/login_screen.dart';
 import 'package:charity_app/theme/themes.dart';
+import 'package:charity_app/widgets/app_bar_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../widgets/get_widget_family.dart';
@@ -15,14 +16,11 @@ class AccessViaSocialMediaScreen extends StatefulWidget {
 
 class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
 
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: widgetAppBarTitle(context),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Stack(
