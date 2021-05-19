@@ -1,10 +1,15 @@
+/*
+ * Created by Usmanov Eldor on 5/6/21, 10:58 AM
+ *  Copyright (c) 6/5/2021
+ *  Last modified 5/6/21, 10:49 AM
+ *  2021 © SICNT. All rights reserved.
+ */
 
-import 'package:charity_app/components/btn_ui.dart';
-import 'package:charity_app/screens/access_via_social_media_screen.dart';
-import 'package:charity_app/widgets/get_widget_family.dart';
+import 'dart:async';
+import 'package:charity_app/screens/welcome_screen.dart';
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../widgets/get_widget_logo.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -13,65 +18,37 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
+
+  startTime(bool success) {
+    var _duration = new Duration(seconds: 2);
+
+    if (success)
+      return new Timer(_duration, nextToScreen);
+    else {
+
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    startTime(true);
+  }
+
+  void nextToScreen(){
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+        builder: (BuildContext context) => WelcomeScreen()),
+    (Route<dynamic> route) => false,);
+  }
+
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/image/main_background.png"),
-            fit: BoxFit.fill,
-          ),
-        ),
-        child: Stack(
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                SafeArea(
-                  child: Column(
-                      children: [
-                        SizedBox(height: 50),
-                        getWidgetLogoVertical,
-                        SizedBox(height: 20),
-                        getWidgetLogo
-                      ],
-                  ),
-                ),
-              ],
-            ),
-            Positioned(
-              bottom: 20.0,
-              left: 20.0,
-              right: 20.0,
-              child: Column(
-                children: [
-                  SizedBox(height:8),
-                  BtnUI(
-                    height: 55,
-                    isLoading: false,
-                    textColor: Colors.white,
-                    color: Color.fromRGBO(98, 190, 184, 1),
-                    text: 'Qozoq tili',
-                    ontap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => AccessViaSocialMediaScreen()));
-                    },
-                  ),
-                  SizedBox(height:8),
-                  BtnUI(
-                    height: 55,
-                    isLoading: false,
-                    textColor: Colors.white,
-                    color: Color.fromRGBO(98, 190, 184, 1),
-                    text: 'Rus tili',
-                    ontap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => AccessViaSocialMediaScreen()));
-                    },
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
+      body: Center(
+        child: CupertinoActivityIndicator(),
       ),
     );
   }

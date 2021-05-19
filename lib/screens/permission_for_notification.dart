@@ -14,54 +14,50 @@ class _PermissionForNotification extends State<PermissionForNotification> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-                child: Column(
-                  children: [
-                    getWidgetLogoHorizontal,
-                    Text(
-                      'Создать аккаунт',
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
+    return Material(
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/image/permission_image.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Center(
+            child: Container(
+              width: 300,
+              height: 250,
+              child: Column(
+                children: [
+                  Icon(Icons.close),
+                  SizedBox(height: 5),
+                  Container(
+                    width: 300,
+                    height: 200,
+                    child: Card(
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0)),
+                      color: Colors.white,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Забыли пароль',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'E-MAIL',
-                        suffixIcon: Icon(Icons.email),
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'E-MAIL',
-                        suffixIcon: Icon(Icons.email),
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'E-MAIL',
-                        suffixIcon: Icon(Icons.email),
-                      ),
-                    ),
-                    TextField(
-                      onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
-                      },
-                      decoration: InputDecoration(
-                        hintText: 'E-MAIL',
-                        suffixIcon: Icon(Icons.email),
-                      ),
-                    ),
-                    Text(
-                      'Забыли пароль',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 50),
-                  ],),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

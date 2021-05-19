@@ -1,3 +1,4 @@
+import 'package:charity_app/screens/splash_screen.dart';
 import 'package:charity_app/service/network_service.dart';
 import 'package:charity_app/service/network_status.dart';
 import 'package:charity_app/theme/my_themes.dart';
@@ -6,7 +7,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'package:theme_provider/theme_provider.dart';
 
-import 'screens/splash_screen.dart';
+import 'screens/welcome_screen.dart';
 
 void main() {
   runApp(MyApp());

@@ -18,17 +18,18 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        appBar: widgetAppBarTitle(context),
-        body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/image/auth_background.png"),
-              fit: BoxFit.cover,
-            ),
+    return MaterialApp(
+      home: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/image/auth_background.png"),
+            fit: BoxFit.cover,
           ),
-          child: SingleChildScrollView(
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: widgetAppBarTitle(context),
+          body: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Stack(
               children: <Widget>[
@@ -38,11 +39,11 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                     SafeArea(
                       child: Column(
                         children: [
-                          SizedBox(height: 50),
+                          SizedBox(height: 10),
                           getWidgetLogoVertical,
-                          SizedBox(height: 20),
-                          getWidgetLogo,
-                          SizedBox(height: 20),
+                          Padding(
+                              padding: EdgeInsets.only(left: 35,right: 35),
+                              child: getWidgetLogo),
                           Padding(
                             padding: EdgeInsets.all(20),
                             child: Column(

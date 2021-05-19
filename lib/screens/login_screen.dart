@@ -62,6 +62,11 @@ class _LoginScreen extends State<LoginScreen> {
                             width: 1.0,
                         ),
                       ),
+                      focusedBorder: new UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.white
+                        ),
+                      ),
                     ),
                   ),
                   SizedBox(height: 10),
@@ -83,7 +88,7 @@ class _LoginScreen extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 10),
                   Text(
                     'Забыли пароль',
                     style: TextStyle(
@@ -92,7 +97,7 @@ class _LoginScreen extends State<LoginScreen> {
                       color: Colors.white
                     ),
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 100),
                   BtnUI(
                     height: 55,
                     isLoading: false,
