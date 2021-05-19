@@ -73,11 +73,12 @@ widgetAppBarTitle(
     centerTitle: true,
     elevation: 0,
     backgroundColor: Colors.transparent,
+
     title: Text(title, style: AppThemeStyle.appBarStyle),
     leading: IconButton(
       iconSize: 18.0,
       splashRadius: 20,
-      icon: Icon(Icons.arrow_back_ios),
+      icon: Icon(Icons.arrow_back_ios,color: Colors.white,),
       onPressed: () => Navigator.of(context).pop(),
     ),
   );
