@@ -19,79 +19,87 @@ class _LoginScreen extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: widgetAppBarTitle(context),
-      body: Stack(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              SafeArea(
-                child: Column(
-                  children: [
-                    getWidgetLogoHorizontal,
-                    Text(
-                      'Вход',
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'E-MAIL',
-                        suffixIcon: Icon(Icons.email),
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'E-MAIL',
-                        suffixIcon: Icon(Icons.email),
-                      ),
-                    ),
-                    Text(
-                      'Забыли пароль',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 50),
-                    BtnUI(
-                      height: 55,
-                      isLoading: false,
-                      textColor: Colors.white,
-                      color: Color.fromRGBO(98, 190, 184, 1),
-                      text: 'ВХОД',
-                      ontap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/image/login_background.png"),
+            fit: BoxFit.cover,
           ),
-          Positioned(
-            bottom: 10.0,
-            left: 20.0,
-            right: 20.0,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SvgPicture.asset('assets/svg/welcome.svg',height: 200),
-                Padding(
-                  padding: EdgeInsets.only(left: 10,right: 10),
-                  child: Opacity(
-                    opacity: 0.5,
-                    child: Text(
-                      'Еще нет акаунта? Зарегистрироваться сейчас!',
-                      style: AppThemeStyle.text14_600,
-                      textAlign: TextAlign.center,
-                    ),
+        ),
+        child: Stack(
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                SafeArea(
+                  child: Column(
+                    children: [
+                      getWidgetLogoHorizontal,
+                      Text(
+                        'Вход',
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'E-MAIL',
+                          suffixIcon: Icon(Icons.email),
+                        ),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'E-MAIL',
+                          suffixIcon: Icon(Icons.email),
+                        ),
+                      ),
+                      Text(
+                        'Забыли пароль',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 50),
+                      BtnUI(
+                        height: 55,
+                        isLoading: false,
+                        textColor: Colors.white,
+                        color: Color.fromRGBO(98, 190, 184, 1),
+                        text: 'ВХОД',
+                        ontap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
+                        },
+                      ),
+                    ],
                   ),
-                )
+                ),
               ],
             ),
-          ),
-        ],
+            Positioned(
+              bottom: 10.0,
+              left: 20.0,
+              right: 20.0,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SvgPicture.asset('assets/svg/welcome.svg',height: 200),
+                  Padding(
+                    padding: EdgeInsets.only(left: 10,right: 10),
+                    child: Opacity(
+                      opacity: 0.5,
+                      child: Text(
+                        'Еще нет акаунта? Зарегистрироваться сейчас!',
+                        style: AppThemeStyle.text14_600,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

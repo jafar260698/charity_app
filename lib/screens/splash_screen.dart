@@ -16,54 +16,62 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              SafeArea(
-                child: Column(
-                    children: [
-                      SizedBox(height: 50),
-                      getWidgetLogoVertical,
-                      SizedBox(height: 20),
-                      getWidgetLogo
-                    ],
-                ),
-              ),
-            ],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/image/main_background.png"),
+            fit: BoxFit.cover,
           ),
-          Positioned(
-            bottom: 20.0,
-            left: 20.0,
-            right: 20.0,
-            child: Column(
-              children: [
-                SizedBox(height:8),
-                BtnUI(
-                  height: 55,
-                  isLoading: false,
-                  textColor: Colors.white,
-                  color: Color.fromRGBO(98, 190, 184, 1),
-                  text: 'Qozoq tili',
-                  ontap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => AccessViaSocialMediaScreen()));
-                  },
+        ),
+        child: Stack(
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                SafeArea(
+                  child: Column(
+                      children: [
+                        SizedBox(height: 50),
+                        getWidgetLogoVertical,
+                        SizedBox(height: 20),
+                        getWidgetLogo
+                      ],
+                  ),
                 ),
-                SizedBox(height:8),
-                BtnUI(
-                  height: 55,
-                  isLoading: false,
-                  textColor: Colors.white,
-                  color: Color.fromRGBO(98, 190, 184, 1),
-                  text: 'Rus tili',
-                  ontap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => AccessViaSocialMediaScreen()));
-                  },
-                )
               ],
             ),
-          ),
-        ],
+            Positioned(
+              bottom: 20.0,
+              left: 20.0,
+              right: 20.0,
+              child: Column(
+                children: [
+                  SizedBox(height:8),
+                  BtnUI(
+                    height: 55,
+                    isLoading: false,
+                    textColor: Colors.white,
+                    color: Color.fromRGBO(98, 190, 184, 1),
+                    text: 'Qozoq tili',
+                    ontap: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => AccessViaSocialMediaScreen()));
+                    },
+                  ),
+                  SizedBox(height:8),
+                  BtnUI(
+                    height: 55,
+                    isLoading: false,
+                    textColor: Colors.white,
+                    color: Color.fromRGBO(98, 190, 184, 1),
+                    text: 'Rus tili',
+                    ontap: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => AccessViaSocialMediaScreen()));
+                    },
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

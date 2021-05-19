@@ -20,78 +20,86 @@ class _RegisterScreen extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: widgetAppBarTitle(context),
-      body: Stack(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              SafeArea(
-                child: Column(
-                  children: [
-                    getWidgetLogoHorizontal,
-                    Text(
-                      'Создать аккаунт',
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'E-MAIL',
-                        suffixIcon: Icon(Icons.email),
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'E-MAIL',
-                        suffixIcon: Icon(Icons.email),
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'E-MAIL',
-                        suffixIcon: Icon(Icons.email),
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'E-MAIL',
-                        suffixIcon: Icon(Icons.email),
-                      ),
-                    ),
-                    Text(
-                      'Забыли пароль',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 50),
-                  ],
-                ),
-              ),
-            ],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/image/register_background.png"),
+            fit: BoxFit.cover,
           ),
-          Positioned(
-            bottom: 10.0,
-            left: 20.0,
-            right: 20.0,
-            child: Column(
-              children: [
-                BtnUI(
-                  height: 55,
-                  isLoading: false,
-                  textColor: Colors.white,
-                  color: Color.fromRGBO(98, 190, 184, 1),
-                  text: 'СОЗДАТЬ',
-                  ontap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
-                  },
+        ),
+        child: Stack(
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                SafeArea(
+                  child: Column(
+                    children: [
+                      getWidgetLogoHorizontal,
+                      Text(
+                        'Создать аккаунт',
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'E-MAIL',
+                          suffixIcon: Icon(Icons.email),
+                        ),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'E-MAIL',
+                          suffixIcon: Icon(Icons.email),
+                        ),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'E-MAIL',
+                          suffixIcon: Icon(Icons.email),
+                        ),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'E-MAIL',
+                          suffixIcon: Icon(Icons.email),
+                        ),
+                      ),
+                      Text(
+                        'Забыли пароль',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 50),
+                    ],
+                  ),
                 ),
               ],
             ),
-          ),
-        ],
+            Positioned(
+              bottom: 10.0,
+              left: 20.0,
+              right: 20.0,
+              child: Column(
+                children: [
+                  BtnUI(
+                    height: 55,
+                    isLoading: false,
+                    textColor: Colors.white,
+                    color: Color.fromRGBO(98, 190, 184, 1),
+                    text: 'СОЗДАТЬ',
+                    ontap: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

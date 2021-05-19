@@ -72,6 +72,7 @@ widgetAppBarTitle(
   return AppBar(
     centerTitle: true,
     elevation: 0,
+    backgroundColor: Colors.transparent,
     title: Text(title, style: AppThemeStyle.appBarStyle),
     leading: IconButton(
       iconSize: 18.0,
