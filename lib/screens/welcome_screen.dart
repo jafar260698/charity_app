@@ -1,4 +1,3 @@
-
 import 'package:charity_app/components/btn_ui.dart';
 import 'package:charity_app/screens/access_via_social_media_screen.dart';
 import 'package:charity_app/widgets/get_widget_family.dart';
@@ -12,7 +11,6 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreen extends State<WelcomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -30,15 +28,14 @@ class _WelcomeScreen extends State<WelcomeScreen> {
                 children: <Widget>[
                   SafeArea(
                     child: Column(
-                        children: [
-                          SizedBox(height: 70),
-                          getWidgetLogoVertical,
-                          SizedBox(height: 20),
-                          Padding(
-                              padding: EdgeInsets.only(left: 35,right: 35),
-                              child: getWidgetLogo
-                          )
-                        ],
+                      children: [
+                        SizedBox(height: 70),
+                        getWidgetLogoVertical,
+                        SizedBox(height: 20),
+                        Padding(
+                            padding: EdgeInsets.only(left: 35, right: 35),
+                            child: getWidgetLogo)
+                      ],
                     ),
                   ),
                 ],
@@ -49,7 +46,7 @@ class _WelcomeScreen extends State<WelcomeScreen> {
                 right: 20.0,
                 child: Column(
                   children: [
-                    SizedBox(height:8),
+                    SizedBox(height: 8),
                     BtnUI(
                       height: 55,
                       isLoading: false,
@@ -57,10 +54,12 @@ class _WelcomeScreen extends State<WelcomeScreen> {
                       color: Color.fromRGBO(98, 190, 184, 1),
                       text: 'Qozoq tili',
                       ontap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => AccessViaSocialMediaScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>
+                                AccessViaSocialMediaScreen()));
                       },
                     ),
-                    SizedBox(height:8),
+                    SizedBox(height: 8),
                     BtnUI(
                       height: 55,
                       isLoading: false,
@@ -68,7 +67,9 @@ class _WelcomeScreen extends State<WelcomeScreen> {
                       color: Color.fromRGBO(98, 190, 184, 1),
                       text: 'Rus tili',
                       ontap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => AccessViaSocialMediaScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>
+                                AccessViaSocialMediaScreen()));
                       },
                     )
                   ],
@@ -80,5 +81,4 @@ class _WelcomeScreen extends State<WelcomeScreen> {
       ),
     );
   }
-
 }
