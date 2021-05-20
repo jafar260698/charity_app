@@ -7,6 +7,7 @@ import 'package:charity_app/widgets/custom/getWidgetLogoHorizontal.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:toast/toast.dart';
 import '../widgets/get_widget_family.dart';
 import '../widgets/get_widget_logo.dart';
 
@@ -16,6 +17,27 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreen extends State<RegisterScreen> {
+
+  int _radioValue1 = -1;
+  int correctScore = 0;
+  int _radioValue2 = -1;
+  int _radioValue3 = -1;
+  int _radioValue4 = -1;
+  int _radioValue5 = -1;
+
+  void _handleRadioValueChange1(int value) {
+    setState(() {
+      _radioValue1 = value;
+
+    });
+  }
+
+  void _handleRadioValueChange2(int value) {
+    setState(() {
+      _radioValue2 = value;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +60,14 @@ class _RegisterScreen extends State<RegisterScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Align(
-                      alignment: Alignment.center,
-                      child: getWidgetLogoHorizontal
+                  Padding(
+                    padding: EdgeInsets.only(left: 40),
+                    child: Align(
+                        alignment: Alignment.center,
+                        child: getWidgetLogoHorizontal
+                    ),
                   ),
-                  SizedBox(height: 15),
+                  SizedBox(height: 30),
                   Text(
                     'Создать аккаунт',
                     style: TextStyle(
@@ -55,9 +80,9 @@ class _RegisterScreen extends State<RegisterScreen> {
                   SizedBox(height: 15),
                   TextField(
                     decoration: InputDecoration(
-                      hintText: 'E-MAIL',
-                      hintStyle: TextStyle(color: Colors.white),
-                      prefixIcon: Icon(FlevaIcons.email_outline,color: Colors.white),
+                      hintText: 'ИМЯ ПОЛЗОВАТEЛЯ',
+                      hintStyle: TextStyle(color: Colors.white,fontSize: 14),
+                      prefixIcon: Icon(Icons.person_outline,color: Colors.white),
                       enabledBorder: new UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
@@ -75,7 +100,7 @@ class _RegisterScreen extends State<RegisterScreen> {
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'ПАРОЛЬ',
-                      hintStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.white,fontSize: 14),
                       prefixIcon: Icon(Icons.lock_outline,color: Colors.white),
                       enabledBorder: new UnderlineInputBorder(
                         borderSide: BorderSide(
@@ -94,7 +119,7 @@ class _RegisterScreen extends State<RegisterScreen> {
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'E-MAIL',
-                      hintStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.white,fontSize: 14),
                       prefixIcon: Icon(FlevaIcons.email_outline,color: Colors.white),
                       enabledBorder: new UnderlineInputBorder(
                         borderSide: BorderSide(
@@ -112,9 +137,9 @@ class _RegisterScreen extends State<RegisterScreen> {
                   SizedBox(height: 10),
                   TextField(
                     decoration: InputDecoration(
-                      hintText: 'ПАРОЛЬ',
-                      hintStyle: TextStyle(color: Colors.white),
-                      prefixIcon: Icon(Icons.lock_outline,color: Colors.white),
+                      hintText: 'ТEЛEФОН',
+                      hintStyle: TextStyle(color: Colors.white,fontSize: 14),
+                      prefixIcon: Icon(Icons.call_outlined,color: Colors.white),
                       enabledBorder: new UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
@@ -128,7 +153,71 @@ class _RegisterScreen extends State<RegisterScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 80),
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: 'ТИП ПОЛЗОВАТEЛЯ',
+                      hintStyle: TextStyle(color: Colors.black,fontSize: 14),
+                      prefixIcon: Icon(Icons.person,color: Color.fromRGBO(98, 190, 184, 1),
+                      ),
+                      suffixIcon: Icon(Icons.rotate_left,color: Color.fromRGBO(98, 190, 184, 1),
+                      ),
+                      enabledBorder: new UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color.fromRGBO(98, 190, 184, 1),
+                          width: 1.0,
+                        ),
+                      ),
+                      focusedBorder: new UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.black
+                        ),
+                      ),
+                    ),
+                  ),
+                  new Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(children: [
+                        new Radio(
+                          value: 0,
+                          activeColor:Color.fromRGBO(98, 190, 184, 1),
+                          groupValue: _radioValue2,
+                          onChanged: _handleRadioValueChange2,
+                        ),
+                        new Text(
+                          'Родител',
+                          style: new TextStyle(fontSize: 16.0),
+                        ),
+                      ],),
+                      Row(children: [
+                        new Radio(
+                          value: 1,
+                          groupValue: _radioValue2,
+                          activeColor:Color.fromRGBO(98, 190, 184, 1),
+                          onChanged: _handleRadioValueChange2,
+                        ),
+                        new Text(
+                          'Специалист',
+                          style: new TextStyle(fontSize: 16.0),
+                        )
+                      ],),
+                      Row(children: [
+                        new Radio(
+                          value: 2,
+                          activeColor:Color.fromRGBO(98, 190, 184, 1),
+                          groupValue: _radioValue2,
+                          onChanged: _handleRadioValueChange2,
+                        ),
+                        new Text(
+                          'Оргснизация',
+                          style: new TextStyle(fontSize: 16.0),
+                        ),
+                      ],),
+                    ],
+                  ),
+                  SizedBox(height: 30),
                   BtnUI(
                     height: 55,
                     isLoading: false,

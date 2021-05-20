@@ -37,10 +37,13 @@ class _LoginScreen extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Align(
-                      alignment: Alignment.center,
-                      child: getWidgetLogoHorizontal),
-                  SizedBox(height: 15),
+                  Padding(
+                    padding: EdgeInsets.only(left: 40),
+                    child: Align(
+                        alignment: Alignment.center,
+                        child: getWidgetLogoHorizontal),
+                  ),
+                  SizedBox(height: 30),
                   Text(
                     'Вход',
                     style: TextStyle(
@@ -54,7 +57,7 @@ class _LoginScreen extends State<LoginScreen> {
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'E-MAIL',
-                      hintStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.white,fontSize: 14),
                       prefixIcon: Icon(FlevaIcons.email_outline,color: Colors.white),
                       enabledBorder: new UnderlineInputBorder(
                         borderSide: BorderSide(
@@ -73,7 +76,7 @@ class _LoginScreen extends State<LoginScreen> {
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'ПАРОЛЬ',
-                      hintStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.white,fontSize: 14),
                       prefixIcon: Icon(Icons.lock_outline,color: Colors.white),
                       enabledBorder: new UnderlineInputBorder(
                         borderSide: BorderSide(
