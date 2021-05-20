@@ -72,7 +72,7 @@ class _PermissionForNotification extends State<PermissionForNotification> {
                               text: 'Разрешить доступ',
                               ontap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => CommentScreen()));
+                                    builder: (context) => HomeScreen()));
                               },
                             ),
                             SizedBox(height: 15),

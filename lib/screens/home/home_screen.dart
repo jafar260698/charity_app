@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:charity_app/components/text_field_ui.dart';
 import 'package:charity_app/screens/home/profile_screen.dart';
 import 'package:charity_app/screens/home/search_screen.dart';
+import 'package:charity_app/screens/other/comment_screen.dart';
 import 'package:charity_app/theme/themes.dart';
 import 'package:charity_app/widgets/custom/custom_service_category_expansion.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
@@ -28,82 +29,89 @@ final List<String> imgList = [
 
 class _HomeScreen extends State<HomeScreen> {
   TextEditingController pinfl = new TextEditingController();
-
-  List<Widget> tabs = [
+  int selectedItem=0;
+  List<Widget> tabs = <Widget>[
     SearchScreen(),
     ArticleScreen(),
     ProfileScreen(),
+    CommentScreen(),
     ProfileScreen(),
   ];
 
+  void _onItemTap(int index){
+    setState(() {
+      selectedItem=index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppbar(context),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            Container(
-                child: CarouselSlider.builder(
-                  options: CarouselOptions(
-                    aspectRatio: 2.0,
-                    enlargeCenterPage: false,
-                    viewportFraction: 1,
-                  ),
-                  itemCount: (imgList.length / 2).round(),
-                  itemBuilder: (context, index, realIdx) {
-                    final int first = index * 2;
-                    final int second = first + 1;
-                    return Row(
-                      children: [first, second].map((idx) {
-                        return Expanded(
-                          flex: 1,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(30))
-                            ),
-                            margin: EdgeInsets.symmetric(horizontal: 10),
-                            child: Image.network(imgList[idx], fit: BoxFit.cover),
-                          ),
-                        );
-                      }).toList(),
-                    );
-                  },
-                )
-            ),
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: TextFieldUI(
-                controller: pinfl,
-                text: 'Jafar',
-                keyboardType: TextInputType.number,
-                inputAction: TextInputAction.done,
-                hintText: "Search...",
-                suffixIcon: IconButton(
-                  splashRadius: 25,
-                  onPressed: () {
-
-                  },
-                  icon: Icon(FlevaIcons.search),
-                ),
-              ),
-            ),
-            // ListView.builder(
-            //   padding: const EdgeInsets.only(
-            //       bottom: 60.0, left: 13.0, top: 13.0, right: 13.0),
-            //   controller: new ScrollController(keepScrollOffset: false),
-            //   physics: BouncingScrollPhysics(),
-            //   scrollDirection: Axis.vertical,
-            //   itemCount: servicesGroup(context).length,
-            //   itemBuilder: (BuildContext context, index) {
-            //     return servicesGroup(context)[index];
-            //   },
-            // ),
-          ],
-        ),
-      ),
+      // body: SingleChildScrollView(
+      //   physics: BouncingScrollPhysics(),
+      //   child: Column(
+      //     children: [
+      //       Container(
+      //           child: CarouselSlider.builder(
+      //             options: CarouselOptions(
+      //               aspectRatio: 2.0,
+      //               enlargeCenterPage: false,
+      //               viewportFraction: 1,
+      //             ),
+      //             itemCount: (imgList.length / 2).round(),
+      //             itemBuilder: (context, index, realIdx) {
+      //               final int first = index * 2;
+      //               final int second = first + 1;
+      //               return Row(
+      //                 children: [first, second].map((idx) {
+      //                   return Expanded(
+      //                     flex: 1,
+      //                     child: Container(
+      //                       decoration: BoxDecoration(
+      //                           borderRadius: BorderRadius.all(Radius.circular(30))
+      //                       ),
+      //                       margin: EdgeInsets.symmetric(horizontal: 10),
+      //                       child: Image.network(imgList[idx], fit: BoxFit.cover),
+      //                     ),
+      //                   );
+      //                 }).toList(),
+      //               );
+      //             },
+      //           )
+      //       ),
+      //       Padding(
+      //         padding: EdgeInsets.all(20),
+      //         child: TextFieldUI(
+      //           controller: pinfl,
+      //           text: 'Jafar',
+      //           keyboardType: TextInputType.number,
+      //           inputAction: TextInputAction.done,
+      //           hintText: "Search...",
+      //           suffixIcon: IconButton(
+      //             splashRadius: 25,
+      //             onPressed: () {
+      //
+      //             },
+      //             icon: Icon(FlevaIcons.search),
+      //           ),
+      //         ),
+      //       ),
+      //       // ListView.builder(
+      //       //   padding: const EdgeInsets.only(
+      //       //       bottom: 60.0, left: 13.0, top: 13.0, right: 13.0),
+      //       //   controller: new ScrollController(keepScrollOffset: false),
+      //       //   physics: BouncingScrollPhysics(),
+      //       //   scrollDirection: Axis.vertical,
+      //       //   itemCount: servicesGroup(context).length,
+      //       //   itemBuilder: (BuildContext context, index) {
+      //       //     return servicesGroup(context)[index];
+      //       //   },
+      //       // ),
+      //     ],
+      //   ),
+      // ),
+      body: tabs[selectedItem],
       bottomNavigationBar: ConvexAppBar(
         style: TabStyle.reactCircle,
         items: [
@@ -115,7 +123,7 @@ class _HomeScreen extends State<HomeScreen> {
         ],
         initialActiveIndex: 0,
         onTap: (int i) => {
-
+          _onItemTap(i),
         },
       ),
     );
