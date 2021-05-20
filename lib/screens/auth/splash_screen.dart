@@ -6,7 +6,7 @@
  */
 
 import 'dart:async';
-import 'package:charity_app/screens/welcome_screen.dart';
+import 'package:charity_app/screens/auth/welcome_screen.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

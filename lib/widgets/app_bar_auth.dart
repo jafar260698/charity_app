@@ -47,13 +47,14 @@ widgetAppBarAuth(context, {String title = '', String lang = 'uz'}) {
 
 widgetAppBarAuthTitle(context) {
   return AppBar(
+    backgroundColor: Colors.transparent,
     title: Text(
       '',
       style: AppThemeStyle.appBarStyle,
     ),
       leading: IconButton(
       splashRadius: 20,
-      icon: SvgPicture.asset('assets/svg/icon_notification_outline.svg'),
+      icon: SvgPicture.asset('assets/svg/Icon_notification_outline.svg'),
       onPressed: () => {
 
       },

@@ -1,6 +1,6 @@
 
 import 'package:charity_app/components/btn_ui.dart';
-import 'package:charity_app/screens/register_screen.dart';
+import 'package:charity_app/screens/auth/register_screen.dart';
 import 'package:charity_app/theme/themes.dart';
 import 'package:charity_app/widgets/app_bar_auth.dart';
 import 'package:charity_app/widgets/custom/getWidgetLogoHorizontal.dart';
@@ -32,7 +32,7 @@ class _LoginScreen extends State<LoginScreen> {
           body: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Padding(
-              padding: EdgeInsets.only(left: 20,right: 20),
+              padding: EdgeInsets.only(left: 25,right: 25),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,

@@ -2,7 +2,7 @@
 
 
 import 'package:charity_app/components/btn_ui.dart';
-import 'package:charity_app/screens/register_screen.dart';
+import 'package:charity_app/screens/auth/register_screen.dart';
 import 'package:charity_app/theme/themes.dart';
 import 'package:charity_app/widgets/custom/getWidgetLogoHorizontal.dart';
 import 'package:flutter/cupertino.dart';

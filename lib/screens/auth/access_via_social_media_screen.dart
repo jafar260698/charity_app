@@ -1,14 +1,14 @@
 
 import 'package:charity_app/components/btn_ui.dart';
 import 'package:charity_app/components/btn_ui_icon.dart';
-import 'package:charity_app/screens/login_screen.dart';
+import 'package:charity_app/screens/auth/login_screen.dart';
 import 'package:charity_app/theme/themes.dart';
 import 'package:charity_app/widgets/app_bar_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../widgets/get_widget_family.dart';
-import '../widgets/get_widget_logo.dart';
+import '../../widgets/get_widget_family.dart';
+import '../../widgets/get_widget_logo.dart';
 
 
 class AccessViaSocialMediaScreen extends StatefulWidget {
