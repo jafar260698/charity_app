@@ -1,6 +1,7 @@
 import 'package:charity_app/theme/my_themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class BtnUIIcon extends StatefulWidget {
   const BtnUIIcon(
@@ -20,7 +21,7 @@ class BtnUIIcon extends StatefulWidget {
   final Color textColor;
   final double height;
   final child;
-  final Icon icon;
+  final SvgPicture icon;
   final bool isLoading;
   final GestureTapCallback ontap;
 
@@ -67,49 +68,20 @@ class _BtnUIIconState extends State<BtnUIIcon>
           height: widget.height,
           decoration: BoxDecoration(
             border: Border.all(
-              color: MyThemes.lightTheme.primaryColor,
+              color: widget.color,
               width: 0.75,
             ),
-            color: MyThemes.lightTheme.primaryColor,
-            borderRadius: BorderRadius.circular(16.0),
+            color: widget.color,
+            borderRadius: BorderRadius.circular(27.0),
           ),
-          child: Stack(
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  widget.text,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18,
-                      color: widget.textColor),
-                ),
-              ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Visibility(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: CircularProgressIndicator(
-                      backgroundColor: Colors.white,
-                    ),
-                  ),
-                  maintainState: true,
-                  maintainAnimation: true,
-                  maintainSize: true,
-                  visible: widget.isLoading,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: CircleAvatar(
-                    radius: 15,
-                    backgroundColor: Colors.black12,
-                    child: widget.icon,
-                  ),
-                ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:<Widget> [
+              widget.icon,
+              Text(
+                widget.text,
+                style: TextStyle(color: widget.textColor,fontSize: 16,fontFamily: 'Montserrat'),
               ),
             ],
           ),

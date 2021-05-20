@@ -75,6 +75,7 @@ flutter:
       - assets/svg/
       - assets/image/
       - assets/svg/services/
+      - assets/svg/auth/
 
   uses-material-design: true
 

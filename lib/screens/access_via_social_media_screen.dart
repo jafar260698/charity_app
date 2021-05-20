@@ -1,10 +1,12 @@
 
 import 'package:charity_app/components/btn_ui.dart';
+import 'package:charity_app/components/btn_ui_icon.dart';
 import 'package:charity_app/screens/login_screen.dart';
 import 'package:charity_app/theme/themes.dart';
 import 'package:charity_app/widgets/app_bar_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../widgets/get_widget_family.dart';
 import '../widgets/get_widget_logo.dart';
 
@@ -49,34 +51,37 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                BtnUI(
+                                BtnUIIcon(
                                   height: 55,
                                   isLoading: false,
                                   textColor: Colors.white,
                                   color: Color.fromRGBO(98, 190, 184, 1),
                                   text: 'Вход через Apple',
+                                  icon: SvgPicture.asset('assets/svg/auth/apple.svg'),
                                   ontap: () {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
                                   },
                                 ),
                                 SizedBox(height:8),
-                                BtnUI(
+                                BtnUIIcon(
                                   height: 55,
                                   isLoading: false,
                                   textColor: Colors.white,
                                   color: Color.fromRGBO(240, 131, 144, 1),
                                   text: 'Вход через Google',
+                                  icon: SvgPicture.asset('assets/svg/auth/google.svg'),
                                   ontap: () {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
                                   },
                                 ),
                                 SizedBox(height:8),
-                                BtnUI(
+                                BtnUIIcon(
                                   height: 55,
                                   isLoading: false,
                                   textColor: Colors.white,
                                   color: Color.fromRGBO(108, 187, 217, 1),
                                   text: 'Вход через Facebook',
+                                  icon: SvgPicture.asset('assets/svg/auth/facebook.svg'),
                                   ontap: () {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
                                   },
