@@ -1,6 +1,7 @@
 import 'package:charity_app/theme/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:theme_provider/theme_provider.dart';
 
 
@@ -52,8 +53,10 @@ widgetAppBarAuthTitle(context) {
     ),
       leading: IconButton(
       splashRadius: 20,
-      icon: Icon(Icons.notifications_none),
-      onPressed: () => Navigator.of(context).pop(),
+      icon: SvgPicture.asset('assets/svg/icon_notification_outline.svg'),
+      onPressed: () => {
+
+      },
     ),
     elevation: 0,
     actions: <Widget>[

@@ -1,0 +1,11 @@
+<svg id="Icon_notification_outline" xmlns="http://www.w3.org/2000/svg" width="39.58" height="27.631" viewBox="0 0 39.58 27.631">
+  <rect id="Icon_notification_outline_background" data-name="Icon_notification_outline background" width="24" height="24" transform="translate(1.58 2)" fill="#758084" stroke="#62beb8" stroke-width="1" opacity="0"/>
+  <g id="Icon_notification_outline-2" data-name="Icon_notification_outline" transform="translate(0 3.926) rotate(-9)">
+    <path id="Path" d="M0,1.263A1.263,1.263,0,0,1,1.263,0H21.474a1.263,1.263,0,0,1,0,2.526H1.263A1.263,1.263,0,0,1,0,1.263Z" transform="translate(0 17.684)" fill="#758084" stroke="rgba(0,0,0,0)" stroke-width="1"/>
+    <path id="Path-2" data-name="Path" d="M3.551,4.37A5.8,5.8,0,0,0,2.526,7.579v8.842H0V7.579A8.316,8.316,0,0,1,1.5,2.894,7.115,7.115,0,0,1,7.579,0a7.115,7.115,0,0,1,6.078,2.894,8.316,8.316,0,0,1,1.5,4.685v8.842H12.632V7.579A5.8,5.8,0,0,0,11.607,4.37,4.6,4.6,0,0,0,7.579,2.526,4.6,4.6,0,0,0,3.551,4.37Z" transform="translate(3.789 2.526)" fill="#758084" stroke="rgba(0,0,0,0)" stroke-width="1"/>
+    <path id="Path-3" data-name="Path" d="M5.053,2.526A2.526,2.526,0,1,1,2.526,0,2.526,2.526,0,0,1,5.053,2.526Z" transform="translate(8.842)" fill="#758084" stroke="rgba(0,0,0,0)" stroke-width="1"/>
+    <path id="Path-4" data-name="Path" d="M2.526,2.526A2.526,2.526,0,0,0,5.053,0H0A2.526,2.526,0,0,0,2.526,2.526Z" transform="translate(8.842 21.474)" fill="#758084" stroke="rgba(0,0,0,0)" stroke-width="1"/>
+  </g>
+  <path id="Path_9651" data-name="Path 9651" d="M7.5,0h10a7.5,7.5,0,0,1,0,15H7.5a7.5,7.5,0,0,1,0-15Z" transform="translate(14.58 1)" fill="#ffcd83"/>
+  <text id="_9_" data-name="9+" transform="translate(19.58 13)" fill="#fff" font-size="13.5" font-family="HelveticaNeue-Bold, Helvetica Neue" font-weight="700"><tspan x="0" y="0">9+</tspan></text>
+</svg>

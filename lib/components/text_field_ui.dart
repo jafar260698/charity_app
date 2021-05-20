@@ -106,7 +106,7 @@ class _TextFieldState extends State<TextFieldUI> {
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0),
-              borderSide: BorderSide(color: Colors.grey.withOpacity(0.5)),
+              borderSide: BorderSide(color: Colors.white),
             ),
             disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0),

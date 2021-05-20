@@ -19,6 +19,7 @@ class _SearchScreen extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: customAppbar(context),
       body: Stack(
         children: <Widget>[
           Column(
@@ -90,6 +91,29 @@ class _SearchScreen extends State<SearchScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget customAppbar(BuildContext context){
+    return AppBar(
+      title: Text(
+        '',
+        style: AppThemeStyle.appBarStyle,
+      ),
+      leading: IconButton(
+        splashRadius: 20,
+        icon: Icon(Icons.menu_outlined),
+        onPressed: () => {
+
+        },
+      ),
+      elevation: 0,
+      actions: <Widget>[
+        Padding(
+            padding: EdgeInsets.only(right: 20),
+            child: SvgPicture.asset('assets/svg/Icon_notification_outline.svg')
+        )
+      ],
     );
   }
 

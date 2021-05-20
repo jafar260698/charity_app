@@ -1,6 +1,7 @@
 
 import 'package:charity_app/components/btn_ui.dart';
 import 'package:charity_app/screens/home/home_screen.dart';
+import 'package:charity_app/screens/other/comment_screen.dart';
 import 'package:charity_app/widgets/custom/getWidgetLogoHorizontal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +29,10 @@ class _PermissionForNotification extends State<PermissionForNotification> {
               padding: EdgeInsets.all(10),
               child: Container(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.close),
+                    Icon(Icons.close,color: Colors.white,size: 26),
                     SizedBox(height: 5),
                     Container(
                       child: Card(
@@ -70,7 +73,7 @@ class _PermissionForNotification extends State<PermissionForNotification> {
                                 color: Color.fromRGBO(98, 190, 184, 1),
                                 text: 'Разрешить доступ',
                                 ontap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => CommentScreen()));
                                 },
                               ),
                               SizedBox(height: 15),

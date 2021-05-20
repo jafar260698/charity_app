@@ -1,15 +1,15 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:charity_app/components/text_field_ui.dart';
-import 'package:charity_app/screens/home/main_screen.dart';
 import 'package:charity_app/screens/home/profile_screen.dart';
 import 'package:charity_app/screens/home/search_screen.dart';
-import 'package:charity_app/widgets/app_bar_auth.dart';
+import 'package:charity_app/theme/themes.dart';
 import 'package:charity_app/widgets/custom/custom_service_category_expansion.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'article_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -30,7 +30,6 @@ class _HomeScreen extends State<HomeScreen> {
   TextEditingController pinfl = new TextEditingController();
 
   List<Widget> tabs = [
-    MainScreen(),
     SearchScreen(),
     ArticleScreen(),
     ProfileScreen(),
@@ -41,7 +40,7 @@ class _HomeScreen extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: widgetAppBarAuthTitle(context),
+      appBar: customAppbar(context),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
@@ -169,6 +168,29 @@ class _HomeScreen extends State<HomeScreen> {
         },),
     ];
     return servicesList;
+  }
+
+  Widget customAppbar(BuildContext context){
+    return AppBar(
+      title: Text(
+        '',
+        style: AppThemeStyle.appBarStyle,
+      ),
+      leading: IconButton(
+        splashRadius: 20,
+        icon: Icon(Icons.menu_outlined),
+        onPressed: () => {
+
+        },
+      ),
+      elevation: 0,
+      actions: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(right: 20),
+          child: SvgPicture.asset('assets/svg/Icon_notification_outline.svg')
+        )
+      ],
+    );
   }
 
 }
