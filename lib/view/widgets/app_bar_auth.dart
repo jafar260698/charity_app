@@ -1,4 +1,5 @@
-import 'package:charity_app/theme/themes.dart';
+
+import 'package:charity_app/view/theme/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

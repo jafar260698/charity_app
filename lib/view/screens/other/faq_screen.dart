@@ -1,23 +1,18 @@
-/*
- * Created by Usmanov Eldor on 5/6/21, 10:58 AM
- *  Copyright (c) 6/5/2021
- *  Last modified 5/6/21, 10:49 AM
- *  2021 © SICNT. All rights reserved.
- */
 
-import 'package:charity_app/theme/themes.dart';
+
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/widgets/app_bar_auth.dart';
-import 'package:charity_app/widgets/avatar_iamge.dart';
+import 'package:charity_app/view/theme/themes.dart';
+import 'package:charity_app/view/widgets/app_bar_auth.dart';
+import 'package:charity_app/view/widgets/avatar_iamge.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CommentScreen extends StatefulWidget {
+class FaqScreen extends StatefulWidget {
   @override
-  _CommentScreen createState() => _CommentScreen();
+  _FaqScreen createState() => _FaqScreen();
 }
 
-class _CommentScreen extends State<CommentScreen> {
+class _FaqScreen extends State<FaqScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -91,5 +86,4 @@ class _CommentScreen extends State<CommentScreen> {
       ),
     );
   }
-
 }

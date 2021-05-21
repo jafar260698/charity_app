@@ -1,16 +1,8 @@
-
-import 'package:charity_app/components/btn_ui.dart';
-import 'package:charity_app/screens/auth/register_screen.dart';
-import 'package:charity_app/theme/my_themes.dart';
-import 'package:charity_app/theme/themes.dart';
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/widgets/app_bar_auth.dart';
-import 'package:charity_app/widgets/custom/getWidgetLogoHorizontal.dart';
+import 'package:charity_app/view/theme/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-import 'package:theme_provider/theme_provider.dart';
 
 class ArticleScreen extends StatefulWidget {
   @override
@@ -18,8 +10,6 @@ class ArticleScreen extends StatefulWidget {
 }
 
 class _ArticleScreen extends State<ArticleScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     List<String> year = [
@@ -53,7 +43,8 @@ class _ArticleScreen extends State<ArticleScreen> {
                     return new Tab(text: item);
                   }),
                   isScrollable: true,
-                  labelPadding: EdgeInsets.only(left: 30.0, right: 30.0,top: 3,bottom: 3),
+                  labelPadding: EdgeInsets.only(
+                      left: 30.0, right: 30.0, top: 3, bottom: 3),
                   indicatorSize: TabBarIndicatorSize.label,
                   labelColor: Colors.white,
                   unselectedLabelColor: Colors.white.withOpacity(0.4),
@@ -76,7 +67,7 @@ class _ArticleScreen extends State<ArticleScreen> {
         ),
         body: TabBarView(
           children: List<Widget>.generate(year.length, (int index) {
-             return getMainUI(context);
+            return getMainUI(context);
           }),
         ),
       ),
@@ -119,7 +110,7 @@ class _ArticleScreen extends State<ArticleScreen> {
       ),
       leading: CupertinoButton(
         onPressed: () => Navigator.pop(context),
-        child: Icon(Icons.arrow_back_ios,size: 20),
+        child: Icon(Icons.arrow_back_ios, size: 20),
       ),
       actions: <Widget>[
         Padding(
@@ -138,7 +129,8 @@ class _ArticleScreen extends State<ArticleScreen> {
       ),
       child: Expanded(
         child: ClipRRect(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(40), topRight: Radius.circular(40)),
           child: Container(
             color: Color.fromRGBO(244, 244, 244, 1),
             child: Padding(
@@ -153,7 +145,8 @@ class _ArticleScreen extends State<ArticleScreen> {
                       ),
                       color: Colors.white,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 20,right: 20,top: 10,bottom: 5),
+                        padding: EdgeInsets.only(
+                            left: 20, right: 20, top: 10, bottom: 5),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -168,15 +161,22 @@ class _ArticleScreen extends State<ArticleScreen> {
                                     textAlign: TextAlign.start,
                                   ),
                                 ),
-                                Icon(Icons.keyboard_arrow_down,size: 30,)
+                                Icon(
+                                  Icons.keyboard_arrow_down,
+                                  size: 30,
+                                )
                               ],
                             ),
-                            SizedBox(height:5),
-                            Divider(thickness: 1,color: Color.fromRGBO(98, 190, 184, 1)),
+                            SizedBox(height: 5),
+                            Divider(
+                                thickness: 1,
+                                color: Color.fromRGBO(98, 190, 184, 1)),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(Icons.location_on,size: 24,color: Color.fromRGBO(98, 190, 184, 1)),
+                                Icon(Icons.location_on,
+                                    size: 24,
+                                    color: Color.fromRGBO(98, 190, 184, 1)),
                                 SizedBox(width: 8.0),
                                 Expanded(
                                   child: Text(
@@ -187,7 +187,7 @@ class _ArticleScreen extends State<ArticleScreen> {
                                 ),
                               ],
                             ),
-                            SizedBox(height:5),
+                            SizedBox(height: 5),
                           ],
                         ),
                       ),
@@ -199,7 +199,8 @@ class _ArticleScreen extends State<ArticleScreen> {
                       ),
                       color: Colors.white,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 20,right: 20,top: 10,bottom: 5),
+                        padding: EdgeInsets.only(
+                            left: 20, right: 20, top: 10, bottom: 5),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -214,15 +215,22 @@ class _ArticleScreen extends State<ArticleScreen> {
                                     textAlign: TextAlign.start,
                                   ),
                                 ),
-                                Icon(Icons.keyboard_arrow_down,size: 30,)
+                                Icon(
+                                  Icons.keyboard_arrow_down,
+                                  size: 30,
+                                )
                               ],
                             ),
-                            SizedBox(height:5),
-                            Divider(thickness: 1,color: Color.fromRGBO(98, 190, 184, 1)),
+                            SizedBox(height: 5),
+                            Divider(
+                                thickness: 1,
+                                color: Color.fromRGBO(98, 190, 184, 1)),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(Icons.location_on,size: 24,color: Color.fromRGBO(98, 190, 184, 1)),
+                                Icon(Icons.location_on,
+                                    size: 24,
+                                    color: Color.fromRGBO(98, 190, 184, 1)),
                                 SizedBox(width: 8.0),
                                 Expanded(
                                   child: Text(
@@ -233,7 +241,7 @@ class _ArticleScreen extends State<ArticleScreen> {
                                 ),
                               ],
                             ),
-                            SizedBox(height:5),
+                            SizedBox(height: 5),
                           ],
                         ),
                       ),
@@ -245,7 +253,8 @@ class _ArticleScreen extends State<ArticleScreen> {
                       ),
                       color: Colors.white,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 20,right: 20,top: 10,bottom: 5),
+                        padding: EdgeInsets.only(
+                            left: 20, right: 20, top: 10, bottom: 5),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -260,15 +269,22 @@ class _ArticleScreen extends State<ArticleScreen> {
                                     textAlign: TextAlign.start,
                                   ),
                                 ),
-                                Icon(Icons.keyboard_arrow_down,size: 30,)
+                                Icon(
+                                  Icons.keyboard_arrow_down,
+                                  size: 30,
+                                )
                               ],
                             ),
-                            SizedBox(height:5),
-                            Divider(thickness: 1,color: Color.fromRGBO(98, 190, 184, 1)),
+                            SizedBox(height: 5),
+                            Divider(
+                                thickness: 1,
+                                color: Color.fromRGBO(98, 190, 184, 1)),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(Icons.location_on,size: 24,color: Color.fromRGBO(98, 190, 184, 1)),
+                                Icon(Icons.location_on,
+                                    size: 24,
+                                    color: Color.fromRGBO(98, 190, 184, 1)),
                                 SizedBox(width: 8.0),
                                 Expanded(
                                   child: Text(
@@ -279,7 +295,7 @@ class _ArticleScreen extends State<ArticleScreen> {
                                 ),
                               ],
                             ),
-                            SizedBox(height:5),
+                            SizedBox(height: 5),
                           ],
                         ),
                       ),
@@ -291,7 +307,8 @@ class _ArticleScreen extends State<ArticleScreen> {
                       ),
                       color: Colors.white,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 20,right: 20,top: 10,bottom: 5),
+                        padding: EdgeInsets.only(
+                            left: 20, right: 20, top: 10, bottom: 5),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -306,15 +323,22 @@ class _ArticleScreen extends State<ArticleScreen> {
                                     textAlign: TextAlign.start,
                                   ),
                                 ),
-                                Icon(Icons.keyboard_arrow_down,size: 30,)
+                                Icon(
+                                  Icons.keyboard_arrow_down,
+                                  size: 30,
+                                )
                               ],
                             ),
-                            SizedBox(height:5),
-                            Divider(thickness: 1,color: Color.fromRGBO(98, 190, 184, 1)),
+                            SizedBox(height: 5),
+                            Divider(
+                                thickness: 1,
+                                color: Color.fromRGBO(98, 190, 184, 1)),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(Icons.location_on,size: 24,color: Color.fromRGBO(98, 190, 184, 1)),
+                                Icon(Icons.location_on,
+                                    size: 24,
+                                    color: Color.fromRGBO(98, 190, 184, 1)),
                                 SizedBox(width: 8.0),
                                 Expanded(
                                   child: Text(
@@ -325,7 +349,7 @@ class _ArticleScreen extends State<ArticleScreen> {
                                 ),
                               ],
                             ),
-                            SizedBox(height:5),
+                            SizedBox(height: 5),
                           ],
                         ),
                       ),
@@ -337,7 +361,8 @@ class _ArticleScreen extends State<ArticleScreen> {
                       ),
                       color: Colors.white,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 20,right: 20,top: 10,bottom: 5),
+                        padding: EdgeInsets.only(
+                            left: 20, right: 20, top: 10, bottom: 5),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -352,15 +377,22 @@ class _ArticleScreen extends State<ArticleScreen> {
                                     textAlign: TextAlign.start,
                                   ),
                                 ),
-                                Icon(Icons.keyboard_arrow_down,size: 30,)
+                                Icon(
+                                  Icons.keyboard_arrow_down,
+                                  size: 30,
+                                )
                               ],
                             ),
-                            SizedBox(height:5),
-                            Divider(thickness: 1,color: Color.fromRGBO(98, 190, 184, 1)),
+                            SizedBox(height: 5),
+                            Divider(
+                                thickness: 1,
+                                color: Color.fromRGBO(98, 190, 184, 1)),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(Icons.location_on,size: 24,color: Color.fromRGBO(98, 190, 184, 1)),
+                                Icon(Icons.location_on,
+                                    size: 24,
+                                    color: Color.fromRGBO(98, 190, 184, 1)),
                                 SizedBox(width: 8.0),
                                 Expanded(
                                   child: Text(
@@ -371,7 +403,7 @@ class _ArticleScreen extends State<ArticleScreen> {
                                 ),
                               ],
                             ),
-                            SizedBox(height:5),
+                            SizedBox(height: 5),
                           ],
                         ),
                       ),
@@ -383,7 +415,8 @@ class _ArticleScreen extends State<ArticleScreen> {
                       ),
                       color: Colors.white,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 20,right: 20,top: 10,bottom: 5),
+                        padding: EdgeInsets.only(
+                            left: 20, right: 20, top: 10, bottom: 5),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -398,15 +431,22 @@ class _ArticleScreen extends State<ArticleScreen> {
                                     textAlign: TextAlign.start,
                                   ),
                                 ),
-                                Icon(Icons.keyboard_arrow_down,size: 30,)
+                                Icon(
+                                  Icons.keyboard_arrow_down,
+                                  size: 30,
+                                )
                               ],
                             ),
-                            SizedBox(height:5),
-                            Divider(thickness: 1,color: Color.fromRGBO(98, 190, 184, 1)),
+                            SizedBox(height: 5),
+                            Divider(
+                                thickness: 1,
+                                color: Color.fromRGBO(98, 190, 184, 1)),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(Icons.location_on,size: 24,color: Color.fromRGBO(98, 190, 184, 1)),
+                                Icon(Icons.location_on,
+                                    size: 24,
+                                    color: Color.fromRGBO(98, 190, 184, 1)),
                                 SizedBox(width: 8.0),
                                 Expanded(
                                   child: Text(
@@ -417,7 +457,7 @@ class _ArticleScreen extends State<ArticleScreen> {
                                 ),
                               ],
                             ),
-                            SizedBox(height:5),
+                            SizedBox(height: 5),
                           ],
                         ),
                       ),
@@ -432,5 +472,4 @@ class _ArticleScreen extends State<ArticleScreen> {
       ),
     );
   }
-
 }

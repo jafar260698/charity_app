@@ -5,19 +5,19 @@
  *  2021 © SICNT. All rights reserved.
  */
 
-import 'package:charity_app/theme/themes.dart';
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/widgets/app_bar_auth.dart';
-import 'package:charity_app/widgets/avatar_iamge.dart';
+import 'package:charity_app/view/theme/themes.dart';
+import 'package:charity_app/view/widgets/app_bar_auth.dart';
+import 'package:charity_app/view/widgets/avatar_iamge.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class FaqScreen extends StatefulWidget {
+class CommentScreen extends StatefulWidget {
   @override
-  _FaqScreen createState() => _FaqScreen();
+  _CommentScreen createState() => _CommentScreen();
 }
 
-class _FaqScreen extends State<FaqScreen> {
+class _CommentScreen extends State<CommentScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -91,4 +91,5 @@ class _FaqScreen extends State<FaqScreen> {
       ),
     );
   }
+
 }

@@ -1,9 +1,9 @@
 
-import 'package:charity_app/components/btn_ui.dart';
-import 'package:charity_app/screens/auth/register_screen.dart';
-import 'package:charity_app/theme/themes.dart';
-import 'package:charity_app/widgets/app_bar_auth.dart';
-import 'package:charity_app/widgets/custom/getWidgetLogoHorizontal.dart';
+import 'package:charity_app/view/components/btn_ui.dart';
+import 'package:charity_app/view/screens/auth/register_screen.dart';
+import 'package:charity_app/view/theme/themes.dart';
+import 'package:charity_app/view/widgets/app_bar_auth.dart';
+import 'package:charity_app/view/widgets/custom/getWidgetLogoHorizontal.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

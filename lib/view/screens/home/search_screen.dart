@@ -1,9 +1,9 @@
 
 
 
-import 'package:charity_app/components/text_field_ui.dart';
-import 'package:charity_app/theme/themes.dart';
-import 'package:charity_app/widgets/app_bar_auth.dart';
+import 'package:charity_app/view/components/text_field_ui.dart';
+import 'package:charity_app/view/theme/themes.dart';
+import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

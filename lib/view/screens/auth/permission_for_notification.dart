@@ -1,5 +1,6 @@
-import 'package:charity_app/components/btn_ui.dart';
-import 'package:charity_app/screens/home/bottom_navigation.dart';
+
+import 'package:charity_app/view/components/btn_ui.dart';
+import 'package:charity_app/view/screens/home/bottom_navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

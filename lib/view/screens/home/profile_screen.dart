@@ -1,10 +1,9 @@
 
 
 
-import 'package:charity_app/components/btn_ui.dart';
-import 'package:charity_app/screens/auth/register_screen.dart';
-import 'package:charity_app/theme/themes.dart';
-import 'package:charity_app/widgets/custom/getWidgetLogoHorizontal.dart';
+import 'package:charity_app/view/components/btn_ui.dart';
+import 'package:charity_app/view/screens/auth/register_screen.dart';
+import 'package:charity_app/view/widgets/custom/getWidgetLogoHorizontal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

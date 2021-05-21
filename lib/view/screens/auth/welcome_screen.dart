@@ -1,9 +1,10 @@
-import 'package:charity_app/components/btn_ui.dart';
-import 'package:charity_app/screens/auth/access_via_social_media_screen.dart';
-import 'package:charity_app/widgets/get_widget_family.dart';
+
+import 'package:charity_app/view/components/btn_ui.dart';
+import 'package:charity_app/view/widgets/get_widget_family.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/get_widget_logo.dart';
+import 'access_via_social_media_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
