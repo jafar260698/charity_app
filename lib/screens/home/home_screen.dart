@@ -1,6 +1,7 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:charity_app/components/text_field_ui.dart';
+import 'package:charity_app/screens/home/forum_screen.dart';
 import 'package:charity_app/screens/home/profile_screen.dart';
 import 'package:charity_app/screens/home/search_screen.dart';
 import 'package:charity_app/screens/other/comment_screen.dart';
@@ -31,11 +32,11 @@ class _HomeScreen extends State<HomeScreen> {
   TextEditingController pinfl = new TextEditingController();
   int selectedItem=0;
   List<Widget> tabs = <Widget>[
-    SearchScreen(),
+    ProfileScreen(),
     ArticleScreen(),
-    ProfileScreen(),
+    SearchScreen(),
     CommentScreen(),
-    ProfileScreen(),
+    ForumScreen(),
   ];
 
   void _onItemTap(int index){
@@ -47,7 +48,7 @@ class _HomeScreen extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppbar(context),
+    //  appBar: customAppbar(context),
       // body: SingleChildScrollView(
       //   physics: BouncingScrollPhysics(),
       //   child: Column(
@@ -194,8 +195,8 @@ class _HomeScreen extends State<HomeScreen> {
       elevation: 0,
       actions: <Widget>[
         Padding(
-          padding: EdgeInsets.only(right: 20),
-          child: SvgPicture.asset('assets/svg/Icon_notification_outline.svg')
+          padding: EdgeInsets.only(right: 10),
+          child: SvgPicture.asset('assets/svg/Icon_notification_outline.svg',height: 24,width: 24)
         )
       ],
     );

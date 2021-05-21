@@ -69,25 +69,6 @@ class _ProfileScreen extends State<ProfileScreen> {
               ),
             ],
           ),
-          Positioned(
-            bottom: 10.0,
-            left: 20.0,
-            right: 20.0,
-            child: Column(
-              children: [
-                SvgPicture.asset('assets/svg/welcome.svg',height: 200,),
-                SizedBox(height: 10),
-                Opacity(
-                  opacity: 0.5,
-                  child: Text(
-                    'Еще нет акаунта? Зарегистрироваться сейчас!',
-                    style: AppThemeStyle.text14_600,
-                    textAlign: TextAlign.center,
-                  ),
-                )
-              ],
-            ),
-          ),
         ],
       ),
     );

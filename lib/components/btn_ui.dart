@@ -10,7 +10,8 @@ class BtnUI extends StatefulWidget {
       this.ontap,
       this.height = 50,
       this.isLoading = false,
-      this.child});
+      this.child,
+      this.align});
 
   final Key fieldKey;
   final String text;
@@ -19,6 +20,7 @@ class BtnUI extends StatefulWidget {
   final double height;
   final child;
   final bool isLoading;
+  final Alignment align;
   final GestureTapCallback ontap;
 
   @override
@@ -73,11 +75,14 @@ class _BtnUIState extends State<BtnUI> with SingleTickerProviderStateMixin {
               ]),
           child: Stack(
             children: [
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  widget.text,
-                  style: TextStyle(color: widget.textColor,fontSize: 16,fontFamily: 'Montserrat'
+              Padding(
+                padding: widget.align!=null ? EdgeInsets.only(left: 20) : EdgeInsets.all(1),
+                child: Align(
+                  alignment: widget.align!=null ? widget.align : Alignment.center,
+                  child: Text(
+                    widget.text,
+                    style: TextStyle(color: widget.textColor,fontSize: 16,fontFamily: 'Montserrat'
+                    ),
                   ),
                 ),
               ),
