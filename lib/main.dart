@@ -1,17 +1,62 @@
+import 'package:charity_app/localization/language_constants.dart';
+import 'package:charity_app/providers/locator.dart';
 import 'package:charity_app/service/network_service.dart';
 import 'package:charity_app/service/network_status.dart';
 import 'package:charity_app/view/screens/auth/splash_screen.dart';
 import 'package:charity_app/view/theme/my_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:stacked_services/stacked_services.dart';
 import 'package:theme_provider/theme_provider.dart';
 
-void main() {
-  runApp(MyApp());
+import 'localization/demo_localizations.dart';
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
+  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ]).then((_) => runApp( MyApp(),),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget{
+  const MyApp({Key key}) : super(key: key);
+
+
+  static void setLocale(BuildContext context, Locale newLocale) {
+    _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+    state.setLocale(newLocale);
+  }
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale _locale;
+
+  setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    getLocale().then((locale) {
+      setState(() {
+        this._locale = locale;
+      });
+    });
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamProvider<NetworkStatus>(
@@ -20,9 +65,8 @@ class MyApp extends StatelessWidget {
       child: ThemeProvider(
         defaultThemeId: 'light',
         themes: <AppTheme>[
-          AppTheme(
-              id: 'light', data: MyThemes.lightTheme, description: 'light'),
-          AppTheme(id: 'dark', data: MyThemes.darkTheme, description: 'dark'),
+          AppTheme(id: 'light', data: MyThemes.lightTheme, description: 'light'),
+          AppTheme(id: 'dark', data: MyThemes.lightTheme, description: 'dark'),
         ],
         saveThemesOnChange: true,
         loadThemeOnInit: false,
@@ -38,7 +82,7 @@ class MyApp extends StatelessWidget {
             Brightness platformBrightness =
                 SchedulerBinding.instance.window.platformBrightness;
             if (platformBrightness == Brightness.dark) {
-              controller.setTheme('dark');
+              controller.setTheme('light');
             } else {
               controller.setTheme('light');
             }
@@ -52,7 +96,31 @@ class MyApp extends StatelessWidget {
               theme: ThemeProvider.themeOf(themeContext).data,
               debugShowCheckedModeBanner: false,
               title: 'Charity App',
+              locale: _locale,
+              supportedLocales: [
+                Locale('uz', 'UZ'),
+                Locale('ru', 'RU'),
+                Locale('en', 'EN'),
+              ],
+              localizationsDelegates: [
+                DemoLocalization.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              localeResolutionCallback: (locale, supportedLocales) {
+                for (var supportedLocale in supportedLocales) {
+                  if (supportedLocale.languageCode == locale.languageCode &&
+                      supportedLocale.countryCode == locale.countryCode) {
+                    return supportedLocale;
+                  }
+                  print(supportedLocale);
+                }
+                // print(supportedLocales.first);
+                return supportedLocales.first;
+              },
               home: SplashScreen(),
+              navigatorKey: locator<NavigationService>().navigatorKey,
             ),
           ),
         ),
