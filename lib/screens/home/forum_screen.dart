@@ -1,9 +1,12 @@
 
 import 'package:charity_app/components/btn_ui.dart';
+import 'package:charity_app/screens/home/forum/forum_detail.dart';
 import 'package:charity_app/theme/themes.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/widgets/app_bar_auth.dart';
 import 'package:charity_app/widgets/avatar_iamge.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -52,7 +55,9 @@ class _ForumScreen extends State<ForumScreen> {
                           textColor: Colors.white,
                           color: Color.fromRGBO(98, 190, 184, 1),
                           text: 'Специальный форум',
-                          ontap: () { },
+                          ontap: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumDetailScreen()));
+                          },
                         ),
                         SizedBox(height: 5),
                         Padding(
@@ -116,7 +121,9 @@ class _ForumScreen extends State<ForumScreen> {
                           textColor: Colors.white,
                           color: Color.fromRGBO(98, 190, 184, 1),
                           text: 'Специальный форум',
-                          ontap: () { },
+                          ontap: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumDetailScreen()));
+                          },
                         ),
                         SizedBox(height: 5),
                         Padding(
@@ -180,7 +187,9 @@ class _ForumScreen extends State<ForumScreen> {
                           textColor: Colors.white,
                           color: Color.fromRGBO(98, 190, 184, 1),
                           text: 'Специальный форум',
-                          ontap: () { },
+                          ontap: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumDetailScreen()));
+                          },
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
