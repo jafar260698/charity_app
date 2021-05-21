@@ -98,9 +98,8 @@ class _MyAppState extends State<MyApp> {
               title: 'Charity App',
               locale: _locale,
               supportedLocales: [
-                Locale('uz', 'UZ'),
+                Locale('kz', 'KZ'),
                 Locale('ru', 'RU'),
-                Locale('en', 'EN'),
               ],
               localizationsDelegates: [
                 DemoLocalization.delegate,
