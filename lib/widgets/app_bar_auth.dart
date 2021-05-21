@@ -64,7 +64,6 @@ widgetAppBarAuthTitle(context) {
       Padding(
           padding: EdgeInsets.only(right: 20),
           child: SvgPicture.asset('assets/svg/Icon_notification_outline.svg'),
-
   )
     ],
   );
@@ -89,3 +88,28 @@ widgetAppBarTitle(
   );
 }
 
+widgetAppBarTitleSecond(
+    context, {
+      String title = '',
+    }) {
+  return AppBar(
+    centerTitle: true,
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+
+    title: Text(title, style: AppThemeStyle.appBarStyle),
+    leading: IconButton(
+      iconSize: 18.0,
+      splashRadius: 20,
+      icon: Icon(Icons.arrow_back_ios,color: Colors.black54),
+      onPressed: () => Navigator.of(context).pop(),
+
+    ),
+    actions: <Widget>[
+      Padding(
+        padding: EdgeInsets.only(right: 20),
+        child: Icon(Icons.menu_outlined),
+      )
+    ],
+  );
+}

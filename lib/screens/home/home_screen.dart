@@ -36,7 +36,7 @@ class _HomeScreen extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: customAppbar(context),
+      appBar: customAppbar(context),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(

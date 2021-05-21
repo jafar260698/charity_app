@@ -3,6 +3,7 @@
 
 import 'package:charity_app/components/text_field_ui.dart';
 import 'package:charity_app/theme/themes.dart';
+import 'package:charity_app/widgets/app_bar_auth.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +21,14 @@ class _SearchScreen extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: widgetAppBarTitleSecond(context),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20),
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.only(left: 10,right: 10),
                 child: TextFieldUI(
                   controller: pinfl,
                   text: 'Jafar',

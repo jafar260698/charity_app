@@ -5,7 +5,7 @@ ThemeData lightTheme = ThemeData(
   fontFamily: 'Montserrat',
   brightness: Brightness.light,
   appBarTheme: AppBarTheme(color: Color(0xffF6F6FA)),
-  primaryColor: Color(0xff325ECD),
+  primaryColor: Color.fromRGBO(98, 190, 184, 1),
   primaryColorBrightness: Brightness.light,
   accentColor: Color(0xff325ECD),
   backgroundColor: Color(0xffF6F6FA),
@@ -32,7 +32,7 @@ TextTheme textTheme = TextTheme(
 class AppThemeStyle {
   AppThemeStyle._();
 
-  static Color primaryColor = Color(0xff282F38);
+  static Color primaryColor = Color.fromRGBO(98, 190, 184, 1);
   static Color colorSuccess = Color(0xff00BA88);
 
   static BorderRadiusGeometry topRadius = BorderRadius.only(

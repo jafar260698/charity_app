@@ -49,73 +49,12 @@ class _BottomNavigation extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    //  appBar: customAppbar(context),
-      // body: SingleChildScrollView(
-      //   physics: BouncingScrollPhysics(),
-      //   child: Column(
-      //     children: [
-      //       Container(
-      //           child: CarouselSlider.builder(
-      //             options: CarouselOptions(
-      //               aspectRatio: 2.0,
-      //               enlargeCenterPage: false,
-      //               viewportFraction: 1,
-      //             ),
-      //             itemCount: (imgList.length / 2).round(),
-      //             itemBuilder: (context, index, realIdx) {
-      //               final int first = index * 2;
-      //               final int second = first + 1;
-      //               return Row(
-      //                 children: [first, second].map((idx) {
-      //                   return Expanded(
-      //                     flex: 1,
-      //                     child: Container(
-      //                       decoration: BoxDecoration(
-      //                           borderRadius: BorderRadius.all(Radius.circular(30))
-      //                       ),
-      //                       margin: EdgeInsets.symmetric(horizontal: 10),
-      //                       child: Image.network(imgList[idx], fit: BoxFit.cover),
-      //                     ),
-      //                   );
-      //                 }).toList(),
-      //               );
-      //             },
-      //           )
-      //       ),
-      //       Padding(
-      //         padding: EdgeInsets.all(20),
-      //         child: TextFieldUI(
-      //           controller: pinfl,
-      //           text: 'Jafar',
-      //           keyboardType: TextInputType.number,
-      //           inputAction: TextInputAction.done,
-      //           hintText: "Search...",
-      //           suffixIcon: IconButton(
-      //             splashRadius: 25,
-      //             onPressed: () {
-      //
-      //             },
-      //             icon: Icon(FlevaIcons.search),
-      //           ),
-      //         ),
-      //       ),
-      //       // ListView.builder(
-      //       //   padding: const EdgeInsets.only(
-      //       //       bottom: 60.0, left: 13.0, top: 13.0, right: 13.0),
-      //       //   controller: new ScrollController(keepScrollOffset: false),
-      //       //   physics: BouncingScrollPhysics(),
-      //       //   scrollDirection: Axis.vertical,
-      //       //   itemCount: servicesGroup(context).length,
-      //       //   itemBuilder: (BuildContext context, index) {
-      //       //     return servicesGroup(context)[index];
-      //       //   },
-      //       // ),
-      //     ],
-      //   ),
-      // ),
       body: tabs[selectedItem],
       bottomNavigationBar: ConvexAppBar(
         style: TabStyle.reactCircle,
+        color: Colors.black45,
+        activeColor: Color.fromRGBO(98, 190, 184, 1),
+        backgroundColor: Colors.white,
         items: [
           TabItem(icon: FlevaIcons.home_outline),
           TabItem(icon: FlevaIcons.book),
@@ -131,54 +70,6 @@ class _BottomNavigation extends State<BottomNavigation> {
     );
   }
 
-  List<Widget> servicesGroup(
-      BuildContext context) {
-    List<Widget> servicesList = [
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-
-        },),
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-
-        },),
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-
-        },),
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-
-        },),
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-
-        },),
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-          //ToastUtils.toastInfo('under_dev', context);
-        },),
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-
-        },),
-    ];
-    return servicesList;
-  }
 
   Widget customAppbar(BuildContext context){
     return AppBar(
