@@ -1,7 +1,5 @@
 import 'package:charity_app/components/btn_ui.dart';
-import 'package:charity_app/screens/home/home_screen.dart';
-import 'package:charity_app/screens/other/comment_screen.dart';
-import 'package:charity_app/widgets/custom/getWidgetLogoHorizontal.dart';
+import 'package:charity_app/screens/home/bottom_navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -72,7 +70,7 @@ class _PermissionForNotification extends State<PermissionForNotification> {
                               text: 'Разрешить доступ',
                               ontap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => HomeScreen()));
+                                    builder: (context) => BottomNavigation()));
                               },
                             ),
                             SizedBox(height: 15),

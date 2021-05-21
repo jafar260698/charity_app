@@ -54,7 +54,7 @@ widgetAppBarAuthTitle(context) {
     ),
       leading: IconButton(
       splashRadius: 20,
-      icon: SvgPicture.asset('assets/svg/Icon_notification_outline.svg'),
+      icon:Icon(Icons.menu),
       onPressed: () => {
 
       },
@@ -63,8 +63,9 @@ widgetAppBarAuthTitle(context) {
     actions: <Widget>[
       Padding(
           padding: EdgeInsets.only(right: 20),
-          child: Icon(Icons.menu),
-      )
+          child: SvgPicture.asset('assets/svg/Icon_notification_outline.svg'),
+
+  )
     ],
   );
 }
