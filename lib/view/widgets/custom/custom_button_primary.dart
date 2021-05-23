@@ -1,11 +1,3 @@
-/*
- * *
- *  * Created by Mahmud Nurmuhammedov on 4/28/21 10:01 AM
- *  * Copyright (c) 2021 . All rights reserved.
- *  * Last modified 4/28/21 9:29 AM
- *
- *
- */
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
