@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
 import 'package:charity_app/localization/user_data.dart';
+import 'package:charity_app/model/user_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 import 'exceptions.dart';
@@ -12,12 +13,17 @@ class ApiProvider {
   UserData _userData = UserData();
   BuildContext context;
 
-  final baseUrl = 'https://my.soliq.uz/';
+  final baseUrl = 'http://195.210.47.35/';
   final baseOFDUrl = 'https://api.ofd.uz/';
 
   final baseHeader = {
-    HttpHeaders.authorizationHeader: getBaseAuth(),
+  //  HttpHeaders.authorizationHeader: getVitrinaAuth(),
     HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
+  };
+
+  var headers = {
+    'language': 'ru',
+    'Authorization': '\$2y\$10\$nTX/1eBIlQQ0cu4rjt2ea.axCqSMY65dh./.OX0Vtet3w7dGaYfLW'
   };
 
 
@@ -42,13 +48,25 @@ class ApiProvider {
   }
 
 
-  static String getBaseAuth() {
-    String username = 'mobileapp';
-    String password = '76b0#1fd088a301\$';
-    String basicAuth =
-        'Basic ' + base64Encode(utf8.encode('$username:$password'));
-    return basicAuth;
+  Future<List<UserType>> getUserType() async{
+    var responseJson;
+
+    try{
+      final response=await client.get(
+         Uri.parse("http://195.210.47.35/api/user_type?language=ru"),
+          headers: headers);
+      var res=_response(response);
+      responseJson=res.map((element)=>UserType.fromJson(element)
+      ).toList();
+
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+
+     return responseJson;
   }
+
+
 
   String getVitrinaAuth() {
     String username = 'vitrina';
