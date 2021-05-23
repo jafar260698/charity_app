@@ -11,7 +11,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:theme_provider/theme_provider.dart';
-
 import 'localization/demo_localizations.dart';
 
 
@@ -96,30 +95,7 @@ class _MyAppState extends State<MyApp> {
               theme: ThemeProvider.themeOf(themeContext).data,
               debugShowCheckedModeBanner: false,
               title: 'Charity App',
-              locale: _locale,
-              supportedLocales: [
-                Locale('kz', 'KZ'),
-                Locale('ru', 'RU'),
-              ],
-              localizationsDelegates: [
-                DemoLocalization.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              localeResolutionCallback: (locale, supportedLocales) {
-                for (var supportedLocale in supportedLocales) {
-                  if (supportedLocale.languageCode == locale.languageCode &&
-                      supportedLocale.countryCode == locale.countryCode) {
-                    return supportedLocale;
-                  }
-                  print(supportedLocale);
-                }
-                // print(supportedLocales.first);
-                return supportedLocales.first;
-              },
               home: SplashScreen(),
-              navigatorKey: locator<NavigationService>().navigatorKey,
             ),
           ),
         ),
