@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
 import 'package:charity_app/localization/user_data.dart';
+import 'package:charity_app/model/authorization.dart';
 import 'package:charity_app/model/base_response.dart';
 import 'package:charity_app/model/user.dart';
 import 'package:charity_app/model/user_type.dart';
@@ -49,6 +50,7 @@ class ApiProvider {
   }
 
 
+  //user type
   Future<List<UserType>> getUserType() async{
     var responseJson;
 
@@ -99,7 +101,7 @@ class ApiProvider {
     return responseJson;
   }
 
-  Future<User> authorization(String username) async{
+  Future<Authorization> authorization(String username) async{
     var responseJson;
 
     try{
@@ -107,13 +109,44 @@ class ApiProvider {
           headers: headers,
       );
       var res=_response(response);
-      responseJson=User.fromJson(res);
+      responseJson=Authorization.fromJson(res);
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
     }
     return responseJson;
   }
 
+  Future<BaseResponses> getUserLanguage(Map<String,dynamic> data) async{
+    var responseJson;
+
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/user/language'),
+          headers: headers,
+          body: jsonEncode(data)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  //language
+  Future<Language> getLanguage() async{
+    var responseJson;
+
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/language'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=Language.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
 
 
   String getVitrinaAuth() {
