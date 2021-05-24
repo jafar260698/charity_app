@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/model/base_response.dart';
+import 'package:charity_app/model/user.dart';
 import 'package:charity_app/model/user_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
@@ -65,6 +66,7 @@ class ApiProvider {
      return responseJson;
   }
 
+  //user file
   Future<BaseResponses> registration(Map<String,dynamic> data) async{
     var responseJson;
 
@@ -79,8 +81,40 @@ class ApiProvider {
       throw FetchDataException("No Internet connection");
     }
     return responseJson;
-
   }
+
+  Future<User> getUser() async{
+    var responseJson;
+
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/user'),
+          headers: headers,
+          body: jsonEncode(null)
+      );
+      var res=_response(response);
+      responseJson=User.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<User> authorization(String username) async{
+    var responseJson;
+
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/user/authorization?username=$username'),
+          headers: headers,
+      );
+      var res=_response(response);
+      responseJson=User.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+
 
   String getVitrinaAuth() {
     String username = 'vitrina';
