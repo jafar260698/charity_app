@@ -1,8 +1,8 @@
 
-import 'package:charity_app/screens/home/favourite_screen.dart';
 import 'package:charity_app/view/screens/home/forum_screen.dart';
 import 'package:charity_app/view/screens/home/home_screen.dart';
 import 'package:charity_app/view/screens/home/search_screen.dart';
+import 'package:charity_app/view/screens/other/favourite_screen.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:fleva_icons/fleva_icons.dart';

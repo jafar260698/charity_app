@@ -2,18 +2,18 @@ import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
 import 'package:charity_app/localization/user_data.dart';
+import 'package:charity_app/model/base_response.dart';
 import 'package:charity_app/model/user_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 import 'exceptions.dart';
-import 'package:http/http.dart' as http;
 
 class ApiProvider {
   Client client = Client();
   UserData _userData = UserData();
   BuildContext context;
 
-  final baseUrl = 'https://ozimplatform.kz/';
+  final baseUrl = 'https://ozimplatform.kz/api/';
   final baseOFDUrl = 'https://api.ofd.uz/';
 
   final baseHeader = {
@@ -53,7 +53,7 @@ class ApiProvider {
 
     try{
       final response=await client.get(
-         Uri.parse("http://195.210.47.35/api/user_type?language=ru"),
+         Uri.parse("$baseUrl/user_type?language=ru"),
           headers: headers);
       var res=_response(response);
       responseJson=res.map((element)=>UserType.fromJson(element)
@@ -62,11 +62,25 @@ class ApiProvider {
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
     }
-
      return responseJson;
   }
 
+  Future<BaseResponses> registration(Map<String,dynamic> data) async{
+    var responseJson;
 
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/registration'),
+        headers: headers,
+        body: jsonEncode(data)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+
+  }
 
   String getVitrinaAuth() {
     String username = 'vitrina';
