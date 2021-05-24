@@ -13,7 +13,7 @@ class ApiProvider {
   UserData _userData = UserData();
   BuildContext context;
 
-  final baseUrl = 'http://195.210.47.35/';
+  final baseUrl = 'https://ozimplatform.kz/';
   final baseOFDUrl = 'https://api.ofd.uz/';
 
   final baseHeader = {
