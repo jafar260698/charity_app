@@ -7,6 +7,7 @@ import 'package:charity_app/view/widgets/avatar_iamge.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ForumDetailScreen extends StatefulWidget {
   @override
@@ -199,8 +200,12 @@ class _ForumDetailScreen extends State<ForumDetailScreen> {
       ),
       bottomNavigationBar: ConvexAppBar(
         style: TabStyle.reactCircle,
+        color: Colors.black45,
+        activeColor: Color.fromRGBO(108, 187, 217, 1),
+        backgroundColor: Colors.white,
         items: [
-          TabItem(icon: Icons.add),
+          TabItem(icon: SvgPicture.asset('assets/svg/sending.svg')
+          ),
         ],
         initialActiveIndex: 0,
         onTap: (int i) => {
