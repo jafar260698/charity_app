@@ -1,19 +1,61 @@
-import 'package:charity_app/screens/auth/splash_screen.dart';
+import 'package:charity_app/localization/language_constants.dart';
+import 'package:charity_app/providers/locator.dart';
 import 'package:charity_app/service/network_service.dart';
 import 'package:charity_app/service/network_status.dart';
-import 'package:charity_app/theme/my_themes.dart';
+import 'package:charity_app/view/screens/auth/splash_screen.dart';
+import 'package:charity_app/view/theme/my_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:stacked_services/stacked_services.dart';
 import 'package:theme_provider/theme_provider.dart';
+import 'localization/demo_localizations.dart';
 
-import 'screens/auth/welcome_screen.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
+  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ]).then((_) => runApp( MyApp(),),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget{
+  const MyApp({Key key}) : super(key: key);
+
+
+  static void setLocale(BuildContext context, Locale newLocale) {
+    _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+    state.setLocale(newLocale);
+  }
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale _locale;
+
+  setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    getLocale().then((locale) {
+      setState(() {
+        this._locale = locale;
+      });
+    });
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamProvider<NetworkStatus>(
@@ -23,37 +65,37 @@ class MyApp extends StatelessWidget {
         defaultThemeId: 'light',
         themes: <AppTheme>[
           AppTheme(id: 'light', data: MyThemes.lightTheme, description: 'light'),
-          AppTheme(id: 'dark', data: MyThemes.darkTheme, description: 'dark'),
+          AppTheme(id: 'dark', data: MyThemes.lightTheme, description: 'dark'),
         ],
         saveThemesOnChange: true,
         loadThemeOnInit: false,
-        // Do not load the saved theme(use onInitCallback callback)
+        // Do not load the saved view.theme(use onInitCallback callback)
         onInitCallback: (controller, previouslySavedThemeFuture) async {
           String savedTheme = await previouslySavedThemeFuture;
 
           if (savedTheme != null) {
-            // If previous theme saved, use saved theme
+            // If previous view.theme saved, use saved view.theme
             controller.setTheme(savedTheme);
           } else {
-            // If previous theme not found, use platform default
+            // If previous view.theme not found, use platform default
             Brightness platformBrightness =
                 SchedulerBinding.instance.window.platformBrightness;
             if (platformBrightness == Brightness.dark) {
-              controller.setTheme('dark');
+              controller.setTheme('light');
             } else {
               controller.setTheme('light');
             }
-            // Forget the saved theme(which were saved just now by previous lines)
+            // Forget the saved view.theme(which were saved just now by previous lines)
             controller.forgetSavedTheme();
           }
         },
         child: ThemeConsumer(
           child: Builder(
             builder: (themeContext) => MaterialApp(
-                theme: ThemeProvider.themeOf(themeContext).data,
-                debugShowCheckedModeBanner: false,
-                title: 'Charity App',
-                home: SplashScreen(),
+              theme: ThemeProvider.themeOf(themeContext).data,
+              debugShowCheckedModeBanner: false,
+              title: 'Charity App',
+              home: SplashScreen(),
             ),
           ),
         ),
