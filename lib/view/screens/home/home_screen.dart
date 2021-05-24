@@ -1,15 +1,8 @@
 
 
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:charity_app/components/text_field_ui.dart';
-import 'package:charity_app/screens/home/forum_screen.dart';
-import 'package:charity_app/screens/home/profile_screen.dart';
-import 'package:charity_app/screens/home/search_screen.dart';
-import 'package:charity_app/screens/other/comment_screen.dart';
-import 'package:charity_app/theme/themes.dart';
-import 'package:charity_app/widgets/avatar_iamge.dart';
-import 'package:charity_app/widgets/custom/custom_service_category_expansion.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:charity_app/view/components/text_field_ui.dart';
+import 'package:charity_app/view/theme/themes.dart';
+import 'package:charity_app/view/widgets/custom/custom_service_category_expansion.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

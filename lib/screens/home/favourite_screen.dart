@@ -1,18 +1,9 @@
 
-
-import 'package:charity_app/components/btn_ui.dart';
-import 'package:charity_app/screens/auth/register_screen.dart';
-import 'package:charity_app/theme/my_themes.dart';
-import 'package:charity_app/theme/themes.dart';
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/widgets/app_bar_auth.dart';
-import 'package:charity_app/widgets/avatar_iamge.dart';
-import 'package:charity_app/widgets/custom/getWidgetLogoHorizontal.dart';
+import 'package:charity_app/view/theme/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-import 'package:theme_provider/theme_provider.dart';
 
 class FavouriteScreen extends StatefulWidget {
   @override
