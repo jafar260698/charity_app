@@ -71,7 +71,35 @@ class _HomeScreen extends State<HomeScreen> {
                 ),
               ),
             ),
-            CardIcon("Helloworld", "selectedIcon")
+            SizedBox(height: 20.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                CardIcon("Helloworld", "selectedIcon"),
+                CardIcon("Helloworld", "selectedIcon"),
+                CardIcon("Helloworld", "selectedIcon")
+              ],
+            ),
+            SizedBox(height: 20.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                CardIcon("Helloworld", "selectedIcon"),
+                CardIcon("Helloworld", "selectedIcon"),
+                CardIcon("Helloworld", "selectedIcon")
+              ],
+            ),
+            SizedBox(height: 20.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                CardIcon("Helloworld", "selectedIcon"),
+                CardIcon("Helloworld", "selectedIcon"),
+                CardIcon("Helloworld", "selectedIcon")
+              ],
+            ),
+            SizedBox(height: 80.0)
           ],
         ),
       ),

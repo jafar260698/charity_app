@@ -19,22 +19,23 @@ class _CardIcon extends State<CardIcon>{
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.only(right: 16),
-          width: 140,
-          height: 120,
+          margin: EdgeInsets.only(right: 10,left: 10),
+          width: 80,
+          height: 80,
           decoration: BoxDecoration(
+            color: Colors.white,
             boxShadow: [
-              BoxShadow(
-                blurRadius: 10,
-                spreadRadius: 6,
-                offset: Offset(8.0,8.0),
-              )
+              // BoxShadow(
+              //   color: Colors.grey,
+              //   blurRadius: 1,
+              //   spreadRadius: 3,
+              // )
             ],
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(25),
           ),
-          child: SvgPicture.asset('assets/svg/Icon_notification_outline.svg',height: 24,width: 24),
+          child: SvgPicture.asset('assets/svg/Icon_notification_outline.svg',height: 20,width: 20),
         ),
-        SizedBox(height: 30),
+        SizedBox(height: 10),
         Text(
           widget.operation,
           textAlign: TextAlign.center,
