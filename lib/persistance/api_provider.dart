@@ -5,8 +5,12 @@ import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/model/authorization.dart';
 import 'package:charity_app/model/base_response.dart';
 import 'package:charity_app/model/category.dart';
+import 'package:charity_app/model/diagnoses.dart';
 import 'package:charity_app/model/faq.dart';
 import 'package:charity_app/model/links.dart';
+import 'package:charity_app/model/questionnaire.dart';
+import 'package:charity_app/model/skill.dart';
+import 'package:charity_app/model/skill_provider.dart';
 import 'package:charity_app/model/user.dart';
 import 'package:charity_app/model/user_type.dart';
 import 'package:flutter/cupertino.dart';
@@ -296,12 +300,116 @@ class ApiProvider {
     return responseJson;
   }
 
-  //anketa
+  //questionnaire
+  Future<Questionnaire> getQuestionnaire(String lang) async{
+    var responseJson;
 
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/questionnaire?language=ru&page=1&category=razvitie'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=Questionnaire.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
 
+  Future<BaseResponses> sendQuestionnaire(Map<String,dynamic> data) async{
+    var responseJson;
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/questionnaire'),
+          headers: headers,
+          body: jsonEncode(data)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
 
+  //diagnoses
+  Future<Diagnoses> getDiagnoses(String lang) async{
+    var responseJson;
 
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/diagnoses?language=ru&page=1'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=Diagnoses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
 
+  //skill
+  Future<Skill> skill(String lang) async{
+    var responseJson;
+
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/skill?language=ru&page=1'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=Skill.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  //service_provider
+  Future<SkillProvider> skillProvider(String lang) async{
+    var responseJson;
+
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/service_provider?language=ru&page=1'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=SkillProvider.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  //rights
+  Future<SkillProvider> rights(String lang) async{
+    var responseJson;
+
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/rights?language=ru&page=1'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=SkillProvider.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  //inclusion
+  Future<SkillProvider> inclusion(String lang,int page) async{
+    var responseJson;
+
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/inclusion?language=ru&page=1'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=SkillProvider.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
 
 
   String getVitrinaAuth() {
