@@ -53,7 +53,7 @@ class _BottomNavigation extends State<BottomNavigation> {
         backgroundColor: Colors.white,
         items: [
           TabItem(icon: FlevaIcons.home_outline),
-          TabItem(icon: FlevaIcons.book),
+          TabItem(icon: SvgPicture.asset('assets/svg/book.svg')),
           TabItem(icon: FlevaIcons.search),
           TabItem(icon: FlevaIcons.bookmark_outline),
           TabItem(icon: Icons.people_outline),

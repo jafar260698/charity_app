@@ -1,5 +1,6 @@
 
 
+import 'package:charity_app/view/components/card_icon.dart';
 import 'package:charity_app/view/components/text_field_ui.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/custom/custom_service_category_expansion.dart';
@@ -70,6 +71,7 @@ class _HomeScreen extends State<HomeScreen> {
                 ),
               ),
             ),
+            CardIcon("Helloworld", "selectedIcon")
           ],
         ),
       ),
