@@ -2,7 +2,8 @@ import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
 import 'package:charity_app/localization/user_data.dart';
-import 'package:charity_app/model/authorization.dart';
+import 'package:charity_app/model/article/article.dart';
+import 'package:charity_app/model/user/authorization.dart';
 import 'package:charity_app/model/base_response.dart';
 import 'package:charity_app/model/category.dart';
 import 'package:charity_app/model/diagnoses.dart';
@@ -11,8 +12,8 @@ import 'package:charity_app/model/links.dart';
 import 'package:charity_app/model/questionnaire.dart';
 import 'package:charity_app/model/skill.dart';
 import 'package:charity_app/model/skill_provider.dart';
-import 'package:charity_app/model/user.dart';
-import 'package:charity_app/model/user_type.dart';
+import 'package:charity_app/model/user/user.dart';
+import 'package:charity_app/model/user/user_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 import 'exceptions.dart';
@@ -213,20 +214,20 @@ class ApiProvider {
   }
 
   //language
-  // Future<Language> getLanguage() async{
-  //   var responseJson;
-  //
-  //   try{
-  //     final response= await client.get(Uri.parse('$baseUrl/language'),
-  //       headers: headers,
-  //     );
-  //     var res=_response(response);
-  //     responseJson=Language.fromJson(res);
-  //   } on FetchDataException{
-  //     throw FetchDataException("No Internet connection");
-  //   }
-  //   return responseJson;
-  // }
+  Future<Language> getLanguage() async{
+    var responseJson;
+
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/language'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=Language.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
 
   //user type
   Future<List<UserType>> getUserType() async{
@@ -246,8 +247,126 @@ class ApiProvider {
     return responseJson;
   }
 
-  //statie
+  //article
+  Future<Article> getArticle() async{
+    var responseJson;
 
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/article?language=ru&category=razvitie&page=1'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=Article.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<Article> getArticleIndexBookMark() async{
+    var responseJson;
+
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/article/index_bookmark?folder=2&page=1'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=Article.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<BaseResponses> articleLike(Map<String,dynamic> data) async{
+    var responseJson;
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/article/like'),
+          headers: headers,
+          body: jsonEncode(data)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<BaseResponses> articleUnlike(Map<String,dynamic> data) async{
+    var responseJson;
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/article/unlike'),
+          headers: headers,
+          body: jsonEncode(data)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<BaseResponses> articleView(Map<String,dynamic> data) async{
+    var responseJson;
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/article/view'),
+          headers: headers,
+          body: jsonEncode(data)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  //article, bookmark, comment
+
+  //article, comment
+  Future<SkillProvider> articleComment(Map<String,dynamic> data) async{
+    var responseJson;
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/article/comment'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=SkillProvider.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<BaseResponses> articleCommentStore(Map<String,dynamic> data) async{
+    var responseJson;
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/article/comment/store'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<BaseResponses> articleRemoveComment(Map<String,dynamic> data) async{
+    var responseJson;
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/article/comment/1'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
 
   //category
   Future<Category> getCategory(String lang) async{

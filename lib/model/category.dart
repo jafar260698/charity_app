@@ -1,5 +1,5 @@
 
-import 'package:charity_app/model/user.dart';
+import 'package:charity_app/model/user/user.dart';
 
 class Category {
   String name;
