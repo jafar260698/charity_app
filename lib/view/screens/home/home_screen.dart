@@ -1,5 +1,6 @@
 
 
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/text_field_ui.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/custom/custom_service_category_expansion.dart';
@@ -36,7 +37,7 @@ class _HomeScreen extends State<HomeScreen> {
         child: Column(
           children: [
             Container(
-              height: 200,
+              height: SizeConfig.calculateBlockVertical(200),
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: 20,right: 10),
@@ -44,7 +45,7 @@ class _HomeScreen extends State<HomeScreen> {
                   itemBuilder: (context,index){
                 return Container(
                   margin: EdgeInsets.only(right: 10),
-                  height: 200,
+                  height: SizeConfig.calculateBlockVertical(200),
                   width: MediaQuery.of(context).size.width*0.9,
                   decoration: BoxDecoration(
                     color: Colors.blueAccent,
@@ -70,14 +71,16 @@ class _HomeScreen extends State<HomeScreen> {
                 ),
               ),
             ),
+            Container(
+
+            )
           ],
         ),
       ),
     );
   }
 
-  List<Widget> servicesGroup(
-      BuildContext context) {
+  List<Widget> servicesGroup(BuildContext context) {
     List<Widget> servicesList = [
       CabinetServiceButton(
         title: 'Нарушения',
@@ -147,5 +150,6 @@ class _HomeScreen extends State<HomeScreen> {
       ],
     );
   }
-
 }
+
+
