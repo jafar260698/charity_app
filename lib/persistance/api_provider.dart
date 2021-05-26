@@ -132,6 +132,97 @@ class ApiProvider {
     return responseJson;
   }
 
+  Future<BaseResponses> changeUser(Map<String,dynamic> data) async{
+    var responseJson;
+
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/user'),
+          headers: headers,
+          body: jsonEncode(data)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<BaseResponses> changeUserAvatar(Map<String,dynamic> data) async{
+    var responseJson;
+
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/user/avatar/'),
+          headers: headers,
+          body: jsonEncode(data)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  //docs
+  Future<BaseResponses> getAgreement() async{
+    var responseJson;
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/agreement'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<BaseResponses> getPolicy() async{
+    var responseJson;
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/rule'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<BaseResponses> postAgreement() async{
+    var responseJson;
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/agreement/'),
+          headers: headers,
+          body: jsonEncode(null)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<BaseResponses> postPolicy() async{
+    var responseJson;
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/rule/'),
+          headers: headers,
+          body: jsonEncode(null)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
   //language
   Future<Language> getLanguage() async{
     var responseJson;
