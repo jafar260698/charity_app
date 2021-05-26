@@ -48,6 +48,10 @@ class _HomeScreen extends State<HomeScreen> {
                   height: 200,
                   width: MediaQuery.of(context).size.width*0.9,
                   decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(imgList[index])
+                    ),
                     color: Colors.blueAccent,
                     borderRadius: BorderRadius.circular(28)
                   ),
@@ -55,7 +59,7 @@ class _HomeScreen extends State<HomeScreen> {
               }),
             ),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(30),
               child: TextFieldUI(
                 controller: pinfl,
                 text: 'Jafar',
@@ -76,27 +80,27 @@ class _HomeScreen extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                CardIcon("Helloworld", "selectedIcon"),
-                CardIcon("Helloworld", "selectedIcon"),
-                CardIcon("Helloworld", "selectedIcon")
+                CardIcon("Helloworld", "assets/svg/services/medicine.svg"),
+                CardIcon("Helloworld", "assets/svg/services/medicine.svg"),
+                CardIcon("Helloworld", "assets/svg/services/medicine.svg")
               ],
             ),
             SizedBox(height: 20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                CardIcon("Helloworld", "selectedIcon"),
-                CardIcon("Helloworld", "selectedIcon"),
-                CardIcon("Helloworld", "selectedIcon")
+                CardIcon("Helloworld", "assets/svg/services/medicine.svg"),
+                CardIcon("Helloworld", "assets/svg/services/medicine.svg"),
+                CardIcon("Helloworld", "assets/svg/services/medicine.svg")
               ],
             ),
             SizedBox(height: 20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                CardIcon("Helloworld", "selectedIcon"),
-                CardIcon("Helloworld", "selectedIcon"),
-                CardIcon("Helloworld", "selectedIcon")
+                CardIcon("Helloworld", "assets/svg/services/medicine.svg"),
+                CardIcon("Helloworld", "assets/svg/services/medicine.svg"),
+                CardIcon("Helloworld", "assets/svg/services/medicine.svg")
               ],
             ),
             SizedBox(height: 80.0)
@@ -163,7 +167,7 @@ class _HomeScreen extends State<HomeScreen> {
       ),
       leading: IconButton(
         splashRadius: 20,
-        icon: Icon(Icons.menu_outlined),
+        icon: SvgPicture.asset('assets/svg/Icon_notification_outline.svg',height: 24,width: 24),
         onPressed: () => {
 
         },
@@ -172,7 +176,7 @@ class _HomeScreen extends State<HomeScreen> {
       actions: <Widget>[
         Padding(
             padding: EdgeInsets.only(right: 10),
-            child: SvgPicture.asset('assets/svg/Icon_notification_outline.svg',height: 24,width: 24)
+            child: Icon(Icons.menu_outlined)
         )
       ],
     );

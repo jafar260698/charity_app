@@ -1,12 +1,13 @@
+import 'package:charity_app/view/theme/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class  CardIcon extends StatefulWidget{
   final String operation;
-  final String selectedIcon;
+  final String iconPath;
 
-  CardIcon(this.operation,this.selectedIcon);
+  CardIcon(this.operation,this.iconPath);
 
   @override
   _CardIcon createState()=>_CardIcon();
@@ -33,15 +34,15 @@ class _CardIcon extends State<CardIcon>{
             ],
             borderRadius: BorderRadius.circular(25),
           ),
-          child: SvgPicture.asset('assets/svg/Icon_notification_outline.svg',height: 20,width: 20),
+          child: SvgPicture.asset(widget.iconPath,height: 12,width: 12),
         ),
         SizedBox(height: 10),
         Text(
           widget.operation,
           textAlign: TextAlign.center,
+          style: AppThemeStyle.titleFormStyle,
         )
       ],
-
     );
   }
 
