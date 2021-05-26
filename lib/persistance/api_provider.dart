@@ -4,6 +4,9 @@ import 'dart:io';
 import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/model/authorization.dart';
 import 'package:charity_app/model/base_response.dart';
+import 'package:charity_app/model/category.dart';
+import 'package:charity_app/model/faq.dart';
+import 'package:charity_app/model/links.dart';
 import 'package:charity_app/model/user.dart';
 import 'package:charity_app/model/user_type.dart';
 import 'package:flutter/cupertino.dart';
@@ -49,24 +52,6 @@ class ApiProvider {
     return '$baseUrl$path${getQuery(params)}';
   }
 
-
-  //user type
-  Future<List<UserType>> getUserType() async{
-    var responseJson;
-
-    try{
-      final response=await client.get(
-         Uri.parse("$baseUrl/user_type?language=ru"),
-          headers: headers);
-      var res=_response(response);
-      responseJson=res.map((element)=>UserType.fromJson(element)
-      ).toList();
-
-    } on FetchDataException{
-      throw FetchDataException("No Internet connection");
-    }
-     return responseJson;
-  }
 
   //user file
   Future<BaseResponses> registration(Map<String,dynamic> data) async{
@@ -224,20 +209,99 @@ class ApiProvider {
   }
 
   //language
-  Future<Language> getLanguage() async{
+  // Future<Language> getLanguage() async{
+  //   var responseJson;
+  //
+  //   try{
+  //     final response= await client.get(Uri.parse('$baseUrl/language'),
+  //       headers: headers,
+  //     );
+  //     var res=_response(response);
+  //     responseJson=Language.fromJson(res);
+  //   } on FetchDataException{
+  //     throw FetchDataException("No Internet connection");
+  //   }
+  //   return responseJson;
+  // }
+
+  //user type
+  Future<List<UserType>> getUserType() async{
     var responseJson;
 
     try{
-      final response= await client.get(Uri.parse('$baseUrl/language'),
-        headers: headers,
-      );
+      final response=await client.get(
+          Uri.parse("$baseUrl/user_type?language=ru"),
+          headers: headers);
       var res=_response(response);
-      responseJson=Language.fromJson(res);
+      responseJson=res.map((element)=>UserType.fromJson(element)
+      ).toList();
+
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
     }
     return responseJson;
   }
+
+  //statie
+
+
+  //category
+  Future<Category> getCategory(String lang) async{
+    var responseJson;
+
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/category?language=$lang'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=Category.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  //faq
+  Future<Faq> getFaq(String lang) async{
+    var responseJson;
+
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/faq?language=$lang'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=Faq.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  //forum
+
+
+  //resource
+  Future<Links> getLinks(String lang) async{
+    var responseJson;
+
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/links?language=ru&category=razvitie&page=1'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=Links.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  //anketa
+
+
+
+
+
 
 
   String getVitrinaAuth() {
