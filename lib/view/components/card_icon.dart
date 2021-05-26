@@ -34,7 +34,9 @@ class _CardIcon extends State<CardIcon>{
             ],
             borderRadius: BorderRadius.circular(25),
           ),
-          child: SvgPicture.asset(widget.iconPath,height: 12,width: 12),
+          child: Padding(
+              padding: EdgeInsets.all(12),
+              child: SvgPicture.asset(widget.iconPath)),
         ),
         SizedBox(height: 10),
         Text(
