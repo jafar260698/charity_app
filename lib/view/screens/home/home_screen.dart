@@ -64,7 +64,7 @@ class _HomeScreen extends State<HomeScreen> {
                 text: 'Jafar',
                 keyboardType: TextInputType.number,
                 inputAction: TextInputAction.done,
-                hintText: "Search...",
+                hintText: "Поиск...",
                 suffixIcon: IconButton(
                   splashRadius: 25,
                   onPressed: () {
@@ -109,54 +109,6 @@ class _HomeScreen extends State<HomeScreen> {
     );
   }
 
-  List<Widget> servicesGroup(
-      BuildContext context) {
-    List<Widget> servicesList = [
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-
-        },),
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-
-        },),
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-
-        },),
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-
-        },),
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-
-        },),
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-          //ToastUtils.toastInfo('under_dev', context);
-        },),
-      CabinetServiceButton(
-        title: 'Нарушения',
-        iconPath: "assets/svg/services/medicine.svg",
-        onPressed: (){
-
-        },),
-    ];
-    return servicesList;
-  }
 
   Widget customAppbar(BuildContext context){
     return AppBar(
@@ -166,7 +118,7 @@ class _HomeScreen extends State<HomeScreen> {
       ),
       leading: IconButton(
         splashRadius: 20,
-        icon: SvgPicture.asset('assets/svg/Icon_notification_outline.svg',height: 24,width: 24),
+        icon: Icon(Icons.menu_outlined),
         onPressed: () => {
 
         },
@@ -175,7 +127,7 @@ class _HomeScreen extends State<HomeScreen> {
       actions: <Widget>[
         Padding(
             padding: EdgeInsets.only(right: 10),
-            child: Icon(Icons.menu_outlined)
+            child: SvgPicture.asset('assets/svg/Icon_notification_outline.svg',height: 24,width: 24),
         )
       ],
     );

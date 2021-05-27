@@ -85,7 +85,7 @@ class _BottomNavigation extends State<BottomNavigation> {
       actions: <Widget>[
         Padding(
           padding: EdgeInsets.only(right: 10),
-          child: SvgPicture.asset('assets/svg/Icon_notification_outline.svg',height: 24,width: 24)
+          child: SvgPicture.asset('assets/svg/Icon_notification_outline.svg',height: 24,width: 24),
         )
       ],
     );
