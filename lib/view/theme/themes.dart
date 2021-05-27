@@ -125,7 +125,8 @@ class AppThemeStyle {
 
   static TextStyle listStyle = TextStyle(
     fontSize: 18,
-    fontWeight: FontWeight.w600,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.bold,
   );
 
   static TextStyle text14_600 = TextStyle(
