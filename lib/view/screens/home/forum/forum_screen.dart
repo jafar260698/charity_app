@@ -6,7 +6,7 @@ import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'forum/forum_detail.dart';
+import 'forum_detail.dart';
 
 class ForumScreen extends StatefulWidget {
   @override

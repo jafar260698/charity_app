@@ -1,5 +1,5 @@
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/view/screens/home/article_detail.dart';
+import 'package:charity_app/view/screens/home/article/article_detail.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';

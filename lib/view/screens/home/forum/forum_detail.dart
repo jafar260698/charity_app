@@ -1,6 +1,7 @@
 
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
+import 'package:charity_app/view/screens/home/resource/resource_screen.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
@@ -201,16 +202,16 @@ class _ForumDetailScreen extends State<ForumDetailScreen> {
       bottomNavigationBar: ConvexAppBar(
         style: TabStyle.reactCircle,
         color: Colors.black45,
-        activeColor: Color.fromRGBO(108, 187, 217, 1),
+        activeColor: Color.fromRGBO(98, 190, 184, 1),
         backgroundColor: Colors.white,
         items: [
-          TabItem(icon: SvgPicture.asset('assets/svg/sending.svg')
+          TabItem(icon: Icon(Icons.add,color: Colors.white,)
           ),
         ],
         initialActiveIndex: 0,
         onTap: (int i) => {
-
-        },
+         Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResourceScreen())),
+      },
       ),
     );
   }

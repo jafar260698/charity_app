@@ -1,5 +1,5 @@
 
-import 'package:charity_app/view/screens/home/forum_screen.dart';
+import 'package:charity_app/view/screens/home/forum/forum_screen.dart';
 import 'package:charity_app/view/screens/home/home_screen.dart';
 import 'package:charity_app/view/screens/home/search_screen.dart';
 import 'package:charity_app/view/screens/other/favourite_screen.dart';
@@ -10,7 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'article_screen.dart';
+import 'article/article_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
   @override
