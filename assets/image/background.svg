@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="428" height="506" viewBox="0 0 428 506">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="0.376" x2="0.5" y2="0.766" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#46bcb3"/>
+      <stop offset="1" stop-color="#a9e5e0"/>
+    </linearGradient>
+    <clipPath id="clip-iPhone_12_Pro_Max_1">
+      <rect width="428" height="506"/>
+    </clipPath>
+  </defs>
+  <g id="iPhone_12_Pro_Max_1" data-name="iPhone 12 Pro Max – 1" clip-path="url(#clip-iPhone_12_Pro_Max_1)">
+    <g id="Group_3273" data-name="Group 3273" transform="translate(-191)">
+      <path id="Path_9638" data-name="Path 9638" d="M505.114,0c278.967,0,505.114,226.147,505.114,505.114s-226.147,505.114-505.114,505.114S0,784.081,0,505.114,226.147,0,505.114,0Z" transform="translate(-24.114 -505.115)" opacity="0.728" fill="url(#linear-gradient)"/>
+      <path id="Path_9637" data-name="Path 9637" d="M438.628,0C680.876,0,877.257,196.381,877.257,438.629S680.876,877.257,438.628,877.257,0,680.876,0,438.629,196.381,0,438.628,0Z" transform="translate(63.652 -395.871)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

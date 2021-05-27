@@ -45,7 +45,7 @@ class LoginScreen extends StatelessWidget {
                     Text(
                       'Вход',
                       style: TextStyle(
-                        fontSize: 24.0,
+                        fontSize: 26.0,
                         letterSpacing: 0.4,
                         fontWeight: FontWeight.bold,
                         color: Colors.white
@@ -117,11 +117,12 @@ class LoginScreen extends StatelessWidget {
                         opacity: 0.5,
                         child: Text(
                           'Еще нет акаунта? Зарегистрироваться сейчас!',
-                          style: AppThemeStyle.text14_600,
+                          style: AppThemeStyle.title12,
                           textAlign: TextAlign.center,
                         ),
                       ),
-                    )
+                    ),
+                    SizedBox(height: 10,)
                   ],
                 ),
               ),

@@ -93,7 +93,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   textColor: Colors.white,
                                   color: Color.fromRGBO(254, 205, 131, 1),
                                   text: 'Вход через Email',
-                                  icon: SvgPicture.asset('assets/svg/auth/email.svg'),
+                                  icon: SvgPicture.asset('assets/svg/auth/gmail.svg'),
                                   ontap: () {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
                                   },
