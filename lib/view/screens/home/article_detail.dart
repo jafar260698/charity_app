@@ -8,6 +8,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class ArticleDetailScreen extends StatefulWidget {
   @override
@@ -18,194 +19,64 @@ class _ArticleDetailScreen extends State<ArticleDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
-    return Scaffold(
-        backgroundColor: Color.fromRGBO(108, 187, 217, 1),
+    List<String> year = [
+      'Болезни',
+      'Фонды',
+      'Развитие',
+      'Истории',
+    ];
+    return DefaultTabController(
+      length: year.length,
+      child: Scaffold(
         appBar: appBarPage(
-        context: context,
-        appBarTitle: "",
-        appBarIncome: "Статьи",
-      ),
-      body: Column(
-        children: <Widget>[
-          SizedBox(height: 15),
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
+          context: context,
+          appBarTitle: "",
+          appBarIncome: "Статьи",
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(70.0), // here the desired height
+            child: Align(
+              alignment: Alignment.center,
               child: Container(
-                color: Color.fromRGBO(244, 244, 244, 1),
-                child: Padding(
-                  padding: EdgeInsets.all(20),
-                  child: SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        BtnUI(
-                          height: 45,
-                          align: Alignment.centerLeft,
-                          isLoading: false,
-                          textColor: Colors.white,
-                          color: Color.fromRGBO(98, 190, 184, 1),
-                          text: 'Информаторий',
-                          ontap: () { },
-                        ),
-                        SizedBox(height: 5),
-                        Padding(
-                          padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:40.0),
-                              SizedBox(width: 10),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Бибигуль Ахметова",
-                                      textAlign: TextAlign.start,
-                                      style: AppThemeStyle.titleListGrey,
-                                    ),
-                                    SizedBox(height:5),
-                                    Text(
-                                      "Детский церебральный паралич",
-                                      style: AppThemeStyle.text14_600,
-                                      textAlign: TextAlign.start,
-                                    ),
-                                    SizedBox(height:5),
-                                    Text(
-                                      "Детский церебральный паралич Каждый год от хронического вирусного гепатита В, по оценкам ВОЗ, умирает почти 900 000 ",
-                                      textAlign: TextAlign.start,
-                                      style: AppThemeStyle.titleFormStyle,
-
-                                    ),
-                                    SizedBox(height:10),
-                                    Text(
-                                      "77 тем   Посл. cообщ. 20.02.2021 ",
-                                      textAlign: TextAlign.start,
-                                      style: AppThemeStyle.titleListGrey,
-                                    ),
-                                    Divider(thickness: 1,color: Colors.black54,),
-                                    SizedBox(height:5),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 5),
-                        Padding(
-                          padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:40.0),
-                              SizedBox(width: 10),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Бибигуль Ахметова",
-                                      textAlign: TextAlign.start,
-                                      style: AppThemeStyle.titleListGrey,
-                                    ),
-                                    SizedBox(height:5),
-                                    Text(
-                                      "Детский церебральный паралич",
-                                      style: AppThemeStyle.text14_600,
-                                      textAlign: TextAlign.start,
-                                    ),
-                                    SizedBox(height:5),
-                                    Text(
-                                      "Детский церебральный паралич Каждый год от хронического вирусного гепатита В, по оценкам ВОЗ, умирает почти 900 000 ",
-                                      textAlign: TextAlign.start,
-                                      style: AppThemeStyle.titleFormStyle,
-                                    ),
-                                    SizedBox(height:10),
-                                    Text(
-                                      "77 тем   Посл. cообщ. 20.02.2021 ",
-                                      textAlign: TextAlign.start,
-                                      style: AppThemeStyle.titleListGrey,
-                                    ),
-                                    Divider(thickness: 1,color: Colors.black54,),
-                                    SizedBox(height:5),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 5),
-                        Padding(
-                          padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:40.0),
-                              SizedBox(width: 10),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Бибигуль Ахметова",
-                                      textAlign: TextAlign.start,
-                                      style: AppThemeStyle.titleListGrey,
-                                    ),
-                                    SizedBox(height:5),
-                                    Text(
-                                      "Детский церебральный паралич",
-                                      style: AppThemeStyle.text14_600,
-                                      textAlign: TextAlign.start,
-                                    ),
-                                    SizedBox(height:5),
-                                    Text(
-                                      "Детский церебральный паралич Каждый год от хронического вирусного гепатита В, по оценкам ВОЗ, умирает почти 900 000 ",
-                                      textAlign: TextAlign.start,
-                                      style: AppThemeStyle.titleFormStyle,
-                                    ),
-                                    SizedBox(height:10),
-                                    Text(
-                                      "77 тем   Посл. cообщ. 20.02.2021 ",
-                                      textAlign: TextAlign.start,
-                                      style: AppThemeStyle.titleListGrey,
-                                    ),
-                                    Divider(thickness: 1,color: Colors.black54,),
-                                    SizedBox(height:5),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(98, 190, 184, 1),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
                   ),
+                ),
+                child: TabBar(
+                  tabs: List<Widget>.generate(year.length, (int index) {
+                    var item = year[index];
+                    return new Tab(text: item);
+                  }),
+                  isScrollable: true,
+                  labelPadding: EdgeInsets.only(
+                      left: 30.0, right: 30.0, top: 3, bottom: 3),
+                  indicatorSize: TabBarIndicatorSize.label,
+                  labelColor: Colors.white,
+                  unselectedLabelColor: Colors.white.withOpacity(0.4),
+                  labelStyle: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Montserrat'),
+                  indicator: MaterialIndicator(
+                      height: 4,
+                      topLeftRadius: 4,
+                      topRightRadius: 4,
+                      bottomLeftRadius: 0,
+                      bottomRightRadius: 0,
+                      tabPosition: TabPosition.bottom,
+                      color: Color.fromRGBO(98, 190, 184, 1)),
                 ),
               ),
             ),
           ),
-
-        ],
-      ),
-      bottomNavigationBar: ConvexAppBar(
-        style: TabStyle.reactCircle,
-        color: Colors.black45,
-        activeColor: Color.fromRGBO(108, 187, 217, 1),
-        backgroundColor: Colors.white,
-        items: [
-          TabItem(icon: SvgPicture.asset('assets/svg/sending.svg')
-          ),
-        ],
-        initialActiveIndex: 0,
-        onTap: (int i) => {
-
-        },
+        ),
+        body: TabBarView(
+          children: List<Widget>.generate(year.length, (int index) {
+            return getMainUI(context);
+          }),
+        ),
       ),
     );
   }
@@ -217,8 +88,8 @@ class _ArticleDetailScreen extends State<ArticleDetailScreen> {
     PreferredSizeWidget bottom,
   }) {
     return AppBar(
-      elevation: 0,
-      backgroundColor: Color.fromRGBO(108, 187, 217, 1),
+      elevation: 1.0,
+      shadowColor: Colors.black45,
       centerTitle: true,
       title: Column(
         children: [
@@ -232,7 +103,7 @@ class _ArticleDetailScreen extends State<ArticleDetailScreen> {
               ),
             ),
           ),
-          SizedBox(height: 30.0),
+          SizedBox(height: 20.0),
           Text(
             appBarIncome,
             style: TextStyle(
@@ -258,5 +129,86 @@ class _ArticleDetailScreen extends State<ArticleDetailScreen> {
     );
   }
 
+  getMainUI(context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(98, 190, 184, 1),
+      ),
+      child: Expanded(
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+          child: Container(
+            color: Color.fromRGBO(244, 244, 244, 1),
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    SizedBox(height: 10),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                      color: Colors.white,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            left: 20, right: 20, top: 10, bottom: 5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    "Благотворительный фонд «ДАРА»",
+                                    style: AppThemeStyle.resendCodeStyle,
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.keyboard_arrow_down,
+                                  size: 30,
+                                )
+                              ],
+                            ),
+                            SizedBox(height: 5),
+                            Divider(
+                                thickness: 1,
+                                color: Color.fromRGBO(98, 190, 184, 1)),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(Icons.location_on,
+                                    size: 24,
+                                    color: Color.fromRGBO(98, 190, 184, 1)),
+                                SizedBox(width: 8.0),
+                                Expanded(
+                                  child: Text(
+                                    "Г. Нур-Султан \n ул. А.Бокейхана, 1, «Назарбаев Центр»",
+                                    style: AppThemeStyle.titleListPrimary,
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 5),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
 }
