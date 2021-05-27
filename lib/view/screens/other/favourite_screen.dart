@@ -28,7 +28,7 @@ class _FavouriteScreen extends State<FavouriteScreen> {
           appBarTitle: "",
           appBarIncome: "Избранное",
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(60.0), // here the desired height
+            preferredSize: Size.fromHeight(70.0), // here the desired height
             child: Align(
               alignment: Alignment.center,
               child: Container(

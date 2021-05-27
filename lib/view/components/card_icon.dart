@@ -19,24 +19,28 @@ class _CardIcon extends State<CardIcon>{
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          margin: EdgeInsets.only(right: 10,left: 10),
-          width: 80,
-          height: 80,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              // BoxShadow(
-              //   color: Colors.grey,
-              //   blurRadius: 1,
-              //   spreadRadius: 3,
-              // )
-            ],
-            borderRadius: BorderRadius.circular(25),
+        InkWell(
+          onTap: (){
+
+          },
+          child: Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                // BoxShadow(
+                //   color: Colors.grey,
+                //   blurRadius: 1,
+                //   spreadRadius: 3,
+                // )
+              ],
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: Padding(
+                padding: EdgeInsets.all(12),
+                child: SvgPicture.asset(widget.iconPath)),
           ),
-          child: Padding(
-              padding: EdgeInsets.all(12),
-              child: SvgPicture.asset(widget.iconPath)),
         ),
         SizedBox(height: 10),
         Text(

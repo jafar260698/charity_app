@@ -9,6 +9,7 @@ import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'article_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -52,8 +53,8 @@ class _BottomNavigation extends State<BottomNavigation> {
         activeColor: Color.fromRGBO(98, 190, 184, 1),
         backgroundColor: Colors.white,
         items: [
-          TabItem(icon: FlevaIcons.home_outline),
-          TabItem(icon: SvgPicture.asset('assets/svg/book.svg')),
+          TabItem(icon: Ionicons.home_outline),
+          TabItem(icon: Icons.menu_book),
           TabItem(icon: FlevaIcons.search),
           TabItem(icon: FlevaIcons.bookmark_outline),
           TabItem(icon: Icons.people_outline),
