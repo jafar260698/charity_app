@@ -1,5 +1,6 @@
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/screens/home/article/article_detail.dart';
+import 'package:charity_app/view/screens/home/questionnaire/questionnaire_screen.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -143,61 +144,66 @@ class _ResourceScreen extends State<ResourceScreen> {
                 child: Column(
                   children: [
                     SizedBox(height: 5),
-                    Padding(
-                      padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Ссылка N1",
-                            style: AppThemeStyle.titleStyle,
-                            textAlign: TextAlign.start,
-                          ),
-                          SizedBox(height:5),
-                          Text(
-                            "Краткое описание что находится в данной ссылке",
-                            textAlign: TextAlign.start,
-                          ),
-                          Divider(thickness: 1,color: Colors.black54,),
-                          SizedBox(height:5),
-                          Text(
-                            "Ссылка N1",
-                            style: AppThemeStyle.titleStyle,
-                            textAlign: TextAlign.start,
-                          ),
-                          SizedBox(height:5),
-                          Text(
-                            "Краткое описание что находится в данной ссылке",
-                            textAlign: TextAlign.start,
-                          ),
-                          Divider(thickness: 1,color: Colors.black54,),
-                          SizedBox(height:5),
-                          Text(
-                            "Ссылка N1",
-                            style: AppThemeStyle.titleStyle,
-                            textAlign: TextAlign.start,
-                          ),
-                          SizedBox(height:5),
-                          Text(
-                            "Краткое описание что находится в данной ссылке",
-                            textAlign: TextAlign.start,
-                          ),
-                          Divider(thickness: 1,color: Colors.black54,),
-                          SizedBox(height:5),
-                          Text(
-                            "Ссылка N1",
-                            style: AppThemeStyle.titleStyle,
-                            textAlign: TextAlign.start,
-                          ),
-                          SizedBox(height:5),
-                          Text(
-                            "Краткое описание что находится в данной ссылке",
-                            textAlign: TextAlign.start,
-                          ),
-                          Divider(thickness: 1,color: Colors.black54,),
-                          SizedBox(height:5),
-                        ],
+                    InkWell(
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => QuestionnaireScreen()));
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Ссылка N1",
+                              style: AppThemeStyle.titleStyle,
+                              textAlign: TextAlign.start,
+                            ),
+                            SizedBox(height:5),
+                            Text(
+                              "Краткое описание что находится в данной ссылке",
+                              textAlign: TextAlign.start,
+                            ),
+                            Divider(thickness: 1,color: Colors.black54,),
+                            SizedBox(height:5),
+                            Text(
+                              "Ссылка N1",
+                              style: AppThemeStyle.titleStyle,
+                              textAlign: TextAlign.start,
+                            ),
+                            SizedBox(height:5),
+                            Text(
+                              "Краткое описание что находится в данной ссылке",
+                              textAlign: TextAlign.start,
+                            ),
+                            Divider(thickness: 1,color: Colors.black54,),
+                            SizedBox(height:5),
+                            Text(
+                              "Ссылка N1",
+                              style: AppThemeStyle.titleStyle,
+                              textAlign: TextAlign.start,
+                            ),
+                            SizedBox(height:5),
+                            Text(
+                              "Краткое описание что находится в данной ссылке",
+                              textAlign: TextAlign.start,
+                            ),
+                            Divider(thickness: 1,color: Colors.black54,),
+                            SizedBox(height:5),
+                            Text(
+                              "Ссылка N1",
+                              style: AppThemeStyle.titleStyle,
+                              textAlign: TextAlign.start,
+                            ),
+                            SizedBox(height:5),
+                            Text(
+                              "Краткое описание что находится в данной ссылке",
+                              textAlign: TextAlign.start,
+                            ),
+                            Divider(thickness: 1,color: Colors.black54,),
+                            SizedBox(height:5),
+                          ],
+                        ),
                       ),
                     ),
                   ],

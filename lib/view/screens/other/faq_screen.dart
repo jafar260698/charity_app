@@ -83,7 +83,7 @@ class FaqScreen extends StatelessWidget {
           ],
         ),
       ),
-      viewModelBuilder: ()=>FaqViewModel(),
+      viewModelBuilder: ()=> FaqViewModel(),
     );
   }
 }
