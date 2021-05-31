@@ -1,4 +1,3 @@
-import 'package:charity_app/utils/device_size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -82,7 +81,7 @@ class _BtnUIState extends State<BtnUI> with SingleTickerProviderStateMixin {
                   alignment: widget.align!=null ? widget.align : Alignment.center,
                   child: Text(
                     widget.text,
-                    style: TextStyle(color: widget.textColor,fontSize: SizeConfig.calculateTextSize(16),fontFamily: 'Montserrat'
+                    style: TextStyle(color: widget.textColor,fontSize: 16,fontFamily: 'Montserrat'
                     ),
                   ),
                 ),

@@ -1,6 +1,7 @@
 
 
 
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/card_icon.dart';
 import 'package:charity_app/view/components/text_field_ui.dart';
 import 'package:fleva_icons/fleva_icons.dart';
@@ -31,9 +32,9 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            SizedBox(height: 80),
+            SizedBox(height: SizeConfig.calculateBlockVertical(100)),
             Container(
-              height: 200,
+              height: SizeConfig.calculateBlockVertical(200),
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: 20,right: 10),
@@ -41,7 +42,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
                   itemBuilder: (context,index){
                     return Container(
                       margin: EdgeInsets.only(right: 10),
-                      height: 200,
+                      height: SizeConfig.calculateBlockVertical(200),
                       width: MediaQuery.of(context).size.width*0.9,
                       decoration: BoxDecoration(
                           image: DecorationImage(
@@ -99,7 +100,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
                 CardIcon("Dlya mam", "assets/svg/services/for_mummy.svg")
               ],
             ),
-            SizedBox(height: 80.0)
+            SizedBox(height: SizeConfig.calculateBlockVertical(80))
           ],
         ),
       ),
