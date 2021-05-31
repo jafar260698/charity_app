@@ -1,6 +1,7 @@
 
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/screens/auth/welcome_viewmodel.dart';
+import 'package:charity_app/view/screens/home/questionnaire/questionnaire_answer_screen.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:charity_app/view/widgets/custom/getWidgetLogoHorizontal.dart';
 import 'package:charity_app/view/widgets/get_widget_family.dart';
@@ -29,11 +30,16 @@ class QuestionnaireScreen extends StatelessWidget {
               padding: EdgeInsets.only(left: 20,right: 20),
               child: Column(
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(left: 40),
-                    child: Align(
-                        alignment: Alignment.center,
-                        child: getWidgetLogoHorizontal),
+                  InkWell(
+                    onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => QuestionnaireAnswerScreen()));
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 40),
+                      child: Align(
+                          alignment: Alignment.center,
+                          child: getWidgetLogoHorizontal),
+                    ),
                   ),
                   SizedBox(height: 20),
                   Text(
