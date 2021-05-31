@@ -8,6 +8,7 @@
  */
 
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/view/screens/home/profile/profile_screen.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
 import 'package:fleva_icons/fleva_icons.dart';
@@ -45,21 +46,26 @@ class CabinetDrawer extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         SizedBox(height: 45),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(width: 30),
-                            AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0),
-                            SizedBox(width: 10),
-                            Expanded(
-                              child: Text(
-                                "Бибигуль Ахметова",
-                                textAlign: TextAlign.start,
-                                style: AppThemeStyle.listStyle,
+                        InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileScreen()));
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(width: 30),
+                              AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0),
+                              SizedBox(width: 10),
+                              Expanded(
+                                child: Text(
+                                  "Бибигуль Ахметова",
+                                  textAlign: TextAlign.start,
+                                  style: AppThemeStyle.listStyle,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         SizedBox(height: 20),
                       ],
