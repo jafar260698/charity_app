@@ -106,7 +106,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                     style: AppThemeStyle.title14,
                                     textAlign: TextAlign.center,
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -122,5 +122,4 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
       ),
     );
   }
-
 }
