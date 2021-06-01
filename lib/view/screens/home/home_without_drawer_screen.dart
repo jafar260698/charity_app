@@ -7,6 +7,8 @@ import 'package:charity_app/view/components/text_field_ui.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class HomeWithoutDrawerScreen extends StatefulWidget {
   @override
@@ -28,13 +30,14 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: getAppBar(context),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            SizedBox(height: SizeConfig.calculateBlockVertical(100)),
+            SizedBox(height: SizeConfig.calculateBlockVertical(20)),
             Container(
-              height: SizeConfig.calculateBlockVertical(200),
+              height: SizeConfig.calculateBlockVertical(240),
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: 20,right: 10),
@@ -42,7 +45,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
                   itemBuilder: (context,index){
                     return Container(
                       margin: EdgeInsets.only(right: 10),
-                      height: SizeConfig.calculateBlockVertical(200),
+                      height: SizeConfig.calculateBlockVertical(240),
                       width: MediaQuery.of(context).size.width*0.9,
                       decoration: BoxDecoration(
                           image: DecorationImage(
@@ -107,5 +110,26 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
     );
   }
 
+  Widget getAppBar(context) {
+    return AppBar(
+      elevation: 2.0,
+      centerTitle: true,
+      shadowColor: Colors.black26,
+      automaticallyImplyLeading: false,
+      title: Text(""),
+      actions: <Widget>[
+        IconButton(
+          splashRadius: 20,
+          iconSize: 30,
+          padding: EdgeInsets.all(0.0),
+          icon: SvgPicture.asset(
+            'assets/svg/notifications.svg',
+            color: ThemeProvider.themeOf(context).data.accentIconTheme.color,
+          ),
+          onPressed: () {},
+        ),
+      ],
+    );
+  }
 
 }
