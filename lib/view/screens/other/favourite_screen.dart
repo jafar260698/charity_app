@@ -1,5 +1,6 @@
 
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -82,7 +83,6 @@ class _FavouriteScreen extends State<FavouriteScreen> {
     PreferredSizeWidget bottom,
   }) {
     return AppBar(
-      elevation: 1.0,
       shadowColor: Colors.black45,
       centerTitle: true,
       title: Column(
@@ -109,16 +109,6 @@ class _FavouriteScreen extends State<FavouriteScreen> {
           SizedBox(height: 10.0),
         ],
       ),
-      leading: CupertinoButton(
-        onPressed: () => Navigator.pop(context),
-        child: Icon(Icons.arrow_back_ios,size: 20),
-      ),
-      actions: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(right: 20),
-          child: Icon(Icons.menu_outlined),
-        )
-      ],
       bottom: bottom,
     );
   }
@@ -126,7 +116,7 @@ class _FavouriteScreen extends State<FavouriteScreen> {
   getMainUI(context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color.fromRGBO(98, 190, 184, 1),
+        color: AppColor.primary,
       ),
       child: Expanded(
         child: ClipRRect(

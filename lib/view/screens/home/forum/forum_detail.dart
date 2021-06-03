@@ -198,10 +198,10 @@ class _ForumDetailScreen extends State<ForumDetailScreen> {
       bottomNavigationBar: ConvexAppBar(
         style: TabStyle.reactCircle,
         color: Colors.black45,
-        activeColor: Color.fromRGBO(98, 190, 184, 1),
+        activeColor: AppColor.primary,
         backgroundColor: Colors.white,
         items: [
-          TabItem(icon: Icon(Icons.add,color: Colors.white,)
+          TabItem(icon: Icon(Icons.add,size: 32,color: Colors.white)
           ),
         ],
         initialActiveIndex: 0,

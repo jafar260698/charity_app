@@ -7,7 +7,8 @@
  *
  */
 
-import 'package:soliq_flutter/utils/device_size_config.dart';
+
+import 'package:charity_app/utils/device_size_config.dart';
 
 class AppFonts {
   static final double formHeader = SizeConfig.calculateTextSize(14);
