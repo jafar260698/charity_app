@@ -190,4 +190,11 @@ class AppThemeStyle {
     fontSize: 24,
     fontWeight: FontWeight.w700,
   );
+
+  static TextStyle headerWhite = TextStyle(
+      fontSize: 24.0,
+      letterSpacing: 0.4,
+      fontWeight: FontWeight.bold,
+      color: Colors.white
+  );
 }

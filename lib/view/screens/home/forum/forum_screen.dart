@@ -1,6 +1,7 @@
 
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
+import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,20 +20,15 @@ class _ForumScreen extends State<ForumScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Color.fromRGBO(108, 187, 217, 1),
-      appBar: widgetAppBarTitle(context),
+      backgroundColor: AppColor.primary,
       body: Column(
         children: <Widget>[
+          SizedBox(height: 40),
           Text(
             'Форум',
-            style: TextStyle(
-                fontSize: 24.0,
-                letterSpacing: 0.4,
-                fontWeight: FontWeight.bold,
-                color: Colors.white
-            ),
+            style: AppThemeStyle.headerWhite
           ),
-          SizedBox(height: 30,),
+          SizedBox(height: 30),
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
@@ -50,7 +46,7 @@ class _ForumScreen extends State<ForumScreen> {
                           align: Alignment.centerLeft,
                           isLoading: false,
                           textColor: Colors.white,
-                          color: Color.fromRGBO(98, 190, 184, 1),
+                          color: AppColor.primary,
                           text: 'Специальный форум',
                           ontap: () {
                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumDetailScreen()));

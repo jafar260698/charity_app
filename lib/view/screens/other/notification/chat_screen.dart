@@ -7,12 +7,12 @@ import 'package:charity_app/view/widgets/avatar_iamge.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CommentScreen extends StatefulWidget {
+class ChatScreen extends StatefulWidget {
   @override
-  _CommentScreen createState() => _CommentScreen();
+  _ChatScreen createState() => _ChatScreen();
 }
 
-class _CommentScreen extends State<CommentScreen> {
+class _ChatScreen extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +22,27 @@ class _CommentScreen extends State<CommentScreen> {
       appBar: widgetAppBarTitle(context),
       body: Column(
         children: <Widget>[
-          Text(
-            'Комментарии',
-            style: TextStyle(
-                fontSize: 24.0,
-                letterSpacing: 0.4,
-                fontWeight: FontWeight.bold,
-                color: Colors.white
+          SizedBox(height: 45),
+          InkWell(
+            onTap: (){ },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(width: 30),
+                AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0),
+                SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    "Бибигуль Ахметова",
+                    textAlign: TextAlign.start,
+                    style: AppThemeStyle.listStyle,
+                  ),
+                ),
+              ],
             ),
           ),
+          SizedBox(height: 20),
           SizedBox(height: 30,),
           Expanded(
             child: ClipRRect(
