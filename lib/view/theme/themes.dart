@@ -1,4 +1,4 @@
-import 'package:charity_app/view/theme/app_color.dart';
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +15,10 @@ ThemeData lightTheme = ThemeData(
   buttonColor: Color(0xff333333),
   focusColor: Color(0xff325ECD),
   primaryIconTheme: IconThemeData(color: Color(0xff1E2D55)),
-  bottomAppBarColor: Color(0xff325ECD),
+  bottomAppBarColor: Color.fromRGBO(98, 190, 184, 1),
   cupertinoOverrideTheme: CupertinoThemeData(
     barBackgroundColor: Color(0xffECECEF),
-    primaryColor: Color(0xff325ECD),
+    primaryColor: Color.fromRGBO(98, 190, 184, 1),
   ),
 );
 
@@ -193,14 +193,14 @@ class AppThemeStyle {
   );
 
   static TextStyle headerWhite = TextStyle(
-      fontSize: 23.0,
+      fontSize: SizeConfig.calculateTextSize(24),
       letterSpacing: 0.1,
       fontWeight: FontWeight.bold,
       color: Colors.white
   );
-  static TextStyle headerPrimaryColor = TextStyle(
-      fontSize: 23.0,
-      fontWeight: FontWeight.bold,
-      color: Colors.black54,
+  static TextStyle headerPrimaryColor =  TextStyle(
+    fontSize: SizeConfig.calculateTextSize(24),
+    color: Colors.black54,
+    fontWeight: FontWeight.bold,
   );
 }

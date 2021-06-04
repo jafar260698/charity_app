@@ -89,12 +89,22 @@ class _FavouriteScreen extends State<FavouriteScreen> {
       automaticallyImplyLeading: false,
       title: Column(
         children: [
-          SizedBox(height: 60.0),
+          Opacity(
+            opacity: 0.5,
+            child: Text(
+              appBarTitle,
+              style: TextStyle(
+                fontSize: SizeConfig.calculateTextSize(18),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          SizedBox(height:30.0),
           Text(
             appBarIncome,
               style: AppThemeStyle.headerPrimaryColor
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 20),
         ],
       ),
       bottom: bottom,
