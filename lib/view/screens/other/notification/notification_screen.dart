@@ -71,11 +71,11 @@ class _NotificationScreen extends State<NotificationScreen> {
         items: [
           BottomNavigationBarItem(
             icon: new Icon(Icons.mail_outline),
-            title: new Text('Личное'),
+            label: 'Личное',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset('assets/svg/SENDING.svg'),
-            title: new Text('Комментарии',style: AppThemeStyle.title14,),
+            title: new Text('Комментарии',style: AppThemeStyle.title14),
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.people_outline),
