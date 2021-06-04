@@ -1,3 +1,4 @@
+import 'package:charity_app/view/theme/app_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -192,9 +193,14 @@ class AppThemeStyle {
   );
 
   static TextStyle headerWhite = TextStyle(
-      fontSize: 24.0,
-      letterSpacing: 0.4,
+      fontSize: 23.0,
+      letterSpacing: 0.1,
       fontWeight: FontWeight.bold,
       color: Colors.white
+  );
+  static TextStyle headerPrimaryColor = TextStyle(
+      fontSize: 23.0,
+      fontWeight: FontWeight.bold,
+      color: Colors.black54,
   );
 }

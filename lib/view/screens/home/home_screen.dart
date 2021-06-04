@@ -41,17 +41,6 @@ class _HomeScreen extends State<HomeScreen> {
         '',
         style: AppThemeStyle.appBarStyle,
       ),
-      // leading: IconButton(
-      //   splashRadius: 20,
-      //   icon: Icon(Icons.menu_outlined),
-      //   onPressed: () => {
-      //      Scaffold.of(context).openDrawer(),
-      //   },
-      //   tooltip: MaterialLocalizations
-      //       .of(
-      //       context)
-      //       .openAppDrawerTooltip,
-      // ),
       elevation: 0,
       automaticallyImplyLeading: false,
       actions: <Widget>[

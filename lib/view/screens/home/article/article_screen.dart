@@ -88,6 +88,7 @@ class _ArticleScreen extends State<ArticleScreen> {
     return AppBar(
       elevation: 1.0,
       shadowColor: Colors.black45,
+      automaticallyImplyLeading: false,
       centerTitle: true,
       title: Column(
         children: [
@@ -113,16 +114,6 @@ class _ArticleScreen extends State<ArticleScreen> {
           SizedBox(height: 10.0),
         ],
       ),
-      leading: CupertinoButton(
-        onPressed: () => Navigator.pop(context),
-        child: Icon(Icons.arrow_back_ios, size: 20),
-      ),
-      actions: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(right: 20),
-          child: Icon(Icons.menu_outlined),
-        )
-      ],
       bottom: bottom,
     );
   }

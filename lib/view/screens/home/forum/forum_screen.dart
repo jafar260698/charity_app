@@ -23,7 +23,7 @@ class _ForumScreen extends State<ForumScreen> {
       backgroundColor: AppColor.primary,
       body: Column(
         children: <Widget>[
-          SizedBox(height: 40),
+          SizedBox(height: 60),
           Text(
             'Форум',
             style: AppThemeStyle.headerWhite

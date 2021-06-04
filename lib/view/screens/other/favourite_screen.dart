@@ -29,12 +29,12 @@ class _FavouriteScreen extends State<FavouriteScreen> {
           appBarTitle: "",
           appBarIncome: "Избранное",
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(70.0), // here the desired height
+            preferredSize: Size.fromHeight(80.0), // here the desired height
             child: Align(
               alignment: Alignment.center,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(98, 190, 184, 1),
+                  color: AppColor.primary,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
@@ -61,7 +61,8 @@ class _FavouriteScreen extends State<FavouriteScreen> {
                       bottomLeftRadius: 0,
                       bottomRightRadius: 0,
                       tabPosition: TabPosition.bottom,
-                      color: Color.fromRGBO(98, 190, 184, 1)),
+                      color: AppColor.primary
+                  ),
                 ),
               ),
             ),
@@ -85,28 +86,15 @@ class _FavouriteScreen extends State<FavouriteScreen> {
     return AppBar(
       shadowColor: Colors.black45,
       centerTitle: true,
+      automaticallyImplyLeading: false,
       title: Column(
         children: [
-          Opacity(
-            opacity: 0.5,
-            child: Text(
-              appBarTitle,
-              style: TextStyle(
-                fontSize: SizeConfig.calculateTextSize(18),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-          SizedBox(height: 20.0),
+          SizedBox(height: 60.0),
           Text(
             appBarIncome,
-            style: TextStyle(
-              fontSize: SizeConfig.calculateTextSize(20),
-              color: Colors.black54,
-              fontWeight: FontWeight.bold,
-            ),
+              style: AppThemeStyle.headerPrimaryColor
           ),
-          SizedBox(height: 10.0),
+          SizedBox(height: 30),
         ],
       ),
       bottom: bottom,
