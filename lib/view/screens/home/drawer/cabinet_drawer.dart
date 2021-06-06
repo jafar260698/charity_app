@@ -75,15 +75,23 @@ class CabinetDrawer extends StatelessWidget {
                     child: SingleChildScrollView(
                       physics: BouncingScrollPhysics(),
                       child: Padding(
-                        padding: EdgeInsets.only(left: 25,top: 20,bottom: 20),
+                        padding: EdgeInsets.only(left: 15,top: 20,bottom: 20),
                         child: Column(
                           children: [
-                            Row(
-                              children: [
-                                SvgPicture.asset('assets/svg/sending.svg',color: Colors.white,),
-                                SizedBox(width: 10),
-                                Text("О нас",style: AppThemeStyle.buttonWhite16,),
-                              ],
+                            InkWell(
+                              onTap: (){
+
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 5,bottom: 5,left: 10,right: 10),
+                                child: Row(
+                                  children: [
+                                    SvgPicture.asset('assets/svg/sending.svg',color: Colors.white,),
+                                    SizedBox(width: 10),
+                                    Text("О нас",style: AppThemeStyle.buttonWhite16,),
+                                  ],
+                                ),
+                              ),
                             ),
                             SizedBox(height: 12),
                             Divider(
@@ -91,13 +99,7 @@ class CabinetDrawer extends StatelessWidget {
                               color: Colors.white.withOpacity(0.7),
                             ),
                             SizedBox(height: 12),
-                            Row(
-                              children: [
-                                Icon(Ionicons.home_outline,color: Colors.white),
-                                SizedBox(width: 10),
-                                Text("Главная",style: AppThemeStyle.buttonWhite16,),
-                              ],
-                            ),
+                            inkWell(Icons.home_outlined, "Главная"),
                             Padding(
                               padding: EdgeInsets.all(10),
                               child: Column(
@@ -128,37 +130,13 @@ class CabinetDrawer extends StatelessWidget {
                               color: Colors.white.withOpacity(0.7),
                             ),
                             SizedBox(height: 20),
-                            Row(
-                              children: [
-                                Icon(FlevaIcons.bookmark_outline,color: Colors.white),
-                                SizedBox(width: 10),
-                                Text("Избранное",style: AppThemeStyle.buttonWhite16,),
-                              ],
-                            ),
+                            inkWell(Icons.bookmark_outline, "Избранное"),
                             SizedBox(height: 20),
-                            Row(
-                              children: [
-                                Icon(Icons.settings,color: Colors.white),
-                                SizedBox(width: 10),
-                                Text("FAQ",style: AppThemeStyle.buttonWhite16,),
-                              ],
-                            ),
+                            inkWell(Icons.settings, "FAQ"),
                             SizedBox(height: 20),
-                            Row(
-                              children: [
-                                Icon(Icons.settings,color: Colors.white,),
-                                SizedBox(width: 10),
-                                Text("Настройки",style: AppThemeStyle.buttonWhite16,),
-                              ],
-                            ),
+                            inkWell(Icons.settings, "Настройки"),
                             SizedBox(height: 20),
-                            Row(
-                              children: [
-                                Icon(Icons.logout,color: Colors.white,),
-                                SizedBox(width: 10),
-                                Text("Выйти",style: AppThemeStyle.buttonWhite16,),
-                              ],
-                            ),
+                            inkWell(Icons.logout, "Выйти"),
                             SizedBox(height: 80),
                           ],
                         ),
@@ -172,92 +150,19 @@ class CabinetDrawer extends StatelessWidget {
         viewModelBuilder: () => CabinetDrawerViewModel());
   }
 
-  Widget inkwell(DrawerList listData, CabinetDrawerViewModel model) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        splashColor: Colors.grey.withOpacity(0.1),
-        highlightColor: Colors.transparent,
-        onTap: () {
-          navigationtoScreen(listData.index);
-        },
-        child: Stack(
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    width: 10.0,
-                    height: SizeConfig.calculateBlockVertical(44),
-                    decoration: BoxDecoration(
-                      color: screenIndex == listData.index
-                          ? model.backHeaderColor
-                          : Colors.transparent,
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(8),
-                        bottomRight: Radius.circular(8),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 10.0),
-                  listData.isAssetsImage
-                      ? Container(
-                          width: SizeConfig.calculateBlockHorizontal(20),
-                          height: SizeConfig.calculateBlockHorizontal(20),
-                          child: SvgPicture.asset(listData.svgName,
-                              color: screenIndex == listData.index
-                                  ? Colors.red
-                                  : Colors.blueAccent),
-                        )
-                      : Icon(listData.icon.icon,
-                          color: screenIndex == listData.index
-                              ? Colors.red
-                              : Colors.blueAccent),
-                  SizedBox(width: SizeConfig.calculateBlockHorizontal(16)),
-                  Text(
-                    listData.labelName,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: SizeConfig.calculateTextSize(16),
-                      color: screenIndex == listData.index
-                          ? Colors.white
-                          : Colors.white,
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
-                ],
-              ),
-            ),
-            screenIndex == listData.index
-                ? AnimatedBuilder(
-                    animation: iconAnimationController,
-                    builder: (BuildContext context, Widget child) {
-                      return Transform(
-                        transform: Matrix4.translationValues(
-                            (MediaQuery.of(context).size.width * 0.75 - 64) *
-                                (1.0 - iconAnimationController.value - 1.1),
-                            0.0,
-                            0.0),
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 8, bottom: 8),
-                          child: Container(
-                            width:
-                                MediaQuery.of(context).size.width * 0.75 - 20,
-                            height: SizeConfig.calculateBlockVertical(46),
-                            decoration: BoxDecoration(
-                              color: model.backHeaderColor?.withOpacity(0.3),
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(26),
-                                bottomRight: Radius.circular(26),
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  )
-                : const SizedBox()
+
+  Widget inkWell(IconData icon,String title){
+    return InkWell(
+      onTap: (){
+
+      },
+      child: Padding(
+        padding: EdgeInsets.only(top: 3,bottom: 3,left: 10,right: 10),
+        child: Row(
+          children: [
+            Icon(icon,color: Colors.white),
+            SizedBox(width: 10),
+            Text(title,style: AppThemeStyle.buttonWhite16),
           ],
         ),
       ),
