@@ -17,7 +17,7 @@ class AvatarImage extends StatelessWidget{
       width: size,
       height: size,
       decoration: new BoxDecoration(
-        color: const Color(0xff7c94b6),
+        color: Colors.grey,
         image: new DecorationImage(
           image: new NetworkImage(imageUrl),
           fit: BoxFit.cover,
@@ -25,7 +25,7 @@ class AvatarImage extends StatelessWidget{
         borderRadius: new BorderRadius.all(new Radius.circular(size/2)),
         border: new Border.all(
           color: Colors.white,
-          width: 2.0,
+          width: 0.0,
         ),
       ),
     );

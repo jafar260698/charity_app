@@ -25,7 +25,6 @@ class _NotificationScreen extends State<NotificationScreen> {
       appBar: widgetAppBarTitleSecond(context),
       body: Column(
         children: <Widget>[
-          SizedBox(height: 20),
           InkWell(
             onTap: (){ },
             child: Row(
@@ -71,15 +70,15 @@ class _NotificationScreen extends State<NotificationScreen> {
         items: [
           BottomNavigationBarItem(
             icon: new Icon(Icons.mail_outline),
-            label: 'Личное',
+            title: new Text('Личное',style: AppThemeStyle.text14_600),
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/svg/SENDING.svg'),
-            title: new Text('Комментарии',style: AppThemeStyle.title14),
+            icon: SvgPicture.asset('assets/svg/sending.svg'),
+            title: new Text('Комментарии',style: AppThemeStyle.text14_600,),
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.people_outline),
-              title: Text('Форум')
+              title: Text('Форум',style: AppThemeStyle.text14_600)
           )
         ],
       ),
