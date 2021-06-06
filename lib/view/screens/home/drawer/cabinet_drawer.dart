@@ -7,15 +7,12 @@
  *
  */
 
-import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/screens/home/profile/profile_screen.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
-import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:stacked/stacked.dart';
 import 'cabinet_drawer_viewmodel.dart';
 
@@ -77,6 +74,7 @@ class CabinetDrawer extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.only(left: 15,top: 20,bottom: 20),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             InkWell(
                               onTap: (){
@@ -101,10 +99,12 @@ class CabinetDrawer extends StatelessWidget {
                             SizedBox(height: 12),
                             inkWell(Icons.home_outlined, "Главная"),
                             Padding(
-                              padding: EdgeInsets.all(10),
+                              padding: EdgeInsets.fromLTRB(30,10,10,10),
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(" Диагнозы",style: AppThemeStyle.buttonWhite16,),
+                                  Text("Диагнозы",style: AppThemeStyle.buttonWhite16,),
                                   SizedBox(width: 34),
                                   Text("Навыки",style: AppThemeStyle.buttonWhite16,),
                                   SizedBox(width: 14),
