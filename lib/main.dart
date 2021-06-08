@@ -7,8 +7,10 @@ import 'package:charity_app/view/theme/my_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:theme_provider/theme_provider.dart';
+import 'localization/demo_localizations.dart';
 
 
 void main() async {
@@ -93,6 +95,28 @@ class _MyAppState extends State<MyApp> {
               debugShowCheckedModeBanner: false,
               title: 'Charity App',
               home: SplashScreen(),
+              locale: _locale,
+              supportedLocales: [
+                Locale('kz', 'KZ'),
+                Locale('ru', 'RU'),
+              ],
+              localizationsDelegates: [
+                DemoLocalization.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              localeResolutionCallback: (locale, supportedLocales) {
+                for (var supportedLocale in supportedLocales) {
+                  if (supportedLocale.languageCode == locale.languageCode &&
+                      supportedLocale.countryCode == locale.countryCode) {
+                    return supportedLocale;
+                  }
+                  print(supportedLocale);
+                }
+                // print(supportedLocales.first);
+                return supportedLocales.first;
+              },
             ),
           ),
         ),
