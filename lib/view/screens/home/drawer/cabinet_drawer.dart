@@ -8,6 +8,7 @@
  */
 
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/view/screens/home/faq.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
 import 'package:fleva_icons/fleva_icons.dart';
@@ -74,7 +75,7 @@ class CabinetDrawer extends StatelessWidget {
                           children: [
                             InkWell(
                               onTap: (){
-
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => FaqScreen()));
                               },
                               child: Padding(
                                 padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
