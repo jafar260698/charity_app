@@ -8,7 +8,6 @@
 import 'dart:async';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/screens/auth/welcome_screen.dart';
-import 'package:charity_app/view/screens/home/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-        builder: (BuildContext context) => HomeScreen()),
+        builder: (BuildContext context) => WelcomeScreen()),
     (Route<dynamic> route) => false,);
   }
 

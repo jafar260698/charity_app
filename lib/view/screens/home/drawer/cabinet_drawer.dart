@@ -157,7 +157,7 @@ class CabinetDrawer extends StatelessWidget {
                                       onTap: (){
 
                                       },
-                                      child: Text("Форум",style: AppThemeStyle.buttonWhite16,)),
+                                        child: Text("Форум",style: AppThemeStyle.buttonWhite16,)),
                                   SizedBox(height: 10),
                                   InkWell( onTap: (){
 

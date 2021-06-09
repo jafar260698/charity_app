@@ -1,4 +1,5 @@
 
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/auth/login_viewmodel.dart';
 import 'package:charity_app/view/screens/auth/register_screen.dart';
@@ -20,7 +21,7 @@ class LoginScreen extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/image/register_background.png"),
+              image: AssetImage("assets/image/login_background.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -41,7 +42,7 @@ class LoginScreen extends StatelessWidget {
                           alignment: Alignment.center,
                           child: getWidgetLogoHorizontal),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(30)),
                     Text(
                       'Вход',
                       style: TextStyle(
@@ -51,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                         color: Colors.white
                       ),
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(15)),
                     TextField(
                       decoration: InputDecoration(
                         hintText: 'E-MAIL',
@@ -70,7 +71,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
                       decoration: InputDecoration(
                         hintText: 'ПАРОЛЬ',
@@ -89,7 +90,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     Text(
                       'Забыли пароль',
                       style: TextStyle(
@@ -98,7 +99,7 @@ class LoginScreen extends StatelessWidget {
                         color: Colors.white
                       ),
                     ),
-                    SizedBox(height: 100),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(120)),
                     BtnUI(
                       height: 55,
                       isLoading: false,
@@ -109,8 +110,8 @@ class LoginScreen extends StatelessWidget {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
                       },
                     ),
-                    SizedBox(height: 50),
-                    SvgPicture.asset('assets/svg/welcome.svg',height: 200),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(50)),
+                    SvgPicture.asset('assets/svg/welcome.svg',height: SizeConfig.calculateBlockVertical(200)),
                     Padding(
                       padding: EdgeInsets.only(left: 10,right: 10),
                       child: Opacity(
@@ -122,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10,)
+                    SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                   ],
                 ),
               ),
