@@ -69,7 +69,7 @@ class UserData {
 
   Future<bool> getIsFirstTime() async {
     final SharedPreferences prefs = await _prefs;
-    return prefs.getBool('isFirstTime');
+    return prefs.getBool('isFirstTime')??true;
   }
 
   Future<void> saveNIN(String nin) async {
