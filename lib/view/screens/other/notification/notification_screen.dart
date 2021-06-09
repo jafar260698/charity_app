@@ -1,6 +1,7 @@
 
 
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/view/components/column_message.dart';
 import 'package:charity_app/view/components/text_field_ui.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
@@ -31,12 +32,12 @@ class _NotificationScreen extends State<NotificationScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(width: 30),
+                SizedBox(width: 25),
                 AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0),
                 SizedBox(width: 10),
                 Expanded(
                   child: Text(
-                    "Бибигуль Ахметова",
+                    "Бибигуль \nАхметова",
                     textAlign: TextAlign.start,
                     style: AppThemeStyle.listStyle,
                   ),
@@ -44,7 +45,7 @@ class _NotificationScreen extends State<NotificationScreen> {
               ],
             ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 15),
           Padding(
             padding: EdgeInsets.all(30),
             child: TextFieldUI(
@@ -62,6 +63,7 @@ class _NotificationScreen extends State<NotificationScreen> {
               ),
             ),
           ),
+          mainUI(_currentIndex),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -89,6 +91,56 @@ class _NotificationScreen extends State<NotificationScreen> {
     setState(() {
       _currentIndex = index;
     });
+  }
+  Widget mainUI(int index){
+    switch(index){
+      case 0: {
+        return private();
+      }
+      break;
+      case 1: {
+        return comment();
+      }
+      break;
+      case 2: {
+        return forum();
+      }
+      break;
+      default: {
+        return private();
+      }
+      break;
+    }
+  }
+
+  Widget private(){
+    return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
+      child: Column(
+        children: [
+          ColumnMessage("","","","","",true),
+          SizedBox(height: 20.0),
+          ColumnMessage("","","","","",true)
+        ],
+      ),
+    );
+  }
+
+  Widget forum(){
+    return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
+      child: Column(
+        children: [
+          ColumnMessage("","","","","",true),
+          SizedBox(height: 20.0),
+          ColumnMessage("","","","","",true)
+        ],
+      ),
+    );
+  }
+
+  Widget comment(){
+    return Text("У вас пока нет комментариев",style: AppThemeStyle.subtitleList);
   }
 
 }

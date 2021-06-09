@@ -12,6 +12,7 @@ import 'package:charity_app/view/components/bottom_modal_sheet.dart';
 import 'package:charity_app/view/screens/home/faq.dart';
 import 'package:charity_app/view/screens/home/settings_screen.dart';
 import 'package:charity_app/view/screens/other/favourite_screen.dart';
+import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
 import 'package:charity_app/view/widgets/exit_modal_view.dart';
@@ -39,7 +40,7 @@ class CabinetDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<CabinetDrawerViewModel>.reactive(
         builder: (context, model, child) => Scaffold(
-              backgroundColor: Color.fromRGBO(98, 190, 184, 1),
+              backgroundColor: AppColor.primary,
               body: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
@@ -217,7 +218,7 @@ class CabinetDrawer extends StatelessWidget {
                                 padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.settings,color: Colors.white,),
+                                    Icon(Icons.info_outline,color: Colors.white,),
                                     SizedBox(width: 10),
                                     Text("Настройки",style: AppThemeStyle.buttonWhite16,),
                                   ],

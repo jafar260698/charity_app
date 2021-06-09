@@ -54,8 +54,8 @@ dependencies:
   flutter_svg: ^0.19.3
 
   #sign in
-  google_sign_in: ^5.0.4
-  sign_in_with_apple: ^3.0.0
+ # google_sign_in: ^5.0.4
+#  sign_in_with_apple: ^3.0.0
 #  flutter_facebook_auth: ^3.4.1
 
 dev_dependencies:

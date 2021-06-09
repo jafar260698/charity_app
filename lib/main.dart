@@ -7,10 +7,8 @@ import 'package:charity_app/view/theme/my_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:theme_provider/theme_provider.dart';
-import 'localization/demo_localizations.dart';
 
 
 void main() async {

@@ -8,7 +8,6 @@ import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import '../../widgets/get_widget_family.dart';
 import '../../widgets/get_widget_logo.dart';
 import 'login_screen.dart';
@@ -19,17 +18,17 @@ class AccessViaSocialMediaScreen extends StatefulWidget {
   _AccessViaSocialMediaScreen createState() => _AccessViaSocialMediaScreen();
 }
 
-GoogleSignIn _googleSignIn = GoogleSignIn(
-  // Optional clientId
-  // clientId: '479882132969-9i9aqik3jfjd7qhci1nqf0bm2g71rm1u.apps.googleusercontent.com',
-  scopes: <String>[
-    'email',
-    'https://www.googleapis.com/auth/contacts.readonly',
-  ],
-);
+// GoogleSignIn _googleSignIn = GoogleSignIn(
+//   // Optional clientId
+//   // clientId: '479882132969-9i9aqik3jfjd7qhci1nqf0bm2g71rm1u.apps.googleusercontent.com',
+//   scopes: <String>[
+//     'email',
+//     'https://www.googleapis.com/auth/contacts.readonly',
+//   ],
+// );
 
 class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
-  GoogleSignInAccount _currentUser;
+ // GoogleSignInAccount _currentUser;
   String _contactText = '';
 
 
@@ -151,7 +150,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   text: 'Вход через Google',
                                   icon: SvgPicture.asset('assets/svg/auth/google.svg'),
                                   ontap: () {
-                                    _handleSignIn();
+                                    //_handleSignIn();
                                   },
                                 ),
                                 SizedBox(height:8),
@@ -203,11 +202,11 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
     );
   }
 
-  Future<void> _handleSignIn() async {
-    try {
-      await _googleSignIn.signIn();
-    } catch (error) {
-      print(error);
-    }
-  }
+  // Future<void> _handleSignIn() async {
+  //   try {
+  //     await _googleSignIn.signIn();
+  //   } catch (error) {
+  //     print(error);
+  //   }
+  // }
 }
