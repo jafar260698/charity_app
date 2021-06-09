@@ -2,6 +2,7 @@
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/home/resource/resource_screen.dart';
+import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
@@ -20,20 +21,15 @@ class _ForumDetailScreen extends State<ForumDetailScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Color.fromRGBO(108, 187, 217, 1),
+      backgroundColor: AppColor.primary,
       appBar: widgetAppBarTitle(context),
       body: Column(
         children: <Widget>[
           Text(
-            'Форум',
-            style: TextStyle(
-                fontSize: 24.0,
-                letterSpacing: 0.4,
-                fontWeight: FontWeight.bold,
-                color: Colors.white
-            ),
+              'Форум',
+              style: AppThemeStyle.headerWhite
           ),
-          SizedBox(height: 30,),
+          SizedBox(height: 30),
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
@@ -201,10 +197,10 @@ class _ForumDetailScreen extends State<ForumDetailScreen> {
       bottomNavigationBar: ConvexAppBar(
         style: TabStyle.reactCircle,
         color: Colors.black45,
-        activeColor: Color.fromRGBO(98, 190, 184, 1),
+        activeColor: AppColor.primary,
         backgroundColor: Colors.white,
         items: [
-          TabItem(icon: Icon(Icons.add,color: Colors.white,)
+          TabItem(icon: Icon(Icons.add,size: 32,color: Colors.white)
           ),
         ],
         initialActiveIndex: 0,

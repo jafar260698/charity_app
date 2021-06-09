@@ -21,7 +21,7 @@ class _SearchScreen extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: widgetAppBarTitleSecond(context),
+      appBar: widgetAppBarTitle(context),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20),

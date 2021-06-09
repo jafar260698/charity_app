@@ -1,11 +1,15 @@
 
 
 
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/card_icon.dart';
 import 'package:charity_app/view/components/text_field_ui.dart';
+import 'package:charity_app/view/screens/other/notification/notification_screen.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class HomeWithoutDrawerScreen extends StatefulWidget {
   @override
@@ -27,13 +31,14 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: getAppBar(context),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            SizedBox(height: 80),
+            SizedBox(height: SizeConfig.calculateBlockVertical(20)),
             Container(
-              height: 200,
+              height: SizeConfig.calculateBlockVertical(240),
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: 20,right: 10),
@@ -41,7 +46,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
                   itemBuilder: (context,index){
                     return Container(
                       margin: EdgeInsets.only(right: 10),
-                      height: 200,
+                      height: SizeConfig.calculateBlockVertical(240),
                       width: MediaQuery.of(context).size.width*0.9,
                       decoration: BoxDecoration(
                           image: DecorationImage(
@@ -58,7 +63,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
               padding: EdgeInsets.all(30),
               child: TextFieldUI(
                 controller: pinfl,
-                text: 'Jafar',
+                text: '',
                 keyboardType: TextInputType.number,
                 inputAction: TextInputAction.done,
                 hintText: "Поиск...",
@@ -99,12 +104,35 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
                 CardIcon("Dlya mam", "assets/svg/services/for_mummy.svg")
               ],
             ),
-            SizedBox(height: 80.0)
+            SizedBox(height: SizeConfig.calculateBlockVertical(80))
           ],
         ),
       ),
     );
   }
 
+  Widget getAppBar(context) {
+    return AppBar(
+      elevation: 2.0,
+      centerTitle: true,
+      shadowColor: Colors.black26,
+      automaticallyImplyLeading: false,
+      title: Text(""),
+      actions: <Widget>[
+        IconButton(
+          splashRadius: 20,
+          iconSize: 30,
+          padding: EdgeInsets.all(0.0),
+          icon: SvgPicture.asset(
+            'assets/svg/notifications.svg',
+            color: ThemeProvider.themeOf(context).data.accentIconTheme.color,
+          ),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => NotificationScreen()));
+          },
+        ),
+      ],
+    );
+  }
 
 }

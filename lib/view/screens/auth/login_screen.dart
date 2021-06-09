@@ -134,5 +134,4 @@ class LoginScreen extends StatelessWidget {
       viewModelBuilder: ()=>LoginViewModel(),
     );
   }
-
 }

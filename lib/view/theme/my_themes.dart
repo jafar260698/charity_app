@@ -28,15 +28,15 @@ class MyThemes {
     appBarTheme: AppBarTheme(
       color: Color(0xffF6F6FA),
     ),
-    primaryColor: Color(0xff325ECD),
+    primaryColor: Color.fromRGBO(98, 190, 184, 1),
     accentColor: Color(0xff325ECD),
     backgroundColor: Color(0xffF6F6FA),
     scaffoldBackgroundColor: Color(0xffF6F6FA),
     cardColor: Color(0xffFFFFFF),
     focusColor: Color(0xff325ECD),
-    bottomAppBarColor: Color(0xff325ECD),
+    bottomAppBarColor: Color.fromRGBO(98, 190, 184, 1),
     cupertinoOverrideTheme: CupertinoThemeData(
-      primaryColor: Color(0xff325ECD),
+      primaryColor: Color.fromRGBO(98, 190, 184, 1),
     ),
     accentIconTheme: IconThemeData(
       color: Color(0xff282F38),
@@ -52,15 +52,15 @@ class MyThemes {
     appBarTheme: AppBarTheme(
       color: Color(0xffF6F6FA),
     ),
-    primaryColor: Color(0xff325ECD),
+    primaryColor: Color.fromRGBO(98, 190, 184, 1),
     accentColor: Color(0xff325ECD),
     backgroundColor: Color(0xffF6F6FA),
     scaffoldBackgroundColor: Color(0xffF6F6FA),
     cardColor: Color(0xffFFFFFF),
     focusColor: Color(0xff325ECD),
-    bottomAppBarColor: Color(0xff325ECD),
+    bottomAppBarColor: Color.fromRGBO(98, 190, 184, 1),
     cupertinoOverrideTheme: CupertinoThemeData(
-      primaryColor: Color(0xff325ECD),
+      primaryColor: Color.fromRGBO(98, 190, 184, 1),
     ),
     accentIconTheme: IconThemeData(
       color: Color(0xff282F38),

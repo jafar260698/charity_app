@@ -1,4 +1,5 @@
 
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/auth/welcome_viewmodel.dart';
 import 'package:charity_app/view/widgets/get_widget_family.dart';
@@ -12,9 +13,10 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return ViewModelBuilder<WelcomeViewModel>.reactive(
-      builder:(context,model,child)=> Material(
-        child: Scaffold(
+      builder:(context,model,child)=> MaterialApp(
+        home: Scaffold(
           body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -29,9 +31,9 @@ class WelcomeScreen extends StatelessWidget {
                     SafeArea(
                       child: Column(
                         children: [
-                          SizedBox(height: 70),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(70)),
                           getWidgetLogoVertical,
-                          SizedBox(height: 20),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                           Padding(
                               padding: EdgeInsets.only(left: 35, right: 35),
                               child: getWidgetLogo)
@@ -41,14 +43,14 @@ class WelcomeScreen extends StatelessWidget {
                   ],
                 ),
                 Positioned(
-                  bottom: 20.0,
-                  left: 20.0,
-                  right: 20.0,
+                  bottom: SizeConfig.calculateBlockVertical(20),
+                  left: SizeConfig.calculateBlockVertical(20),
+                  right: SizeConfig.calculateBlockVertical(20),
                   child: Column(
                     children: [
                       SizedBox(height: 8),
                       BtnUI(
-                        height: 55,
+                        height:SizeConfig.calculateBlockVertical(55),
                         isLoading: false,
                         textColor: Colors.white,
                         color: Color.fromRGBO(98, 190, 184, 1),
@@ -61,7 +63,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 8),
                       BtnUI(
-                        height: 55,
+                        height:SizeConfig.calculateBlockVertical(55),
                         isLoading: false,
                         textColor: Colors.white,
                         color: Color.fromRGBO(98, 190, 184, 1),

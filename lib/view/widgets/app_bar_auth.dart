@@ -106,11 +106,5 @@ widgetAppBarTitleSecond(
       onPressed: () => Navigator.of(context).pop(),
 
     ),
-    actions: <Widget>[
-      Padding(
-        padding: EdgeInsets.only(right: 20),
-        child: Icon(Icons.menu_outlined),
-      )
-    ],
   );
 }
