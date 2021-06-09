@@ -1,6 +1,7 @@
 
 import 'dart:io';
 
+import 'package:charity_app/utils/toast_utils.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/components/btn_ui_icon.dart';
 import 'package:charity_app/view/theme/themes.dart';
@@ -62,7 +63,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   icon: SvgPicture.asset('assets/svg/auth/apple.svg'),
                                   ontap: () {
                                     if(Platform.isAndroid){
-
+                                      ToastUtils.toastInfoGeneral("This is not IOS Phone",context);
                                     }
                                   },
                                 ),
