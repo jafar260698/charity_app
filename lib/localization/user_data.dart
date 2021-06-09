@@ -62,14 +62,14 @@ class UserData {
     return prefs.getString('view.theme');
   }
 
-  Future<void> saveIsERI(bool isERI) async {
+  Future<void> isFirstTime(bool isERI) async {
     final SharedPreferences prefs = await _prefs;
-    prefs.setBool('isERI', isERI);
+    prefs.setBool('isFirstTime', isERI);
   }
 
-  Future<bool> getIsERI() async {
+  Future<bool> getIsFirstTime() async {
     final SharedPreferences prefs = await _prefs;
-    return prefs.getBool('isERI');
+    return prefs.getBool('isFirstTime');
   }
 
   Future<void> saveNIN(String nin) async {

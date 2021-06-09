@@ -1,4 +1,5 @@
 
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/home/bottom_navigation.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,14 +24,14 @@ class _PermissionForNotification extends State<PermissionForNotification> {
         ),
         child: Center(
           child: Padding(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(12),
             child: Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.close, color: Colors.white, size: 26),
-                  SizedBox(height: 5),
+                  SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                   Container(
                     child: Card(
                       clipBehavior: Clip.antiAlias,
@@ -43,7 +44,7 @@ class _PermissionForNotification extends State<PermissionForNotification> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(height: 20),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                             Text(
                               'Разрешить уведомления',
                               style: TextStyle(
@@ -51,9 +52,9 @@ class _PermissionForNotification extends State<PermissionForNotification> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(height: 20),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                             SvgPicture.asset('assets/svg/permission.svg'),
-                            SizedBox(height: 20),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                             Text(
                               'Разрешить доступ к уведомлениям для завершения регистрации.',
                               style: TextStyle(
@@ -62,7 +63,7 @@ class _PermissionForNotification extends State<PermissionForNotification> {
                               ),
                               textAlign: TextAlign.center,
                             ),
-                            SizedBox(height: 30),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(30)),
                             BtnUI(
                               height: 55,
                               isLoading: false,
@@ -74,7 +75,7 @@ class _PermissionForNotification extends State<PermissionForNotification> {
                                     builder: (context) => BottomNavigation()));
                               },
                             ),
-                            SizedBox(height: 15),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(15)),
                             Text(
                               'Не разрешать',
                               style: TextStyle(
@@ -82,7 +83,7 @@ class _PermissionForNotification extends State<PermissionForNotification> {
                                 fontWeight: FontWeight.normal,
                               ),
                             ),
-                            SizedBox(height: 5),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                           ],
                         ),
                       ),

@@ -125,7 +125,7 @@ class AppThemeStyle {
   );
 
   static TextStyle listStyle = TextStyle(
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.bold,
   );

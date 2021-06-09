@@ -1,4 +1,5 @@
 
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/auth/login_viewmodel.dart';
 import 'package:charity_app/view/screens/auth/register_screen.dart';
@@ -20,7 +21,7 @@ class LoginScreen extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/image/register_background.png"),
+              image: AssetImage("assets/image/login_background.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -41,7 +42,7 @@ class LoginScreen extends StatelessWidget {
                           alignment: Alignment.center,
                           child: getWidgetLogoHorizontal),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(30)),
                     Text(
                       'Вход',
                       style: TextStyle(
@@ -51,8 +52,9 @@ class LoginScreen extends StatelessWidget {
                         color: Colors.white
                       ),
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(15)),
                     TextField(
+                      controller: model.emailController,
                       decoration: InputDecoration(
                         hintText: 'E-MAIL',
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
@@ -70,8 +72,9 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
+                      controller: model.passwordController,
                       decoration: InputDecoration(
                         hintText: 'ПАРОЛЬ',
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
@@ -89,7 +92,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     Text(
                       'Забыли пароль',
                       style: TextStyle(
@@ -98,7 +101,7 @@ class LoginScreen extends StatelessWidget {
                         color: Colors.white
                       ),
                     ),
-                    SizedBox(height: 100),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(120)),
                     BtnUI(
                       height: 55,
                       isLoading: false,
@@ -106,23 +109,28 @@ class LoginScreen extends StatelessWidget {
                       color: Color.fromRGBO(98, 190, 184, 1),
                       text: 'ВХОД',
                       ontap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
+                        model.login(context);
                       },
                     ),
-                    SizedBox(height: 50),
-                    SvgPicture.asset('assets/svg/welcome.svg',height: 200),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10,right: 10),
-                      child: Opacity(
-                        opacity: 0.5,
-                        child: Text(
-                          'Еще нет акаунта? Зарегистрироваться сейчас!',
-                          style: AppThemeStyle.title12,
-                          textAlign: TextAlign.center,
+                    SizedBox(height: SizeConfig.calculateBlockVertical(50)),
+                    SvgPicture.asset('assets/svg/welcome.svg',height: SizeConfig.calculateBlockVertical(200)),
+                    InkWell(
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10,right: 10),
+                        child: Opacity(
+                          opacity: 0.5,
+                          child: Text(
+                            'Еще нет акаунта? Зарегистрироваться сейчас!',
+                            style: AppThemeStyle.title12,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 10,)
+                    SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                   ],
                 ),
               ),

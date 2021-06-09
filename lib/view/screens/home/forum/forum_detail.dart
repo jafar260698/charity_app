@@ -9,7 +9,6 @@ import 'package:charity_app/view/widgets/avatar_iamge.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ForumDetailScreen extends StatefulWidget {
   @override
