@@ -1,7 +1,9 @@
 
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/auth/permission_for_notification.dart';
 import 'package:charity_app/view/screens/auth/register_viewmodel.dart';
+import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:charity_app/view/widgets/custom/getWidgetLogoHorizontal.dart';
 import 'package:fleva_icons/fleva_icons.dart';
@@ -27,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/image/register.png"),
+              image: AssetImage("assets/image/register_background.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -49,7 +51,7 @@ class RegisterScreen extends StatelessWidget {
                           child: getWidgetLogoHorizontal
                       ),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(30)),
                     Text(
                       'Создать аккаунт',
                       style: TextStyle(
@@ -59,7 +61,7 @@ class RegisterScreen extends StatelessWidget {
                         color: Colors.white
                       ),
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(15)),
                     TextField(
                       decoration: InputDecoration(
                         hintText: 'ИМЯ ПОЛЗОВАТEЛЯ',
@@ -78,7 +80,7 @@ class RegisterScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
                       decoration: InputDecoration(
                         hintText: 'ПАРОЛЬ',
@@ -97,7 +99,7 @@ class RegisterScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
                       decoration: InputDecoration(
                         hintText: 'E-MAIL',
@@ -116,7 +118,7 @@ class RegisterScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
                       decoration: InputDecoration(
                         hintText: 'ТEЛEФОН',
@@ -135,18 +137,18 @@ class RegisterScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 80),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(80)),
                     TextField(
                       decoration: InputDecoration(
                         hintText: 'ТИП ПОЛЗОВАТEЛЯ',
                         hintStyle: TextStyle(color: Colors.black,fontSize: 14),
-                        prefixIcon: Icon(Icons.person,color: Color.fromRGBO(98, 190, 184, 1),
+                        prefixIcon: Icon(Icons.person,color: AppThemeStyle.primaryColor,
                         ),
-                        suffixIcon: Icon(Icons.rotate_left,color: Color.fromRGBO(98, 190, 184, 1),
+                        suffixIcon: Icon(Icons.keyboard_arrow_down,size: 30,color: AppThemeStyle.primaryColor,
                         ),
                         enabledBorder: new UnderlineInputBorder(
                           borderSide: BorderSide(
-                            color: Color.fromRGBO(98, 190, 184, 1),
+                            color: AppThemeStyle.primaryColor,
                             width: 1.0,
                           ),
                         ),
@@ -164,7 +166,7 @@ class RegisterScreen extends StatelessWidget {
                         Row(children: [
                           new Radio(
                             value: 0,
-                            activeColor:Color.fromRGBO(98, 190, 184, 1),
+                            activeColor:AppThemeStyle.primaryColor,
                             groupValue: _radioValue2,
                             onChanged: _handleRadioValueChange2,
                           ),
@@ -177,7 +179,7 @@ class RegisterScreen extends StatelessWidget {
                           new Radio(
                             value: 1,
                             groupValue: _radioValue2,
-                            activeColor:Color.fromRGBO(98, 190, 184, 1),
+                            activeColor:AppThemeStyle.primaryColor,
                             onChanged: _handleRadioValueChange2,
                           ),
                           new Text(
@@ -188,7 +190,7 @@ class RegisterScreen extends StatelessWidget {
                         Row(children: [
                           new Radio(
                             value: 2,
-                            activeColor:Color.fromRGBO(98, 190, 184, 1),
+                            activeColor:AppThemeStyle.primaryColor,
                             groupValue: _radioValue2,
                             onChanged: _handleRadioValueChange2,
                           ),
@@ -199,18 +201,18 @@ class RegisterScreen extends StatelessWidget {
                         ],),
                       ],
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(30)),
                     BtnUI(
                       height: 55,
                       isLoading: false,
                       textColor: Colors.white,
-                      color: Color.fromRGBO(98, 190, 184, 1),
+                      color: AppThemeStyle.primaryColor,
                       text: 'СОЗДАТЬ',
                       ontap: () {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
                       },
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                   ],
                 ),
               ),
