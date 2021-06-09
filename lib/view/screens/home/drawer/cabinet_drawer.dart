@@ -36,7 +36,6 @@ class CabinetDrawer extends StatelessWidget {
         builder: (context, model, child) => Scaffold(
               backgroundColor: Color.fromRGBO(98, 190, 184, 1),
               body: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Container(
@@ -69,49 +68,66 @@ class CabinetDrawer extends StatelessWidget {
                     child: SingleChildScrollView(
                       physics: BouncingScrollPhysics(),
                       child: Padding(
-                        padding: EdgeInsets.only(left: 25,top: 20,bottom: 20),
+                        padding: EdgeInsets.only(left: 15,top: 20,bottom: 20),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              children: [
-                                SvgPicture.asset('assets/svg/sending.svg',color: Colors.white,),
-                                SizedBox(width: 10),
-                                Text("О нас",style: AppThemeStyle.buttonWhite16,),
-                              ],
+                            InkWell(
+                              onTap: (){
+
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                child: Row(
+                                  children: [
+                                    SvgPicture.asset('assets/svg/sending.svg',color: Colors.white,),
+                                    SizedBox(width: 10),
+                                    Text("О нас",style: AppThemeStyle.buttonWhite16,),
+                                  ],
+                                ),
+                              ),
                             ),
-                            SizedBox(height: 12),
+                            SizedBox(height: 5),
                             Divider(
                               height: 2,
                               color: Colors.white.withOpacity(0.7),
                             ),
-                            SizedBox(height: 12),
-                            Row(
-                              children: [
-                                Icon(Ionicons.home_outline,color: Colors.white),
-                                SizedBox(width: 10),
-                                Text("Главная",style: AppThemeStyle.buttonWhite16,),
-                              ],
+                            SizedBox(height: 5),
+                            InkWell(
+                              onTap: (){
+
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                child: Row(
+                                  children: [
+                                    Icon(Ionicons.home_outline,color: Colors.white),
+                                    SizedBox(width: 10),
+                                    Text("Главная",style: AppThemeStyle.buttonWhite16,),
+                                  ],
+                                ),
+                              ),
                             ),
                             Padding(
                               padding: EdgeInsets.all(10),
                               child: Column(
                                 children: [
                                   Text(" Диагнозы",style: AppThemeStyle.buttonWhite16,),
-                                  SizedBox(width: 34),
+                                  SizedBox(width: 10),
                                   Text("Навыки",style: AppThemeStyle.buttonWhite16,),
-                                  SizedBox(width: 14),
+                                  SizedBox(width: 10),
                                   Text("Ресурсы",style: AppThemeStyle.buttonWhite16,),
-                                  SizedBox(width: 14),
+                                  SizedBox(width: 10),
                                   Text("Услугодатели",style: AppThemeStyle.buttonWhite16,),
-                                  SizedBox(width: 14),
+                                  SizedBox(width: 10),
                                   Text("Права",style: AppThemeStyle.buttonWhite16,),
-                                  SizedBox(width: 14),
+                                  SizedBox(width: 10),
                                   Text("Инклюзия",style: AppThemeStyle.buttonWhite16,),
-                                  SizedBox(width: 14),
+                                  SizedBox(width: 10),
                                   Text("Статьи",style: AppThemeStyle.buttonWhite16,),
-                                  SizedBox(width: 14),
+                                  SizedBox(width: 10),
                                   Text("Форум",style: AppThemeStyle.buttonWhite16,),
-                                  SizedBox(width: 14),
+                                  SizedBox(width: 10),
                                   Text("Ссылки",style: AppThemeStyle.buttonWhite16,),
                                 ],
                               ),
@@ -121,39 +137,68 @@ class CabinetDrawer extends StatelessWidget {
                               height: 2,
                               color: Colors.white.withOpacity(0.7),
                             ),
-                            SizedBox(height: 20),
-                            Row(
-                              children: [
-                                Icon(FlevaIcons.bookmark_outline,color: Colors.white),
-                                SizedBox(width: 10),
-                                Text("Избранное",style: AppThemeStyle.buttonWhite16,),
-                              ],
+                            SizedBox(height: 10),
+                            InkWell(
+                              onTap: (){
+
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                child: Row(
+                                  children: [
+                                    Icon(FlevaIcons.bookmark_outline,color: Colors.white),
+                                    SizedBox(width: 10),
+                                    Text("Избранное",style: AppThemeStyle.buttonWhite16,),
+                                  ],
+                                ),
+                              ),
                             ),
-                            SizedBox(height: 20),
-                            Row(
-                              children: [
-                                Icon(Icons.settings,color: Colors.white),
-                                SizedBox(width: 10),
-                                Text("FAQ",style: AppThemeStyle.buttonWhite16,),
-                              ],
+                            SizedBox(height: 5),
+                            InkWell(
+                              onTap: (){
+
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.settings,color: Colors.white),
+                                    SizedBox(width: 10),
+                                    Text("FAQ",style: AppThemeStyle.buttonWhite16,),
+                                  ],
+                                ),
+                              ),
                             ),
-                            SizedBox(height: 20),
-                            Row(
-                              children: [
-                                Icon(Icons.settings,color: Colors.white,),
-                                SizedBox(width: 10),
-                                Text("Настройки",style: AppThemeStyle.buttonWhite16,),
-                              ],
+                            SizedBox(height:5),
+                            InkWell(
+                              onTap: (){
+
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.settings,color: Colors.white,),
+                                    SizedBox(width: 10),
+                                    Text("Настройки",style: AppThemeStyle.buttonWhite16,),
+                                  ],
+                                ),
+                              ),
                             ),
-                            SizedBox(height: 20),
-                            Row(
-                              children: [
-                                Icon(Icons.logout,color: Colors.white,),
-                                SizedBox(width: 10),
-                                Text("Выйти",style: AppThemeStyle.buttonWhite16,),
-                              ],
+                            SizedBox(height: 5),
+                            InkWell(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.logout,color: Colors.white,),
+                                    SizedBox(width: 10),
+                                    Text("Выйти",style: AppThemeStyle.buttonWhite16,),
+                                  ],
+                                ),
+                              ),
                             ),
-                            SizedBox(height: 80),
+                            SizedBox(height: 50),
                           ],
                         ),
                       ),

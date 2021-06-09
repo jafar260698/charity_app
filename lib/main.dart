@@ -95,28 +95,28 @@ class _MyAppState extends State<MyApp> {
               debugShowCheckedModeBanner: false,
               title: 'Charity App',
               home: SplashScreen(),
-              locale: _locale,
-              supportedLocales: [
-                Locale('kz', 'KZ'),
-                Locale('ru', 'RU'),
-              ],
-              localizationsDelegates: [
-                DemoLocalization.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              localeResolutionCallback: (locale, supportedLocales) {
-                for (var supportedLocale in supportedLocales) {
-                  if (supportedLocale.languageCode == locale.languageCode &&
-                      supportedLocale.countryCode == locale.countryCode) {
-                    return supportedLocale;
-                  }
-                  print(supportedLocale);
-                }
-                // print(supportedLocales.first);
-                return supportedLocales.first;
-              },
+              // locale: _locale,
+              // supportedLocales: [
+              //   Locale('kz', 'KZ'),
+              //   Locale('ru', 'RU'),
+              // ],
+              // localizationsDelegates: [
+              //   DemoLocalization.delegate,
+              //   GlobalMaterialLocalizations.delegate,
+              //   GlobalWidgetsLocalizations.delegate,
+              //   GlobalCupertinoLocalizations.delegate,
+              // ],
+              // localeResolutionCallback: (locale, supportedLocales) {
+              //   for (var supportedLocale in supportedLocales) {
+              //     if (supportedLocale.languageCode == locale.languageCode &&
+              //         supportedLocale.countryCode == locale.countryCode) {
+              //       return supportedLocale;
+              //     }
+              //     print(supportedLocale);
+              //   }
+              //   // print(supportedLocales.first);
+              //   return supportedLocales.first;
+              // },
             ),
           ),
         ),
