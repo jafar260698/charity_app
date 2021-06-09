@@ -53,7 +53,7 @@ class CabinetDrawer extends StatelessWidget {
                             SizedBox(width: 10),
                             Expanded(
                               child: Text(
-                                "Бибигуль Ахметова",
+                                "Бибигуль\n Ахметова",
                                 textAlign: TextAlign.start,
                                 style: AppThemeStyle.listStyle,
                               ),
