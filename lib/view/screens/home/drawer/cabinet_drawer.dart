@@ -8,11 +8,13 @@
  */
 
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/view/components/bottom_modal_sheet.dart';
 import 'package:charity_app/view/screens/home/faq.dart';
 import 'package:charity_app/view/screens/home/settings_screen.dart';
 import 'package:charity_app/view/screens/other/favourite_screen.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
+import 'package:charity_app/view/widgets/exit_modal_view.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -224,6 +226,9 @@ class CabinetDrawer extends StatelessWidget {
                             ),
                             SizedBox(height: 5),
                             InkWell(
+                              onTap: (){
+                                _modalInfo(context);
+                              },
                               child: Padding(
                                 padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
                                 child: Row(
@@ -247,6 +252,34 @@ class CabinetDrawer extends StatelessWidget {
         onModelReady: (model) => model.initContext(context),
         viewModelBuilder: () => CabinetDrawerViewModel());
   }
+
+  void _modalInfo(BuildContext context) {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(20),
+        ),
+      ),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      context: context,
+      builder: (builder) {
+        return BottomModalSheet(
+          child: Wrap(
+            children: [
+              ExitModalView(
+                onTapExit: () {
+
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+
 
   Widget inkwell(DrawerList listData, CabinetDrawerViewModel model) {
     return Material(
