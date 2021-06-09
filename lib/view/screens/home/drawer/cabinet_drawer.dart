@@ -20,6 +20,7 @@ import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:stacked/stacked.dart';
 import 'cabinet_drawer_viewmodel.dart';
 
@@ -176,15 +177,6 @@ class CabinetDrawer extends StatelessWidget {
                               color: Colors.white.withOpacity(0.7),
                             ),
                             SizedBox(height: 20),
-                            inkWell(Icons.bookmark_outline, "Избранное"),
-                            SizedBox(height: 20),
-                            inkWell(Icons.settings, "FAQ"),
-                            SizedBox(height: 20),
-                            inkWell(Icons.settings, "Настройки"),
-                            SizedBox(height: 20),
-                            inkWell(Icons.logout, "Выйти"),
-                            SizedBox(height: 80),
-                            SizedBox(height: 10),
                             InkWell(
                               onTap: (){
                                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => FavouriteScreen()));
