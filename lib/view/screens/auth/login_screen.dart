@@ -54,6 +54,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(15)),
                     TextField(
+                      controller: model.emailController,
                       decoration: InputDecoration(
                         hintText: 'E-MAIL',
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
@@ -73,6 +74,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
+                      controller: model.passwordController,
                       decoration: InputDecoration(
                         hintText: 'ПАРОЛЬ',
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
@@ -107,19 +109,24 @@ class LoginScreen extends StatelessWidget {
                       color: Color.fromRGBO(98, 190, 184, 1),
                       text: 'ВХОД',
                       ontap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
+                        model.login(context);
                       },
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(50)),
                     SvgPicture.asset('assets/svg/welcome.svg',height: SizeConfig.calculateBlockVertical(200)),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10,right: 10),
-                      child: Opacity(
-                        opacity: 0.5,
-                        child: Text(
-                          'Еще нет акаунта? Зарегистрироваться сейчас!',
-                          style: AppThemeStyle.title12,
-                          textAlign: TextAlign.center,
+                    InkWell(
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10,right: 10),
+                        child: Opacity(
+                          opacity: 0.5,
+                          child: Text(
+                            'Еще нет акаунта? Зарегистрироваться сейчас!',
+                            style: AppThemeStyle.title12,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                     ),
