@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/components/btn_ui_icon.dart';
 import 'package:charity_app/view/theme/themes.dart';
@@ -59,7 +61,9 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   text: 'Вход через Apple',
                                   icon: SvgPicture.asset('assets/svg/auth/apple.svg'),
                                   ontap: () {
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
+                                    if(Platform.isAndroid){
+
+                                    }
                                   },
                                 ),
                                 SizedBox(height:8),
