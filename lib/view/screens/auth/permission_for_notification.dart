@@ -1,4 +1,5 @@
 
+import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/home/bottom_navigation.dart';
@@ -12,6 +13,7 @@ class PermissionForNotification extends StatefulWidget {
 }
 
 class _PermissionForNotification extends State<PermissionForNotification> {
+  UserData _userData=new UserData();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,6 +73,7 @@ class _PermissionForNotification extends State<PermissionForNotification> {
                               color: Color.fromRGBO(98, 190, 184, 1),
                               text: 'Разрешить доступ',
                               ontap: () {
+                                _userData.isFirstTime(true);
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => BottomNavigation()));
                               },
