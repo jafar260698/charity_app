@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void nextToScreen(){
-    userData.getIsFirstTime().then((value) => {
+    userData.isFirstTime().then((value) => {
       if(value){
       Navigator.pushAndRemoveUntil(
       context,

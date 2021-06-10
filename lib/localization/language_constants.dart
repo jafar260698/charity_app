@@ -7,7 +7,7 @@ const String LAGUAGE_CODE = 'languageCode';
 
 //languages code
 const String RUSSIAN = 'ru';
-const String KAZAK = 'kz';
+const String KAZAK = 'uz';
 
 Future<Locale> setLocale(String languageCode) async {
   UserData _userData = UserData();
@@ -17,18 +17,18 @@ Future<Locale> setLocale(String languageCode) async {
 
 Future<Locale> getLocale() async {
   SharedPreferences _prefs = await SharedPreferences.getInstance();
-  String languageCode = _prefs.getString(LAGUAGE_CODE) ?? "kz";
+  String languageCode = _prefs.getString(LAGUAGE_CODE) ?? "uz";
   return _locale(languageCode);
 }
 
 Locale _locale(String languageCode) {
   switch (languageCode) {
     case KAZAK:
-      return Locale(KAZAK, 'KZ');
+      return Locale(KAZAK, 'UZ');
     case RUSSIAN:
       return Locale(RUSSIAN, "RU");
     default:
-      return Locale(KAZAK, 'KZ');
+      return Locale(KAZAK, 'UZ');
   }
 }
 

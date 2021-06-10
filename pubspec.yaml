@@ -80,7 +80,7 @@ flutter:
       - assets/
       - assets/lottie/
       - assets/strings/
-      - assets/strings/kz.json
+      - assets/strings/uz.json
       - assets/strings/ru.json
       - assets/svg/
       - assets/image/

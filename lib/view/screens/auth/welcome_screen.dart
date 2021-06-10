@@ -2,6 +2,7 @@
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/auth/welcome_viewmodel.dart';
+import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/widgets/get_widget_family.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -50,10 +51,10 @@ class WelcomeScreen extends StatelessWidget {
                     children: [
                       SizedBox(height: 8),
                       BtnUI(
-                        height:SizeConfig.calculateBlockVertical(55),
+                        height: 55,
                         isLoading: false,
                         textColor: Colors.white,
-                        color: Color.fromRGBO(98, 190, 184, 1),
+                        color: AppColor.primary,
                         text: 'Qozoq tili',
                         ontap: () {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -63,10 +64,10 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 8),
                       BtnUI(
-                        height:SizeConfig.calculateBlockVertical(55),
+                        height:55,
                         isLoading: false,
                         textColor: Colors.white,
-                        color: Color.fromRGBO(98, 190, 184, 1),
+                        color: AppColor.primary,
                         text: 'Rus tili',
                         ontap: () {
                           Navigator.of(context).push(MaterialPageRoute(

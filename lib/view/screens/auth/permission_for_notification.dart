@@ -3,6 +3,7 @@ import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/home/bottom_navigation.dart';
+import 'package:charity_app/view/theme/app_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -70,23 +71,32 @@ class _PermissionForNotification extends State<PermissionForNotification> {
                               height: 55,
                               isLoading: false,
                               textColor: Colors.white,
-                              color: Color.fromRGBO(98, 190, 184, 1),
+                              color: AppColor.primary,
                               text: 'Разрешить доступ',
                               ontap: () {
-                                _userData.isFirstTime(true);
+                                _userData.setFirstTime(false);
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => BottomNavigation()));
                               },
                             ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(15)),
-                            Text(
-                              'Не разрешать',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.normal,
+                            SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                            InkWell(
+                              onTap: (){
+                                _userData.setFirstTime(false);
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => BottomNavigation()));
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: Text(
+                                  'Не разрешать',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
                               ),
                             ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                           ],
                         ),
                       ),

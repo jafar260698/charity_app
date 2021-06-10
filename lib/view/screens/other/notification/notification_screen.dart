@@ -24,60 +24,62 @@ class _NotificationScreen extends State<NotificationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       //appBar: widgetAppBarTitleSecond(context),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(10,10,10,0),
-            child: IconButton(
-              iconSize: 18.0,
-              splashRadius: 20,
-              icon: Icon(Icons.arrow_back_ios,color: Colors.black54),
-              onPressed: () => Navigator.of(context).pop(),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(10,5,10,0),
+              child: IconButton(
+                iconSize: 18.0,
+                splashRadius: 20,
+                icon: Icon(Icons.arrow_back_ios,color: Colors.black54),
+                onPressed: () => Navigator.of(context).pop(),
 
+              ),
             ),
-          ),
-          InkWell(
-            onTap: (){ },
-            child: Padding(
-              padding: EdgeInsets.only(left: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: Text(
-                      "Бибигуль \nАхметова",
-                      textAlign: TextAlign.start,
-                      style: AppThemeStyle.listStyle,
+            InkWell(
+              onTap: (){ },
+              child: Padding(
+                padding: EdgeInsets.only(left: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        "Бибигуль \nАхметова",
+                        textAlign: TextAlign.start,
+                        style: AppThemeStyle.listStyle,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 15),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: TextFieldUI(
-              controller: pinfl,
-              text: '',
-              keyboardType: TextInputType.number,
-              inputAction: TextInputAction.done,
-              hintText: "Поиск...",
-              suffixIcon: IconButton(
-                splashRadius: 25,
-                onPressed: () {
+            SizedBox(height: 15),
+            Padding(
+              padding: EdgeInsets.all(30),
+              child: TextFieldUI(
+                controller: pinfl,
+                text: '',
+                keyboardType: TextInputType.number,
+                inputAction: TextInputAction.done,
+                hintText: "Поиск...",
+                suffixIcon: IconButton(
+                  splashRadius: 25,
+                  onPressed: () {
 
-                },
-                icon: Icon(FlevaIcons.search),
+                  },
+                  icon: Icon(FlevaIcons.search),
+                ),
               ),
             ),
-          ),
-          mainUI(_currentIndex),
-        ],
+            mainUI(_currentIndex),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped, // new

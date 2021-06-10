@@ -41,7 +41,7 @@ class _DemoLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) {
-    return ['kz', 'ru'].contains(locale.languageCode);
+    return ['uz', 'ru'].contains(locale.languageCode);
   }
 
   @override
