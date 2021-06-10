@@ -1,5 +1,8 @@
 
+import 'package:charity_app/localization/language.dart';
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/utils/utils.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/auth/welcome_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
@@ -11,6 +14,7 @@ import '../../widgets/get_widget_logo.dart';
 import 'access_via_social_media_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +59,9 @@ class WelcomeScreen extends StatelessWidget {
                         isLoading: false,
                         textColor: Colors.white,
                         color: AppColor.primary,
-                        text: 'Qozoq tili',
+                        text: getTranslated(context, 'kz_language'),
                         ontap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                                  AccessViaSocialMediaScreen()));
+                          model.changeLanguage(context, 0);
                         },
                       ),
                       SizedBox(height: 8),
@@ -70,9 +72,7 @@ class WelcomeScreen extends StatelessWidget {
                         color: AppColor.primary,
                         text: 'Rus tili',
                         ontap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                                  AccessViaSocialMediaScreen()));
+                          model.changeLanguage(context, 1);
                         },
                       )
                     ],

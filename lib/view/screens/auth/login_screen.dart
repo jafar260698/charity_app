@@ -1,4 +1,5 @@
 
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/auth/login_viewmodel.dart';
@@ -107,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                       isLoading: false,
                       textColor: Colors.white,
                       color: Color.fromRGBO(98, 190, 184, 1),
-                      text: 'ВХОД',
+                      text: getTranslated(context, 'enter'),
                       ontap: () {
                         model.login(context);
                       },
