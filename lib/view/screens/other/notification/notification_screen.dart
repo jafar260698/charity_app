@@ -29,7 +29,7 @@ class _NotificationScreen extends State<NotificationScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.fromLTRB(10,5,10,0),
+              padding: EdgeInsets.fromLTRB(10,10,10,0),
               child: IconButton(
                 iconSize: 18.0,
                 splashRadius: 20,
