@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:theme_provider/theme_provider.dart';
 
-class TextFieldUI extends StatefulWidget {
-  const TextFieldUI(
+class SearchFieldUI extends StatefulWidget {
+  const SearchFieldUI(
       {this.hintText,
       this.errorText,
       this.errorValidate = false,
@@ -68,7 +68,7 @@ class TextFieldUI extends StatefulWidget {
   _TextFieldState createState() => _TextFieldState();
 }
 
-class _TextFieldState extends State<TextFieldUI> {
+class _TextFieldState extends State<SearchFieldUI> {
   @override
   Widget build(BuildContext context) {
     var theme = ThemeProvider.controllerOf(context).theme.data;
@@ -106,7 +106,7 @@ class _TextFieldState extends State<TextFieldUI> {
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0),
-              borderSide: BorderSide(color: Colors.white),
+              borderSide: BorderSide(color: Colors.black26),
             ),
             disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0),

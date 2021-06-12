@@ -1,7 +1,7 @@
 
 
 
-import 'package:charity_app/view/components/text_field_ui.dart';
+import 'package:charity_app/view/components/search_field_ui.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:fleva_icons/fleva_icons.dart';
@@ -29,7 +29,7 @@ class _SearchScreen extends State<SearchScreen> {
             children: [
               Padding(
                 padding: EdgeInsets.only(left: 10,right: 10),
-                child: TextFieldUI(
+                child: SearchFieldUI(
                   controller: pinfl,
                   text: 'Jafar',
                   keyboardType: TextInputType.number,

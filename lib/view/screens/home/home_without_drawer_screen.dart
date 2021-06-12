@@ -3,7 +3,7 @@
 
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/card_icon.dart';
-import 'package:charity_app/view/components/text_field_ui.dart';
+import 'package:charity_app/view/components/search_field_ui.dart';
 import 'package:charity_app/view/screens/other/notification/notification_screen.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -61,7 +61,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
             ),
             Padding(
               padding: EdgeInsets.all(30),
-              child: TextFieldUI(
+              child: SearchFieldUI(
                 controller: pinfl,
                 text: '',
                 keyboardType: TextInputType.number,

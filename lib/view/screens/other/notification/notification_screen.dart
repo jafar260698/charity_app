@@ -2,7 +2,7 @@
 
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/column_message.dart';
-import 'package:charity_app/view/components/text_field_ui.dart';
+import 'package:charity_app/view/components/search_field_ui.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
@@ -23,7 +23,6 @@ class _NotificationScreen extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: widgetAppBarTitleSecond(context),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +61,7 @@ class _NotificationScreen extends State<NotificationScreen> {
             SizedBox(height: 15),
             Padding(
               padding: EdgeInsets.all(30),
-              child: TextFieldUI(
+              child: SearchFieldUI(
                 controller: pinfl,
                 text: '',
                 keyboardType: TextInputType.number,
