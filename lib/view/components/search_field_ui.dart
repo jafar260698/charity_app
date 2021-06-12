@@ -111,23 +111,13 @@ class _TextFieldState extends State<SearchFieldUI> {
             disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0),
             ),
-            prefixText: widget.prefixText ?? "",
-            prefixIcon: widget.prefixIcon != null
-                ? widget.prefixIcon
-                : widget.hasIcon
-                    ? Icon(Icons.call)
-                    : null,
-            errorText: widget.errorValidate ? widget.errorText : null,
             contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
             counterText: widget.counterText,
             border: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.withOpacity(0.5)),
               borderRadius: BorderRadius.circular(30.0),
             ),
-            filled: true,
-            fillColor: theme.cardColor,
             hintText: widget.hintText,
-            labelStyle: AppThemeStyle.titleStyle,
             helperText: widget.helperText,
             suffixIcon: widget.suffixIcon,
           ),
