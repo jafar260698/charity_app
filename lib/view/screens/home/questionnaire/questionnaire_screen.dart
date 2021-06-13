@@ -4,8 +4,6 @@ import 'package:charity_app/view/screens/auth/welcome_viewmodel.dart';
 import 'package:charity_app/view/screens/home/questionnaire/questionnaire_answer_screen.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:charity_app/view/widgets/custom/getWidgetLogoHorizontal.dart';
-import 'package:charity_app/view/widgets/get_widget_family.dart';
-import 'package:charity_app/view/widgets/get_widget_logo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';

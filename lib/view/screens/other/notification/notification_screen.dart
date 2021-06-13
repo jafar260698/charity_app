@@ -218,6 +218,7 @@ class _NotificationScreen extends State<NotificationScreen> {
                 imageUrl: "",
                 isVisible: false,
               ),
+              SizedBox(height: SizeConfig.calculateBlockVertical(10)),
             ],
           ),
         ],

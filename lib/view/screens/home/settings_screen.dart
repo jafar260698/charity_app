@@ -1,9 +1,8 @@
 
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
-import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +12,20 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreen extends State<SettingsScreen> {
+  int _radioValue = 1;
+
+  void _handleRadioValueChange(int value) {
+    setState(() {
+      _radioValue = value;
+
+      switch (_radioValue) {
+        case 1:
+          break;
+        case 2:
+          break;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +66,13 @@ class _SettingsScreen extends State<SettingsScreen> {
                         textAlign: TextAlign.start,
                         style: AppThemeStyle.listStyle,
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                       Text(
                         "Редактировать имя",
                         textAlign: TextAlign.start,
                         style: AppThemeStyle.buttonNormal,
                       ),
-                      SizedBox(height: 10),
-
+                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     ],
                   ),
                 ),
@@ -88,6 +100,45 @@ class _SettingsScreen extends State<SettingsScreen> {
                     height: 2,
                     color: Colors.grey.withOpacity(0.7),
                   ),
+                  SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Қазақ тілі",
+                        textAlign: TextAlign.start,
+                        style: AppThemeStyle.subtitleList,
+                      ),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+                      Transform.scale(
+                        scale: 1.5,
+                        child: new Radio(
+                          value: 1,
+                          activeColor: AppColor.primary,
+                          groupValue: _radioValue,
+                          onChanged: _handleRadioValueChange,
+                        ),
+                      ),                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Русский язык",
+                        textAlign: TextAlign.start,
+                        style: AppThemeStyle.subtitleList,
+                      ),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+                      Transform.scale(
+                        scale: 1.5,
+                        child: new Radio(
+                          activeColor: AppColor.primary,
+                          value: 2,
+                          groupValue: _radioValue,
+                          onChanged: _handleRadioValueChange,
+                        ),
+                      ),                    ],
+                  ),
                   SizedBox(height: SizeConfig.calculateBlockVertical(30)),
                   Text(
                     "Настройки уведомлений",
@@ -99,7 +150,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                     height: 2,
                     color: Colors.grey.withOpacity(0.7),
                   ),
-                  SizedBox(height: SizeConfig.calculateBlockVertical(30)),
+                  SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -108,7 +159,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                         textAlign: TextAlign.start,
                         style: AppThemeStyle.subtitleList,
                       ),
-                      SizedBox(width: 20),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                       CupertinoSwitch(
                           value: true,
                           onChanged: (newValue){
@@ -125,8 +176,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                         textAlign: TextAlign.start,
                         style: AppThemeStyle.subtitleList,
                       ),
-                      SizedBox(width: 20,),
-
+                      SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                       CupertinoSwitch(
                           value: true,
                           onChanged: (newValue){
@@ -143,7 +193,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                         textAlign: TextAlign.start,
                         style: AppThemeStyle.subtitleList,
                       ),
-                      SizedBox(width: 20,),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                       CupertinoSwitch(
                           value: false,
                           onChanged: (newValue){
@@ -151,7 +201,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                           }
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

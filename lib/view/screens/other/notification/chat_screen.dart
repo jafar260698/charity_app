@@ -5,8 +5,10 @@ import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -70,12 +72,36 @@ class _ChatScreen extends State<ChatScreen> {
                   SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                   MessageTime(align: Alignment.center,text:"1 февраля"),
                   SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                  Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:"Тоже"),
+                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                  Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:"Дали"),
+                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                  Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:"Это была шутка"),
+                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                  Message(align: Alignment.topRight,color: Color.fromRGBO(229, 255, 243, 1),text: "Хороший репортаж,думаю, многие не знают, что в Москве",),
+                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                  Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:"Хороший репортаж, думаю, "
+                      "многие не знают, что в Москве "
+                      "есть такая клиника, хоть в газете прочтут. Дети -"),
                 ],
               ),
             )
           ],
         ),
       ),
+      // bottomNavigationBar: ConvexAppBar(
+      //   style: TabStyle.reactCircle,
+      //   color: AppColor.primary,
+      //   backgroundColor: AppColor.primary,
+      //   items: [
+      //     TabItem(icon: SvgPicture.asset('assets/svg/sending.svg',color: Colors.white,height: 8,width: 8,)
+      //     ),
+      //   ],
+      //   initialActiveIndex: 0,
+      //   onTap: (int i) => {
+      //
+      //   },
+      // ),
     );
   }
 }
@@ -93,14 +119,15 @@ class Message extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Align(
+    if(text.length<33)
+      return Align(
       alignment: align,
       child: Container(
         decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.all(Radius.circular(25))
         ),
-        width: SizeConfig.screenWidth*0.7,
+      //  width: SizeConfig.screenWidth*0.7,
         child: Padding(
           padding: EdgeInsets.all(15),
           child: Text(text,
@@ -109,6 +136,24 @@ class Message extends StatelessWidget{
         ),
       ),
     );
+    else {
+      return Align(
+        alignment: align,
+        child: Container(
+          decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.all(Radius.circular(25))
+          ),
+          width: SizeConfig.screenWidth*0.7,
+          child: Padding(
+            padding: EdgeInsets.all(15),
+            child: Text(text,
+              style: AppThemeStyle.title14,
+            ),
+          ),
+        ),
+      );
+    }
   }
 
 }
