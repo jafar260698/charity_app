@@ -9,7 +9,7 @@
 
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/bottom_modal_sheet.dart';
-import 'package:charity_app/view/screens/home/faq.dart';
+import 'package:charity_app/view/screens/home/faq_screen.dart';
 import 'package:charity_app/view/screens/home/settings_screen.dart';
 import 'package:charity_app/view/screens/other/favourite_screen.dart';
 import 'package:charity_app/view/theme/app_color.dart';
