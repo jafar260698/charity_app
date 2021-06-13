@@ -19,7 +19,6 @@ class _ForumDetailScreen extends State<ForumDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       backgroundColor: AppColor.primary,
       appBar: widgetAppBarTitle(context),
@@ -29,7 +28,7 @@ class _ForumDetailScreen extends State<ForumDetailScreen> {
               'Форум',
               style: AppThemeStyle.headerWhite
           ),
-          SizedBox(height: 30),
+          SizedBox(height: SizeConfig.calculateBlockVertical(30)),
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
@@ -51,14 +50,14 @@ class _ForumDetailScreen extends State<ForumDetailScreen> {
                           text: 'Информаторий',
                           ontap: () { },
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                         Padding(
                           padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:40.0),
-                              SizedBox(width: 10),
+                              SizedBox(height: SizeConfig.calculateBlockHorizontal(10)),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,14 +95,14 @@ class _ForumDetailScreen extends State<ForumDetailScreen> {
                             ],
                           ),
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                         Padding(
                           padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:40.0),
-                              SizedBox(width: 10),
+                              SizedBox(height: SizeConfig.calculateBlockHorizontal(10)),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,14 +139,14 @@ class _ForumDetailScreen extends State<ForumDetailScreen> {
                             ],
                           ),
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                         Padding(
                           padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:40.0),
-                              SizedBox(width: 10),
+                              SizedBox(height: SizeConfig.calculateBlockHorizontal(10)),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -191,7 +190,6 @@ class _ForumDetailScreen extends State<ForumDetailScreen> {
               ),
             ),
           ),
-
         ],
       ),
       bottomNavigationBar: ConvexAppBar(

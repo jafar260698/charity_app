@@ -193,7 +193,7 @@ class AppThemeStyle {
   );
 
   static TextStyle headerWhite = TextStyle(
-      fontSize: SizeConfig.calculateTextSize(24),
+      fontSize: 24,
       letterSpacing: 0.1,
       fontWeight: FontWeight.bold,
       color: Colors.white

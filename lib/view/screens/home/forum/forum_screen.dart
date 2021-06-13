@@ -18,17 +18,16 @@ class _ForumScreen extends State<ForumScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       backgroundColor: AppColor.primary,
       body: Column(
         children: <Widget>[
-          SizedBox(height: 60),
+          SizedBox(height: SizeConfig.calculateBlockVertical(60)),
           Text(
             'Форум',
             style: AppThemeStyle.headerWhite
           ),
-          SizedBox(height: 30),
+          SizedBox(height: SizeConfig.calculateBlockVertical(30)),
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
@@ -64,7 +63,7 @@ class _ForumScreen extends State<ForumScreen> {
                                 children: [
                                   Text(
                                     "Информаторий",
-                                    style: AppThemeStyle.titleStyle,
+                                    style: AppThemeStyle.appBarStyle16,
                                     textAlign: TextAlign.start,
                                   ),
                                   Icon(Icons.arrow_forward_ios,size: 16,)
