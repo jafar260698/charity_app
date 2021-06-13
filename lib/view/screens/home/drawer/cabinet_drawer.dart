@@ -88,7 +88,7 @@ class CabinetDrawer extends StatelessWidget {
                                   children: [
                                     SvgPicture.asset('assets/svg/info_icon.svg',color: Colors.white),
                                     SizedBox(width: 10),
-                                    Text("О нас",style: AppThemeStyle.buttonWhite16,),
+                                    Text("О нас",style: AppThemeStyle.buttonWhite16),
                                   ],
                                 ),
                               ),
@@ -109,7 +109,7 @@ class CabinetDrawer extends StatelessWidget {
                                   children: [
                                     SvgPicture.asset('assets/svg/home_icon.svg',color: Colors.white),
                                     SizedBox(width: 10),
-                                    Text("Главная",style: AppThemeStyle.buttonWhite16,),
+                                    Text("Главная",style: AppThemeStyle.buttonWhite16),
                                   ],
                                 ),
                               ),
@@ -121,53 +121,37 @@ class CabinetDrawer extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                      child: Text("Диагнозы",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                      child: Text("Диагнозы",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                      child: Text("Навыки",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                      child: Text("Навыки",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell( onTap: (){},
-                                      child: Text("Ресурсы",style: AppThemeStyle.buttonWhite16,)),
+                                      child: Text("Ресурсы",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                      child: Text("Услугодатели",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                      child: Text("Услугодатели",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                      child: Text("Права",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                      child: Text("Права",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                      child: Text("Инклюзия",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                      child: Text("Инклюзия",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                      child: Text("Статьи",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                      child: Text("Статьи",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                        child: Text("Форум",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                        child: Text("Форум",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
-                                  InkWell( onTap: (){
-
-                                  },child: Text("Ссылки",style: AppThemeStyle.buttonWhite16,)),
+                                  InkWell( onTap: (){ },child: Text("Ссылки",style: AppThemeStyle.buttonWhite16)),
                                 ],
                               ),
                             ),

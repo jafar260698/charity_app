@@ -197,7 +197,6 @@ class _DrawerUserControllerState extends State<DrawerUserController>
   }
 
   void onDrawerClick() {
-    //if scrollcontroller.offset != 0.0 then we set to closed the drawer(with animation to offset zero position) if is not 1 then open the drawer
     if (scrollController.offset != 0.0) {
       scrollController.animateTo(
         0.0,
