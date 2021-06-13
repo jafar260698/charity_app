@@ -35,7 +35,7 @@ class _ArticleScreen extends State<ArticleScreen> {
               alignment: Alignment.center,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(98, 190, 184, 1),
+                  color: AppColor.primary,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
@@ -103,16 +103,16 @@ class _ArticleScreen extends State<ArticleScreen> {
               ),
             ),
           ),
-          SizedBox(height: 30.0),
+          SizedBox(height: SizeConfig.calculateBlockVertical(30)),
           Text(
             appBarIncome,
             style: TextStyle(
-              fontSize: SizeConfig.calculateTextSize(24),
+              fontSize: 24,
               color: Colors.black54,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 20.0),
+          SizedBox(height: SizeConfig.calculateBlockVertical(20)),
         ],
       ),
       bottom: bottom,
@@ -158,7 +158,7 @@ class _ArticleScreen extends State<ArticleScreen> {
                                   Expanded(
                                     child: Text(
                                       "Благотворительный фонд «ДАРА»",
-                                      style: AppThemeStyle.resendCodeStyle,
+                                      style: AppThemeStyle.appBarStyle16,
                                       textAlign: TextAlign.start,
                                     ),
                                   ),
@@ -194,7 +194,7 @@ class _ArticleScreen extends State<ArticleScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25.0),

@@ -1,3 +1,4 @@
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,7 @@ class _CardIcon extends State<CardIcon>{
                 child: SvgPicture.asset(widget.iconPath)),
           ),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: SizeConfig.calculateBlockVertical(10)),
         Text(
           widget.operation,
           textAlign: TextAlign.center,
