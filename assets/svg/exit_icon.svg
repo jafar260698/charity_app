@@ -1,0 +1,7 @@
+<svg id="Icon_exit_outline" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="Icon_exit_outline_background" data-name="Icon_exit_outline background" width="24" height="24" fill="#fff" opacity="0"/>
+  <g id="Icon_exit_outline-2" data-name="Icon_exit_outline" transform="translate(2 2)">
+    <path id="Path" d="M4,0A4,4,0,0,0,0,4V7H2V4A2,2,0,0,1,4,2H16a2,2,0,0,1,2,2V16a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V13H0v3a4,4,0,0,0,4,4H16a4,4,0,0,0,4-4V4a4,4,0,0,0-4-4Z" fill="#758084"/>
+    <path id="Path-2" data-name="Path" d="M1,4.243a1,1,0,0,0,0,2h9.583L8.047,8.778a1,1,0,0,0,1.414,1.414l4.2-4.2a1,1,0,0,0,0-1.508l-4.2-4.2A1,1,0,0,0,8.047,1.707l2.536,2.536Z" transform="translate(0 4.757)" fill="#758084"/>
+  </g>
+</svg>

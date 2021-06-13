@@ -25,6 +25,7 @@ dependencies:
   convex_bottom_bar: ^3.0.0
   carousel_slider: ^3.0.0
   tab_indicator_styler: ^1.0.0
+  flutter_markdown: ^0.6.2
 
 
   # Provider + Stack pattern

@@ -86,7 +86,7 @@ class CabinetDrawer extends StatelessWidget {
                                 padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
                                 child: Row(
                                   children: [
-                                    SvgPicture.asset('assets/svg/sending.svg',color: Colors.white,),
+                                    SvgPicture.asset('assets/svg/info_icon.svg',color: Colors.white),
                                     SizedBox(width: 10),
                                     Text("О нас",style: AppThemeStyle.buttonWhite16,),
                                   ],
@@ -107,7 +107,7 @@ class CabinetDrawer extends StatelessWidget {
                                 padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
                                 child: Row(
                                   children: [
-                                    Icon(Ionicons.home_outline,color: Colors.white),
+                                    SvgPicture.asset('assets/svg/home_icon.svg',color: Colors.white),
                                     SizedBox(width: 10),
                                     Text("Главная",style: AppThemeStyle.buttonWhite16,),
                                   ],
@@ -202,7 +202,7 @@ class CabinetDrawer extends StatelessWidget {
                                 padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.info_outline,color: Colors.white),
+                                    SvgPicture.asset('assets/svg/question_icon.svg',color: Colors.white),
                                     SizedBox(width: 10),
                                     Text("FAQ",style: AppThemeStyle.buttonWhite16,),
                                   ],
@@ -218,7 +218,7 @@ class CabinetDrawer extends StatelessWidget {
                                 padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.settings,color: Colors.white,),
+                                    SvgPicture.asset('assets/svg/settings_icon.svg',color: Colors.white),
                                     SizedBox(width: 10),
                                     Text("Настройки",style: AppThemeStyle.buttonWhite16,),
                                   ],
@@ -234,7 +234,7 @@ class CabinetDrawer extends StatelessWidget {
                                 padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.logout,color: Colors.white,),
+                                    SvgPicture.asset('assets/svg/exit_icon.svg',color: Colors.white),
                                     SizedBox(width: 10),
                                     Text("Выйти",style: AppThemeStyle.buttonWhite16,),
                                   ],
