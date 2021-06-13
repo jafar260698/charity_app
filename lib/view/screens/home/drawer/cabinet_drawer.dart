@@ -70,164 +70,162 @@ class CabinetDrawer extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 15,top: 20,bottom: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            InkWell(
-                              onTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => FaqScreen()));
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset('assets/svg/info_icon.svg',color: Colors.white),
-                                    SizedBox(width: 10),
-                                    Text("О нас",style: AppThemeStyle.buttonWhite16),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
-                            Divider(
-                              height: 2,
-                              color: Colors.white.withOpacity(0.7),
-                            ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
-                            InkWell(
-                              onTap: (){
-
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset('assets/svg/home_icon.svg',color: Colors.white),
-                                    SizedBox(width: 10),
-                                    Text("Главная",style: AppThemeStyle.buttonWhite16),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 35,top: 10,bottom: 10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                  SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 15,top: 20,bottom: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          InkWell(
+                            onTap: (){
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => FaqScreen()));
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                              child: Row(
                                 children: [
-                                  InkWell(
-                                      onTap: (){},
-                                      child: Text("Диагнозы",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
-                                  InkWell(
-                                      onTap: (){},
-                                      child: Text("Навыки",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
-                                  InkWell( onTap: (){},
-                                      child: Text("Ресурсы",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
-                                  InkWell(
-                                      onTap: (){},
-                                      child: Text("Услугодатели",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
-                                  InkWell(
-                                      onTap: (){},
-                                      child: Text("Права",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
-                                  InkWell(
-                                      onTap: (){},
-                                      child: Text("Инклюзия",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
-                                  InkWell(
-                                      onTap: (){},
-                                      child: Text("Статьи",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
-                                  InkWell(
-                                      onTap: (){},
-                                        child: Text("Форум",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
-                                  InkWell( onTap: (){ },child: Text("Ссылки",style: AppThemeStyle.buttonWhite16)),
+                                  SvgPicture.asset('assets/svg/info_icon.svg',color: Colors.white),
+                                  SizedBox(width: 10),
+                                  Text("О нас",style: AppThemeStyle.buttonWhite16),
                                 ],
                               ),
                             ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(12)),
-                            Divider(
-                              height: 2,
-                              color: Colors.white.withOpacity(0.7),
-                            ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(20)),
-                            InkWell(
-                              onTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => FavouriteScreen()));
+                          ),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                          Divider(
+                            height: 2,
+                            color: Colors.white.withOpacity(0.7),
+                          ),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                          InkWell(
+                            onTap: (){
 
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
-                                child: Row(
-                                  children: [
-                                    Icon(FlevaIcons.bookmark_outline,color: Colors.white),
-                                    SizedBox(width: 10),
-                                    Text("Избранное",style: AppThemeStyle.buttonWhite16,),
-                                  ],
-                                ),
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset('assets/svg/home_icon.svg',color: Colors.white),
+                                  SizedBox(width: 10),
+                                  Text("Главная",style: AppThemeStyle.buttonWhite16),
+                                ],
                               ),
                             ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
-                            InkWell(
-                              onTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => FaqScreen()));
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset('assets/svg/question_icon.svg',color: Colors.white),
-                                    SizedBox(width: 10),
-                                    Text("FAQ",style: AppThemeStyle.buttonWhite16,),
-                                  ],
-                                ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 35,top: 10,bottom: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                    onTap: (){},
+                                    child: Text("Диагнозы",style: AppThemeStyle.buttonWhite16)),
+                                SizedBox(height: 10),
+                                InkWell(
+                                    onTap: (){},
+                                    child: Text("Навыки",style: AppThemeStyle.buttonWhite16)),
+                                SizedBox(height: 10),
+                                InkWell( onTap: (){},
+                                    child: Text("Ресурсы",style: AppThemeStyle.buttonWhite16)),
+                                SizedBox(height: 10),
+                                InkWell(
+                                    onTap: (){},
+                                    child: Text("Услугодатели",style: AppThemeStyle.buttonWhite16)),
+                                SizedBox(height: 10),
+                                InkWell(
+                                    onTap: (){},
+                                    child: Text("Права",style: AppThemeStyle.buttonWhite16)),
+                                SizedBox(height: 10),
+                                InkWell(
+                                    onTap: (){},
+                                    child: Text("Инклюзия",style: AppThemeStyle.buttonWhite16)),
+                                SizedBox(height: 10),
+                                InkWell(
+                                    onTap: (){},
+                                    child: Text("Статьи",style: AppThemeStyle.buttonWhite16)),
+                                SizedBox(height: 10),
+                                InkWell(
+                                    onTap: (){},
+                                      child: Text("Форум",style: AppThemeStyle.buttonWhite16)),
+                                SizedBox(height: 10),
+                                InkWell( onTap: (){ },child: Text("Ссылки",style: AppThemeStyle.buttonWhite16)),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(12)),
+                          Divider(
+                            height: 2,
+                            color: Colors.white.withOpacity(0.7),
+                          ),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+                          InkWell(
+                            onTap: (){
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => FavouriteScreen()));
+
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                              child: Row(
+                                children: [
+                                  Icon(FlevaIcons.bookmark_outline,color: Colors.white),
+                                  SizedBox(width: 10),
+                                  Text("Избранное",style: AppThemeStyle.buttonWhite16,),
+                                ],
                               ),
                             ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
-                            InkWell(
-                              onTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsScreen()));
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset('assets/svg/settings_icon.svg',color: Colors.white),
-                                    SizedBox(width: 10),
-                                    Text("Настройки",style: AppThemeStyle.buttonWhite16,),
-                                  ],
-                                ),
+                          ),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                          InkWell(
+                            onTap: (){
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => FaqScreen()));
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset('assets/svg/question_icon.svg',color: Colors.white),
+                                  SizedBox(width: 10),
+                                  Text("FAQ",style: AppThemeStyle.buttonWhite16,),
+                                ],
                               ),
                             ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
-                            InkWell(
-                              onTap: (){
-                                _modalInfo(context);
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset('assets/svg/exit_icon.svg',color: Colors.white),
-                                    SizedBox(width: 10),
-                                    Text("Выйти",style: AppThemeStyle.buttonWhite16,),
-                                  ],
-                                ),
+                          ),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                          InkWell(
+                            onTap: (){
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsScreen()));
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset('assets/svg/settings_icon.svg',color: Colors.white),
+                                  SizedBox(width: 10),
+                                  Text("Настройки",style: AppThemeStyle.buttonWhite16,),
+                                ],
                               ),
                             ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(50)),
-                          ],
-                        ),
+                          ),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                          InkWell(
+                            onTap: (){
+                              _modalInfo(context);
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset('assets/svg/exit_icon.svg',color: Colors.white),
+                                  SizedBox(width: 10),
+                                  Text("Выйти",style: AppThemeStyle.buttonWhite16,),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                        ],
                       ),
                     ),
                   ),

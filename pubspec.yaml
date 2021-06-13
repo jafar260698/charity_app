@@ -25,6 +25,7 @@ dependencies:
   convex_bottom_bar: ^3.0.0
   carousel_slider: ^3.0.0
   tab_indicator_styler: ^1.0.0
+  flutter_markdown: ^0.6.2
 
 
   # Provider + Stack pattern
@@ -44,7 +45,7 @@ dependencies:
 
   #Animation Plugin
   #  rive: ^0.6.8
-  lottie: ^0.7.0+1
+  lottie: ^1.0.1
 
   # Icon Plugin
   fleva_icons: ^1.0.2

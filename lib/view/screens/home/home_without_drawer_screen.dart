@@ -36,7 +36,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
           children: [
             SizedBox(height: SizeConfig.calculateBlockVertical(20)),
             Container(
-              height: SizeConfig.calculateBlockVertical(240),
+              height: SizeConfig.calculateBlockVertical(210),
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: 20,right: 10),
@@ -45,7 +45,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
                     return Container(
                       margin: EdgeInsets.only(right: 10),
                       height: SizeConfig.calculateBlockVertical(240),
-                      width: MediaQuery.of(context).size.width*0.9,
+                      width: MediaQuery.of(context).size.width*0.85,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.cover,
