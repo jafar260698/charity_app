@@ -49,7 +49,7 @@ class CabinetDrawer extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        SizedBox(height: 45),
+                        SizedBox(height: SizeConfig.calculateBlockVertical(45)),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -66,7 +66,7 @@ class CabinetDrawer extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                       ],
                     ),
                   ),
@@ -93,12 +93,12 @@ class CabinetDrawer extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 5),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                             Divider(
                               height: 2,
                               color: Colors.white.withOpacity(0.7),
                             ),
-                            SizedBox(height: 5),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                             InkWell(
                               onTap: (){
 
@@ -171,12 +171,12 @@ class CabinetDrawer extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(height: 12),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(12)),
                             Divider(
                               height: 2,
                               color: Colors.white.withOpacity(0.7),
                             ),
-                            SizedBox(height: 20),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                             InkWell(
                               onTap: (){
                                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => FavouriteScreen()));
@@ -193,7 +193,7 @@ class CabinetDrawer extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 5),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                             InkWell(
                               onTap: (){
                                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => FaqScreen()));
@@ -202,14 +202,14 @@ class CabinetDrawer extends StatelessWidget {
                                 padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.settings,color: Colors.white),
+                                    Icon(Icons.info_outline,color: Colors.white),
                                     SizedBox(width: 10),
                                     Text("FAQ",style: AppThemeStyle.buttonWhite16,),
                                   ],
                                 ),
                               ),
                             ),
-                            SizedBox(height:5),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                             InkWell(
                               onTap: (){
                                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsScreen()));
@@ -218,14 +218,14 @@ class CabinetDrawer extends StatelessWidget {
                                 padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.info_outline,color: Colors.white,),
+                                    Icon(Icons.settings,color: Colors.white,),
                                     SizedBox(width: 10),
                                     Text("Настройки",style: AppThemeStyle.buttonWhite16,),
                                   ],
                                 ),
                               ),
                             ),
-                            SizedBox(height: 5),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                             InkWell(
                               onTap: (){
                                 _modalInfo(context);
@@ -241,7 +241,7 @@ class CabinetDrawer extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 50),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(50)),
                           ],
                         ),
                       ),
@@ -278,104 +278,6 @@ class CabinetDrawer extends StatelessWidget {
         );
       },
     );
-  }
-
-
-
-  Widget inkwell(DrawerList listData, CabinetDrawerViewModel model) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        splashColor: Colors.grey.withOpacity(0.1),
-        highlightColor: Colors.transparent,
-        onTap: () {
-          navigationtoScreen(listData.index);
-        },
-        child: Stack(
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    width: 10.0,
-                    height: SizeConfig.calculateBlockVertical(44),
-                    decoration: BoxDecoration(
-                      color: screenIndex == listData.index
-                          ? model.backHeaderColor
-                          : Colors.transparent,
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(8),
-                        bottomRight: Radius.circular(8),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 10.0),
-                  listData.isAssetsImage
-                      ? Container(
-                          width: SizeConfig.calculateBlockHorizontal(20),
-                          height: SizeConfig.calculateBlockHorizontal(20),
-                          child: SvgPicture.asset(listData.svgName,
-                              color: screenIndex == listData.index
-                                  ? Colors.red
-                                  : Colors.blueAccent),
-                        )
-                      : Icon(listData.icon.icon,
-                          color: screenIndex == listData.index
-                              ? Colors.red
-                              : Colors.blueAccent),
-                  SizedBox(width: SizeConfig.calculateBlockHorizontal(16)),
-                  Text(
-                    listData.labelName,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: SizeConfig.calculateTextSize(16),
-                      color: screenIndex == listData.index
-                          ? Colors.white
-                          : Colors.white,
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
-                ],
-              ),
-            ),
-            screenIndex == listData.index
-                ? AnimatedBuilder(
-                    animation: iconAnimationController,
-                    builder: (BuildContext context, Widget child) {
-                      return Transform(
-                        transform: Matrix4.translationValues(
-                            (MediaQuery.of(context).size.width * 0.75 - 64) *
-                                (1.0 - iconAnimationController.value - 1.1),
-                            0.0,
-                            0.0),
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 8, bottom: 8),
-                          child: Container(
-                            width:
-                                MediaQuery.of(context).size.width * 0.75 - 20,
-                            height: SizeConfig.calculateBlockVertical(46),
-                            decoration: BoxDecoration(
-                              color: model.backHeaderColor?.withOpacity(0.3),
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(26),
-                                bottomRight: Radius.circular(26),
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  )
-                : const SizedBox()
-          ],
-        ),
-      ),
-    );
-  }
-
-  Future<void> navigationtoScreen(DrawerIndex indexScreen) async {
-    callBackIndex(indexScreen);
   }
 
 }

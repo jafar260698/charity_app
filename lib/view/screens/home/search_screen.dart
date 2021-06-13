@@ -1,6 +1,7 @@
 
 
 
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/search_field_ui.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
@@ -31,20 +32,20 @@ class _SearchScreen extends State<SearchScreen> {
                 padding: EdgeInsets.only(left: 10,right: 10),
                 child: SearchFieldUI(
                   controller: pinfl,
-                  text: 'Jafar',
+                  text: '',
                   keyboardType: TextInputType.number,
                   inputAction: TextInputAction.done,
-                  hintText: "Реабилитация",
+                  hintText: "Поиск...",
                   suffixIcon: IconButton(
                     splashRadius: 25,
                     onPressed: () {
 
                     },
-                    icon: Icon(FlevaIcons.close),
+                    icon: Icon(FlevaIcons.search),
                   ),
                 ),
               ),
-              SizedBox(height:30),
+              SizedBox(height: SizeConfig.calculateBlockVertical(30)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -52,9 +53,9 @@ class _SearchScreen extends State<SearchScreen> {
                   Icon(Icons.keyboard_arrow_down)
                 ],
               ),
-              SizedBox(height: 8),
+              SizedBox(height: SizeConfig.calculateBlockVertical(8)),
               Divider(height: 2),
-              SizedBox(height: 12),
+              SizedBox(height: SizeConfig.calculateBlockVertical(12)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
