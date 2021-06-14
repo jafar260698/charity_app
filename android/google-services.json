@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "25433428043",
+    "project_id": "ozim-7af19",
+    "storage_bucket": "ozim-7af19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25433428043:android:2719494a577571cb21bdce",
+        "android_client_info": {
+          "package_name": "com.example.charity_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "25433428043-mdt0a3l9slhbp5h601rjcj8d6alouvje.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.charity_app",
+            "certificate_hash": "14ea80ab5cfe37198459c8ccad78175013629f3b"
+          }
+        },
+        {
+          "client_id": "25433428043-sc6u0ud7685o41mll0s071q3uurn1tc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7zuaUC0jdriBu9ciQfyHGQ3QkpBhqids"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "25433428043-sc6u0ud7685o41mll0s071q3uurn1tc0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
