@@ -35,7 +35,21 @@ class FaqScreen extends StatelessWidget {
                     color: Colors.white),
               ),
               SizedBox(height: SizeConfig.calculateBlockVertical(30)),
-              mainUI(model),
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40)),
+                  child: Container(
+                    color: Color.fromRGBO(244, 244, 244, 1),
+                    child: Padding(
+                      padding: EdgeInsets.all(20),
+                      child: mainUI(model),
+                    ),
+                  ),
+                ),
+              ),
+            //  mainUI(model),
             ],
           ),
           bottomNavigationBar: ConvexAppBar(
@@ -66,82 +80,66 @@ class FaqScreen extends StatelessWidget {
     if(viewModel.isLoading)
       return Container();
     else{
-      if(viewModel.faq!=null){
         if(viewModel.faq.length>0)
-          return Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40),
-                  topRight: Radius.circular(40)),
-              child: Container(
-                color: Color.fromRGBO(244, 244, 244, 1),
-                child: Padding(
-                  padding: EdgeInsets.all(20),
-                  child: ListView.builder(
-                      itemCount: viewModel.faq.length,
-                      itemBuilder: (context,i){
-                        return Column(
+          return ListView.builder(
+              itemCount: viewModel.faq.length,
+              itemBuilder: (context,i){
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                      color: Colors.white,
+                      elevation: 0,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            left: 20, right: 20, top: 10, bottom: 5),
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            SizedBox(height: 5),
-                            Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                              ),
-                              color: Colors.white,
-                              elevation: 0,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 20, right: 20, top: 10, bottom: 5),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.all(10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              viewModel.faq[i].title,
-                                              style:
-                                              AppThemeStyle.titleFormStyle,
-                                              textAlign: TextAlign.start,
-                                            ),
-                                          ),
-                                          Icon(
-                                            Icons.keyboard_arrow_down,
-                                            size: 30,
-                                            color: AppThemeStyle.primaryColor,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
                             Padding(
-                              padding: EdgeInsets.all(20),
-                              child: Text(
-                                viewModel.faq[i].description,
-                                style: AppThemeStyle.titleFormStyle,
-                                textAlign: TextAlign.start,
+                              padding: EdgeInsets.all(10),
+                              child: Row(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      viewModel.faq[i].title,
+                                      style:
+                                      AppThemeStyle.titleFormStyle,
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.keyboard_arrow_down,
+                                    size: 30,
+                                    color: AppThemeStyle.primaryColor,
+                                  )
+                                ],
                               ),
                             ),
                           ],
-                        );
-                      }
-                  ),
-                ),
-              ),
-            ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Text(
+                        viewModel.faq[i].description,
+                        style: AppThemeStyle.titleFormStyle,
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                  ],
+                );
+              }
           );
-        else Container();
-      } else Container();
+        else Text('Data not found');
+      }
     }
   }
-
-}
