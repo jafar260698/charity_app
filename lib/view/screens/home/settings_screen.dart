@@ -158,6 +158,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                       SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                       CupertinoSwitch(
                           value: true,
+                          activeColor: AppColor.primary,
                           onChanged: (newValue){
 
                           }
@@ -175,6 +176,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                       SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                       CupertinoSwitch(
                           value: true,
+                          activeColor: AppColor.primary,
                           onChanged: (newValue){
 
                           }
@@ -192,6 +194,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                       SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                       CupertinoSwitch(
                           value: false,
+                          activeColor: AppColor.primary,
                           onChanged: (newValue){
 
                           }

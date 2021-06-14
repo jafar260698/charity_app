@@ -7,8 +7,10 @@
  *
  */
 
+import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/bottom_modal_sheet.dart';
+import 'package:charity_app/view/screens/auth/splash_screen.dart';
 import 'package:charity_app/view/screens/home/faq_screen.dart';
 import 'package:charity_app/view/screens/home/settings_screen.dart';
 import 'package:charity_app/view/screens/other/favourite_screen.dart';
@@ -20,7 +22,6 @@ import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:stacked/stacked.dart';
 import 'cabinet_drawer_viewmodel.dart';
 
@@ -35,6 +36,7 @@ class CabinetDrawer extends StatelessWidget {
   final AnimationController iconAnimationController;
   final DrawerIndex screenIndex;
   final Function(DrawerIndex) callBackIndex;
+
 
   @override
   Widget build(BuildContext context) {
@@ -254,7 +256,10 @@ class CabinetDrawer extends StatelessWidget {
             children: [
               ExitModalView(
                 onTapExit: () {
-
+                  UserData _userData=new UserData();
+                  _userData.setFirstTime(true);
+                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                      SplashScreen()), (Route<dynamic> route) => false);
                 },
               ),
             ],

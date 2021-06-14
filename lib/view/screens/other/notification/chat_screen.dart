@@ -57,33 +57,38 @@ class _ChatScreen extends State<ChatScreen> {
               ),
             ),
             SizedBox(height: SizeConfig.calculateBlockVertical(20)),
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  MessageTime(align: Alignment.center,text:"13 декабря 2020"),
-                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                  Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:
-                      "Хороший репортаж,думаю многие не знают,"
-                      " что в Москве есть такая клиника, хоть в "
-                      "газете прочтут. Дети -прелесть! Здоровья им"),
-                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                  Message(align: Alignment.topRight,color: Color.fromRGBO(229, 255, 243, 1),text: "Хороший репортаж,думаю, многие не знают, что в Москве",),
-                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                  MessageTime(align: Alignment.center,text:"1 февраля"),
-                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                  Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:"Тоже"),
-                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                  Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:"Дали"),
-                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                  Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:"Это была шутка"),
-                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                  Message(align: Alignment.topRight,color: Color.fromRGBO(229, 255, 243, 1),text: "Хороший репортаж,думаю, многие не знают, что в Москве",),
-                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                  Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:"Хороший репортаж, думаю, "
-                      "многие не знают, что в Москве "
-                      "есть такая клиника, хоть в газете прочтут. Дети -"),
-                ],
+            Expanded(
+              child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      MessageTime(align: Alignment.center,text:"13 декабря 2020"),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                      Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:
+                          "Хороший репортаж,думаю многие не знают,"
+                          " что в Москве есть такая клиника, хоть в "
+                          "газете прочтут. Дети -прелесть! Здоровья им"),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                      Message(align: Alignment.topRight,color: Color.fromRGBO(229, 255, 243, 1),text: "Хороший репортаж,думаю, многие не знают, что в Москве",),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                      MessageTime(align: Alignment.center,text:"1 февраля"),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                      Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:"Тоже"),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                      Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:"Дали"),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                      Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:"Это была шутка"),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                      Message(align: Alignment.topRight,color: Color.fromRGBO(229, 255, 243, 1),text: "Хороший репортаж,думаю, многие не знают, что в Москве",),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                      Message(align: Alignment.topLeft,color: Color.fromRGBO(237, 247, 255, 1),text:"Хороший репортаж, думаю, "
+                          "многие не знают, что в Москве "
+                          "есть такая клиника, хоть в газете прочтут. Дети -"),
+                    ],
+                  ),
+                ),
               ),
             )
           ],
