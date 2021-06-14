@@ -7,14 +7,61 @@ import 'package:charity_app/view/theme/app_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:notification_permissions/notification_permissions.dart';
 
 class PermissionForNotification extends StatefulWidget {
   @override
   _PermissionForNotification createState() => _PermissionForNotification();
 }
 
-class _PermissionForNotification extends State<PermissionForNotification> {
+class _PermissionForNotification extends State<PermissionForNotification>  with WidgetsBindingObserver{
   UserData _userData=new UserData();
+
+  Future<String> permissionStatusFuture;
+  var permGranted = "granted";
+  var permDenied = "denied";
+  var permUnknown = "unknown";
+  var permProvisional = "provisional";
+
+  @override
+  void initState() {
+    super.initState();
+    // set up the notification permissions class
+    // set up the future to fetch the notification data
+    permissionStatusFuture = getCheckNotificationPermStatus();
+    // With this, we will be able to check if the permission is granted or not
+    // when returning to the application
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      setState(() {
+        permissionStatusFuture = getCheckNotificationPermStatus();
+      });
+    }
+  }
+
+  /// Checks the notification permission status
+  Future<String> getCheckNotificationPermStatus() {
+    return NotificationPermissions.getNotificationPermissionStatus()
+        .then((status) {
+      switch (status) {
+        case PermissionStatus.denied:
+          return permDenied;
+        case PermissionStatus.granted:
+          return permGranted;
+        case PermissionStatus.unknown:
+          return permUnknown;
+        case PermissionStatus.provisional:
+          return permProvisional;
+        default:
+          return null;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,17 +121,32 @@ class _PermissionForNotification extends State<PermissionForNotification> {
                               color: AppColor.primary,
                               text: 'Разрешить доступ',
                               ontap: () {
-                                _userData.setFirstTime(false);
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => BottomNavigation()));
+                                var string=getCheckNotificationPermStatus();
+                                string.then((value) => {
+                                  if(permGranted==value){
+                                    _userData.setFirstTime(false),
+                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                                    BottomNavigation()), (Route<dynamic> route) => false),
+                                  }else{
+                                NotificationPermissions.requestNotificationPermissions(iosSettings:const NotificationSettingsIos(
+                                  sound: true,
+                                  badge: true,
+                                  alert: true)).then((_) {
+                                // when finished, check the permission status
+                                      setState(() {
+                                       permissionStatusFuture =getCheckNotificationPermStatus();
+                                      });
+                                    }),
+                                   }
+                                 });
                               },
                             ),
                             SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                             InkWell(
                               onTap: (){
                                 _userData.setFirstTime(false);
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => BottomNavigation()));
+                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                                    BottomNavigation()), (Route<dynamic> route) => false);
                               },
                               child: Padding(
                                 padding: EdgeInsets.all(5),
@@ -97,6 +159,27 @@ class _PermissionForNotification extends State<PermissionForNotification> {
                                 ),
                               ),
                             ),
+                            FutureBuilder(
+                                future: permissionStatusFuture,
+                                builder: (context,snapshot){
+                                  if (snapshot.connectionState == ConnectionState.waiting) {
+                                    return CircularProgressIndicator();
+                                  }
+                                  if(snapshot.hasData){
+                                    var textWidget = Text(
+                                      "The permission status is ${snapshot.data}",
+                                      softWrap: true,
+                                      textAlign: TextAlign.center,
+                                    );
+                                    // The permission is granted, then just show the text
+                                    if (snapshot.data == permGranted) {
+                                      return textWidget;
+                                    }
+                                  }
+                                  return Text('');
+                                  // return Text("No permission status yet");
+                                }
+                            )
                           ],
                         ),
                       ),

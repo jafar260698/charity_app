@@ -23,7 +23,7 @@ class ApiProvider {
   UserData _userData = UserData();
   BuildContext context;
 
-  final baseUrl = 'https://ozimplatform.kz/api/';
+  final baseUrl = 'https://ozimplatform.kz/api';
   final baseOFDUrl = 'https://api.ofd.uz/';
 
   final baseHeader = {
@@ -33,7 +33,7 @@ class ApiProvider {
 
   var headers = {
     'language': 'ru',
-    'Authorization': '\$2y\$10\$nTX/1eBIlQQ0cu4rjt2ea.axCqSMY65dh./.OX0Vtet3w7dGaYfLW'
+    'authorization': '\$2y\$10\$nTX/1eBIlQQ0cu4rjt2ea.axCqSMY65dh./.OX0Vtet3w7dGaYfLW'
   };
 
 
@@ -373,7 +373,7 @@ class ApiProvider {
     var responseJson;
 
     try{
-      final response= await client.get(Uri.parse('$baseUrl/category?language=$lang'),
+      final response= await client.get(Uri.parse('$baseUrl/category?language=ru'),
         headers: headers,
       );
       var res=_response(response);
@@ -385,15 +385,19 @@ class ApiProvider {
   }
 
   //faq
-  Future<Faq> getFaq(String lang) async{
+  Future<List<Faq>> getFaq(String lang) async{
     var responseJson;
-
     try{
-      final response= await client.get(Uri.parse('$baseUrl/faq?language=$lang'),
+      final response= await client.get(Uri.parse('$baseUrl/faq?language=ru'),
         headers: headers,
       );
-      var res=_response(response);
-      responseJson=Faq.fromJson(res);
+      print(response.request.url);
+      print(response.body);
+      print(response.statusCode);
+
+      var res=_response(response) as List;
+      responseJson=res.map((element)=>Faq.fromJson(element)
+      ).toList();
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
     }

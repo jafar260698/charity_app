@@ -79,10 +79,6 @@ class _SettingsScreen extends State<SettingsScreen> {
               ],
             ),
             SizedBox(height: SizeConfig.calculateBlockVertical(20)),
-            Divider(
-              height: 2,
-              color: Colors.black.withOpacity(0.5),
-            ),
             SizedBox(height: SizeConfig.calculateBlockVertical(20)),
             Padding(
               padding: EdgeInsets.only(left: 30,right: 30),
@@ -162,6 +158,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                       SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                       CupertinoSwitch(
                           value: true,
+                          activeColor: AppColor.primary,
                           onChanged: (newValue){
 
                           }
@@ -179,6 +176,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                       SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                       CupertinoSwitch(
                           value: true,
+                          activeColor: AppColor.primary,
                           onChanged: (newValue){
 
                           }
@@ -196,6 +194,7 @@ class _SettingsScreen extends State<SettingsScreen> {
                       SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                       CupertinoSwitch(
                           value: false,
+                          activeColor: AppColor.primary,
                           onChanged: (newValue){
 
                           }

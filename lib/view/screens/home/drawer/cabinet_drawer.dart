@@ -7,9 +7,11 @@
  *
  */
 
+import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/bottom_modal_sheet.dart';
-import 'package:charity_app/view/screens/home/faq.dart';
+import 'package:charity_app/view/screens/auth/splash_screen.dart';
+import 'package:charity_app/view/screens/home/faq_screen.dart';
 import 'package:charity_app/view/screens/home/settings_screen.dart';
 import 'package:charity_app/view/screens/other/favourite_screen.dart';
 import 'package:charity_app/view/theme/app_color.dart';
@@ -20,7 +22,6 @@ import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:stacked/stacked.dart';
 import 'cabinet_drawer_viewmodel.dart';
 
@@ -35,6 +36,7 @@ class CabinetDrawer extends StatelessWidget {
   final AnimationController iconAnimationController;
   final DrawerIndex screenIndex;
   final Function(DrawerIndex) callBackIndex;
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +76,7 @@ class CabinetDrawer extends StatelessWidget {
                     child: SingleChildScrollView(
                       physics: BouncingScrollPhysics(),
                       child: Padding(
-                        padding: EdgeInsets.only(left: 15,top: 20,bottom: 20),
+                        padding: EdgeInsets.only(left: 15,top: 20,bottom: 30),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -88,7 +90,7 @@ class CabinetDrawer extends StatelessWidget {
                                   children: [
                                     SvgPicture.asset('assets/svg/info_icon.svg',color: Colors.white),
                                     SizedBox(width: 10),
-                                    Text("О нас",style: AppThemeStyle.buttonWhite16,),
+                                    Text("О нас",style: AppThemeStyle.buttonWhite16),
                                   ],
                                 ),
                               ),
@@ -109,7 +111,7 @@ class CabinetDrawer extends StatelessWidget {
                                   children: [
                                     SvgPicture.asset('assets/svg/home_icon.svg',color: Colors.white),
                                     SizedBox(width: 10),
-                                    Text("Главная",style: AppThemeStyle.buttonWhite16,),
+                                    Text("Главная",style: AppThemeStyle.buttonWhite16),
                                   ],
                                 ),
                               ),
@@ -121,53 +123,37 @@ class CabinetDrawer extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                      child: Text("Диагнозы",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                      child: Text("Диагнозы",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                      child: Text("Навыки",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                      child: Text("Навыки",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell( onTap: (){},
-                                      child: Text("Ресурсы",style: AppThemeStyle.buttonWhite16,)),
+                                      child: Text("Ресурсы",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                      child: Text("Услугодатели",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                      child: Text("Услугодатели",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                      child: Text("Права",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                      child: Text("Права",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                      child: Text("Инклюзия",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                      child: Text("Инклюзия",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                      child: Text("Статьи",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                      child: Text("Статьи",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
                                   InkWell(
-                                      onTap: (){
-
-                                      },
-                                        child: Text("Форум",style: AppThemeStyle.buttonWhite16,)),
+                                      onTap: (){},
+                                        child: Text("Форум",style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: 10),
-                                  InkWell( onTap: (){
-
-                                  },child: Text("Ссылки",style: AppThemeStyle.buttonWhite16,)),
+                                  InkWell( onTap: (){ },child: Text("Ссылки",style: AppThemeStyle.buttonWhite16)),
                                 ],
                               ),
                             ),
@@ -241,7 +227,7 @@ class CabinetDrawer extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(50)),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                           ],
                         ),
                       ),
@@ -270,7 +256,10 @@ class CabinetDrawer extends StatelessWidget {
             children: [
               ExitModalView(
                 onTapExit: () {
-
+                  UserData _userData=new UserData();
+                  _userData.setFirstTime(true);
+                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                      SplashScreen()), (Route<dynamic> route) => false);
                 },
               ),
             ],
