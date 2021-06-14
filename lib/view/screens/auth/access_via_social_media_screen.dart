@@ -1,13 +1,15 @@
 
 import 'dart:io';
-
 import 'package:charity_app/utils/toast_utils.dart';
 import 'package:charity_app/view/components/btn_ui_icon.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../../widgets/get_widget_family.dart';
 import '../../widgets/get_widget_logo.dart';
 import 'login_screen.dart';
@@ -18,82 +20,10 @@ class AccessViaSocialMediaScreen extends StatefulWidget {
   _AccessViaSocialMediaScreen createState() => _AccessViaSocialMediaScreen();
 }
 
-// GoogleSignIn _googleSignIn = GoogleSignIn(
-//   // Optional clientId
-//   // clientId: '479882132969-9i9aqik3jfjd7qhci1nqf0bm2g71rm1u.apps.googleusercontent.com',
-//   scopes: <String>[
-//     'email',
-//     'https://www.googleapis.com/auth/contacts.readonly',
-//   ],
-// );
-
 class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
- // GoogleSignInAccount _currentUser;
-  String _contactText = '';
+  final googleSignIn=GoogleSignIn();
+  bool _isSignIn=false;
 
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount? account) {
-  //     setState(() {
-  //       _currentUser = account;
-  //     });
-  //     if (_currentUser != null) {
-  //       _handleGetContact(_currentUser);
-  //     }
-  //   });
-  //   _googleSignIn.signInSilently();
-  // }
-  //
-  // Future<void> _handleGetContact(GoogleSignInAccount user) async {
-  //   setState(() {
-  //     _contactText = "Loading contact info...";
-  //   });
-  //   final http.Response response = await http.get(
-  //     Uri.parse('https://people.googleapis.com/v1/people/me/connections'
-  //         '?requestMask.includeField=person.names'),
-  //     headers: await user.authHeaders,
-  //   );
-  //   if (response.statusCode != 200) {
-  //     setState(() {
-  //       _contactText = "People API gave a ${response.statusCode} "
-  //           "response. Check logs for details.";
-  //     });
-  //     print('People API ${response.statusCode} response: ${response.body}');
-  //     return;
-  //   }
-  //   final Map<String, dynamic> data = json.decode(response.body);
-  //   final String? namedContact = _pickFirstNamedContact(data);
-  //   setState(() {
-  //     if (namedContact != null) {
-  //       _contactText = "I see you know $namedContact!";
-  //     } else {
-  //       _contactText = "No contacts to display.";
-  //     }
-  //   });
-  // }
-  //
-  // String? _pickFirstNamedContact(Map<String, dynamic> data) {
-  //   final List<dynamic>? connections = data['connections'];
-  //   final Map<String, dynamic>? contact = connections?.firstWhere(
-  //         (dynamic contact) => contact['names'] != null,
-  //     orElse: () => null,
-  //   );
-  //   if (contact != null) {
-  //     final Map<String, dynamic>? name = contact['names'].firstWhere(
-  //           (dynamic name) => name['displayName'] != null,
-  //       orElse: () => null,
-  //     );
-  //     if (name != null) {
-  //       return name['displayName'];
-  //     }
-  //   }
-  //   return null;
-  // }
-  //
-  //
-  // Future<void> _handleSignOut() => _googleSignIn.disconnect();
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +80,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   text: 'Вход через Google',
                                   icon: SvgPicture.asset('assets/svg/auth/google.svg'),
                                   ontap: () {
-                                    //_handleSignIn();
+                                    loginViaGoogle();
                                   },
                                 ),
                                 SizedBox(height:8),
@@ -192,6 +122,15 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                         ],
                       ),
                     ),
+                    StreamBuilder(
+                        stream: FirebaseAuth.instance.authStateChanges(),
+                        builder: (context,snapshot){
+                          if(snapshot.hasData){
+                            final user=FirebaseAuth.instance.currentUser;
+                            return Text("got it ${user.displayName}");
+                          }
+                          return Text("Succes");
+                    }),
                   ],
                 ),
               ],
@@ -202,11 +141,28 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
     );
   }
 
-  // Future<void> _handleSignIn() async {
-  //   try {
-  //     await _googleSignIn.signIn();
-  //   } catch (error) {
-  //     print(error);
-  //   }
-  // }
+  Future<void> loginViaGoogle() async{
+    _isSignIn=true;
+    final user=await googleSignIn.signIn();
+    if(user==null){
+      _isSignIn=false;
+    }else{
+      final googleAuth=await user.authentication;
+
+      final credential=GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken
+      );
+
+      await FirebaseAuth.instance.signInWithCredential(credential);
+
+      _isSignIn=false;
+    }
+  }
+
+  Future<void> logOut() async{
+    await googleSignIn.disconnect();
+    FirebaseAuth.instance.signOut();
+  }
 }
+

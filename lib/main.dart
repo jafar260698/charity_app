@@ -4,6 +4,7 @@ import 'package:charity_app/service/network_service.dart';
 import 'package:charity_app/service/network_status.dart';
 import 'package:charity_app/view/screens/auth/splash_screen.dart';
 import 'package:charity_app/view/theme/my_themes.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -16,6 +17,7 @@ import 'localization/demo_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   setupLocator();
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
