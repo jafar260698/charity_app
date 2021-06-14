@@ -73,7 +73,7 @@ class CabinetDrawer extends StatelessWidget {
                   SingleChildScrollView(
                     physics: BouncingScrollPhysics(),
                     child: Padding(
-                      padding: EdgeInsets.only(left: 15,top: 20,bottom: 20),
+                      padding: EdgeInsets.only(left: 15,top: 20,bottom: 30),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
