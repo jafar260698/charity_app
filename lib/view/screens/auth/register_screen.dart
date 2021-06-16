@@ -1,4 +1,5 @@
 
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/auth/permission_for_notification.dart';
@@ -53,7 +54,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(30)),
                     Text(
-                      'Создать аккаунт',
+                      getTranslated(context, 'add_account'),
                       style: TextStyle(
                         fontSize: 24.0,
                           letterSpacing: 0.4,
@@ -64,7 +65,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: SizeConfig.calculateBlockVertical(15)),
                     TextField(
                       decoration: InputDecoration(
-                        hintText: 'ИМЯ ПОЛЗОВАТEЛЯ',
+                        hintText: getTranslated(context, 'username'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
                         prefixIcon: Icon(Icons.person_outline,color: Colors.white),
                         enabledBorder: new UnderlineInputBorder(
@@ -83,7 +84,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
                       decoration: InputDecoration(
-                        hintText: 'ПАРОЛЬ',
+                        hintText: getTranslated(context, 'password'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
                         prefixIcon: Icon(Icons.lock_outline,color: Colors.white),
                         enabledBorder: new UnderlineInputBorder(
@@ -102,7 +103,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
                       decoration: InputDecoration(
-                        hintText: 'E-MAIL',
+                        hintText: getTranslated(context,'email'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
                         prefixIcon: Icon(FlevaIcons.email_outline,color: Colors.white),
                         enabledBorder: new UnderlineInputBorder(
@@ -121,7 +122,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
                       decoration: InputDecoration(
-                        hintText: 'ТEЛEФОН',
+                        hintText: getTranslated(context, 'phone_number'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
                         prefixIcon: Icon(Icons.call_outlined,color: Colors.white),
                         enabledBorder: new UnderlineInputBorder(
@@ -140,7 +141,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: SizeConfig.calculateBlockVertical(80)),
                     TextField(
                       decoration: InputDecoration(
-                        hintText: 'ТИП ПОЛЗОВАТEЛЯ',
+                        hintText: getTranslated(context, 'user_type'),
                         hintStyle: TextStyle(color: Colors.black,fontSize: 14),
                         prefixIcon: Icon(Icons.person,color: AppThemeStyle.primaryColor,
                         ),
@@ -159,7 +160,7 @@ class RegisterScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    new Column(
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -207,7 +208,7 @@ class RegisterScreen extends StatelessWidget {
                       isLoading: false,
                       textColor: Colors.white,
                       color: AppThemeStyle.primaryColor,
-                      text: 'СОЗДАТЬ',
+                      text: getTranslated(context, 'create'),
                       ontap: () {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
                       },

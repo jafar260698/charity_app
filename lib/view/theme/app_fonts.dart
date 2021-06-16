@@ -1,11 +1,3 @@
-/*
- * *
- *  * Created by Mahmud Nurmuhammedov on 6/1/21 11:13 AM
- *  * Copyright (c) 2021 . All rights reserved.
- *  * Last modified 6/1/21 11:13 AM
- *
- *
- */
 
 
 import 'package:charity_app/utils/device_size_config.dart';

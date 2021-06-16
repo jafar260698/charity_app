@@ -13,7 +13,7 @@ class WelcomeViewModel extends BaseViewModel{
   Language language;
   var langCode = ["uz","ru"];
 
-  Future<void> changeLanguage(BuildContext context,int position){
+  Future<void> changeLanguage(BuildContext context,int position) async {
     _selectLanguage = position;
 
     Utils.changeLanguage(context, langCode[_selectLanguage]);

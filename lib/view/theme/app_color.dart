@@ -1,7 +1,4 @@
-/*
- * Created by Shakhboz Juraev on May 25
- * Copyright (c) 2021. All rights reserved.
- */
+
 
 import 'dart:ui';
 

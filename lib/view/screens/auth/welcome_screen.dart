@@ -1,8 +1,6 @@
 
-import 'package:charity_app/localization/language.dart';
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/utils/utils.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/auth/welcome_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
@@ -11,7 +9,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../widgets/get_widget_logo.dart';
-import 'access_via_social_media_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
 
@@ -70,7 +67,7 @@ class WelcomeScreen extends StatelessWidget {
                         isLoading: false,
                         textColor: Colors.white,
                         color: AppColor.primary,
-                        text: 'Rus tili',
+                        text: getTranslated(context, 'ru_language'),
                         ontap: () {
                           model.changeLanguage(context, 1);
                         },

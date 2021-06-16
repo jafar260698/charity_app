@@ -32,15 +32,6 @@ class UserData {
     return prefs.getString('lang');
   }
 
-  Future<void> setTheme(String theme) async {
-    final SharedPreferences prefs = await _prefs;
-    prefs.setString('view.theme', theme);
-  }
-
-  Future<String> getTheme() async {
-    final SharedPreferences prefs = await _prefs;
-    return prefs.getString('view.theme');
-  }
 
   Future<void> setFirstTime(bool isERI) async {
     final SharedPreferences prefs = await _prefs;

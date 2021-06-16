@@ -45,7 +45,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(30)),
                     Text(
-                      'Вход',
+                      getTranslated(context, 'enter'),
                       style: TextStyle(
                         fontSize: 26.0,
                         letterSpacing: 0.4,
@@ -57,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                     TextField(
                       controller: model.emailController,
                       decoration: InputDecoration(
-                        hintText: 'E-MAIL',
+                        hintText: getTranslated(context, 'email'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
                         prefixIcon: Icon(FlevaIcons.email_outline,color: Colors.white),
                         enabledBorder: new UnderlineInputBorder(
@@ -77,7 +77,7 @@ class LoginScreen extends StatelessWidget {
                     TextField(
                       controller: model.passwordController,
                       decoration: InputDecoration(
-                        hintText: 'ПАРОЛЬ',
+                        hintText: getTranslated(context, 'password'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
                         prefixIcon: Icon(Icons.lock_outline,color: Colors.white),
                         enabledBorder: new UnderlineInputBorder(
@@ -95,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     Text(
-                      'Забыли пароль',
+                      getTranslated(context, 'forgot_password'),
                       style: TextStyle(
                         fontSize: 14.0,
                         fontWeight: FontWeight.bold,
@@ -107,7 +107,7 @@ class LoginScreen extends StatelessWidget {
                       height: 55,
                       isLoading: false,
                       textColor: Colors.white,
-                      color: Color.fromRGBO(98, 190, 184, 1),
+                      color: AppThemeStyle.primaryColor,
                       text: getTranslated(context, 'enter'),
                       ontap: () {
                         model.login(context);
@@ -124,7 +124,7 @@ class LoginScreen extends StatelessWidget {
                         child: Opacity(
                           opacity: 0.5,
                           child: Text(
-                            'Еще нет акаунта? Зарегистрироваться сейчас!',
+                            getTranslated(context,'no_account'),
                             style: AppThemeStyle.title12,
                             textAlign: TextAlign.center,
                           ),

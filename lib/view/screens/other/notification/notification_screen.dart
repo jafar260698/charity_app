@@ -1,8 +1,10 @@
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/column_message.dart';
+import 'package:charity_app/view/components/search_field_ui.dart';
 import 'package:charity_app/view/screens/other/notification/chat_screen.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
+import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -54,21 +56,21 @@ class _NotificationScreen extends State<NotificationScreen> {
               ),
             ),
             SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-            // Padding(
-            //   padding: EdgeInsets.only(left: 30,right: 30,top: 20,bottom: 20),
-            //   child: SearchFieldUI(
-            //     controller: pinfl,
-            //     text: '',
-            //     keyboardType: TextInputType.number,
-            //     inputAction: TextInputAction.done,
-            //     hintText: "Поиск...",
-            //     suffixIcon: IconButton(
-            //       splashRadius: 25,
-            //       onPressed: () {},
-            //       icon: Icon(FlevaIcons.search),
-            //     ),
-            //   ),
-            // ),
+            Padding(
+              padding: EdgeInsets.only(left: 30,right: 30,top: 20,bottom: 20),
+              child: SearchFieldUI(
+                controller: pinfl,
+                text: '',
+                keyboardType: TextInputType.number,
+                inputAction: TextInputAction.done,
+                hintText: "Поиск...",
+                suffixIcon: IconButton(
+                  splashRadius: 25,
+                  onPressed: () {},
+                  icon: Icon(FlevaIcons.search),
+                ),
+              ),
+            ),
             mainUI(_currentIndex),
           ],
         ),

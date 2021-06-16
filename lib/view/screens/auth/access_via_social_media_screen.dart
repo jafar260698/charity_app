@@ -127,7 +127,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                         builder: (context,snapshot){
                           if(snapshot.hasData){
                             final user=FirebaseAuth.instance.currentUser;
-                            return Text("got it ${user.displayName}");
+                            return Text("got it ${user.refreshToken}");
                           }
                           return Text("Succes");
                     }),
