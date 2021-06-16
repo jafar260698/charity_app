@@ -6,5 +6,18 @@
   "kz_language" : "Қазақ тілі",
   "ru_language" : "Rus tili",
   "enter" : "KIRISH",
-  "faq": "FAQ"
+  "faq": "FAQ",
+  "email": "E-MAIL",
+  "password": "ПАРОЛЬ",
+  "forgot_password": "Забыли пароль",
+  "no_account": "Еще нет акаунта? Зарегистрироваться сейчас!",
+  "add_account": "Создать аккаунт",
+  "username": "ИМЯ ПОЛЗОВАТEЛЯ",
+  "phone_number": "ТEЛEФОН",
+  "user_type": "ТИП ПОЛЗОВАТEЛЯ",
+  "create": "СОЗДАТЬ",
+  "search": "Поиск...",
+  "forum": "Форум",
+  "comment" : "Комментарии",
+  "no_comment" : "У вас пока нет комментариев"
 }

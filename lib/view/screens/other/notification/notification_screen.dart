@@ -1,3 +1,5 @@
+
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/column_message.dart';
 import 'package:charity_app/view/components/search_field_ui.dart';
@@ -63,7 +65,7 @@ class _NotificationScreen extends State<NotificationScreen> {
                 text: '',
                 keyboardType: TextInputType.number,
                 inputAction: TextInputAction.done,
-                hintText: "Поиск...",
+                hintText: getTranslated(context, 'search'),
                 suffixIcon: IconButton(
                   splashRadius: 25,
                   onPressed: () {},
@@ -88,13 +90,13 @@ class _NotificationScreen extends State<NotificationScreen> {
           BottomNavigationBarItem(
             icon: SvgPicture.asset('assets/svg/sending.svg'),
             title: new Text(
-              'Комментарии',
+              getTranslated(context,'comment'),
               style: AppThemeStyle.text14_600,
             ),
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.people_outline),
-              title: Text('Форум', style: AppThemeStyle.text14_600))
+              title: Text(getTranslated(context, 'forum'), style: AppThemeStyle.text14_600))
         ],
       ),
     );
@@ -228,7 +230,7 @@ class _NotificationScreen extends State<NotificationScreen> {
   Widget comment() {
     return Align(
         alignment: Alignment.center,
-        child: Text("У вас пока нет комментариев",
+        child: Text(getTranslated(context,'no_comment'),
             style: AppThemeStyle.subtitleList2));
   }
 }
