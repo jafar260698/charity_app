@@ -1,4 +1,5 @@
 
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
@@ -26,11 +27,7 @@ class _PermissionForNotification extends State<PermissionForNotification>  with 
   @override
   void initState() {
     super.initState();
-    // set up the notification permissions class
-    // set up the future to fetch the notification data
     permissionStatusFuture = getCheckNotificationPermStatus();
-    // With this, we will be able to check if the permission is granted or not
-    // when returning to the application
     WidgetsBinding.instance.addObserver(this);
   }
 
@@ -96,7 +93,7 @@ class _PermissionForNotification extends State<PermissionForNotification>  with 
                           children: [
                             SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                             Text(
-                              'Разрешить уведомления',
+                              getTranslated(context,'give_permission'),
                               style: TextStyle(
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.bold,
@@ -106,7 +103,7 @@ class _PermissionForNotification extends State<PermissionForNotification>  with 
                             SvgPicture.asset('assets/svg/permission.svg'),
                             SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                             Text(
-                              'Разрешить доступ к уведомлениям для завершения регистрации.',
+                              getTranslated(context,'permission_info'),
                               style: TextStyle(
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.normal,
@@ -119,7 +116,7 @@ class _PermissionForNotification extends State<PermissionForNotification>  with 
                               isLoading: false,
                               textColor: Colors.white,
                               color: AppColor.primary,
-                              text: 'Разрешить доступ',
+                              text: getTranslated(context,'permission'),
                               ontap: () {
                                 var string=getCheckNotificationPermStatus();
                                 string.then((value) => {
@@ -132,7 +129,6 @@ class _PermissionForNotification extends State<PermissionForNotification>  with 
                                   sound: true,
                                   badge: true,
                                   alert: true)).then((_) {
-                                // when finished, check the permission status
                                       setState(() {
                                        permissionStatusFuture =getCheckNotificationPermStatus();
                                       });
@@ -151,7 +147,7 @@ class _PermissionForNotification extends State<PermissionForNotification>  with 
                               child: Padding(
                                 padding: EdgeInsets.all(5),
                                 child: Text(
-                                  'Не разрешать',
+                                  getTranslated(context,'no_permission'),
                                   style: TextStyle(
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.normal,
@@ -173,7 +169,8 @@ class _PermissionForNotification extends State<PermissionForNotification>  with 
                                     );
                                     // The permission is granted, then just show the text
                                     if (snapshot.data == permGranted) {
-                                      return textWidget;
+                                      return Text('');
+                                     // return textWidget;
                                     }
                                   }
                                   return Text('');

@@ -1,9 +1,3 @@
-/*
- * Created by Usmanov Eldor on 5/6/21, 10:58 AM
- *  Copyright (c) 6/5/2021
- *  Last modified 5/6/21, 10:49 AM
- *  2021 © SICNT. All rights reserved.
- */
 
 import 'dart:async';
 import 'package:charity_app/localization/user_data.dart';

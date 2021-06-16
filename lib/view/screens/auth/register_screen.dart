@@ -140,13 +140,14 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(80)),
                     TextField(
+                      readOnly: true,
+                      focusNode: FocusNode(),
                       decoration: InputDecoration(
                         hintText: getTranslated(context, 'user_type'),
+                        enabled: false,
                         hintStyle: TextStyle(color: Colors.black,fontSize: 14),
-                        prefixIcon: Icon(Icons.person,color: AppThemeStyle.primaryColor,
-                        ),
-                        suffixIcon: Icon(Icons.keyboard_arrow_down,size: 30,color: AppThemeStyle.primaryColor,
-                        ),
+                        prefixIcon: Icon(Icons.person,color: AppThemeStyle.primaryColor,),
+                        suffixIcon: Icon(Icons.keyboard_arrow_up_outlined,size: 30,color: AppThemeStyle.primaryColor,),
                         enabledBorder: new UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: AppThemeStyle.primaryColor,
@@ -172,7 +173,7 @@ class RegisterScreen extends StatelessWidget {
                             onChanged: _handleRadioValueChange2,
                           ),
                           new Text(
-                            'Родител',
+                            getTranslated(context, 'parents'),
                             style: new TextStyle(fontSize: 16.0),
                           ),
                         ],),
@@ -184,7 +185,7 @@ class RegisterScreen extends StatelessWidget {
                             onChanged: _handleRadioValueChange2,
                           ),
                           new Text(
-                            'Специалист',
+                            getTranslated(context,'specialist'),
                             style: new TextStyle(fontSize: 16.0),
                           )
                         ],),
@@ -196,7 +197,7 @@ class RegisterScreen extends StatelessWidget {
                             onChanged: _handleRadioValueChange2,
                           ),
                           new Text(
-                            'Оргснизация',
+                            getTranslated(context, 'organization'),
                             style: new TextStyle(fontSize: 16.0),
                           ),
                         ],),
