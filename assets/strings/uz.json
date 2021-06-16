@@ -21,6 +21,14 @@
   "no_comment" : "У вас пока нет комментариев",
   "parents": "Родител",
   "specialist": "Специалист",
-  "organization": "Оргснизация"
-
+  "organization": "Оргснизация",
+  "give_permission": "Разрешить уведомления",
+  "permission_info": "Разрешить доступ к уведомлениям для завершения регистрации.",
+  "permission": "Разрешить доступ",
+  "no_permission": "Не разрешать",
+  "via_apple": "Вход через Apple",
+  "via_google": "Вход через Google",
+  "via_email": "Вход через Email",
+  "via_facebook": "Вход через Facebook",
+  "confidential": "Пользовательское соглашение и политика конфиденциальности"
 }

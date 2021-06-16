@@ -1,4 +1,5 @@
 
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/card_icon.dart';
 import 'package:charity_app/view/components/search_field_ui.dart';
@@ -64,7 +65,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
                 text: '',
                 keyboardType: TextInputType.number,
                 inputAction: TextInputAction.done,
-                hintText: "Поиск...",
+                hintText: getTranslated(context,'search'),
                 suffixIcon: IconButton(
                   splashRadius: 25,
                   onPressed: () {

@@ -1,11 +1,4 @@
-/*
- * *
- *  * Created by Mahmud Nurmuhammedov on 5/3/21 4:39 PM
- *  * Copyright (c) 2021 . All rights reserved.
- *  * Last modified 4/28/21 9:29 AM
- *
- *
- */
+
 
 import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/utils/device_size_config.dart';

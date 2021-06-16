@@ -1,5 +1,6 @@
 
 
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
@@ -23,7 +24,7 @@ class _CommentScreen extends State<CommentScreen> {
       body: Column(
         children: <Widget>[
           Text(
-            'Комментарии',
+            getTranslated(context, 'comment'),
             style: TextStyle(
                 fontSize: 24.0,
                 letterSpacing: 0.4,

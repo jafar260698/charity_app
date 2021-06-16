@@ -1,11 +1,11 @@
 
 import 'dart:io';
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/toast_utils.dart';
 import 'package:charity_app/view/components/btn_ui_icon.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -63,7 +63,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   isLoading: false,
                                   textColor: Colors.white,
                                   color: Color.fromRGBO(98, 190, 184, 1),
-                                  text: 'Вход через Apple',
+                                  text: getTranslated(context, 'via_apple'),
                                   icon: SvgPicture.asset('assets/svg/auth/apple.svg'),
                                   ontap: () {
                                     if(Platform.isAndroid){
@@ -77,7 +77,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   isLoading: false,
                                   textColor: Colors.white,
                                   color: Color.fromRGBO(240, 131, 144, 1),
-                                  text: 'Вход через Google',
+                                  text: getTranslated(context,'via_google'),
                                   icon: SvgPicture.asset('assets/svg/auth/google.svg'),
                                   ontap: () {
                                     loginViaGoogle();
@@ -89,7 +89,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   isLoading: false,
                                   textColor: Colors.white,
                                   color: Color.fromRGBO(108, 187, 217, 1),
-                                  text: 'Вход через Facebook',
+                                  text: getTranslated(context,'via_facebook'),
                                   icon: SvgPicture.asset('assets/svg/auth/facebook.svg'),
                                   ontap: () {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
@@ -101,7 +101,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   isLoading: false,
                                   textColor: Colors.white,
                                   color: Color.fromRGBO(254, 205, 131, 1),
-                                  text: 'Вход через Email',
+                                  text: getTranslated(context,'via_email'),
                                   icon: SvgPicture.asset('assets/svg/auth/gmail.svg'),
                                   ontap: () {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
@@ -111,7 +111,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                 Opacity(
                                   opacity: 0.5,
                                   child: Text(
-                                    'Пользовательское соглашение и политика конфиденциальности',
+                                    getTranslated(context, 'confidential'),
                                     style: AppThemeStyle.title14,
                                     textAlign: TextAlign.center,
                                   ),
@@ -129,7 +129,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                             final user=FirebaseAuth.instance.currentUser;
                             return Text("got it ${user.refreshToken}");
                           }
-                          return Text("Succes");
+                          return Text('');
                     }),
                   ],
                 ),

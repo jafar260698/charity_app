@@ -13,12 +13,6 @@ class CabinetDrawerViewModel extends BaseViewModel {
   String _name = '', _tin = '', _taxDepartment = '', _taxDepartmentPhone = '';
   BuildContext context;
 
-  bool get isLoading => _isLoading;
-  Color get backHeaderColor => _backHeaderColor;
-  String get name => _name;
-  String get tin => _tin;
-  String get taxDepartment => _taxDepartment;
-  String get taxDepartmentPhone => _taxDepartmentPhone;
 
   void initContext(BuildContext context) async {
     this.context = context;
