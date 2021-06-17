@@ -1,8 +1,10 @@
 
 import 'dart:io';
 import 'package:charity_app/localization/language_constants.dart';
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/utils/toast_utils.dart';
 import 'package:charity_app/view/components/btn_ui_icon.dart';
+import 'package:charity_app/view/screens/auth/register_screen.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -48,7 +50,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                     SafeArea(
                       child: Column(
                         children: [
-                          SizedBox(height: 10),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(10.0)),
                           getWidgetLogoVertical,
                           Padding(
                               padding: EdgeInsets.only(left: 35,right: 35),
@@ -71,7 +73,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                     }
                                   },
                                 ),
-                                SizedBox(height:8),
+                                SizedBox(height: SizeConfig.calculateBlockVertical(8.0)),
                                 BtnUIIcon(
                                   height: 55,
                                   isLoading: false,
@@ -83,7 +85,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                     loginViaGoogle();
                                   },
                                 ),
-                                SizedBox(height:8),
+                                SizedBox(height: SizeConfig.calculateBlockVertical(8.0)),
                                 BtnUIIcon(
                                   height: 55,
                                   isLoading: false,
@@ -95,7 +97,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
                                   },
                                 ),
-                                SizedBox(height:8),
+                                SizedBox(height: SizeConfig.calculateBlockVertical(8.0)),
                                 BtnUIIcon(
                                   height: 55,
                                   isLoading: false,
@@ -107,7 +109,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
                                   },
                                 ),
-                                SizedBox(height:20),
+                                SizedBox(height: SizeConfig.calculateBlockVertical(20.0)),
                                 Opacity(
                                   opacity: 0.5,
                                   child: Text(
@@ -127,6 +129,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                         builder: (context,snapshot){
                           if(snapshot.hasData){
                             final user=FirebaseAuth.instance.currentUser;
+                            //Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: user.displayName,email: user.email,password: user.uid,phoneNumber: user.phoneNumber,)));
                             return Text("got it ${user.refreshToken}");
                           }
                           return Text('');

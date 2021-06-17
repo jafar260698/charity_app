@@ -139,7 +139,7 @@ class FaqScreen extends StatelessWidget {
                 );
               }
           );
-        else Text('Data not found');
+        else Text('Data not found',style: AppThemeStyle.appBarStyle16);
       }
     }
   }

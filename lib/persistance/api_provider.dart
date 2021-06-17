@@ -232,14 +232,15 @@ class ApiProvider {
   //user type
   Future<List<UserType>> getUserType() async{
     var responseJson;
-
     try{
-      final response=await client.get(
-          Uri.parse("$baseUrl/user_type?language=ru"),
-          headers: headers);
+      final response=await client.get(Uri.parse("$baseUrl/user_type?language=ru"), headers: headers);
+
+      print(response.request.url);
+      print(response.body);
+      print(response.statusCode);
+
       var res=_response(response);
-      responseJson=res.map((element)=>UserType.fromJson(element)
-      ).toList();
+      responseJson=res.map((element)=>UserType.fromJson(element)).toList();
 
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
@@ -250,7 +251,6 @@ class ApiProvider {
   //article
   Future<Article> getArticle() async{
     var responseJson;
-
     try{
       final response= await client.get(Uri.parse('$baseUrl/article?language=ru&category=razvitie&page=1'),
         headers: headers,
@@ -394,7 +394,6 @@ class ApiProvider {
       print(response.request.url);
       print(response.body);
       print(response.statusCode);
-
       var res=_response(response) as List;
       responseJson=res.map((element)=>Faq.fromJson(element)
       ).toList();

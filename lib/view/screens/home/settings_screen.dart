@@ -35,7 +35,6 @@ class _SettingsScreen extends State<SettingsScreen> {
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
-
         title: Text('', style: AppThemeStyle.appBarStyle),
         leading: IconButton(
           iconSize: 18.0,

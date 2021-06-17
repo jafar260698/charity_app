@@ -13,15 +13,13 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class RegisterScreen extends StatelessWidget {
+  final String username;
+  final String email;
+  final String phoneNumber;
+  final String password;
 
-  int correctScore = 0;
-  int _radioValue2 = -1;
+  RegisterScreen({Key key,this.username, this.email, this.phoneNumber, this.password}) : super(key: key);
 
-  void _handleRadioValueChange2(int value) {
-    // setState(() {
-    //   _radioValue2 = value;
-    // });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +62,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(15)),
                     TextField(
+                      controller: model.usernameController,
                       decoration: InputDecoration(
                         hintText: getTranslated(context, 'username'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
@@ -83,6 +82,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
+                      controller: model.passwordController,
                       decoration: InputDecoration(
                         hintText: getTranslated(context, 'password'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
@@ -102,6 +102,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
+                      controller: model.emailController,
                       decoration: InputDecoration(
                         hintText: getTranslated(context,'email'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
@@ -121,6 +122,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
+                      controller: model.phoneController,
                       decoration: InputDecoration(
                         hintText: getTranslated(context, 'phone_number'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
@@ -166,11 +168,14 @@ class RegisterScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Row(children: [
-                          new Radio(
-                            value: 0,
-                            activeColor:AppThemeStyle.primaryColor,
-                            groupValue: _radioValue2,
-                            onChanged: _handleRadioValueChange2,
+                          Transform.scale(
+                            scale: 1.5,
+                            child: new Radio(
+                              value: 0,
+                              activeColor:AppThemeStyle.primaryColor,
+                              groupValue: model.radioValue2,
+                              onChanged: model.handleRadioValueChange,
+                            ),
                           ),
                           new Text(
                             getTranslated(context, 'parents'),
@@ -178,11 +183,14 @@ class RegisterScreen extends StatelessWidget {
                           ),
                         ],),
                         Row(children: [
-                          new Radio(
-                            value: 1,
-                            groupValue: _radioValue2,
-                            activeColor:AppThemeStyle.primaryColor,
-                            onChanged: _handleRadioValueChange2,
+                          Transform.scale(
+                            scale: 1.5,
+                            child: new Radio(
+                              value: 1,
+                              groupValue: model.radioValue2,
+                              activeColor:AppThemeStyle.primaryColor,
+                              onChanged: model.handleRadioValueChange,
+                            ),
                           ),
                           new Text(
                             getTranslated(context,'specialist'),
@@ -190,11 +198,14 @@ class RegisterScreen extends StatelessWidget {
                           )
                         ],),
                         Row(children: [
-                          new Radio(
-                            value: 2,
-                            activeColor:AppThemeStyle.primaryColor,
-                            groupValue: _radioValue2,
-                            onChanged: _handleRadioValueChange2,
+                          Transform.scale(
+                            scale: 1.5,
+                            child: new Radio(
+                              value: 2,
+                              activeColor:AppThemeStyle.primaryColor,
+                              groupValue: model.radioValue2,
+                              onChanged: model.handleRadioValueChange,
+                            ),
                           ),
                           new Text(
                             getTranslated(context, 'organization'),
@@ -222,6 +233,12 @@ class RegisterScreen extends StatelessWidget {
           ),
         ),
       ),
+      onModelReady: (model){
+        if(username!=null){
+           model.initStates(username, email, password, phoneNumber);
+        }
+        model.getUserType();
+      },
       viewModelBuilder:()=> RegisterViewModel(),
     );
   }
