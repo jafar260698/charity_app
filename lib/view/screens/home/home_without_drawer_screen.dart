@@ -80,27 +80,27 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                CardIcon("Narusheniya", "assets/svg/services/medicine.svg"),
-                CardIcon("Навыки", "assets/svg/services/skill.svg"),
-                CardIcon("Ресурсы", "assets/svg/services/resource.svg")
+                CardIcon(getTranslated(context, 'violation'), "assets/svg/services/medicine.svg"),
+                CardIcon(getTranslated(context,'skills'), "assets/svg/services/skill.svg"),
+                CardIcon(getTranslated(context,'resource'), "assets/svg/services/resource.svg")
               ],
             ),
             SizedBox(height: SizeConfig.calculateBlockVertical(20)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                CardIcon("Услугодатели", "assets/svg/services/service_provider.svg"),
-                CardIcon("Права", "assets/svg/services/rules.svg"),
-                CardIcon("Инклюзия", "assets/svg/services/inclusion.svg")
+                CardIcon(getTranslated(context,'service_provider'), "assets/svg/services/service_provider.svg"),
+                CardIcon(getTranslated(context,'rules'), "assets/svg/services/rules.svg"),
+                CardIcon(getTranslated(context,'inclusion'), "assets/svg/services/inclusion.svg")
               ],
             ),
             SizedBox(height: SizeConfig.calculateBlockVertical(20)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                CardIcon("Helloworld", "assets/svg/services/article.svg"),
-                CardIcon("Форум", "assets/svg/services/forum.svg"),
-                CardIcon("Dlya mam", "assets/svg/services/for_mummy.svg")
+                CardIcon(getTranslated(context,'article'), "assets/svg/services/article.svg"),
+                CardIcon(getTranslated(context,'forum'), "assets/svg/services/forum.svg"),
+                CardIcon(getTranslated(context,'for_mother'), "assets/svg/services/for_mummy.svg")
               ],
             ),
             SizedBox(height: SizeConfig.calculateBlockVertical(80))

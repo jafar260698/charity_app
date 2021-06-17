@@ -30,5 +30,13 @@
   "via_google": "Вход через Google",
   "via_email": "Вход через Email",
   "via_facebook": "Вход через Facebook",
-  "confidential": "Пользовательское соглашение и политика конфиденциальности"
+  "confidential": "Пользовательское соглашение и политика конфиденциальности",
+  "violation": "Нарушения",
+  "skills": "Навыки",
+  "resource": "Ресурсы",
+  "service_provider": "Услугодатели",
+  "rules": "Права",
+  "inclusion": "Инклюзия",
+  "article": "Статьи",
+  "for_mother": "Для мамы"
 }

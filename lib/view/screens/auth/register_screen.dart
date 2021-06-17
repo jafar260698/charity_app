@@ -222,8 +222,8 @@ class RegisterScreen extends StatelessWidget {
                       color: AppThemeStyle.primaryColor,
                       text: getTranslated(context, 'create'),
                       ontap: () {
-                        model.registration(context);
-                        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
+                        //model.registration(context);
+                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
                       },
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(20)),
