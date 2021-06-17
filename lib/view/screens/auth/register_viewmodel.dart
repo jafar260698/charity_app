@@ -8,7 +8,6 @@ import 'package:stacked/stacked.dart';
 
 class RegisterViewModel extends BaseViewModel{
   ApiProvider  _apiProvider=new ApiProvider();
-  UserData _userData=new UserData();
   String type;
 
   int _radioValue2=0;
@@ -66,13 +65,14 @@ class RegisterViewModel extends BaseViewModel{
       }
 
       Map<String,dynamic> data=new Map<String,dynamic>();
+      data['phone']=_phoneController.text.toString();
       data['name']=_usernameController.text;
       data['email']=_emailController.text;
       data['password']=_passwordController.text;
-      data['phone']=_phoneController.text;
       data['type']=type;
       data['language']='ru';
 
+      print(data);
       _apiProvider.registration(data).then((value) => {
         if(value.error!=null){
           ToastUtils.toastErrorGeneral(value.error, context),
@@ -85,21 +85,19 @@ class RegisterViewModel extends BaseViewModel{
         _isLoading=false,
       });
     }
-
   }
 
   bool checkTextFieldEmptyOrNot(BuildContext context){
-
     if(_usernameController.text.isEmpty){
       ToastUtils.toastErrorGeneral('Username must not be empty', context);
       return false;
     }
-    if(_emailController.text.isEmpty){
-      ToastUtils.toastErrorGeneral('Email must not be empty', context);
-      return false;
-    }
     if(_passwordController.text.isEmpty){
       ToastUtils.toastErrorGeneral('Password must not be empty', context);
+      return false;
+    }
+    if(_emailController.text.isEmpty){
+      ToastUtils.toastErrorGeneral('Email must not be empty', context);
       return false;
     }
     if(_phoneController.text.isEmpty){
