@@ -222,7 +222,8 @@ class RegisterScreen extends StatelessWidget {
                       color: AppThemeStyle.primaryColor,
                       text: getTranslated(context, 'create'),
                       ontap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
+                        model.registration(context);
+                        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
                       },
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(20)),
@@ -237,7 +238,7 @@ class RegisterScreen extends StatelessWidget {
         if(username!=null){
            model.initStates(username, email, password, phoneNumber);
         }
-        model.getUserType();
+        model.getUserType(context);
       },
       viewModelBuilder:()=> RegisterViewModel(),
     );

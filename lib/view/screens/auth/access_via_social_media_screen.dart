@@ -129,8 +129,8 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                         builder: (context,snapshot){
                           if(snapshot.hasData){
                             final user=FirebaseAuth.instance.currentUser;
-                            //Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: user.displayName,email: user.email,password: user.uid,phoneNumber: user.phoneNumber,)));
-                            return Text("got it ${user.refreshToken}");
+                            //Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: user.displayName??"",email: user.email??"",password: user.uid??"",phoneNumber: user.phoneNumber??"",)));
+                            return Text('');
                           }
                           return Text('');
                     }),

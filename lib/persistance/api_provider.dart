@@ -61,13 +61,17 @@ class ApiProvider {
   //user file
   Future<BaseResponses> registration(Map<String,dynamic> data) async{
     var responseJson;
-
     try{
-      final response= await client.post(Uri.parse('$baseUrl/registration'),
+      final response= await client.post(Uri.parse('$baseUrl/user/registration'),
         headers: headers,
         body: jsonEncode(data)
       );
-      var res=_response(response);
+      print(response.request.headers);
+      print(response.request.url);
+      print(response.body);
+      print(response.statusCode);
+      var res = json.decode(response.body.toString());
+      print(res);
       responseJson=BaseResponses.fromJson(res);
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
@@ -239,7 +243,7 @@ class ApiProvider {
       print(response.body);
       print(response.statusCode);
 
-      var res=_response(response);
+      var res=_response(response) as List;
       responseJson=res.map((element)=>UserType.fromJson(element)).toList();
 
     } on FetchDataException{
