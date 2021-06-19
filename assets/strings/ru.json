@@ -1,9 +1,7 @@
 {
   "copyright": "Авторские права © 2021 Guliston Food",
-  "welcome": "Xush kelibsiz!",
-  "soliqServices": "Soliq organlarining elektron xizmatlari!",
-  "kz_language" : "Казахский язык",
-  "ru_language" : "Rus tili",
+  "kz_language" : "Қазақ тілі",
+  "ru_language" : "Русский язык",
   "enter" : "ВХОД",
   "faq": "FAQ",
   "email": "E-MAIL",

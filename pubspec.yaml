@@ -33,6 +33,8 @@ dependencies:
   firebase_core: ^1.0.1
   firebase_auth: ^1.0.1
   google_sign_in: ^5.0.0
+  flutter_facebook_login: ^3.0.0
+
 
   # Provider + Stack pattern
   provider: ^5.0.0
@@ -60,10 +62,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^0.19.3
 
-  #sign in
- # google_sign_in: ^5.0.4
-#  sign_in_with_apple: ^3.0.0
-#  flutter_facebook_auth: ^3.4.1
 
 dev_dependencies:
   flutter_test:

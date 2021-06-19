@@ -375,7 +375,6 @@ class ApiProvider {
   //category
   Future<Category> getCategory(String lang) async{
     var responseJson;
-
     try{
       final response= await client.get(Uri.parse('$baseUrl/category?language=ru'),
         headers: headers,

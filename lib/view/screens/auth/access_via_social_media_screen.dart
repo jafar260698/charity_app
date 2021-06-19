@@ -25,6 +25,7 @@ class AccessViaSocialMediaScreen extends StatefulWidget {
 class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
   final googleSignIn=GoogleSignIn();
   bool _isSignIn=false;
+  User _user;
 
 
   @override
@@ -83,6 +84,11 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   icon: SvgPicture.asset('assets/svg/auth/google.svg'),
                                   ontap: () {
                                     loginViaGoogle();
+                                    if(_user!=null){
+                                      gotoNextScreen(_user);
+                                    }else{
+
+                                    }
                                   },
                                 ),
                                 SizedBox(height: SizeConfig.calculateBlockVertical(8.0)),
@@ -128,9 +134,9 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                         stream: FirebaseAuth.instance.authStateChanges(),
                         builder: (context,snapshot){
                           if(snapshot.hasData){
-                            final user=FirebaseAuth.instance.currentUser;
-                            //Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: user.displayName??"",email: user.email??"",password: user.uid??"",phoneNumber: user.phoneNumber??"",)));
-                            return Text('');
+                            User user=FirebaseAuth.instance.currentUser;
+                              _user=user;
+                            return Text('${user.displayName}');
                           }
                           return Text('');
                     }),
@@ -142,6 +148,10 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> gotoNextScreen(User user) async{
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: user.displayName??"",email: user.email??"",password: user.uid??"",phoneNumber: user.phoneNumber??"",)));
   }
 
   Future<void> loginViaGoogle() async{
@@ -167,5 +177,6 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
     await googleSignIn.disconnect();
     FirebaseAuth.instance.signOut();
   }
+
 }
 
