@@ -10,11 +10,13 @@ import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../widgets/get_widget_family.dart';
 import '../../widgets/get_widget_logo.dart';
 import 'login_screen.dart';
+import 'package:http/http.dart' as http;
 
 
 class AccessViaSocialMediaScreen extends StatefulWidget {
@@ -24,6 +26,7 @@ class AccessViaSocialMediaScreen extends StatefulWidget {
 
 class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
   final googleSignIn=GoogleSignIn();
+  final FirebaseAuth _auth=FirebaseAuth.instance;
   bool _isSignIn=false;
   User _user;
 
@@ -100,7 +103,8 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   text: getTranslated(context,'via_facebook'),
                                   icon: SvgPicture.asset('assets/svg/auth/facebook.svg'),
                                   ontap: () {
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
+                                    loginViaFacebook();
+                                    //Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
                                   },
                                 ),
                                 SizedBox(height: SizeConfig.calculateBlockVertical(8.0)),
@@ -170,6 +174,25 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
       await FirebaseAuth.instance.signInWithCredential(credential);
 
       _isSignIn=false;
+    }
+  }
+
+  Future<void> loginViaFacebook() async{
+    FacebookLogin facebookLogin = FacebookLogin();
+    final result = await facebookLogin.logIn(['email']);
+    final token = result.accessToken.token;
+    final graphResponse = await http.get(Uri.parse('https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email&access_token=${token}'));
+    //final profile = JSON.decode(graphResponse.body);
+    print(graphResponse.body);
+    switch (result.status) {
+      case FacebookLoginStatus.loggedIn:
+        final credential=FacebookAuthProvider.credential(token);
+        _auth.signInWithCredential(credential);
+        break;
+      case FacebookLoginStatus.cancelledByUser:
+        break;
+      case FacebookLoginStatus.error:
+        break;
     }
   }
 
