@@ -1,9 +1,12 @@
 
 
+import 'dart:convert';
+import 'dart:io';
 import 'package:charity_app/localization/language.dart';
 import 'package:charity_app/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 
 class SettingsViewModel extends BaseViewModel{
@@ -23,6 +26,10 @@ class SettingsViewModel extends BaseViewModel{
   bool get permissionNotification=>_permissionNotification;
 
 
+  // image settings
+  File _imageFile;
+  final _picker = ImagePicker();
+  var fileName = "", fileSource, fileSize, fileExt;
 
   void setContext(BuildContext context) async {
     this.context = context;
@@ -66,4 +73,29 @@ class SettingsViewModel extends BaseViewModel{
     }
     notifyListeners();
   }
+
+
+  Future<void> pickFile() async {
+    final PickedFile pickedFile =
+    await _picker.getImage(source: ImageSource.gallery, imageQuality: 30);
+    _imagePicked(pickedFile);
+  }
+
+  Future<void> _imagePicked(PickedFile pickedFile) async {
+    var tempImage = File(pickedFile.path);
+    _imageFile = tempImage;
+    notifyListeners();
+    if (tempImage != null) {
+      fileSize = tempImage.lengthSync().toString();
+      var byt = tempImage.readAsBytesSync();
+      fileSource = base64Encode(byt);
+      fileName = pickedFile.path.split("/").last;
+      fileExt = fileName.split(".").last;
+
+      print("image/$fileExt  Filesize $fileSize Filename $fileName");
+      notifyListeners();
+    //  _uploadFile("uz", "image/$fileExt", "185", fileSize, fileName, fileSource);
+    }
+  }
+
 }

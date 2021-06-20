@@ -5,7 +5,6 @@ import 'package:charity_app/view/screens/home/menu/change_username_screen.dart';
 import 'package:charity_app/view/screens/home/menu/settings_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
-import 'package:charity_app/view/widgets/avatar_iamge.dart';
 import 'package:charity_app/view/widgets/blurred_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +42,7 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(width: 30),
                   InkWell(
                     onTap: (){
-                      print("ss");
+                      model.pickFile();
                     }, child: BlurredAvatar(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0)),
                   SizedBox(width: 10),
                   Material(
