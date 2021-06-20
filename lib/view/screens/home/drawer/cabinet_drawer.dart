@@ -119,34 +119,34 @@ class CabinetDrawer extends StatelessWidget {
                                   InkWell(
                                       onTap: (){},
                                       child: Text("Диагнозы",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
+                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell(
                                       onTap: (){},
                                       child: Text("Навыки",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
+                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell( onTap: (){},
                                       child: Text("Ресурсы",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
+                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell(
                                       onTap: (){},
                                       child: Text("Услугодатели",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
+                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell(
                                       onTap: (){},
                                       child: Text("Права",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
+                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell(
                                       onTap: (){},
                                       child: Text("Инклюзия",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
+                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell(
                                       onTap: (){},
                                       child: Text("Статьи",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
+                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell(
                                       onTap: (){},
                                         child: Text("Форум",style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: 10),
+                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell( onTap: (){ },child: Text("Ссылки",style: AppThemeStyle.buttonWhite16)),
                                 ],
                               ),

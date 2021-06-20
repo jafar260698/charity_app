@@ -21,7 +21,7 @@ class RegisterViewModel extends BaseViewModel{
   bool get isLoading=> _isLoading;
 
   var _phoneController = new MaskedTextController(
-      text: '+', mask: '+0-000-000-00-00');
+      text: '', mask: '+0-000-000-00-00');
 
 
   TextEditingController _emailController=new TextEditingController();

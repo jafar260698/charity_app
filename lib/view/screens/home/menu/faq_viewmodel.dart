@@ -21,8 +21,6 @@ class FaqViewModel extends BaseViewModel{
     _userData.getLang().then((value) => {
       _apiProvider.getFaq(value).then((value) => {
         _faq=value,
-        print(_faq),
-        print(_faq[0].title)
       }).catchError((error) => {
         print("Error: $error")
       }).whenComplete(() => {

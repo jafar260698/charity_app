@@ -35,9 +35,9 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+            SizedBox(height: SizeConfig.calculateBlockVertical(10)),
             Container(
-              height: SizeConfig.calculateBlockVertical(210),
+              height: SizeConfig.calculateBlockVertical(200),
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: 20,right: 10),
@@ -75,7 +75,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
                 ),
               ),
             ),
-            SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+            SizedBox(height: SizeConfig.calculateBlockVertical(10)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
