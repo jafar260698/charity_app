@@ -48,7 +48,13 @@ class AppThemeStyle {
 
   static TextStyle appBarStyle = TextStyle(
     fontSize: 18,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.normal,
+    letterSpacing: 0.1,
+  );
+
+  static TextStyle appBarStyle17 = TextStyle(
+    fontSize: 17,
+    fontWeight: FontWeight.w500,
     letterSpacing: 0.1,
   );
 
@@ -162,6 +168,8 @@ class AppThemeStyle {
     fontSize: 14,
     color: Colors.grey,
     fontWeight: FontWeight.w500,
+    fontFamily: 'Montserrat',
+
   );
 
   static TextStyle title14 = TextStyle(

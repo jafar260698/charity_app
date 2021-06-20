@@ -2,7 +2,7 @@ import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/main.dart';
 import 'package:charity_app/model/faq.dart';
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/view/screens/home/faq_viewmodel.dart';
+import 'package:charity_app/view/screens/home/menu/faq_viewmodel.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';

@@ -1,15 +1,17 @@
 
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/view/screens/home/settings_viewmodel.dart';
+import 'package:charity_app/view/screens/home/menu/change_username_screen.dart';
+import 'package:charity_app/view/screens/home/menu/settings_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
+import 'package:charity_app/view/widgets/blurred_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class SettingsScreen extends StatelessWidget with WidgetsBindingObserver{
+class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -35,29 +37,37 @@ class SettingsScreen extends StatelessWidget with WidgetsBindingObserver{
             mainAxisSize: MainAxisSize.max,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(width: 30),
-                  AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0),
+                  InkWell(
+                    onTap: (){
+                      print("ss");
+                    }, child: BlurredAvatar(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0)),
                   SizedBox(width: 10),
-                  Expanded(
-                    child: Column(
-                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Бибигуль Ахметова",
-                          textAlign: TextAlign.start,
-                          style: AppThemeStyle.listStyle,
-                        ),
-                        SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                        Text(
-                          getTranslated(context,'change_username'),
-                          textAlign: TextAlign.start,
-                          style: AppThemeStyle.buttonNormal,
-                        ),
-                        SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                      ],
+                  Material(
+                    child: InkWell(
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChangeUsernameScreen()));
+                      },
+                      child: Column(
+                         crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Бибигуль Ахметова",
+                            textAlign: TextAlign.start,
+                            style: AppThemeStyle.listStyle,
+                          ),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                          Text(
+                            getTranslated(context,'change_username'),
+                            textAlign: TextAlign.start,
+                            style: AppThemeStyle.titleListPrimary,
+                          ),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                        ],
+                      ),
                     ),
                   ),
                 ],

@@ -41,5 +41,7 @@
   "new_comment": "Новый комментарий",
   "settings_notification": "Настройки уведомлений",
   "choose_language": "Выбор языка",
-  "change_username": "Редактировать имя"
+  "change_username": "Редактировать имя",
+  "save": "Сохранить"
+
 }

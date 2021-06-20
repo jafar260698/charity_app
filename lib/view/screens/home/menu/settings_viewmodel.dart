@@ -23,6 +23,7 @@ class SettingsViewModel extends BaseViewModel{
   bool get permissionNotification=>_permissionNotification;
 
 
+
   void setContext(BuildContext context) async {
     this.context = context;
   }
