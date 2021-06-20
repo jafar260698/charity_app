@@ -33,8 +33,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Container(
+    return Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/image/auth_background.png"),
@@ -150,8 +149,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 
   Future<void> gotoNextScreen(User user) async{

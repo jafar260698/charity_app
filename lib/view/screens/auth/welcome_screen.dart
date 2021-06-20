@@ -15,10 +15,8 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
       return ViewModelBuilder<WelcomeViewModel>.reactive(
-      builder:(context,model,child)=> MaterialApp(
-        home: Scaffold(
+      builder:(context,model,child)=>Scaffold(
           body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -79,7 +77,6 @@ class WelcomeScreen extends StatelessWidget {
             ),
           ),
         ),
-      ),
       viewModelBuilder: ()=>WelcomeViewModel(),
     );
   }

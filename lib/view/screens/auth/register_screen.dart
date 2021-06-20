@@ -63,6 +63,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: SizeConfig.calculateBlockVertical(15)),
                     TextField(
                       controller: model.usernameController,
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         hintText: getTranslated(context, 'username'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
@@ -83,6 +84,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
                       controller: model.passwordController,
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         hintText: getTranslated(context, 'password'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
@@ -103,6 +105,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
                       controller: model.emailController,
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         hintText: getTranslated(context,'email'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),
@@ -123,6 +126,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                     TextField(
                       controller: model.phoneController,
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         hintText: getTranslated(context, 'phone_number'),
                         hintStyle: TextStyle(color: Colors.white,fontSize: 14),

@@ -5,6 +5,7 @@ import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/bottom_modal_sheet.dart';
 import 'package:charity_app/view/screens/auth/splash_screen.dart';
 import 'package:charity_app/view/screens/home/menu/faq_screen.dart';
+import 'package:charity_app/view/screens/home/menu/favourite_menu_screen.dart';
 import 'package:charity_app/view/screens/home/menu/settings_screen.dart';
 import 'package:charity_app/view/screens/other/favourite_screen.dart';
 import 'package:charity_app/view/theme/app_color.dart';
@@ -44,7 +45,7 @@ class CabinetDrawer extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        SizedBox(height: SizeConfig.calculateBlockVertical(45)),
+                        SizedBox(height: SizeConfig.calculateBlockVertical(50)),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,7 +62,7 @@ class CabinetDrawer extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+                        SizedBox(height: SizeConfig.calculateBlockVertical(30)),
                       ],
                     ),
                   ),
@@ -158,8 +159,7 @@ class CabinetDrawer extends StatelessWidget {
                             SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                             InkWell(
                               onTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => FavouriteScreen()));
-
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => FavouriteMenuScreen()));
                               },
                               child: Padding(
                                 padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),

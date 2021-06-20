@@ -45,28 +45,26 @@ class SettingsScreen extends StatelessWidget {
                       model.pickFile();
                     }, child: BlurredAvatar(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0)),
                   SizedBox(width: 10),
-                  Material(
-                    child: InkWell(
-                      onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChangeUsernameScreen()));
-                      },
-                      child: Column(
-                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Бибигуль Ахметова",
-                            textAlign: TextAlign.start,
-                            style: AppThemeStyle.listStyle,
-                          ),
-                          SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                          Text(
-                            getTranslated(context,'change_username'),
-                            textAlign: TextAlign.start,
-                            style: AppThemeStyle.titleListPrimary,
-                          ),
-                          SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                        ],
-                      ),
+                  InkWell(
+                    onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChangeUsernameScreen()));
+                    },
+                    child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Бибигуль Ахметова",
+                          textAlign: TextAlign.start,
+                          style: AppThemeStyle.listStyle,
+                        ),
+                        SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                        Text(
+                          getTranslated(context,'change_username'),
+                          textAlign: TextAlign.start,
+                          style: AppThemeStyle.titleListPrimary,
+                        ),
+                        SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                      ],
                     ),
                   ),
                 ],
