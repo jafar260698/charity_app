@@ -9,7 +9,7 @@ class BtnUI extends StatefulWidget {
       this.text,
       this.ontap,
       this.height = 50,
-      this.isLoading = false,
+      this.isLoading,
       this.child,
       this.align});
 

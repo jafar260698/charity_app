@@ -33,7 +33,8 @@ class ApiProvider {
 
   var headers = {
     'language': 'ru',
-    'authorization': '\$2y\$10\$nTX/1eBIlQQ0cu4rjt2ea.axCqSMY65dh./.OX0Vtet3w7dGaYfLW'
+    'authorization': '\$2y\$10\$nTX/1eBIlQQ0cu4rjt2ea.axCqSMY65dh./.OX0Vtet3w7dGaYfLW',
+    HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
   };
 
 
@@ -66,6 +67,9 @@ class ApiProvider {
         headers: headers,
         body: jsonEncode(data)
       );
+
+      print(response.request);
+      print(jsonEncode(data));
       print(response.request.headers);
       print(response.request.url);
       print(response.body);

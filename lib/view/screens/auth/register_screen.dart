@@ -217,13 +217,13 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: SizeConfig.calculateBlockVertical(30)),
                     BtnUI(
                       height: 55,
-                      isLoading: false,
+                      isLoading: model.isLoading,
                       textColor: Colors.white,
                       color: AppThemeStyle.primaryColor,
                       text: getTranslated(context, 'create'),
                       ontap: () {
-                        //model.registration(context);
-                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
+                         model.registration(context);
+                         //Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
                       },
                     ),
                     SizedBox(height: SizeConfig.calculateBlockVertical(20)),
