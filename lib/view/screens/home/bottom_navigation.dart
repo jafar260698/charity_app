@@ -27,7 +27,6 @@ final List<String> imgList = [
 ];
 
 class _BottomNavigation extends State<BottomNavigation> {
-  TextEditingController pinfl = new TextEditingController();
   int selectedItem=0;
   List<Widget> tabs = <Widget>[
     HomeScreen(),

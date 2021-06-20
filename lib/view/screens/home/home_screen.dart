@@ -14,7 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreen extends State<HomeScreen> {
-  TextEditingController pinfl = new TextEditingController();
   DrawerIndex drawerIndex;
 
   @override

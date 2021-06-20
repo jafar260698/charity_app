@@ -36,5 +36,10 @@
   "rules": "Права",
   "inclusion": "Инклюзия",
   "article": "Статьи",
-  "for_mother": "Для мамы"
+  "for_mother": "Для мамы",
+  "reply_to_comment": "Ответ на комментарий",
+  "new_comment": "Новый комментарий",
+  "settings_notification": "Настройки уведомлений",
+  "choose_language": "Выбор языка",
+  "change_username": "Редактировать имя"
 }
