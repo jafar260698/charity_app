@@ -196,10 +196,11 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
     }
   }
 
-  Future<void> logOut() async{
+  Future<void> logOutGoogle() async{
     await googleSignIn.disconnect();
     FirebaseAuth.instance.signOut();
   }
+
 
 }
 

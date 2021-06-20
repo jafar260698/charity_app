@@ -81,7 +81,7 @@ class _BtnUIState extends State<BtnUI> with SingleTickerProviderStateMixin {
                   alignment: widget.align!=null ? widget.align : Alignment.center,
                   child: Text(
                     widget.text,
-                    style: TextStyle(color: widget.textColor,fontSize: 16,fontWeight: FontWeight.w500
+                    style: TextStyle(color: widget.textColor,fontSize: 16,fontFamily: 'Montserrat'
                     ),
                   ),
                 ),
