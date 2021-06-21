@@ -42,6 +42,11 @@
   "settings_notification": "Настройки уведомлений",
   "choose_language": "Выбор языка",
   "change_username": "Редактировать имя",
-  "save": "Сохранить"
-
+  "save": "Сохранить",
+  "favourite": "Избранное",
+  "diagnose": "Диагнозы",
+  "link": "Ссылки",
+  "service": "Услуги",
+  "region": "Регионы",
+  "year_old": "Возраст:"
 }
