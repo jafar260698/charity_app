@@ -11,7 +11,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:theme_provider/theme_provider.dart';
-
 import 'localization/demo_localizations.dart';
 
 
@@ -117,7 +116,6 @@ class _MyAppState extends State<MyApp> {
                   }
                   print(supportedLocale);
                 }
-                // print(supportedLocales.first);
                 return supportedLocales.first;
               },
             ),
