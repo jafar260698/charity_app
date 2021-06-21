@@ -1,3 +1,4 @@
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/screens/home/questionnaire/questionnaire_screen.dart';
 import 'package:charity_app/view/theme/app_color.dart';
@@ -26,7 +27,7 @@ class _ResourceScreen extends State<ResourceScreen> {
         appBar: appBarPage(
           context: context,
           appBarTitle: "",
-          appBarIncome: "Ресурсы",
+          appBarIncome: getTranslated(context,'resource'),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(70.0), // here the desired height
             child: Align(

@@ -7,8 +7,9 @@ import 'package:flutter_svg/svg.dart';
 class  CardIcon extends StatefulWidget{
   final String operation;
   final String iconPath;
+  final GestureTapCallback onTap;
 
-  CardIcon(this.operation,this.iconPath);
+ const CardIcon({Key key,this.operation, this.iconPath, this.onTap});
 
   @override
   _CardIcon createState()=>_CardIcon();
@@ -21,9 +22,7 @@ class _CardIcon extends State<CardIcon>{
     return Column(
       children: [
         InkWell(
-          onTap: (){
-
-          },
+          onTap: widget.onTap,
           child: Container(
             width: 80,
             height: 80,

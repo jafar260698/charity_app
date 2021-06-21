@@ -3,6 +3,7 @@ import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/card_icon.dart';
 import 'package:charity_app/view/components/search_field_ui.dart';
+import 'package:charity_app/view/screens/home/resource/resource_screen.dart';
 import 'package:charity_app/view/screens/other/notification/notification_screen.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -80,27 +81,30 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                CardIcon(getTranslated(context, 'violation'), "assets/svg/services/medicine.svg"),
-                CardIcon(getTranslated(context,'skills'), "assets/svg/services/skill.svg"),
-                CardIcon(getTranslated(context,'resource'), "assets/svg/services/resource.svg")
+                CardIcon(operation:getTranslated(context, 'violation'),iconPath:  "assets/svg/services/medicine.svg",onTap: (){}),
+                CardIcon(operation:getTranslated(context,'skills'),iconPath: "assets/svg/services/skill.svg",onTap: (){}),
+                CardIcon(operation:getTranslated(context,'resource'),iconPath: "assets/svg/services/resource.svg",onTap: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResourceScreen()));
+                }),
+
               ],
             ),
             SizedBox(height: SizeConfig.calculateBlockVertical(20)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                CardIcon(getTranslated(context,'service_provider'), "assets/svg/services/service_provider.svg"),
-                CardIcon(getTranslated(context,'rules'), "assets/svg/services/rules.svg"),
-                CardIcon(getTranslated(context,'inclusion'), "assets/svg/services/inclusion.svg")
+                CardIcon(operation:getTranslated(context,'service_provider'),iconPath: "assets/svg/services/service_provider.svg",onTap: (){}),
+                CardIcon(operation:getTranslated(context,'rules'),iconPath: "assets/svg/services/rules.svg",onTap: (){}),
+                CardIcon(operation:getTranslated(context,'inclusion'),iconPath: "assets/svg/services/inclusion.svg",onTap: (){})
               ],
             ),
             SizedBox(height: SizeConfig.calculateBlockVertical(20)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                CardIcon(getTranslated(context,'article'), "assets/svg/services/article.svg"),
-                CardIcon(getTranslated(context,'forum'), "assets/svg/services/forum.svg"),
-                CardIcon(getTranslated(context,'for_mother'), "assets/svg/services/for_mummy.svg")
+                CardIcon(operation:getTranslated(context,'article'),iconPath: "assets/svg/services/article.svg",onTap: (){}),
+                CardIcon(operation:getTranslated(context,'forum'),iconPath: "assets/svg/services/forum.svg",onTap: (){}),
+                CardIcon(operation:getTranslated(context,'for_mother'),iconPath: "assets/svg/services/for_mummy.svg",onTap: (){})
               ],
             ),
             SizedBox(height: SizeConfig.calculateBlockVertical(80))
