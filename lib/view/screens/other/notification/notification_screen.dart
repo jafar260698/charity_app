@@ -18,7 +18,7 @@ class NotificationScreen extends StatefulWidget {
 
 class _NotificationScreen extends State<NotificationScreen> {
   var _currentIndex = 0;
-  TextEditingController pinfl = new TextEditingController();
+  TextEditingController search = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +61,8 @@ class _NotificationScreen extends State<NotificationScreen> {
             Padding(
               padding: EdgeInsets.only(left: 30,right: 30,top: 20,bottom: 20),
               child: SearchFieldUI(
-                controller: pinfl,
+                controller: search,
                 text: '',
-                keyboardType: TextInputType.number,
                 inputAction: TextInputAction.done,
                 hintText: getTranslated(context, 'search'),
                 suffixIcon: IconButton(
@@ -79,13 +78,11 @@ class _NotificationScreen extends State<NotificationScreen> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
-        // new
         currentIndex: _currentIndex,
-        // this will be set when a new tab is tapped
         items: [
           BottomNavigationBarItem(
             icon: new Icon(Icons.mail_outline),
-            title: new Text('Личное', style: AppThemeStyle.text14_600),
+            title: new Text(getTranslated(context,"private"), style: AppThemeStyle.text14_600),
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset('assets/svg/sending.svg'),

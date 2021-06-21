@@ -94,19 +94,6 @@ class _ChatScreen extends State<ChatScreen> {
           ],
         ),
       ),
-      // bottomNavigationBar: ConvexAppBar(
-      //   style: TabStyle.reactCircle,
-      //   color: AppColor.primary,
-      //   backgroundColor: AppColor.primary,
-      //   items: [
-      //     TabItem(icon: SvgPicture.asset('assets/svg/sending.svg',color: Colors.white,height: 8,width: 8,)
-      //     ),
-      //   ],
-      //   initialActiveIndex: 0,
-      //   onTap: (int i) => {
-      //
-      //   },
-      // ),
     );
   }
 }

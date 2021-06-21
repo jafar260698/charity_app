@@ -45,7 +45,6 @@ widgetAppBarAuth(context, {String title = '', String lang = 'uz'}) {
   );
 }
 
-
 widgetAppBarAuthTitle(context) {
   return AppBar(
     backgroundColor: Colors.transparent,
@@ -85,26 +84,6 @@ widgetAppBarTitle(
       splashRadius: 20,
       icon: Icon(Icons.arrow_back_ios,color: Colors.white,),
       onPressed: () => Navigator.of(context).pop(),
-    ),
-  );
-}
-
-widgetAppBarTitleSecond(
-    context, {
-      String title = '',
-    }) {
-  return AppBar(
-    centerTitle: true,
-    elevation: 0,
-    backgroundColor: Colors.transparent,
-
-    title: Text(title, style: AppThemeStyle.appBarStyle),
-    leading: IconButton(
-      iconSize: 18.0,
-      splashRadius: 20,
-      icon: Icon(Icons.arrow_back_ios,color: Colors.black54),
-      onPressed: () => Navigator.of(context).pop(),
-
     ),
   );
 }
