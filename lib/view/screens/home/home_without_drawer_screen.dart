@@ -120,7 +120,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
       centerTitle: true,
       shadowColor: Colors.black26,
       automaticallyImplyLeading: false,
-      title: Text(""),
+      title: Text(''),
       actions: <Widget>[
         IconButton(
           splashRadius: 20,

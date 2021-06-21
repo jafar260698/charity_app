@@ -1,5 +1,6 @@
 
 
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/bottom_modal_sheet.dart';
@@ -7,7 +8,6 @@ import 'package:charity_app/view/screens/auth/splash_screen.dart';
 import 'package:charity_app/view/screens/home/menu/faq_screen.dart';
 import 'package:charity_app/view/screens/home/menu/favourite_menu_screen.dart';
 import 'package:charity_app/view/screens/home/menu/settings_screen.dart';
-import 'package:charity_app/view/screens/other/favourite_screen.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
@@ -118,36 +118,36 @@ class CabinetDrawer extends StatelessWidget {
                                 children: [
                                   InkWell(
                                       onTap: (){},
-                                      child: Text("Диагнозы",style: AppThemeStyle.buttonWhite16)),
+                                      child: Text(getTranslated(context,'diagnose'),style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell(
                                       onTap: (){},
-                                      child: Text("Навыки",style: AppThemeStyle.buttonWhite16)),
+                                      child: Text(getTranslated(context,'skills'),style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell( onTap: (){},
-                                      child: Text("Ресурсы",style: AppThemeStyle.buttonWhite16)),
+                                      child: Text(getTranslated(context,'resource'),style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell(
                                       onTap: (){},
-                                      child: Text("Услугодатели",style: AppThemeStyle.buttonWhite16)),
+                                      child: Text(getTranslated(context,'service_provider'),style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell(
                                       onTap: (){},
-                                      child: Text("Права",style: AppThemeStyle.buttonWhite16)),
+                                      child: Text(getTranslated(context,'rules'),style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell(
                                       onTap: (){},
-                                      child: Text("Инклюзия",style: AppThemeStyle.buttonWhite16)),
+                                      child: Text(getTranslated(context,'inclusion'),style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell(
                                       onTap: (){},
-                                      child: Text("Статьи",style: AppThemeStyle.buttonWhite16)),
+                                      child: Text(getTranslated(context,'article'),style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                   InkWell(
                                       onTap: (){},
-                                        child: Text("Форум",style: AppThemeStyle.buttonWhite16)),
+                                        child: Text(getTranslated(context,'forum'),style: AppThemeStyle.buttonWhite16)),
                                   SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                                  InkWell( onTap: (){ },child: Text("Ссылки",style: AppThemeStyle.buttonWhite16)),
+                                  InkWell( onTap: (){ },child: Text(getTranslated(context,'link'),style: AppThemeStyle.buttonWhite16)),
                                 ],
                               ),
                             ),
@@ -229,7 +229,6 @@ class CabinetDrawer extends StatelessWidget {
                 ],
               ),
             ),
-        onModelReady: (model) => model.initContext(context),
         viewModelBuilder: () => CabinetDrawerViewModel());
   }
 

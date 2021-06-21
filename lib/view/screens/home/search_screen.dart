@@ -1,6 +1,5 @@
 
-
-
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/search_field_ui.dart';
 import 'package:charity_app/view/theme/themes.dart';
@@ -35,7 +34,7 @@ class _SearchScreen extends State<SearchScreen> {
                   text: '',
                   keyboardType: TextInputType.number,
                   inputAction: TextInputAction.done,
-                  hintText: "Поиск...",
+                  hintText: getTranslated(context,'search'),
                   suffixIcon: IconButton(
                     splashRadius: 25,
                     onPressed: () {
@@ -49,7 +48,7 @@ class _SearchScreen extends State<SearchScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Регионы",style: AppThemeStyle.titleStyle,),
+                  Text(getTranslated(context,'region'),style: AppThemeStyle.titleStyle,),
                   Icon(Icons.keyboard_arrow_down)
                 ],
               ),
@@ -59,33 +58,33 @@ class _SearchScreen extends State<SearchScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Возраст:   3-6 месяцев",style: AppThemeStyle.titleStyle,),
+                  Text("${getTranslated(context,'year_old')}  3-6 месяцев",style: AppThemeStyle.titleStyle),
                   Icon(Icons.keyboard_arrow_down)
                 ],
               ),
-              SizedBox(height: 8),
+              SizedBox(height: SizeConfig.calculateBlockVertical(8)),
               Divider(height: 2),
-              SizedBox(height: 12),
+              SizedBox(height: SizeConfig.calculateBlockVertical(12)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Организации",style: AppThemeStyle.titleStyle,),
+                  Text(getTranslated(context,'organization'),style: AppThemeStyle.titleStyle),
                   Icon(Icons.keyboard_arrow_down)
                 ],
               ),
-              SizedBox(height: 8),
+              SizedBox(height: SizeConfig.calculateBlockVertical(8)),
               Divider(height: 2),
-              SizedBox(height: 12),
+              SizedBox(height: SizeConfig.calculateBlockVertical(12)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Услуги",style: AppThemeStyle.titleStyle,),
+                  Text(getTranslated(context,'service'),style: AppThemeStyle.titleStyle),
                   Icon(Icons.keyboard_arrow_down)
                 ],
               ),
-              SizedBox(height:8),
+              SizedBox(height: SizeConfig.calculateBlockVertical(8)),
               Divider(height: 2),
-              SizedBox(height: 12),
+              SizedBox(height: SizeConfig.calculateBlockVertical(12)),
             ],
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/screens/home/article/article_detail.dart';
 import 'package:charity_app/view/theme/app_color.dart';
@@ -28,7 +29,7 @@ class _ArticleScreen extends State<ArticleScreen> {
         appBar: appBarPage(
           context: context,
           appBarTitle: "",
-          appBarIncome: "Статьи",
+          appBarIncome: getTranslated(context, 'article'),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(70.0), // here the desired height
             child: Align(

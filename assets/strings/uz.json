@@ -42,5 +42,11 @@
   "settings_notification": "Хабарландыру параметрлері",
   "choose_language": "Тілді таңдау",
   "change_username": "Атын өзгерту",
-  "save": "Сақтау"
+  "save": "Сақтау",
+  "favourite": "Избранное",
+  "diagnose": "Диагнозы",
+  "link": "Ссылки",
+  "service": "Услуги",
+  "region": "Регионы",
+  "year_old": "Возраст:"
 }

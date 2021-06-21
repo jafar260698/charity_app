@@ -3,6 +3,8 @@ import 'package:charity_app/view/screens/home/forum/forum_screen.dart';
 import 'package:charity_app/view/screens/home/home_screen.dart';
 import 'package:charity_app/view/screens/home/search_screen.dart';
 import 'package:charity_app/view/screens/other/favourite_screen.dart';
+import 'package:charity_app/view/theme/app_color.dart';
+import 'package:charity_app/view/theme/my_themes.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:fleva_icons/fleva_icons.dart';
@@ -49,7 +51,7 @@ class _BottomNavigation extends State<BottomNavigation> {
       bottomNavigationBar: ConvexAppBar(
         style: TabStyle.reactCircle,
         color: Colors.black45,
-        activeColor: Color.fromRGBO(98, 190, 184, 1),
+        activeColor: AppColor.primary,
         backgroundColor: Colors.white,
         items: [
           TabItem(icon: Ionicons.home_outline),

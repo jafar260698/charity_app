@@ -1,9 +1,9 @@
 
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
-import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +24,7 @@ class _ForumScreen extends State<ForumScreen> {
         children: <Widget>[
           SizedBox(height: SizeConfig.calculateBlockVertical(60)),
           Text(
-            'Форум',
+            getTranslated(context,'forum'),
             style: AppThemeStyle.headerWhite
           ),
           SizedBox(height: SizeConfig.calculateBlockVertical(30)),

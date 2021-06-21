@@ -1,4 +1,5 @@
 
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
@@ -27,7 +28,7 @@ class _FavouriteScreen extends State<FavouriteScreen> {
         appBar: appBarPage(
           context: context,
           appBarTitle: "",
-          appBarIncome: "Избранное",
+          appBarIncome: getTranslated(context, 'favourite'),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(80.0), // here the desired height
             child: Align(
