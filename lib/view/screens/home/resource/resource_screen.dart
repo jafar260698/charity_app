@@ -167,9 +167,7 @@ class ResourceScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 InkWell(
-                  onTap: (){
-                    _launchCaller('${data.link}');
-                  },
+                  onTap: ()=> model.launchURL(data.link.trim()),
                   child: Text(
                     data.link,
                     style: TextStyle(
@@ -194,13 +192,4 @@ class ResourceScreen extends StatelessWidget {
         });
     }
   }
-
-  _launchCaller(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Ishga tushirilmadi $url';
-    }
-  }
-
 }

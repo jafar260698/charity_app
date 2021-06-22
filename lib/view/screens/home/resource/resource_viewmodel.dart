@@ -6,6 +6,7 @@ import 'package:charity_app/model/faq.dart';
 import 'package:charity_app/model/links.dart';
 import 'package:charity_app/persistance/api_provider.dart';
 import 'package:stacked/stacked.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ResourceViewModel extends BaseViewModel{
 
@@ -43,6 +44,18 @@ class ResourceViewModel extends BaseViewModel{
       _isLoading=false,
       notifyListeners()
     });
+  }
+
+  Future<void> launchURL(String url) async {
+    if(!url.contains('http://')&&!url.contains('https://')){
+     url= "https://" + url;
+    }
+    print(url);
+    if (await canLaunch(url.trim())) {
+      await launch(url);
+    } else {
+      throw 'Ishga tushirilmadi $url';
+    }
   }
 
 }
