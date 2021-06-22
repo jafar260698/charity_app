@@ -23,7 +23,7 @@ class DiagnoseScreen extends StatelessWidget {
           appBar: appBarPage(
             context: context,
             appBarTitle: "",
-            appBarIncome: getTranslated(context,'service_provider'),
+            appBarIncome: getTranslated(context,'diagnose'),
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(SizeConfig.calculateBlockVertical(70.0)), // here the desired height
               child: Align(

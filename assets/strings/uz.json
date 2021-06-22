@@ -49,5 +49,9 @@
   "service": "Услуги",
   "region": "Регионы",
   "year_old": "Возраст:",
-  "private": "Личное"
+  "private": "Личное",
+  "close": "Выйти",
+  "home": "Главная",
+  "about_us": "О нас",
+  "settings": "Настройки"
 }

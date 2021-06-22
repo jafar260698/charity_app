@@ -3,6 +3,7 @@ import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/card_icon.dart';
 import 'package:charity_app/view/components/search_field_ui.dart';
+import 'package:charity_app/view/screens/home/diagnose/diagnose_screen.dart';
 import 'package:charity_app/view/screens/home/home_viewmodel.dart';
 import 'package:charity_app/view/screens/home/inclusion/inclusion_screen.dart';
 import 'package:charity_app/view/screens/home/resource/resource_screen.dart';
@@ -81,7 +82,7 @@ class HomeWithoutDrawerScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   CardIcon(operation:getTranslated(context, 'diagnose'),iconPath:  "assets/svg/services/medicine.svg",onTap: (){
-
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => DiagnoseScreen(category: model.category)));
                   }),
                   CardIcon(operation:getTranslated(context,'skills'),iconPath: "assets/svg/services/skill.svg",onTap: (){
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => SkillScreen(category: model.category)));

@@ -52,9 +52,9 @@ class CabinetDrawer extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                SizedBox(width: 30),
+                                SizedBox(width: SizeConfig.calculateBlockHorizontal(30)),
                                 AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0),
-                                SizedBox(width: 10),
+                                SizedBox(width: SizeConfig.calculateBlockHorizontal(10)),
                                 Expanded(
                                   child: Text(
                                     "Бибигуль\n Ахметова",
@@ -72,7 +72,10 @@ class CabinetDrawer extends StatelessWidget {
                         child: SingleChildScrollView(
                           physics: BouncingScrollPhysics(),
                           child: Padding(
-                            padding: EdgeInsets.only(left: 15,top: 20,bottom: 30),
+                            padding: EdgeInsets.only(
+                                left: 15,
+                                top: SizeConfig.calculateBlockVertical(20),
+                                bottom: SizeConfig.calculateBlockVertical(30)),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -81,12 +84,15 @@ class CabinetDrawer extends StatelessWidget {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => FaqScreen()));
                                   },
                                   child: Padding(
-                                    padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                    padding: EdgeInsets.only(
+                                        top: SizeConfig.calculateBlockVertical(10),
+                                        bottom: SizeConfig.calculateBlockVertical(10),
+                                        left: 10),
                                     child: Row(
                                       children: [
                                         SvgPicture.asset('assets/svg/info_icon.svg',color: Colors.white),
-                                        SizedBox(width: 10),
-                                        Text("О нас",style: AppThemeStyle.buttonWhite16),
+                                        SizedBox(width: SizeConfig.calculateBlockHorizontal(10)),
+                                        Text(getTranslated(context,'about_us'),style: AppThemeStyle.buttonWhite16),
                                       ],
                                     ),
                                   ),
@@ -102,18 +108,25 @@ class CabinetDrawer extends StatelessWidget {
 
                                   },
                                   child: Padding(
-                                    padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                    padding: EdgeInsets.only(
+                                        top: SizeConfig.calculateBlockVertical(10),
+                                        bottom: SizeConfig.calculateBlockVertical(10),
+                                        left: 10),
                                     child: Row(
                                       children: [
                                         SvgPicture.asset('assets/svg/home_icon.svg',color: Colors.white),
-                                        SizedBox(width: 10),
-                                        Text("Главная",style: AppThemeStyle.buttonWhite16),
+                                        SizedBox(width: SizeConfig.calculateBlockHorizontal(10)),
+                                        Text(getTranslated(context,'home'),style: AppThemeStyle.buttonWhite16),
                                       ],
                                     ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 35,top: 10,bottom: 10),
+                                  padding: EdgeInsets.only(
+                                      left: 35,
+                                      top: SizeConfig.calculateBlockVertical(10),
+                                      bottom: SizeConfig.calculateBlockVertical(10),
+                                  ),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -164,12 +177,15 @@ class CabinetDrawer extends StatelessWidget {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => FavouriteMenuScreen()));
                                   },
                                   child: Padding(
-                                    padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                    padding: EdgeInsets.only(
+                                        top: SizeConfig.calculateBlockVertical(10),
+                                        bottom: SizeConfig.calculateBlockVertical(10),
+                                        left: 10),
                                     child: Row(
                                       children: [
                                         Icon(FlevaIcons.bookmark_outline,color: Colors.white),
-                                        SizedBox(width: 10),
-                                        Text("Избранное",style: AppThemeStyle.buttonWhite16,),
+                                        SizedBox(width: SizeConfig.calculateBlockHorizontal(10)),
+                                        Text(getTranslated(context,'favourite'),style: AppThemeStyle.buttonWhite16,),
                                       ],
                                     ),
                                   ),
@@ -180,12 +196,15 @@ class CabinetDrawer extends StatelessWidget {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => FaqScreen()));
                                   },
                                   child: Padding(
-                                    padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                    padding: EdgeInsets.only(
+                                        top: SizeConfig.calculateBlockVertical(10),
+                                        bottom: SizeConfig.calculateBlockVertical(10),
+                                        left: 10),
                                     child: Row(
                                       children: [
                                         SvgPicture.asset('assets/svg/question_icon.svg',color: Colors.white),
-                                        SizedBox(width: 10),
-                                        Text("FAQ",style: AppThemeStyle.buttonWhite16,),
+                                        SizedBox(width: SizeConfig.calculateBlockHorizontal(10)),
+                                        Text(getTranslated(context,'faq'),style: AppThemeStyle.buttonWhite16,),
                                       ],
                                     ),
                                   ),
@@ -196,12 +215,15 @@ class CabinetDrawer extends StatelessWidget {
                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsScreen()));
                                   },
                                   child: Padding(
-                                    padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                    padding: EdgeInsets.only(
+                                        top: SizeConfig.calculateBlockVertical(10),
+                                        bottom: SizeConfig.calculateBlockVertical(10),
+                                        left: 10),
                                     child: Row(
                                       children: [
                                         SvgPicture.asset('assets/svg/settings_icon.svg',color: Colors.white),
-                                        SizedBox(width: 10),
-                                        Text("Настройки",style: AppThemeStyle.buttonWhite16,),
+                                        SizedBox(width: SizeConfig.calculateBlockHorizontal(10)),
+                                        Text(getTranslated(context,'settings'),style: AppThemeStyle.buttonWhite16,),
                                       ],
                                     ),
                                   ),
@@ -212,12 +234,15 @@ class CabinetDrawer extends StatelessWidget {
                                     _modalInfo(context);
                                   },
                                   child: Padding(
-                                    padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                    padding: EdgeInsets.only(
+                                        top: SizeConfig.calculateBlockVertical(10),
+                                        bottom: SizeConfig.calculateBlockVertical(10),
+                                        left: 10),
                                     child: Row(
                                       children: [
                                         SvgPicture.asset('assets/svg/exit_icon.svg',color: Colors.white),
-                                        SizedBox(width: 10),
-                                        Text("Выйти",style: AppThemeStyle.buttonWhite16,),
+                                        SizedBox(width: SizeConfig.calculateBlockHorizontal(10)),
+                                        Text(getTranslated(context, 'close'),style: AppThemeStyle.buttonWhite16,),
                                       ],
                                     ),
                                   ),
