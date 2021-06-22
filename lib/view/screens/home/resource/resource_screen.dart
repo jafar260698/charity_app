@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ResourceScreen extends StatelessWidget {
 
@@ -70,11 +71,14 @@ class ResourceScreen extends StatelessWidget {
           ),
           body: TabBarView(
             children: List<Widget>.generate(year.length, (int index) {
-               return getMainUI(context);
+               return getMainUI(context,model);
             }),
           ),
         ),
       ),
+      onModelReady: (model){
+        model.getLinks('razvitie');
+      },
       viewModelBuilder: () => ResourceViewModel(),
     );
   }
@@ -121,93 +125,82 @@ class ResourceScreen extends StatelessWidget {
     );
   }
 
-  getMainUI(context) {
+  Widget getMainUI(BuildContext context,ResourceViewModel model){
     return Container(
       decoration: BoxDecoration(
         color: AppColor.primary,
       ),
-      child: Expanded(
-        child: ClipRRect(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
-          child: Container(
-            color: Color.fromRGBO(244, 244, 244, 1),
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    SizedBox(height: 5),
-                    InkWell(
-                      onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => QuestionnaireScreen()));
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Ссылка N1",
-                              style: AppThemeStyle.titleStyle,
-                              textAlign: TextAlign.start,
-                            ),
-                            SizedBox(height:5),
-                            Text(
-                              "Краткое описание что находится в данной ссылке",
-                              textAlign: TextAlign.start,
-                            ),
-                            Divider(thickness: 1,color: Colors.black54,),
-                            SizedBox(height:5),
-                            Text(
-                              "Ссылка N1",
-                              style: AppThemeStyle.titleStyle,
-                              textAlign: TextAlign.start,
-                            ),
-                            SizedBox(height:5),
-                            Text(
-                              "Краткое описание что находится в данной ссылке",
-                              textAlign: TextAlign.start,
-                            ),
-                            Divider(thickness: 1,color: Colors.black54,),
-                            SizedBox(height:5),
-                            Text(
-                              "Ссылка N1",
-                              style: AppThemeStyle.titleStyle,
-                              textAlign: TextAlign.start,
-                            ),
-                            SizedBox(height:5),
-                            Text(
-                              "Краткое описание что находится в данной ссылке",
-                              textAlign: TextAlign.start,
-                            ),
-                            Divider(thickness: 1,color: Colors.black54,),
-                            SizedBox(height:5),
-                            Text(
-                              "Ссылка N1",
-                              style: AppThemeStyle.titleStyle,
-                              textAlign: TextAlign.start,
-                            ),
-                            SizedBox(height:5),
-                            Text(
-                              "Краткое описание что находится в данной ссылке",
-                              textAlign: TextAlign.start,
-                            ),
-                            Divider(thickness: 1,color: Colors.black54,),
-                            SizedBox(height:5),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+      child: Container(
+        height: MediaQuery
+            .of(context)
+            .size
+            .height,
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(244, 244, 244, 1.0),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(40),
+            topRight: Radius.circular(40),
           ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: getListUI(context, model),
         ),
       ),
     );
+  }
+
+  getListUI(context,ResourceViewModel model) {
+    if(model.isLoading){
+      return CupertinoActivityIndicator();
+    } else{
+      return ListView.builder(
+          itemCount: model.links.pages,
+          shrinkWrap: true,
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (context,i) {
+          var data=model.links.data[i];
+          return Padding(
+            padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                InkWell(
+                  onTap: (){
+                    _launchCaller('${data.link}');
+                  },
+                  child: Text(
+                    data.link,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: AppColor.sometimes,
+                      decoration: TextDecoration.underline,
+                    ),
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+                SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                Text(
+                  data.description,
+                  textAlign: TextAlign.start,
+                ),
+                Divider(thickness: 1, color: Colors.black54),
+                SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+              ],
+            ),
+          );
+        });
+    }
+  }
+
+  _launchCaller(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Ishga tushirilmadi $url';
+    }
   }
 
 }
