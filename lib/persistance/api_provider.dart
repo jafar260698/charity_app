@@ -377,14 +377,14 @@ class ApiProvider {
   }
 
   //category
-  Future<Category> getCategory(String lang) async{
+  Future<List<Category>> getCategory(String lang) async{
     var responseJson;
     try{
       final response= await client.get(Uri.parse('$baseUrl/category?language=ru'),
         headers: headers,
       );
-      var res=_response(response);
-      responseJson=Category.fromJson(res);
+      var res=_response(response) as List;
+      responseJson=res.map((e) =>Category.fromJson(e)).toList();
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
     }

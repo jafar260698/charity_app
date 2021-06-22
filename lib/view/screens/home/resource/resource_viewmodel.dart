@@ -2,6 +2,7 @@
 
 
 import 'package:charity_app/localization/user_data.dart';
+import 'package:charity_app/model/category.dart';
 import 'package:charity_app/model/faq.dart';
 import 'package:charity_app/model/links.dart';
 import 'package:charity_app/persistance/api_provider.dart';
@@ -16,20 +17,24 @@ class ResourceViewModel extends BaseViewModel{
   Links _links;
   Links get links=>_links;
 
-  List<Faq> _faq;
-  List<Faq> get faq=>_faq;
+  List<Category> _category;
+  List<Category> get category=>_category;
 
   bool _isLoading = false;
   bool get isLoading=> _isLoading;
 
 
+  bool _isLoadingCategory = false;
+  bool get isLoadingCategory=> _isLoadingCategory;
+
   Future<void> getCategory() async{
-    _isLoading=true;
+    _isLoadingCategory=true;
       _apiProvider.getCategory("ru").then((value) => {
+        _category=value,
       }).catchError((error){
         print("Error: $error");
       }).whenComplete(() => {
-        _isLoading=false,
+        _isLoadingCategory=false,
         notifyListeners()
     });
   }

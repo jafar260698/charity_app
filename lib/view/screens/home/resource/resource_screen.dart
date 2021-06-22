@@ -1,28 +1,24 @@
 import 'package:charity_app/localization/language_constants.dart';
+import 'package:charity_app/model/category.dart';
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/view/screens/home/questionnaire/questionnaire_screen.dart';
 import 'package:charity_app/view/screens/home/resource/resource_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
-import 'package:charity_app/view/theme/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ResourceScreen extends StatelessWidget {
+  final List<Category> category;
 
-  List<String> year = [
-    'Категория 1',
-    'Категория 2',
-    'Категория 3',
-    'Категория 4',
-  ];
+  ResourceScreen({Key key, @required this.category}) : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ResourceViewModel>.reactive(
       builder: (context, model, child) =>  DefaultTabController(
-        length: year.length,
+        length: category.length,
         child: Scaffold(
           appBar: appBarPage(
             context: context,
@@ -41,8 +37,8 @@ class ResourceScreen extends StatelessWidget {
                     ),
                   ),
                   child: TabBar(
-                    tabs: List<Widget>.generate(year.length, (int index) {
-                      var item = year[index];
+                    tabs: List<Widget>.generate(category.length, (int index) {
+                      var item = category[index].name;
                       return new Tab(text: item);
                     }),
                     isScrollable: true,
@@ -70,7 +66,7 @@ class ResourceScreen extends StatelessWidget {
             ),
           ),
           body: TabBarView(
-            children: List<Widget>.generate(year.length, (int index) {
+            children: List<Widget>.generate(category.length, (int index) {
                return getMainUI(context,model);
             }),
           ),
