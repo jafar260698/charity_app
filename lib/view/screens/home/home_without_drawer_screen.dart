@@ -36,7 +36,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+            SizedBox(height: SizeConfig.calculateBlockVertical(8)),
             Container(
               height: SizeConfig.calculateBlockVertical(200),
               child: ListView.builder(
@@ -75,7 +75,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
                 ),
               ),
             ),
-            SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+            SizedBox(height: SizeConfig.calculateBlockVertical(8)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -85,10 +85,9 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
                 CardIcon(operation:getTranslated(context,'resource'),iconPath: "assets/svg/services/resource.svg",onTap: (){
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResourceScreen()));
                 }),
-
               ],
             ),
-            SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+            SizedBox(height: SizeConfig.calculateBlockVertical(16)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -97,7 +96,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
                 CardIcon(operation:getTranslated(context,'inclusion'),iconPath: "assets/svg/services/inclusion.svg",onTap: (){})
               ],
             ),
-            SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+            SizedBox(height: SizeConfig.calculateBlockVertical(16)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -106,7 +105,7 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
                 CardIcon(operation:getTranslated(context,'for_mother'),iconPath: "assets/svg/services/for_mummy.svg",onTap: (){})
               ],
             ),
-            SizedBox(height: SizeConfig.calculateBlockVertical(80))
+            SizedBox(height: SizeConfig.calculateBlockVertical(16))
           ],
         ),
       ),
@@ -124,7 +123,6 @@ class _HomeWithoutDrawerScreen extends State<HomeWithoutDrawerScreen> {
         IconButton(
           splashRadius: 20,
           iconSize: 30,
-          padding: EdgeInsets.all(0.0),
           icon: SvgPicture.asset(
             'assets/svg/notifications.svg',
             color: ThemeProvider.themeOf(context).data.accentIconTheme.color,

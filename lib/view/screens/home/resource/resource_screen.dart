@@ -1,80 +1,81 @@
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/screens/home/questionnaire/questionnaire_screen.dart';
+import 'package:charity_app/view/screens/home/resource/resource_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-class ResourceScreen extends StatefulWidget {
-  @override
-  _ResourceScreen createState() => _ResourceScreen();
-}
+class ResourceScreen extends StatelessWidget {
 
-class _ResourceScreen extends State<ResourceScreen> {
+  List<String> year = [
+    'Категория 1',
+    'Категория 2',
+    'Категория 3',
+    'Категория 4',
+  ];
   @override
   Widget build(BuildContext context) {
-    List<String> year = [
-      'Категория 1',
-      'Категория 2',
-      'Категория 3',
-      'Категория 4',
-    ];
-    return DefaultTabController(
-      length: year.length,
-      child: Scaffold(
-        appBar: appBarPage(
-          context: context,
-          appBarTitle: "",
-          appBarIncome: getTranslated(context,'resource'),
-          bottom: PreferredSize(
-            preferredSize: Size.fromHeight(70.0), // here the desired height
-            child: Align(
-              alignment: Alignment.center,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppColor.primary,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
+    return ViewModelBuilder<ResourceViewModel>.reactive(
+      builder: (context, model, child) =>  DefaultTabController(
+        length: year.length,
+        child: Scaffold(
+          appBar: appBarPage(
+            context: context,
+            appBarTitle: "",
+            appBarIncome: getTranslated(context,'resource'),
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(SizeConfig.calculateBlockVertical(70.0)), // here the desired height
+              child: Align(
+                alignment: Alignment.center,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColor.primary,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    ),
                   ),
-                ),
-                child: TabBar(
-                  tabs: List<Widget>.generate(year.length, (int index) {
-                    var item = year[index];
-                    return new Tab(text: item);
-                  }),
-                  isScrollable: true,
-                  labelPadding: EdgeInsets.only(
-                      left: 30.0, right: 30.0, top: 3, bottom: 3),
-                  indicatorSize: TabBarIndicatorSize.label,
-                  labelColor: Colors.white,
-                  unselectedLabelColor: Colors.white.withOpacity(0.4),
-                  labelStyle: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'Montserrat'),
-                  indicator: MaterialIndicator(
-                      height: 4,
-                      topLeftRadius: 4,
-                      topRightRadius: 4,
-                      bottomLeftRadius: 0,
-                      bottomRightRadius: 0,
-                      tabPosition: TabPosition.bottom,
-                      color: AppColor.primary,
+                  child: TabBar(
+                    tabs: List<Widget>.generate(year.length, (int index) {
+                      var item = year[index];
+                      return new Tab(text: item);
+                    }),
+                    isScrollable: true,
+                    labelPadding: EdgeInsets.only(
+                        left: 30.0, right: 30.0, top: 3, bottom: 3),
+                    indicatorSize: TabBarIndicatorSize.label,
+                    labelColor: Colors.white,
+                    unselectedLabelColor: Colors.white.withOpacity(0.4),
+                    labelStyle: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Montserrat'),
+                    indicator: MaterialIndicator(
+                        height: 4,
+                        topLeftRadius: 4,
+                        topRightRadius: 4,
+                        bottomLeftRadius: 0,
+                        bottomRightRadius: 0,
+                        tabPosition: TabPosition.bottom,
+                        color: AppColor.primary,
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-        body: TabBarView(
-          children: List<Widget>.generate(year.length, (int index) {
-             return getMainUI(context);
-          }),
+          body: TabBarView(
+            children: List<Widget>.generate(year.length, (int index) {
+               return getMainUI(context);
+            }),
+          ),
         ),
       ),
+      viewModelBuilder: () => ResourceViewModel(),
     );
   }
 
@@ -100,7 +101,7 @@ class _ResourceScreen extends State<ResourceScreen> {
               ),
             ),
           ),
-          SizedBox(height: 20.0),
+          SizedBox(height: SizeConfig.calculateBlockVertical(20.0)),
           Text(
             appBarIncome,
             style: TextStyle(
@@ -109,7 +110,7 @@ class _ResourceScreen extends State<ResourceScreen> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 10.0),
+          SizedBox(height: SizeConfig.calculateBlockVertical(10.0)),
         ],
       ),
       leading: CupertinoButton(
@@ -127,8 +128,7 @@ class _ResourceScreen extends State<ResourceScreen> {
       ),
       child: Expanded(
         child: ClipRRect(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
           child: Container(
             color: Color.fromRGBO(244, 244, 244, 1),
             child: Padding(

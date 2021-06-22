@@ -412,13 +412,11 @@ class ApiProvider {
 
   //forum
 
-
   //resource
-  Future<Links> getLinks(String lang) async{
+  Future<Links> getLinks(String lang,String category) async{
     var responseJson;
-
     try{
-      final response= await client.get(Uri.parse('$baseUrl/links?language=ru&category=razvitie&page=1'),
+      final response= await client.get(Uri.parse('$baseUrl/links?language=ru&category=$category&page=1'),
         headers: headers,
       );
       var res=_response(response);

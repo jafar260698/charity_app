@@ -37,7 +37,7 @@ class _CardIcon extends State<CardIcon>{
             ),
           ),
         ),
-        SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+        SizedBox(height: SizeConfig.calculateBlockVertical(6)),
         Text(
           widget.operation,
           textAlign: TextAlign.center,

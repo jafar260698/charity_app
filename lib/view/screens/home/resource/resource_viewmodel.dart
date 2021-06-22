@@ -29,4 +29,15 @@ class ResourceViewModel extends BaseViewModel{
     });
   }
 
+  Future<void> getLinks(String category) async{
+    _isLoading=true;
+    _apiProvider.getLinks('ru',category).then((value) => {
+    }).catchError((error){
+      print("Error: $error");
+    }).whenComplete(() => {
+      _isLoading=false,
+      notifyListeners()
+    });
+  }
+
 }
