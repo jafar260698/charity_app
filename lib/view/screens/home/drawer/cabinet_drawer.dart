@@ -37,195 +37,207 @@ class CabinetDrawer extends StatelessWidget {
     return ViewModelBuilder<CabinetDrawerViewModel>.reactive(
         builder: (context, model, child) => Scaffold(
               backgroundColor: AppColor.primary,
-              body: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    color: Colors.white,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        SizedBox(height: SizeConfig.calculateBlockVertical(50)),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(width: 30),
-                            AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0),
-                            SizedBox(width: 10),
-                            Expanded(
-                              child: Text(
-                                "Бибигуль\n Ахметова",
-                                textAlign: TextAlign.start,
-                                style: AppThemeStyle.listStyle,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: SizeConfig.calculateBlockVertical(30)),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 15,top: 20,bottom: 30),
+              body: Stack(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        color: Colors.white,
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
                           children: [
-                            InkWell(
-                              onTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => FaqScreen()));
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset('assets/svg/info_icon.svg',color: Colors.white),
-                                    SizedBox(width: 10),
-                                    Text("О нас",style: AppThemeStyle.buttonWhite16),
-                                  ],
+                            SizedBox(height: SizeConfig.calculateBlockVertical(50)),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(width: 30),
+                                AvatarImage(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0),
+                                SizedBox(width: 10),
+                                Expanded(
+                                  child: Text(
+                                    "Бибигуль\n Ахметова",
+                                    textAlign: TextAlign.start,
+                                    style: AppThemeStyle.listStyle,
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
-                            Divider(
-                              height: 2,
-                              color: Colors.white.withOpacity(0.7),
-                            ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
-                            InkWell(
-                              onTap: (){
-
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset('assets/svg/home_icon.svg',color: Colors.white),
-                                    SizedBox(width: 10),
-                                    Text("Главная",style: AppThemeStyle.buttonWhite16),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 35,top: 10,bottom: 10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  InkWell(
-                                      onTap: (){},
-                                      child: Text(getTranslated(context,'diagnose'),style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                                  InkWell(
-                                      onTap: (){},
-                                      child: Text(getTranslated(context,'skills'),style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                                  InkWell( onTap: (){},
-                                      child: Text(getTranslated(context,'resource'),style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                                  InkWell(
-                                      onTap: (){},
-                                      child: Text(getTranslated(context,'service_provider'),style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                                  InkWell(
-                                      onTap: (){},
-                                      child: Text(getTranslated(context,'rules'),style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                                  InkWell(
-                                      onTap: (){},
-                                      child: Text(getTranslated(context,'inclusion'),style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                                  InkWell(
-                                      onTap: (){},
-                                      child: Text(getTranslated(context,'article'),style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                                  InkWell(
-                                      onTap: (){},
-                                        child: Text(getTranslated(context,'forum'),style: AppThemeStyle.buttonWhite16)),
-                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                                  InkWell( onTap: (){ },child: Text(getTranslated(context,'link'),style: AppThemeStyle.buttonWhite16)),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(12)),
-                            Divider(
-                              height: 2,
-                              color: Colors.white.withOpacity(0.7),
-                            ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(20)),
-                            InkWell(
-                              onTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => FavouriteMenuScreen()));
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
-                                child: Row(
-                                  children: [
-                                    Icon(FlevaIcons.bookmark_outline,color: Colors.white),
-                                    SizedBox(width: 10),
-                                    Text("Избранное",style: AppThemeStyle.buttonWhite16,),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
-                            InkWell(
-                              onTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => FaqScreen()));
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset('assets/svg/question_icon.svg',color: Colors.white),
-                                    SizedBox(width: 10),
-                                    Text("FAQ",style: AppThemeStyle.buttonWhite16,),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
-                            InkWell(
-                              onTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsScreen()));
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset('assets/svg/settings_icon.svg',color: Colors.white),
-                                    SizedBox(width: 10),
-                                    Text("Настройки",style: AppThemeStyle.buttonWhite16,),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
-                            InkWell(
-                              onTap: (){
-                                _modalInfo(context);
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
-                                child: Row(
-                                  children: [
-                                    SvgPicture.asset('assets/svg/exit_icon.svg',color: Colors.white),
-                                    SizedBox(width: 10),
-                                    Text("Выйти",style: AppThemeStyle.buttonWhite16,),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(30)),
                           ],
                         ),
                       ),
-                    ),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          physics: BouncingScrollPhysics(),
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 15,top: 20,bottom: 30),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                InkWell(
+                                  onTap: (){
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => FaqScreen()));
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                    child: Row(
+                                      children: [
+                                        SvgPicture.asset('assets/svg/info_icon.svg',color: Colors.white),
+                                        SizedBox(width: 10),
+                                        Text("О нас",style: AppThemeStyle.buttonWhite16),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                                Divider(
+                                  height: 2,
+                                  color: Colors.white.withOpacity(0.7),
+                                ),
+                                SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                                InkWell(
+                                  onTap: (){
+
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                    child: Row(
+                                      children: [
+                                        SvgPicture.asset('assets/svg/home_icon.svg',color: Colors.white),
+                                        SizedBox(width: 10),
+                                        Text("Главная",style: AppThemeStyle.buttonWhite16),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 35,top: 10,bottom: 10),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      InkWell(
+                                          onTap: (){},
+                                          child: Text(getTranslated(context,'diagnose'),style: AppThemeStyle.buttonWhite16)),
+                                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                                      InkWell(
+                                          onTap: (){},
+                                          child: Text(getTranslated(context,'skills'),style: AppThemeStyle.buttonWhite16)),
+                                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                                      InkWell( onTap: (){},
+                                          child: Text(getTranslated(context,'resource'),style: AppThemeStyle.buttonWhite16)),
+                                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                                      InkWell(
+                                          onTap: (){},
+                                          child: Text(getTranslated(context,'service_provider'),style: AppThemeStyle.buttonWhite16)),
+                                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                                      InkWell(
+                                          onTap: (){},
+                                          child: Text(getTranslated(context,'rules'),style: AppThemeStyle.buttonWhite16)),
+                                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                                      InkWell(
+                                          onTap: (){},
+                                          child: Text(getTranslated(context,'inclusion'),style: AppThemeStyle.buttonWhite16)),
+                                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                                      InkWell(
+                                          onTap: (){},
+                                          child: Text(getTranslated(context,'article'),style: AppThemeStyle.buttonWhite16)),
+                                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                                      InkWell(
+                                          onTap: (){},
+                                          child: Text(getTranslated(context,'forum'),style: AppThemeStyle.buttonWhite16)),
+                                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                                      InkWell( onTap: (){ },child: Text(getTranslated(context,'link'),style: AppThemeStyle.buttonWhite16)),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: SizeConfig.calculateBlockVertical(12)),
+                                Divider(
+                                  height: 2,
+                                  color: Colors.white.withOpacity(0.7),
+                                ),
+                                SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+                                InkWell(
+                                  onTap: (){
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => FavouriteMenuScreen()));
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                    child: Row(
+                                      children: [
+                                        Icon(FlevaIcons.bookmark_outline,color: Colors.white),
+                                        SizedBox(width: 10),
+                                        Text("Избранное",style: AppThemeStyle.buttonWhite16,),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                                InkWell(
+                                  onTap: (){
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => FaqScreen()));
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                    child: Row(
+                                      children: [
+                                        SvgPicture.asset('assets/svg/question_icon.svg',color: Colors.white),
+                                        SizedBox(width: 10),
+                                        Text("FAQ",style: AppThemeStyle.buttonWhite16,),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                                InkWell(
+                                  onTap: (){
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsScreen()));
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                    child: Row(
+                                      children: [
+                                        SvgPicture.asset('assets/svg/settings_icon.svg',color: Colors.white),
+                                        SizedBox(width: 10),
+                                        Text("Настройки",style: AppThemeStyle.buttonWhite16,),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                                InkWell(
+                                  onTap: (){
+                                    _modalInfo(context);
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 10,bottom: 10,left: 10),
+                                    child: Row(
+                                      children: [
+                                        SvgPicture.asset('assets/svg/exit_icon.svg',color: Colors.white),
+                                        SizedBox(width: 10),
+                                        Text("Выйти",style: AppThemeStyle.buttonWhite16,),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(25))
+                    ],
                   ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: SizeConfig.calculateBlockVertical(10)),
+                    child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Text("Версия 1.21",style: AppThemeStyle.buttonWhite14)
+                    ),
+                  )
                 ],
               ),
             ),

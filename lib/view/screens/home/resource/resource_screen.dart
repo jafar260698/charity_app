@@ -13,7 +13,6 @@ class ResourceScreen extends StatelessWidget {
 
   ResourceScreen({Key key, @required this.category}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ResourceViewModel>.reactive(

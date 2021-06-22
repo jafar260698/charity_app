@@ -115,7 +115,6 @@ class AppThemeStyle {
     fontSize: 14.0,
     color: Colors.white,
     fontWeight: FontWeight.w500,
-    fontFamily: 'Montserrat'
   );
 
   static TextStyle buttonWhite16 = TextStyle(
