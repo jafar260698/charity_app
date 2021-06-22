@@ -25,6 +25,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 
+import 'drawer_viewmodel.dart';
+
 class CabinetDrawer extends StatelessWidget {
   const CabinetDrawer(
       {Key key,
@@ -40,7 +42,7 @@ class CabinetDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<HomeViewModel>.reactive(
+    return ViewModelBuilder<DrawerViewModel>.reactive(
         builder: (context, model, child) => Scaffold(
               backgroundColor: AppColor.primary,
               body: Stack(
@@ -286,7 +288,10 @@ class CabinetDrawer extends StatelessWidget {
                 ],
               ),
             ),
-        viewModelBuilder: () => HomeViewModel());
+        onModelReady: (model){
+          model.getCategory();
+        },
+        viewModelBuilder: () => DrawerViewModel());
   }
 
   void _modalInfo(BuildContext context) {
