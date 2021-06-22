@@ -23,23 +23,18 @@ class _CardIcon extends State<CardIcon>{
       children: [
         InkWell(
           onTap: widget.onTap,
-          child: Container(
-            width: 80,
-            height: 80,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                // BoxShadow(
-                //   color: Colors.grey,
-                //   blurRadius: 1,
-                //   spreadRadius: 3,
-                // )
-              ],
-              borderRadius: BorderRadius.circular(25),
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25.0),
             ),
-            child: Padding(
-                padding: EdgeInsets.all(12),
-                child: SvgPicture.asset(widget.iconPath)),
+            elevation: 0,
+            child: Container(
+              width: 80,
+              height: 80,
+              child: Padding(
+                  padding: EdgeInsets.all(12),
+                  child: SvgPicture.asset(widget.iconPath)),
+            ),
           ),
         ),
         SizedBox(height: SizeConfig.calculateBlockVertical(10)),
