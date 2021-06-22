@@ -4,6 +4,7 @@ import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/card_icon.dart';
 import 'package:charity_app/view/components/search_field_ui.dart';
 import 'package:charity_app/view/screens/home/home_viewmodel.dart';
+import 'package:charity_app/view/screens/home/inclusion/inclusion_screen.dart';
 import 'package:charity_app/view/screens/home/resource/resource_screen.dart';
 import 'package:charity_app/view/screens/other/notification/notification_screen.dart';
 import 'package:fleva_icons/fleva_icons.dart';
@@ -89,7 +90,9 @@ class HomeWithoutDrawerScreen extends StatelessWidget {
                 children: <Widget>[
                   CardIcon(operation:getTranslated(context,'service_provider'),iconPath: "assets/svg/services/service_provider.svg",onTap: (){}),
                   CardIcon(operation:getTranslated(context,'rules'),iconPath: "assets/svg/services/rules.svg",onTap: (){}),
-                  CardIcon(operation:getTranslated(context,'inclusion'),iconPath: "assets/svg/services/inclusion.svg",onTap: (){})
+                  CardIcon(operation:getTranslated(context,'inclusion'),iconPath: "assets/svg/services/inclusion.svg",onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => InclusionScreen(category: model.category)));
+                  })
                 ],
               ),
               SizedBox(height: SizeConfig.calculateBlockVertical(16)),
