@@ -1,29 +1,28 @@
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/model/category.dart';
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/view/screens/home/resource/resource_viewmodel.dart';
-import 'package:charity_app/view/screens/home/rights/rights_viewmodel.dart';
+import 'package:charity_app/view/screens/home/service_provider/service_provider_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-class RightScreen extends StatelessWidget {
+class ServiceProviderScreen extends StatelessWidget {
   final List<Category> category;
 
-  RightScreen({Key key, @required this.category}) : super(key: key);
+  ServiceProviderScreen({Key key, @required this.category}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<RightViewModel>.reactive(
+    return ViewModelBuilder<ServiceProviderViewModel>.reactive(
       builder: (context, model, child) =>  DefaultTabController(
         length: category.length,
         child: Scaffold(
           appBar: appBarPage(
             context: context,
             appBarTitle: "",
-            appBarIncome: getTranslated(context,'rules'),
+            appBarIncome: getTranslated(context,'service_provider'),
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(SizeConfig.calculateBlockVertical(70.0)), // here the desired height
               child: Align(
@@ -73,9 +72,9 @@ class RightScreen extends StatelessWidget {
         ),
       ),
       onModelReady: (model){
-        model.getRights();
+        model.getServiceProvider();
       },
-      viewModelBuilder: () => RightViewModel(),
+      viewModelBuilder: () => ServiceProviderViewModel(),
     );
   }
 
@@ -121,7 +120,7 @@ class RightScreen extends StatelessWidget {
     );
   }
 
-  Widget getMainUI(BuildContext context,RightViewModel model){
+  Widget getMainUI(BuildContext context,ServiceProviderViewModel model){
     return Container(
       decoration: BoxDecoration(
         color: AppColor.primary,
@@ -146,7 +145,7 @@ class RightScreen extends StatelessWidget {
     );
   }
 
-  getListUI(context,RightViewModel model) {
+  getListUI(context,ServiceProviderViewModel model) {
     if(model.isLoading){
       return CupertinoActivityIndicator();
     } else{

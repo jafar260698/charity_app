@@ -491,7 +491,7 @@ class ApiProvider {
   }
 
   //service_provider
-  Future<SkillProvider> skillProvider(String lang) async{
+  Future<SkillProvider> serviceProvider(String lang) async{
     var responseJson;
 
     try{

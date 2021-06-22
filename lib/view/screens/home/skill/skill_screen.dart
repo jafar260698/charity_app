@@ -1,29 +1,29 @@
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/model/category.dart';
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/view/screens/home/resource/resource_viewmodel.dart';
-import 'package:charity_app/view/screens/home/rights/rights_viewmodel.dart';
+import 'package:charity_app/view/screens/home/service_provider/service_provider_viewmodel.dart';
+import 'package:charity_app/view/screens/home/skill/skill_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-class RightScreen extends StatelessWidget {
+class SkillScreen extends StatelessWidget {
   final List<Category> category;
 
-  RightScreen({Key key, @required this.category}) : super(key: key);
+  SkillScreen({Key key, @required this.category}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<RightViewModel>.reactive(
+    return ViewModelBuilder<SkillViewModel>.reactive(
       builder: (context, model, child) =>  DefaultTabController(
         length: category.length,
         child: Scaffold(
           appBar: appBarPage(
             context: context,
             appBarTitle: "",
-            appBarIncome: getTranslated(context,'rules'),
+            appBarIncome: getTranslated(context,'skills'),
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(SizeConfig.calculateBlockVertical(70.0)), // here the desired height
               child: Align(
@@ -73,9 +73,9 @@ class RightScreen extends StatelessWidget {
         ),
       ),
       onModelReady: (model){
-        model.getRights();
+        model.getSkill();
       },
-      viewModelBuilder: () => RightViewModel(),
+      viewModelBuilder: () => SkillViewModel(),
     );
   }
 
@@ -121,7 +121,7 @@ class RightScreen extends StatelessWidget {
     );
   }
 
-  Widget getMainUI(BuildContext context,RightViewModel model){
+  Widget getMainUI(BuildContext context,SkillViewModel model){
     return Container(
       decoration: BoxDecoration(
         color: AppColor.primary,
@@ -146,16 +146,16 @@ class RightScreen extends StatelessWidget {
     );
   }
 
-  getListUI(context,RightViewModel model) {
+  getListUI(context,SkillViewModel model) {
     if(model.isLoading){
       return CupertinoActivityIndicator();
     } else{
       return ListView.builder(
-          itemCount: model.links.pages,
+          itemCount: model.skill.pages,
           shrinkWrap: true,
           physics: BouncingScrollPhysics(),
           itemBuilder: (context,i) {
-            var data=model.links.data[i];
+            var data=model.skill.data[i];
             return Padding(
               padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 5),
               child: Column(

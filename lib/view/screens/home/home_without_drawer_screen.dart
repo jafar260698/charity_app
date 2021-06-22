@@ -7,6 +7,8 @@ import 'package:charity_app/view/screens/home/home_viewmodel.dart';
 import 'package:charity_app/view/screens/home/inclusion/inclusion_screen.dart';
 import 'package:charity_app/view/screens/home/resource/resource_screen.dart';
 import 'package:charity_app/view/screens/home/rights/rights_screen.dart';
+import 'package:charity_app/view/screens/home/service_provider/service_provider_screen.dart';
+import 'package:charity_app/view/screens/home/skill/skill_screen.dart';
 import 'package:charity_app/view/screens/other/notification/notification_screen.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -78,8 +80,12 @@ class HomeWithoutDrawerScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  CardIcon(operation:getTranslated(context, 'violation'),iconPath:  "assets/svg/services/medicine.svg",onTap: (){}),
-                  CardIcon(operation:getTranslated(context,'skills'),iconPath: "assets/svg/services/skill.svg",onTap: (){}),
+                  CardIcon(operation:getTranslated(context, 'diagnose'),iconPath:  "assets/svg/services/medicine.svg",onTap: (){
+
+                  }),
+                  CardIcon(operation:getTranslated(context,'skills'),iconPath: "assets/svg/services/skill.svg",onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => SkillScreen(category: model.category)));
+                  }),
                   CardIcon(operation:getTranslated(context,'resource'),iconPath: "assets/svg/services/resource.svg",onTap: (){
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResourceScreen(category: model.category)));
                   }),
@@ -89,7 +95,9 @@ class HomeWithoutDrawerScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  CardIcon(operation:getTranslated(context,'service_provider'),iconPath: "assets/svg/services/service_provider.svg",onTap: (){}),
+                  CardIcon(operation:getTranslated(context,'service_provider'),iconPath: "assets/svg/services/service_provider.svg",onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ServiceProviderScreen(category: model.category)));
+                  }),
                   CardIcon(operation:getTranslated(context,'rules'),iconPath: "assets/svg/services/rules.svg",onTap: (){
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => RightScreen(category: model.category)));
                   }),
