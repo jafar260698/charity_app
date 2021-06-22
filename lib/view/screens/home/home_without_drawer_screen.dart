@@ -122,7 +122,7 @@ class HomeWithoutDrawerScreen extends StatelessWidget {
         ),
       ),
       onModelReady: (model){
-        model.getCategory();
+         model.getCategory();
       },
       viewModelBuilder: () => HomeViewModel(),
     );

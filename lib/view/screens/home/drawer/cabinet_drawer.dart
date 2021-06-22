@@ -5,9 +5,16 @@ import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/bottom_modal_sheet.dart';
 import 'package:charity_app/view/screens/auth/splash_screen.dart';
+import 'package:charity_app/view/screens/home/diagnose/diagnose_screen.dart';
+import 'package:charity_app/view/screens/home/home_viewmodel.dart';
+import 'package:charity_app/view/screens/home/inclusion/inclusion_screen.dart';
 import 'package:charity_app/view/screens/home/menu/faq_screen.dart';
 import 'package:charity_app/view/screens/home/menu/favourite_menu_screen.dart';
 import 'package:charity_app/view/screens/home/menu/settings_screen.dart';
+import 'package:charity_app/view/screens/home/resource/resource_screen.dart';
+import 'package:charity_app/view/screens/home/rights/rights_screen.dart';
+import 'package:charity_app/view/screens/home/service_provider/service_provider_screen.dart';
+import 'package:charity_app/view/screens/home/skill/skill_screen.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
@@ -17,7 +24,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
-import 'cabinet_drawer_viewmodel.dart';
 
 class CabinetDrawer extends StatelessWidget {
   const CabinetDrawer(
@@ -34,7 +40,7 @@ class CabinetDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<CabinetDrawerViewModel>.reactive(
+    return ViewModelBuilder<HomeViewModel>.reactive(
         builder: (context, model, child) => Scaffold(
               backgroundColor: AppColor.primary,
               body: Stack(
@@ -132,37 +138,51 @@ class CabinetDrawer extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       InkWell(
-                                          onTap: (){},
+                                          onTap: (){
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => DiagnoseScreen(category: model.category)));
+                                          },
                                           child: Text(getTranslated(context,'diagnose'),style: AppThemeStyle.buttonWhite16)),
                                       SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                       InkWell(
-                                          onTap: (){},
+                                          onTap: (){
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => SkillScreen(category: model.category)));
+                                          },
                                           child: Text(getTranslated(context,'skills'),style: AppThemeStyle.buttonWhite16)),
                                       SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                                      InkWell( onTap: (){},
+                                      InkWell( onTap: (){
+                                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResourceScreen(category: model.category)));
+                                      },
                                           child: Text(getTranslated(context,'resource'),style: AppThemeStyle.buttonWhite16)),
                                       SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                       InkWell(
-                                          onTap: (){},
+                                          onTap: (){
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ServiceProviderScreen(category: model.category)));
+                                          },
                                           child: Text(getTranslated(context,'service_provider'),style: AppThemeStyle.buttonWhite16)),
                                       SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                       InkWell(
-                                          onTap: (){},
+                                          onTap: (){
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => RightScreen(category: model.category)));
+                                          },
                                           child: Text(getTranslated(context,'rules'),style: AppThemeStyle.buttonWhite16)),
                                       SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                       InkWell(
-                                          onTap: (){},
+                                          onTap: (){
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => InclusionScreen(category: model.category)));
+                                          },
                                           child: Text(getTranslated(context,'inclusion'),style: AppThemeStyle.buttonWhite16)),
                                       SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                       InkWell(
-                                          onTap: (){},
+                                          onTap: (){
+
+                                          },
                                           child: Text(getTranslated(context,'article'),style: AppThemeStyle.buttonWhite16)),
                                       SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                       InkWell(
                                           onTap: (){},
                                           child: Text(getTranslated(context,'forum'),style: AppThemeStyle.buttonWhite16)),
-                                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                                      InkWell( onTap: (){ },child: Text(getTranslated(context,'link'),style: AppThemeStyle.buttonWhite16)),
+                                      // SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                                      // InkWell( onTap: (){ },child: Text(getTranslated(context,'link'),style: AppThemeStyle.buttonWhite16)),
                                     ],
                                   ),
                                 ),
@@ -266,7 +286,7 @@ class CabinetDrawer extends StatelessWidget {
                 ],
               ),
             ),
-        viewModelBuilder: () => CabinetDrawerViewModel());
+        viewModelBuilder: () => HomeViewModel());
   }
 
   void _modalInfo(BuildContext context) {

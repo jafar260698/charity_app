@@ -5,8 +5,10 @@ import 'package:charity_app/view/theme/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:stacked/stacked.dart';
 import 'drawer/cabinet_drawer.dart';
 import 'drawer/drawer_user_controller.dart';
+import 'home_viewmodel.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -18,21 +20,26 @@ class _HomeScreen extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      bottom: false,
-      child: Scaffold(
-        body: DrawerUserController(
-          screenIndex: drawerIndex,
-          drawerWidth: MediaQuery.of(context).size.width * 0.80,
-          onDrawerCall: (DrawerIndex drawerIndexdata) {
-            //changeIndex(drawerIndexdata);
-          },
-          screenView: HomeWithoutDrawerScreen(),
-        ),    ),
+    return ViewModelBuilder<HomeViewModel>.reactive(
+      builder: (context, model, child) =>  SafeArea(
+        top: false,
+        bottom: false,
+        child: Scaffold(
+          body: DrawerUserController(
+            screenIndex: drawerIndex,
+            drawerWidth: MediaQuery.of(context).size.width * 0.80,
+            onDrawerCall: (DrawerIndex drawerIndexdata) {
+              //changeIndex(drawerIndexdata);
+            },
+            screenView: HomeWithoutDrawerScreen(),
+          ),    ),
+      ),
+      onModelReady: (model){
+        model.getCategory();
+      },
+      viewModelBuilder: () => HomeViewModel(),
     );
   }
-
 
   Widget customAppbar(BuildContext context){
     return AppBar(
