@@ -36,6 +36,9 @@ class ForumScreen extends StatelessWidget {
           ),
         ),
       ),
+      onModelReady: (model){
+        model.getForumCategory();
+      },
       viewModelBuilder: () => ForumViewModel(),
     );
   }
@@ -44,8 +47,8 @@ class ForumScreen extends StatelessWidget {
    if(model.isLoading){
      return Container();
    }
-     return Expanded(
-     child: ClipRRect(
+   return Expanded(
+      child: ClipRRect(
        borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
        child: Container(
          color: Color.fromRGBO(244, 244, 244, 1),

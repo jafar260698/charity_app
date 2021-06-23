@@ -4,6 +4,7 @@ import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/card_icon.dart';
 import 'package:charity_app/view/components/search_field_ui.dart';
 import 'package:charity_app/view/screens/home/diagnose/diagnose_screen.dart';
+import 'package:charity_app/view/screens/home/forum/forum_screen.dart';
 import 'package:charity_app/view/screens/home/home_viewmodel.dart';
 import 'package:charity_app/view/screens/home/inclusion/inclusion_screen.dart';
 import 'package:charity_app/view/screens/home/resource/resource_screen.dart';
@@ -112,11 +113,13 @@ class HomeWithoutDrawerScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   CardIcon(operation:getTranslated(context,'article'),iconPath: "assets/svg/services/article.svg",onTap: (){}),
-                  CardIcon(operation:getTranslated(context,'forum'),iconPath: "assets/svg/services/forum.svg",onTap: (){}),
+                  CardIcon(operation:getTranslated(context,'forum'),iconPath: "assets/svg/services/forum.svg",onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumScreen()));
+                  }),
                   CardIcon(operation:getTranslated(context,'for_mother'),iconPath: "assets/svg/services/for_mummy.svg",onTap: (){})
                 ],
               ),
-              SizedBox(height: SizeConfig.calculateBlockVertical(16))
+              SizedBox(height: SizeConfig.calculateBlockVertical(30))
             ],
           ),
         ),
