@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/model/article/article.dart';
+import 'package:charity_app/model/forum/forum_category.dart';
+import 'package:charity_app/model/forum/forum_detail.dart';
 import 'package:charity_app/model/user/authorization.dart';
 import 'package:charity_app/model/base_response.dart';
 import 'package:charity_app/model/category.dart';
@@ -12,7 +14,6 @@ import 'package:charity_app/model/links.dart';
 import 'package:charity_app/model/questionnaire.dart';
 import 'package:charity_app/model/skill.dart';
 import 'package:charity_app/model/skill_provider.dart';
-import 'package:charity_app/model/user/user.dart';
 import 'package:charity_app/model/user/user_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
@@ -27,7 +28,6 @@ class ApiProvider {
   final baseOFDUrl = 'https://api.ofd.uz/';
 
   final baseHeader = {
-  //  HttpHeaders.authorizationHeader: getVitrinaAuth(),
     HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
   };
 
@@ -57,7 +57,6 @@ class ApiProvider {
   String getUrl(String baseUrl, String path, Map<String, dynamic> params) {
     return '$baseUrl$path${getQuery(params)}';
   }
-
 
   //user file
   Future<BaseResponses> registration(Map<String,dynamic> data) async{
@@ -410,7 +409,64 @@ class ApiProvider {
     return responseJson;
   }
 
-  //forum
+  // forum
+  Future<ForumCategory> getForumCategory(String lang) async{
+    var responseJson;
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/forum_category?language=ru'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=ForumCategory.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<ForumCategory> getForumSubCategory(String lang) async{
+    var responseJson;
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/forum_subcategory?language=ru'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=ForumCategory.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<ForumDetail> getForumDetail(String lang,String subcategory) async{
+    var responseJson;
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/forum?language=ru&subcategory=$subcategory&page=1'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=ForumCategory.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<BaseResponses> postForum(Map<String,dynamic> data) async{
+    var responseJson;
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/forum'),
+          headers: headers,
+          body: jsonEncode(data)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
 
   //resource
   Future<Links> getLinks(String lang,String category) async{
@@ -538,14 +594,6 @@ class ApiProvider {
     return responseJson;
   }
 
-
-  String getVitrinaAuth() {
-    String username = 'vitrina';
-    String password = '321654';
-    String basicAuth =
-        'Basic ' + base64Encode(utf8.encode('$username:$password'));
-    return basicAuth;
-  }
 
   void initContext(BuildContext context){
     this.context = context;
