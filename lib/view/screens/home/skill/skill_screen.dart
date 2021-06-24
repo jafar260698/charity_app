@@ -1,7 +1,6 @@
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/model/category.dart';
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/view/screens/home/service_provider/service_provider_viewmodel.dart';
 import 'package:charity_app/view/screens/home/skill/skill_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:flutter/cupertino.dart';

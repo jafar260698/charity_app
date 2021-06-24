@@ -11,8 +11,8 @@ class HomeViewModel extends BaseViewModel{
   TextEditingController _search = new TextEditingController();
   TextEditingController get search => _search;
 
-  ForumCategory _category;
-  ForumCategory get category=>_category;
+  List<Category> _category;
+  List<Category> get category=>_category;
 
   ForumCategory _subCategory;
   ForumCategory get subCategory=>_subCategory;
@@ -22,7 +22,7 @@ class HomeViewModel extends BaseViewModel{
 
   Future<void> getCategory() async{
     _isLoadingCategory=true;
-    _apiProvider.getForumCategory("ru").then((value) => {
+    _apiProvider.getCategory("ru").then((value) => {
       _category=value,
     }).catchError((error){
       print("Error: $error");
