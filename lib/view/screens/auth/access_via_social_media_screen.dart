@@ -33,7 +33,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
   User _user;
 
   bool _success;
-  String email;
+  bool isLoading=false;
 
   TextEditingController emailController=new TextEditingController();
   TextEditingController passwordController=new TextEditingController();
@@ -198,7 +198,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
             SizedBox(height: SizeConfig.calculateBlockVertical(30)),
             BtnUIIcon(
               height: 55,
-              isLoading: false,
+              isLoading: isLoading,
               textColor: Colors.white,
               color: Color.fromRGBO(254, 205, 131, 1),
               text: getTranslated(context,'via_email'),
@@ -282,23 +282,36 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
   }
 
   void _signInWithEmailAndPassword() async {
-    final User user = (await _auth.signInWithEmailAndPassword(
-      email: emailController.text,
-      password: passwordController.text,
-    )).user;
+    try{
+      setState(() {
+        isLoading = true;
+      });
+      final User user = (await _auth.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      )).user;
 
-    if (user != null) {
+      if (user != null) {
+        setState(() {
+          _success = true;
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: user.displayName??"",email: user.email??"",password: passwordController.text.toString(),phoneNumber: user.phoneNumber??"",)));
+        });
+      } else {
+        setState(() {
+          _success = false;
+        });
+      }
+
+    }catch(ex){
+      print("Exception $ex");
+      ToastUtils.toastInfoGeneral('Exception: $ex', context);
+    }finally{
       setState(() {
-        _success = true;
-        email = user.email;
-        print('$email');
+        isLoading = false;
       });
-    } else {
-      setState(() {
-        _success = false;
-      });
-      print('hi');
     }
+
+
   }
 
   @override
