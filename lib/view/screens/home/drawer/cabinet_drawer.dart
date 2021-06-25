@@ -6,6 +6,7 @@ import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/bottom_modal_sheet.dart';
 import 'package:charity_app/view/screens/auth/splash_screen.dart';
 import 'package:charity_app/view/screens/home/diagnose/diagnose_screen.dart';
+import 'package:charity_app/view/screens/home/for_mother/for_mother.dart';
 import 'package:charity_app/view/screens/home/inclusion/inclusion_screen.dart';
 import 'package:charity_app/view/screens/home/menu/faq_screen.dart';
 import 'package:charity_app/view/screens/home/menu/favourite_menu_screen.dart';
@@ -168,6 +169,12 @@ class CabinetDrawer extends StatelessWidget {
                                       SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                       InkWell(
                                           onTap: (){
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForMotherScreen(category: model.category)));
+                                          },
+                                          child: Text(getTranslated(context,'for_mother'),style: AppThemeStyle.buttonWhite16)),
+                                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                                      InkWell(
+                                          onTap: (){
                                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => InclusionScreen(category: model.category)));
                                           },
                                           child: Text(getTranslated(context,'inclusion'),style: AppThemeStyle.buttonWhite16)),
@@ -181,8 +188,7 @@ class CabinetDrawer extends StatelessWidget {
                                       InkWell(
                                           onTap: (){},
                                           child: Text(getTranslated(context,'forum'),style: AppThemeStyle.buttonWhite16)),
-                                      // SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                                      // InkWell( onTap: (){ },child: Text(getTranslated(context,'link'),style: AppThemeStyle.buttonWhite16)),
+
                                     ],
                                   ),
                                 ),

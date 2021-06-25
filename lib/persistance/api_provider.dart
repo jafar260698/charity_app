@@ -666,6 +666,22 @@ class ApiProvider {
     return responseJson;
   }
 
+  //for_mother
+  Future<SkillProvider> forMother(String lang,int page,String category) async{
+    var responseJson;
+
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/for_parent?language=ru&category=$category&page=1'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=SkillProvider.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
 
   void initContext(BuildContext context){
     this.context = context;
