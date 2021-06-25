@@ -3,12 +3,15 @@ import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/model/user/user_type.dart';
 import 'package:charity_app/persistance/api_provider.dart';
 import 'package:charity_app/utils/toast_utils.dart';
+import 'package:charity_app/view/screens/auth/permission_for_notification.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:stacked/stacked.dart';
 
 class RegisterViewModel extends BaseViewModel{
   ApiProvider  _apiProvider=new ApiProvider();
+  UserData _userData=new UserData();
   String type;
 
   int _radioValue2=0;
@@ -54,6 +57,7 @@ class RegisterViewModel extends BaseViewModel{
      ToastUtils.toastErrorGeneral('$onError', context);
    }).whenComplete(() => {
       _isLoading=false,
+      notifyListeners(),
    });
   }
 
@@ -77,18 +81,28 @@ class RegisterViewModel extends BaseViewModel{
       data["language"]='ru';
 
       _apiProvider.registration(data).then((value) => {
-        if(value.error!=null){
-          ToastUtils.toastErrorGeneral(value.error, context),
-        }else{
-          ToastUtils.toastErrorGeneral(value.success, context),
-        }
-      }).catchError((onError){
+        if(value.error==null||value.error.isEmpty){
+          ToastUtils.toastInfoGeneral("${value.success}", context),
+          gotoNextPage(context)
+        } else  ToastUtils.toastInfoGeneral("${value.error}", context),
+
+    }).catchError((onError){
         ToastUtils.toastErrorGeneral('$onError', context);
       }).whenComplete(() => {
         _isLoading=false,
         notifyListeners(),
       });
     }
+  }
+
+  Future<void> gotoNextPage(BuildContext context)async {
+    _userData.setUsername(_usernameController.text.toString().trim());
+    _userData.setEmail(_emailController.text.toString().trim());
+    _userData.setPassword(_passwordController.text.toString().trim());
+    _userData.setPhoneNumber(_phoneController.text.toString().trim());
+    print("Type: $type");
+    _userData.setUserType(type??'');
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
   }
 
   bool checkTextFieldEmptyOrNot(BuildContext context){

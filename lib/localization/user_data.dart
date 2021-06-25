@@ -42,4 +42,53 @@ class UserData {
     final SharedPreferences prefs = await _prefs;
     return prefs.getBool('isFirstTime')??true;
   }
+
+  Future<void> setUsername(String username) async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.setString('username', username);
+  }
+
+  Future<String> getUsername() async {
+    final SharedPreferences prefs = await _prefs;
+    return prefs.getString('username');
+  }
+  Future<void> setEmail(String email) async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.setString('email', email);
+  }
+
+  Future<String> getEmail() async {
+    final SharedPreferences prefs = await _prefs;
+    return prefs.getString('email');
+  }
+
+  Future<void> setPassword(String password) async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.setString('password', password);
+  }
+
+  Future<String> getPassword() async {
+    final SharedPreferences prefs = await _prefs;
+    return prefs.getString('password');
+  }
+
+  Future<void> setPhoneNumber(String phoneNumber) async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.setString('phone_number', phoneNumber);
+  }
+
+  Future<String> getPhoneNumber() async {
+    final SharedPreferences prefs = await _prefs;
+    return prefs.getString('phone_number');
+  }
+
+  Future<void> setUserType(String userType) async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.setString('userType', userType);
+  }
+
+  Future<String> getUserType() async {
+    final SharedPreferences prefs = await _prefs;
+    return prefs.getString('userType');
+  }
 }

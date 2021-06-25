@@ -374,6 +374,36 @@ class ApiProvider {
     return responseJson;
   }
 
+  Future<BaseResponses> bookMarkUpdate(Map<String,dynamic> data) async{
+    var responseJson;
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/article/bookmark/update'),
+          headers: headers,
+          body: jsonEncode(data)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<BaseResponses> bookMarkDelete(Map<String,dynamic> data) async{
+    var responseJson;
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/article/bookmark/update'),
+          headers: headers,
+          body: jsonEncode(data)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
   //article, comment
   Future<SkillProvider> articleComment(Map<String,dynamic> data) async{
     var responseJson;
