@@ -12,4 +12,9 @@ class AppColor {
   static final Color greyDisabled = Color(0xffEFEFEF);
   static final Color darkBackgroundDrawer = Color(0xff253442);
   static final Color lightBlueBackground = Color(0xffF6F6FA);
+
+  //social media color
+  static final Color google = Color.fromRGBO(240, 131, 144, 1);
+  static final Color gmail = Color.fromRGBO(254, 205, 131, 1);
+
 }

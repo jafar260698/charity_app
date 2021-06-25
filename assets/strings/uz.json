@@ -53,5 +53,10 @@
   "close": "Выйти",
   "home": "Главная",
   "about_us": "О нас",
-  "settings": "Настройки"
+  "settings": "Настройки",
+  "email_not_valid": "Please add valid email",
+  "email_is_empty": "Email must not be empty",
+  "password_is_empty": "Password must not be empty",
+  "username_is_empty": "Password must not be empty",
+  "phone_number_is_empty": "Password must not be empty"
 }

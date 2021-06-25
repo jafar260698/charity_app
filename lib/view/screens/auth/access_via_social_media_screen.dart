@@ -7,6 +7,7 @@ import 'package:charity_app/view/components/bottom_modal_sheet.dart';
 import 'package:charity_app/view/components/btn_ui_icon.dart';
 import 'package:charity_app/view/components/text_field_ui.dart';
 import 'package:charity_app/view/screens/auth/register_screen.dart';
+import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -74,7 +75,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   height: 55,
                                   isLoading: false,
                                   textColor: Colors.white,
-                                  color: Color.fromRGBO(98, 190, 184, 1),
+                                  color: AppColor.primary,
                                   text: getTranslated(context, 'via_apple'),
                                   icon: SvgPicture.asset('assets/svg/auth/apple.svg'),
                                   ontap: () {
@@ -88,7 +89,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   height: 55,
                                   isLoading: false,
                                   textColor: Colors.white,
-                                  color: Color.fromRGBO(240, 131, 144, 1),
+                                  color: AppColor.google,
                                   text: getTranslated(context,'via_google'),
                                   icon: SvgPicture.asset('assets/svg/auth/google.svg'),
                                   ontap: () {
@@ -104,7 +105,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   height: 55,
                                   isLoading: false,
                                   textColor: Colors.white,
-                                  color: Color.fromRGBO(108, 187, 217, 1),
+                                  color: AppColor.sometimes,
                                   text: getTranslated(context,'via_facebook'),
                                   icon: SvgPicture.asset('assets/svg/auth/facebook.svg'),
                                   ontap: () {
@@ -117,7 +118,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   height: 55,
                                   isLoading: false,
                                   textColor: Colors.white,
-                                  color: Color.fromRGBO(254, 205, 131, 1),
+                                  color: AppColor.gmail,
                                   text: getTranslated(context,'via_email'),
                                   icon: SvgPicture.asset('assets/svg/auth/gmail.svg'),
                                   ontap: () {
@@ -136,16 +137,21 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   },
                                 ),
                                 SizedBox(height: SizeConfig.calculateBlockVertical(20.0)),
-                                Opacity(
-                                  opacity: 0.5,
-                                  child: Text(
-                                    getTranslated(context, 'confidential'),
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      decoration: TextDecoration.underline,
+                                InkWell(
+                                  onTap: (){
+                                    // should open privacy policy page
+                                  },
+                                  child: Opacity(
+                                    opacity: 0.5,
+                                    child: Text(
+                                      getTranslated(context, 'confidential'),
+                                      style: TextStyle(
+                                        fontSize: SizeConfig.calculateTextSize(14),
+                                        fontWeight: FontWeight.w500,
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                      textAlign: TextAlign.center,
                                     ),
-                                    textAlign: TextAlign.center,
                                   ),
                                 ),
                               ],
@@ -200,7 +206,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
               height: 55,
               isLoading: isLoading,
               textColor: Colors.white,
-              color: Color.fromRGBO(254, 205, 131, 1),
+              color: AppColor.gmail,
               text: getTranslated(context,'via_email'),
               icon: SvgPicture.asset('assets/svg/auth/gmail.svg'),
               ontap: () {
@@ -218,16 +224,16 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
 
   bool checkTextFieldEmptyOrNot(BuildContext context){
     if(passwordController.text.isEmpty){
-      ToastUtils.toastInfoGeneral('Password must not be empty', context);
+      ToastUtils.toastInfoGeneral(getTranslated(context,'password_is_empty'), context);
       return false;
     }
     if(emailController.text.isEmpty){
-      ToastUtils.toastInfoGeneral('Email must not be empty', context);
+      ToastUtils.toastInfoGeneral(getTranslated(context,'email_is_empty'), context);
       return false;
     }
     bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(emailController.text.trim());
     if(!emailValid){
-      ToastUtils.toastInfoGeneral('Please add valid email', context);
+      ToastUtils.toastInfoGeneral(getTranslated(context,'email_not_valid'), context);
       return false;
     }
     return true;

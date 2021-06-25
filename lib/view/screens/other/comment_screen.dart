@@ -2,6 +2,7 @@
 
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
@@ -19,7 +20,7 @@ class _CommentScreen extends State<CommentScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Color.fromRGBO(108, 187, 217, 1),
+      backgroundColor: AppColor.sometimes,
       appBar: widgetAppBarTitle(context),
       body: Column(
         children: <Widget>[
@@ -32,7 +33,7 @@ class _CommentScreen extends State<CommentScreen> {
                 color: Colors.white
             ),
           ),
-          SizedBox(height: 30,),
+          SizedBox(height: SizeConfig.calculateBlockVertical(30.0)),
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30.0),

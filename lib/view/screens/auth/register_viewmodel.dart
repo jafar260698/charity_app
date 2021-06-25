@@ -1,4 +1,5 @@
 
+import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/model/user/user_type.dart';
 import 'package:charity_app/persistance/api_provider.dart';
@@ -100,31 +101,30 @@ class RegisterViewModel extends BaseViewModel{
     _userData.setEmail(_emailController.text.toString().trim());
     _userData.setPassword(_passwordController.text.toString().trim());
     _userData.setPhoneNumber(_phoneController.text.toString().trim());
-    print("Type: $type");
     _userData.setUserType(type??'');
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
   }
 
   bool checkTextFieldEmptyOrNot(BuildContext context){
     if(_usernameController.text.isEmpty){
-      ToastUtils.toastInfoGeneral('Username must not be empty', context);
+      ToastUtils.toastInfoGeneral(getTranslated(context,'username_is_empty'), context);
       return false;
     }
     if(_passwordController.text.isEmpty){
-      ToastUtils.toastInfoGeneral('Password must not be empty', context);
+      ToastUtils.toastInfoGeneral(getTranslated(context, 'password_is_empty'), context);
       return false;
     }
     if(_emailController.text.isEmpty){
-      ToastUtils.toastInfoGeneral('Email must not be empty', context);
+      ToastUtils.toastInfoGeneral(getTranslated(context, 'email_is_empty'), context);
       return false;
     }
     bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(_emailController.text.trim());
     if(!emailValid){
-      ToastUtils.toastInfoGeneral('Please add valid email', context);
+      ToastUtils.toastInfoGeneral(getTranslated(context, 'email_not_valid'), context);
       return false;
     }
     if(_phoneController.text.isEmpty){
-      ToastUtils.toastInfoGeneral('Phone number must not be empty', context);
+      ToastUtils.toastInfoGeneral(getTranslated(context, 'phone_number_is_empty'), context);
       return false;
     }
     return true;
