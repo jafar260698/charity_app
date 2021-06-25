@@ -52,21 +52,21 @@ class FaqScreen extends StatelessWidget {
             //  mainUI(model),
             ],
           ),
-          bottomNavigationBar: ConvexAppBar(
-            style: TabStyle.reactCircle,
-            color: Colors.black45,
-            activeColor: AppThemeStyle.primaryColor,
-            backgroundColor: Colors.white,
-            items: [
-              TabItem(
-                  icon: Icon(
-                Icons.add,
-                color: Colors.white,
-              )),
-            ],
-            initialActiveIndex: 0,
-            onTap: (int i) => {},
-          ),
+          // bottomNavigationBar: ConvexAppBar(
+          //   style: TabStyle.reactCircle,
+          //   color: Colors.black45,
+          //   activeColor: AppThemeStyle.primaryColor,
+          //   backgroundColor: Colors.white,
+          //   items: [
+          //     TabItem(
+          //         icon: Icon(
+          //       Icons.add,
+          //       color: Colors.white,
+          //     )),
+          //   ],
+          //   initialActiveIndex: 0,
+          //   onTap: (int i) => {},
+          // ),
         ),
       ),
       onModelReady: (model){

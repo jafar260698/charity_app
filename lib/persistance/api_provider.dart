@@ -256,10 +256,24 @@ class ApiProvider {
   }
 
   //article
-  Future<Article> getArticle() async{
+  Future<Article> getArticle(String category) async{
     var responseJson;
     try{
-      final response= await client.get(Uri.parse('$baseUrl/article?language=ru&category=razvitie&page=1'),
+      final response= await client.get(Uri.parse('$baseUrl/article?language=ru&category=$category&page=1'),
+        headers: headers,
+      );
+      var res=_response(response);
+      responseJson=Article.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<Article> searchArticle(String search) async{
+    var responseJson;
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/article/search?search=$search&page=1'),
         headers: headers,
       );
       var res=_response(response);
@@ -331,6 +345,34 @@ class ApiProvider {
   }
 
   //article, bookmark, comment
+  Future<BaseResponses> getBookMark(Map<String,dynamic> data) async{
+    var responseJson;
+    try{
+      final response= await client.get(Uri.parse('$baseUrl/article/bookmark?page=1'),
+          headers: headers
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
+
+  Future<BaseResponses> bookMarkStore(Map<String,dynamic> data) async{
+    var responseJson;
+    try{
+      final response= await client.post(Uri.parse('$baseUrl/article/bookmark/store'),
+          headers: headers,
+          body: jsonEncode(data)
+      );
+      var res=_response(response);
+      responseJson=BaseResponses.fromJson(res);
+    } on FetchDataException{
+      throw FetchDataException("No Internet connection");
+    }
+    return responseJson;
+  }
 
   //article, comment
   Future<SkillProvider> articleComment(Map<String,dynamic> data) async{

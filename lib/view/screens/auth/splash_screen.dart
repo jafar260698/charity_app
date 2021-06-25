@@ -22,13 +22,8 @@ class _SplashScreenState extends State<SplashScreen> {
   UserData userData=new UserData();
 
   startTime(bool success) {
-    var _duration = new Duration(seconds: 3);
-
-    if (success)
+       var _duration = new Duration(seconds: 3);
       return new Timer(_duration, nextToScreen);
-    else {
-
-    }
   }
 
   @override
@@ -67,10 +62,10 @@ class _SplashScreenState extends State<SplashScreen> {
             children: <Widget>[
               SafeArea(
                 child: Center(
-                  child: SvgPicture.asset('assets/svg/logo_vertical.svg',color: AppColor.primary),
+                  child: SvgPicture.asset('assets/svg/logo_vertical.svg',width: SizeConfig.calculateBlockHorizontal(100),height: SizeConfig.calculateBlockVertical(80),color: AppColor.primary),
                 ),
               ),
-              SizedBox(height: 32.0),
+              SizedBox(height: SizeConfig.calculateBlockVertical(32.0)),
               CupertinoActivityIndicator(),
             ],
           ),
@@ -84,7 +79,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 getTranslated(context, 'copyright'),
                 textScaleFactor: 1.0,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 13),
+                style: TextStyle(fontSize: 14),
               ),
             ),
           ),
