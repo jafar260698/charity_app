@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/utils/toast_utils.dart';
+import 'package:charity_app/view/components/bottom_modal_sheet.dart';
 import 'package:charity_app/view/components/btn_ui_icon.dart';
+import 'package:charity_app/view/components/text_field_ui.dart';
 import 'package:charity_app/view/screens/auth/register_screen.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
@@ -30,6 +32,11 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
   bool _isSignIn=false;
   User _user;
 
+  bool _success;
+  String email;
+
+  TextEditingController emailController=new TextEditingController();
+  TextEditingController passwordController=new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +79,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   icon: SvgPicture.asset('assets/svg/auth/apple.svg'),
                                   ontap: () {
                                     if(Platform.isAndroid){
-                                      ToastUtils.toastInfoGeneral("This is not IOS Phone",context);
+                                      ToastUtils.toastInfoGeneral("Работает только в приложении для iOS",context);
                                     }
                                   },
                                 ),
@@ -85,11 +92,10 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   text: getTranslated(context,'via_google'),
                                   icon: SvgPicture.asset('assets/svg/auth/google.svg'),
                                   ontap: () {
-                                    loginViaGoogle();
                                     if(_user!=null){
                                       gotoNextScreen(_user);
                                     }else{
-
+                                      loginViaGoogle();
                                     }
                                   },
                                 ),
@@ -115,7 +121,18 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   text: getTranslated(context,'via_email'),
                                   icon: SvgPicture.asset('assets/svg/auth/gmail.svg'),
                                   ontap: () {
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
+                                    showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(20),
+                                          ),
+                                        ),
+                                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                                        context: context,
+                                        builder: (builder){
+                                          return rejectBottomModalSheet(context);
+                                        });
                                   },
                                 ),
                                 SizedBox(height: SizeConfig.calculateBlockVertical(20.0)),
@@ -123,7 +140,11 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   opacity: 0.5,
                                   child: Text(
                                     getTranslated(context, 'confidential'),
-                                    style: AppThemeStyle.title14,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                      decoration: TextDecoration.underline,
+                                    ),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
@@ -152,6 +173,67 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
       );
   }
 
+  Widget rejectBottomModalSheet(BuildContext context){
+    return BottomModalSheet(
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextFieldUI(
+              controller: emailController,
+              onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
+              inputAction: TextInputAction.done,
+              text: getTranslated(context, 'email'),
+              hintText: getTranslated(context, 'comment'),
+            ),
+            SizedBox(height: SizeConfig.calculateBlockVertical(5)),
+            TextFieldUI(
+              controller: passwordController,
+              onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
+              inputAction: TextInputAction.done,
+              text: getTranslated(context, 'password'),
+              hintText: getTranslated(context, 'comment'),
+            ),
+            SizedBox(height: SizeConfig.calculateBlockVertical(30)),
+            BtnUIIcon(
+              height: 55,
+              isLoading: false,
+              textColor: Colors.white,
+              color: Color.fromRGBO(254, 205, 131, 1),
+              text: getTranslated(context,'via_email'),
+              icon: SvgPicture.asset('assets/svg/auth/gmail.svg'),
+              ontap: () {
+                if(checkTextFieldEmptyOrNot(context)){
+                  _signInWithEmailAndPassword();
+                }
+              },
+            ),
+            SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+          ],
+        ),
+      ),
+    );
+  }
+
+  bool checkTextFieldEmptyOrNot(BuildContext context){
+    if(passwordController.text.isEmpty){
+      ToastUtils.toastInfoGeneral('Password must not be empty', context);
+      return false;
+    }
+    if(emailController.text.isEmpty){
+      ToastUtils.toastInfoGeneral('Email must not be empty', context);
+      return false;
+    }
+    bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(emailController.text.trim());
+    if(!emailValid){
+      ToastUtils.toastInfoGeneral('Please add valid email', context);
+      return false;
+    }
+    return true;
+  }
+
+
   Future<void> gotoNextScreen(User user) async{
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: user.displayName??"",email: user.email??"",password: user.uid??"",phoneNumber: user.phoneNumber??"",)));
   }
@@ -170,8 +252,8 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
       );
 
       await FirebaseAuth.instance.signInWithCredential(credential);
-
       _isSignIn=false;
+      gotoNextScreen(_user);
     }
   }
 
@@ -199,6 +281,31 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
     FirebaseAuth.instance.signOut();
   }
 
+  void _signInWithEmailAndPassword() async {
+    final User user = (await _auth.signInWithEmailAndPassword(
+      email: emailController.text,
+      password: passwordController.text,
+    )).user;
 
+    if (user != null) {
+      setState(() {
+        _success = true;
+        email = user.email;
+        print('$email');
+      });
+    } else {
+      setState(() {
+        _success = false;
+      });
+      print('hi');
+    }
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 }
 

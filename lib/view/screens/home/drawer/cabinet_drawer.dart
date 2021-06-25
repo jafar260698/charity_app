@@ -6,7 +6,6 @@ import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/bottom_modal_sheet.dart';
 import 'package:charity_app/view/screens/auth/splash_screen.dart';
 import 'package:charity_app/view/screens/home/diagnose/diagnose_screen.dart';
-import 'package:charity_app/view/screens/home/home_viewmodel.dart';
 import 'package:charity_app/view/screens/home/inclusion/inclusion_screen.dart';
 import 'package:charity_app/view/screens/home/menu/faq_screen.dart';
 import 'package:charity_app/view/screens/home/menu/favourite_menu_screen.dart';
@@ -252,7 +251,7 @@ class CabinetDrawer extends StatelessWidget {
                                 SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                                 InkWell(
                                   onTap: (){
-                                    _modalInfo(context);
+                                    _modalInfo(context,model);
                                   },
                                   child: Padding(
                                     padding: EdgeInsets.only(
@@ -293,7 +292,7 @@ class CabinetDrawer extends StatelessWidget {
         viewModelBuilder: () => DrawerViewModel());
   }
 
-  void _modalInfo(BuildContext context) {
+  void _modalInfo(BuildContext context,DrawerViewModel model) {
     showModalBottomSheet(
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
@@ -309,10 +308,7 @@ class CabinetDrawer extends StatelessWidget {
             children: [
               ExitModalView(
                 onTapExit: () {
-                  UserData _userData=new UserData();
-                  _userData.setFirstTime(true);
-                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                      SplashScreen()), (Route<dynamic> route) => false);
+                  model.logOut(context);
                 },
               ),
             ],

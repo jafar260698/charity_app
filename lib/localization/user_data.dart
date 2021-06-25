@@ -91,4 +91,15 @@ class UserData {
     final SharedPreferences prefs = await _prefs;
     return prefs.getString('userType');
   }
+
+  Future<void> clearData() async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.remove('token');
+    prefs.remove('isFirstTime');
+    prefs.remove('username');
+    prefs.remove('password');
+    prefs.remove('email');
+    prefs.remove('phone_number');
+    prefs.remove('userType');
+  }
 }
