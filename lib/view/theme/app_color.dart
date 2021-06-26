@@ -16,5 +16,7 @@ class AppColor {
   //social media color
   static final Color google = Color.fromRGBO(240, 131, 144, 1);
   static final Color gmail = Color.fromRGBO(254, 205, 131, 1);
+  static final Color backgroundWhite = Color.fromRGBO(254, 205, 131, 1);
+
 
 }

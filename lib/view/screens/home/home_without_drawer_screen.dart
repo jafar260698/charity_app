@@ -118,7 +118,7 @@ class HomeWithoutDrawerScreen extends StatelessWidget {
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => ArticleScreen()));
                   }),
                   CardIcon(operation:getTranslated(context,'forum'),iconPath: "assets/svg/services/forum.svg",onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumScreen()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumScreen(existArrow: true)));
                   }),
                   CardIcon(operation:getTranslated(context,'for_mother'),iconPath: "assets/svg/services/for_mummy.svg",onTap: (){
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForMotherScreen(category: model.category)));

@@ -5,6 +5,7 @@ import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/model/article/article.dart';
 import 'package:charity_app/model/forum/forum_category.dart';
 import 'package:charity_app/model/forum/forum_detail.dart';
+import 'package:charity_app/model/forum/forum_sub_category.dart';
 import 'package:charity_app/model/user/authorization.dart';
 import 'package:charity_app/model/base_response.dart';
 import 'package:charity_app/model/category.dart';
@@ -482,28 +483,28 @@ class ApiProvider {
   }
 
   // forum
-  Future<ForumCategory> getForumCategory(String lang) async{
+  Future<List<ForumCategory>> getForumCategory(String lang) async{
     var responseJson;
     try{
       final response= await client.get(Uri.parse('$baseUrl/forum_category?language=ru'),
         headers: headers,
       );
-      var res=_response(response);
-      responseJson=ForumCategory.fromJson(res);
+      var res=_response(response) as List;
+      responseJson=res.map((e) =>ForumCategory.fromJson(e)).toList();
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
     }
     return responseJson;
   }
 
-  Future<ForumCategory> getForumSubCategory(String lang) async{
+  Future<List<ForumSubCategory>> getForumSubCategory(String lang) async{
     var responseJson;
     try{
       final response= await client.get(Uri.parse('$baseUrl/forum_subcategory?language=ru'),
         headers: headers,
       );
-      var res=_response(response);
-      responseJson=ForumCategory.fromJson(res);
+      var res=_response(response) as List;
+      responseJson=res.map((e) =>ForumSubCategory.fromJson(e)).toList();
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
     }

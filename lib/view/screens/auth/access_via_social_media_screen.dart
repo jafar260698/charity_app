@@ -82,6 +82,8 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                     if(Platform.isAndroid){
                                       ToastUtils.toastInfoGeneral("Работает только в приложении для iOS",context);
                                     }
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
+
                                   },
                                 ),
                                 SizedBox(height: SizeConfig.calculateBlockVertical(8.0)),

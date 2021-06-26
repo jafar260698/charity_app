@@ -1,6 +1,7 @@
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/model/category.dart';
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/view/screens/home/for_mother/for_mother_viewmodel.dart';
 import 'package:charity_app/view/screens/home/inclusion/inclusion_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,7 +16,7 @@ class ForMotherScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<InclusionViewModel>.reactive(
+    return ViewModelBuilder<ForMotherViewModel>.reactive(
       builder: (context, model, child) =>  DefaultTabController(
         length: category.length,
         child: Scaffold(
@@ -74,7 +75,7 @@ class ForMotherScreen extends StatelessWidget {
       onModelReady: (model){
         model.getInclusion();
       },
-      viewModelBuilder: () => InclusionViewModel(),
+      viewModelBuilder: () => ForMotherViewModel(),
     );
   }
 
@@ -120,7 +121,7 @@ class ForMotherScreen extends StatelessWidget {
     );
   }
 
-  Widget getMainUI(BuildContext context,InclusionViewModel model){
+  Widget getMainUI(BuildContext context,ForMotherViewModel model){
     return Container(
       decoration: BoxDecoration(
         color: AppColor.primary,
@@ -145,7 +146,7 @@ class ForMotherScreen extends StatelessWidget {
     );
   }
 
-  getListUI(context,InclusionViewModel model) {
+  getListUI(context,ForMotherViewModel model) {
     if(model.isLoading){
       return CupertinoActivityIndicator();
     } else{

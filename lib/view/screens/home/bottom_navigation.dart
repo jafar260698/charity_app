@@ -35,7 +35,7 @@ class _BottomNavigation extends State<BottomNavigation> {
     ArticleScreen(),
     SearchScreen(),
     FavouriteScreen(),
-    ForumScreen(),
+    ForumScreen(existArrow: false),
   ];
 
   void _onItemTap(int index){
