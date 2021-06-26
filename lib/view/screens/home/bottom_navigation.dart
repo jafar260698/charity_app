@@ -1,7 +1,7 @@
 
 import 'package:charity_app/view/screens/home/forum/forum_screen.dart';
 import 'package:charity_app/view/screens/home/home_screen.dart';
-import 'package:charity_app/view/screens/home/search_screen.dart';
+import 'package:charity_app/view/screens/home/article/search/search_screen.dart';
 import 'package:charity_app/view/screens/other/favourite_screen.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/my_themes.dart';

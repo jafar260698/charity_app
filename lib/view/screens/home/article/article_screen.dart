@@ -61,7 +61,7 @@ class ArticleScreen extends StatelessWidget {
                         bottomLeftRadius: 0,
                         bottomRightRadius: 0,
                         tabPosition: TabPosition.bottom,
-                        color: Color.fromRGBO(98, 190, 184, 1)),
+                        color: AppColor.primary),
                   ),
                 ),
               ),
