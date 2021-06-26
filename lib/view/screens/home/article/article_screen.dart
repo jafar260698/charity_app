@@ -1,83 +1,85 @@
 import 'package:charity_app/localization/language_constants.dart';
+import 'package:charity_app/model/category.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/screens/home/article/article_detail.dart';
+import 'package:charity_app/view/screens/home/article/article_screen_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:stacked/stacked.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-class ArticleScreen extends StatefulWidget {
-  @override
-  _ArticleScreen createState() => _ArticleScreen();
-}
+class ArticleScreen extends StatelessWidget {
+  final List<Category> category;
 
-class _ArticleScreen extends State<ArticleScreen> {
+  const ArticleScreen({Key key, this.category}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    List<String> year = [
-      'Болезни',
-      'Фонды',
-      'Развитие',
-      'Истории',
-    ];
-    return DefaultTabController(
-      length: year.length,
-      child: Scaffold(
-        appBar: appBarPage(
-          context: context,
-          appBarTitle: "",
-          appBarIncome: getTranslated(context, 'article'),
-          bottom: PreferredSize(
-            preferredSize: Size.fromHeight(70.0), // here the desired height
-            child: Align(
-              alignment: Alignment.center,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppColor.primary,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
+    return ViewModelBuilder<ArticleViewModel>.reactive(
+      builder: (context, model, child) =>  DefaultTabController(
+        length: category.length,
+        child: Scaffold(
+          appBar: appBarPage(
+            context: context,
+            appBarTitle: "",
+            appBarIncome: getTranslated(context, 'article'),
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(70.0), // here the desired height
+              child: Align(
+                alignment: Alignment.center,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColor.primary,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    ),
                   ),
-                ),
-                child: TabBar(
-                  tabs: List<Widget>.generate(year.length, (int index) {
-                    var item = year[index];
-                    return new Tab(text: item);
-                  }),
-                  isScrollable: true,
-                  labelPadding: EdgeInsets.only(
-                      left: 30.0, right: 30.0, top: 3, bottom: 3),
-                  indicatorSize: TabBarIndicatorSize.label,
-                  labelColor: Colors.white,
-                  unselectedLabelColor: Colors.white.withOpacity(0.4),
-                  labelStyle: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'Montserrat'),
-                  indicator: MaterialIndicator(
-                      height: 4,
-                      topLeftRadius: 4,
-                      topRightRadius: 4,
-                      bottomLeftRadius: 0,
-                      bottomRightRadius: 0,
-                      tabPosition: TabPosition.bottom,
-                      color: Color.fromRGBO(98, 190, 184, 1)),
+                  child: TabBar(
+                    tabs: List<Widget>.generate(category.length, (int index) {
+                      var item = category[index];
+                      return new Tab(text: item.name);
+                    }),
+                    isScrollable: true,
+                    labelPadding: EdgeInsets.only(
+                        left: 30.0, right: 30.0, top: 3, bottom: 3),
+                    indicatorSize: TabBarIndicatorSize.label,
+                    labelColor: Colors.white,
+                    unselectedLabelColor: Colors.white.withOpacity(0.4),
+                    labelStyle: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Montserrat'),
+                    indicator: MaterialIndicator(
+                        height: 4,
+                        topLeftRadius: 4,
+                        topRightRadius: 4,
+                        bottomLeftRadius: 0,
+                        bottomRightRadius: 0,
+                        tabPosition: TabPosition.bottom,
+                        color: Color.fromRGBO(98, 190, 184, 1)),
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        body: TabBarView(
-          children: List<Widget>.generate(year.length, (int index) {
-            if(index!=1){
-              return getMainUI(context);
-            }else return getSecondMainUI(context);
-          }),
+          body: TabBarView(
+            children: List<Widget>.generate(category.length, (int index) {
+              if(index!=1){
+                return getMainUI(context);
+              }else return getSecondMainUI(context);
+            }),
+          ),
         ),
       ),
+      onModelReady: (model){
+
+      },
+      viewModelBuilder: () => ArticleViewModel(),
     );
   }
 
@@ -249,223 +251,6 @@ class _ArticleScreen extends State<ArticleScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      color: Colors.white,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: 20, right: 20, top: 10, bottom: 5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "Благотворительный фонд «ДАРА»",
-                                    style: AppThemeStyle.resendCodeStyle,
-                                    textAlign: TextAlign.start,
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_down,
-                                  size: 30,
-                                )
-                              ],
-                            ),
-                            SizedBox(height: 5),
-                            Divider(
-                                thickness: 1,
-                                color: Color.fromRGBO(98, 190, 184, 1)),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(Icons.location_on,
-                                    size: 24,
-                                    color: Color.fromRGBO(98, 190, 184, 1)),
-                                SizedBox(width: 8.0),
-                                Expanded(
-                                  child: Text(
-                                    "Г. Нур-Султан \n ул. А.Бокейхана, 1, «Назарбаев Центр»",
-                                    style: AppThemeStyle.titleListPrimary,
-                                    textAlign: TextAlign.start,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 5),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      color: Colors.white,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: 20, right: 20, top: 10, bottom: 5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "Благотворительный фонд «ДАРА»",
-                                    style: AppThemeStyle.resendCodeStyle,
-                                    textAlign: TextAlign.start,
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_down,
-                                  size: 30,
-                                )
-                              ],
-                            ),
-                            SizedBox(height: 5),
-                            Divider(
-                                thickness: 1,
-                                color: Color.fromRGBO(98, 190, 184, 1)),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(Icons.location_on,
-                                    size: 24,
-                                    color: Color.fromRGBO(98, 190, 184, 1)),
-                                SizedBox(width: 8.0),
-                                Expanded(
-                                  child: Text(
-                                    "Г. Нур-Султан \n ул. А.Бокейхана, 1, «Назарбаев Центр»",
-                                    style: AppThemeStyle.titleListPrimary,
-                                    textAlign: TextAlign.start,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 5),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      color: Colors.white,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: 20, right: 20, top: 10, bottom: 5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "Благотворительный фонд «ДАРА»",
-                                    style: AppThemeStyle.resendCodeStyle,
-                                    textAlign: TextAlign.start,
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_down,
-                                  size: 30,
-                                )
-                              ],
-                            ),
-                            SizedBox(height: 5),
-                            Divider(
-                                thickness: 1,
-                                color: Color.fromRGBO(98, 190, 184, 1)),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(Icons.location_on,
-                                    size: 24,
-                                    color: Color.fromRGBO(98, 190, 184, 1)),
-                                SizedBox(width: 8.0),
-                                Expanded(
-                                  child: Text(
-                                    "Г. Нур-Султан \n ул. А.Бокейхана, 1, «Назарбаев Центр»",
-                                    style: AppThemeStyle.titleListPrimary,
-                                    textAlign: TextAlign.start,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 5),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      color: Colors.white,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: 20, right: 20, top: 10, bottom: 5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "Благотворительный фонд «ДАРА»",
-                                    style: AppThemeStyle.resendCodeStyle,
-                                    textAlign: TextAlign.start,
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_down,
-                                  size: 30,
-                                )
-                              ],
-                            ),
-                            SizedBox(height: 5),
-                            Divider(
-                                thickness: 1,
-                                color: Color.fromRGBO(98, 190, 184, 1)),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(Icons.location_on,
-                                    size: 24,
-                                    color: Color.fromRGBO(98, 190, 184, 1)),
-                                SizedBox(width: 8.0),
-                                Expanded(
-                                  child: Text(
-                                    "Г. Нур-Султан \n ул. А.Бокейхана, 1, «Назарбаев Центр»",
-                                    style: AppThemeStyle.titleListPrimary,
-                                    textAlign: TextAlign.start,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 5),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
                   ],
                 ),
               ),
