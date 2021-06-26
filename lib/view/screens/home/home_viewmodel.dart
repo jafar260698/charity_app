@@ -14,9 +14,6 @@ class HomeViewModel extends BaseViewModel{
   List<Category> _category;
   List<Category> get category=>_category;
 
-  ForumCategory _subCategory;
-  ForumCategory get subCategory=>_subCategory;
-
   bool _isLoadingCategory = false;
   bool get isLoadingCategory=> _isLoadingCategory;
 
@@ -24,18 +21,6 @@ class HomeViewModel extends BaseViewModel{
     _isLoadingCategory=true;
     _apiProvider.getCategory("ru").then((value) => {
       _category=value,
-    }).catchError((error){
-      print("Error: $error");
-    }).whenComplete(() => {
-      _isLoadingCategory=false,
-      notifyListeners()
-    });
-  }
-
-  Future<void> getSubCategory() async{
-    _isLoadingCategory=true;
-    _apiProvider.getForumSubCategory("ru").then((value) => {
-      _subCategory=value,
     }).catchError((error){
       print("Error: $error");
     }).whenComplete(() => {
