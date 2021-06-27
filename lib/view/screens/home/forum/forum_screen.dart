@@ -1,5 +1,6 @@
 
 import 'package:charity_app/localization/language_constants.dart';
+import 'package:charity_app/model/forum/forum_sub_category.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/home/forum/forum_viewmodel.dart';
@@ -55,8 +56,7 @@ class ForumScreen extends StatelessWidget {
         ),
       ),
       onModelReady: (model){
-        model.getForumCategory();
-        model.getForumSubCategory();
+        model.fetchAllData();
       },
       viewModelBuilder: () => ForumViewModel(),
     );
@@ -66,79 +66,70 @@ class ForumScreen extends StatelessWidget {
    if(model.isLoading){
      return Container();
    }
-   return SingleChildScrollView(
-     physics: BouncingScrollPhysics(),
-     child: Column(
-       crossAxisAlignment: CrossAxisAlignment.start,
-       children: <Widget>[
-         BtnUI(
-           height: 45,
-           align: Alignment.centerLeft,
-           isLoading: false,
-           textColor: Colors.white,
-           color: AppColor.primary,
-           text: 'Специальный форум',
-           ontap: () {
-             Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumDetailScreen()));
-           },
-         ),
-         SizedBox(height: 5),
-         Padding(
-           padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
-           child: Column(
-             crossAxisAlignment: CrossAxisAlignment.start,
-             mainAxisAlignment: MainAxisAlignment.start,
-             children: [
-               Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   Text(
-                     "Информаторий",
-                     style: AppThemeStyle.appBarStyle16,
-                     textAlign: TextAlign.start,
+   if(model.forumCategory.length>0) return ListView.builder(
+       itemCount: model.forumCategory.length,
+       shrinkWrap: true,
+       itemBuilder: (context,i){
+         List<ForumSubCategory> list = new List<ForumSubCategory>();
+         list.addAll(model.forumSubCategory.where((element) => element.category==model.forumCategory[i].sysName));
+         return Column(
+           crossAxisAlignment: CrossAxisAlignment.start,
+           children: <Widget>[
+             BtnUI(
+               height: 45,
+               align: Alignment.centerLeft,
+               isLoading: false,
+               textColor: Colors.white,
+               color: AppColor.primary,
+               text: model.forumCategory[i].name,
+               ontap: () {
+
+               },
+             ),
+             SizedBox(height: SizeConfig.calculateBlockVertical(5.0)),
+             ListView.builder(
+               itemCount: list.length,
+               shrinkWrap: true,
+               physics: ClampingScrollPhysics(),
+               itemBuilder:(context,i){
+                 return Padding(
+                   padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
+                   child: InkWell(
+                     onTap: (){
+                       Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumDetailScreen()));
+                     },
+                     child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       mainAxisAlignment: MainAxisAlignment.start,
+                       children: [
+                         Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                           children: [
+                             Text(
+                               list[i].name,
+                               style: AppThemeStyle.appBarStyle16,
+                               textAlign: TextAlign.start,
+                             ),
+                             Icon(Icons.arrow_forward_ios,size: 16,)
+                           ],
+                         ),
+                         SizedBox(height: SizeConfig.calculateBlockVertical(5.0)),
+                         Text(
+                           "77 тем   Посл. cообщ. 20.02.2021 ",
+                           textAlign: TextAlign.start,
+                         ),
+                         Divider(thickness: 1,color: Colors.black54,),
+                         SizedBox(height:5),
+                       ],
+                     ),
                    ),
-                   Icon(Icons.arrow_forward_ios,size: 16,)
-                 ],
-               ),
-               SizedBox(height:5),
-               Text(
-                 "77 тем   Посл. cообщ. 20.02.2021 ",
-                 textAlign: TextAlign.start,
-               ),
-               Divider(thickness: 1,color: Colors.black54,),
-               SizedBox(height:5),
-             ],
-           ),
-         ),
-         Padding(
-           padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
-           child: Column(
-             crossAxisAlignment: CrossAxisAlignment.start,
-             mainAxisAlignment: MainAxisAlignment.start,
-             children: [
-               Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   Text(
-                     "Информаторий",
-                     style: AppThemeStyle.titleStyle,
-                     textAlign: TextAlign.start,
-                   ),
-                   Icon(Icons.arrow_forward_ios,size: 16,)
-                 ],
-               ),
-               SizedBox(height:5),
-               Text(
-                 "77 тем   Посл. cообщ. 20.02.2021 ",
-                 textAlign: TextAlign.start,
-               ),
-               Divider(thickness: 1,color: Colors.black54,),
-               SizedBox(height:5),
-             ],
-           ),
-         ),
-       ],
-     ),
+                 );
+               },
+             ),
+           ],
+         );
+       }
    );
+   else Text('Data not found',style: AppThemeStyle.appBarStyle16);
   }
 }

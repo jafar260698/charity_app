@@ -35,9 +35,6 @@ class GeneralSearchScreen extends StatelessWidget {
                     hintText: getTranslated(context,'search'),
                     suffixIcon: IconButton(
                       splashRadius: 25,
-                      onPressed: () {
-
-                      },
                       icon: Icon(FlevaIcons.search),
                     ),
                   ),

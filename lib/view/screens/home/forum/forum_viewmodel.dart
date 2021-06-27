@@ -16,15 +16,12 @@ class ForumViewModel extends BaseViewModel{
   List<ForumSubCategory> _forumSubCategory;
   List<ForumSubCategory> get forumSubCategory=>_forumSubCategory;
 
-
-
-
   bool _isLoading = false;
   bool get isLoading=> _isLoading;
 
   Future<void> fetchAllData() async {
-    await getForumCategory();
     await getForumSubCategory();
+    await getForumCategory();
   }
 
   Future<void> getForumCategory() async{
