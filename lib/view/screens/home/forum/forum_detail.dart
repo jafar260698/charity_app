@@ -1,6 +1,7 @@
 
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/utils/formatters.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/home/forum/forum_add_screen.dart';
 import 'package:charity_app/view/screens/home/forum/forume_detail_viewmodel.dart';
@@ -90,12 +91,16 @@ class ForumDetailScreen extends StatelessWidget {
                 children: <Widget>[
                   SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                   Padding(
-                    padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
+                    padding: EdgeInsets.only(
+                        left: SizeConfig.calculateBlockHorizontal(15),
+                        right: SizeConfig.calculateBlockHorizontal(15),
+                        top: SizeConfig.calculateBlockVertical(10),
+                        bottom: SizeConfig.calculateBlockVertical(5)),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AvatarImage(imageUrl: data.user.avatar==null ? null : data.user.avatar,size:40.0),
-                        SizedBox(height: SizeConfig.calculateBlockHorizontal(10)),
+                        AvatarImage(imageUrl: data.user.avatar==null ? null : data.user.avatar,size:50.0),
+                        SizedBox(width: SizeConfig.calculateBlockHorizontal(10)),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +109,7 @@ class ForumDetailScreen extends StatelessWidget {
                               Text(
                                 data.user.name,
                                 textAlign: TextAlign.start,
-                                style: AppThemeStyle.titleListGrey,
+                                style: AppThemeStyle.titleListPrimary,
                               ),
                               SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                               Text(
@@ -120,10 +125,13 @@ class ForumDetailScreen extends StatelessWidget {
 
                               ),
                               SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                              Text(
-                                "77 тем   Посл. cообщ. 20.02.2021 ",
-                                textAlign: TextAlign.start,
-                                style: AppThemeStyle.titleListGrey,
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: Text(
+                                  "${dateFormatter(DateTime.fromMillisecondsSinceEpoch(data.createdAt * 1000))}",
+                                  textAlign: TextAlign.end,
+                                  style: AppThemeStyle.titleListGrey,
+                                ),
                               ),
                               Divider(thickness: 1,color: Colors.black54,),
                               SizedBox(height: SizeConfig.calculateBlockVertical(5)),

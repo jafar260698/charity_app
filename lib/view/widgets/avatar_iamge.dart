@@ -15,8 +15,8 @@ class AvatarImage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: SizeConfig.calculateBlockVertical(size),
-      height: SizeConfig.calculateBlockVertical(size),
+      width: size,
+      height: size,
       decoration: new BoxDecoration(
         color: Colors.grey,
         image: new DecorationImage(

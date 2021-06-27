@@ -136,8 +136,7 @@ class AppThemeStyle {
   );
 
   static TextStyle text14_600 = TextStyle(
-    fontSize: 14,
-    fontFamily: 'Montserrat',
+    fontSize: 15,
     fontWeight: FontWeight.w600,
   );
 
