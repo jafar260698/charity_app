@@ -76,7 +76,7 @@ class ForumScreen extends StatelessWidget {
            crossAxisAlignment: CrossAxisAlignment.start,
            children: <Widget>[
              BtnUI(
-               height: 45,
+               height: SizeConfig.calculateBlockVertical(50),
                align: Alignment.centerLeft,
                isLoading: false,
                textColor: Colors.white,
@@ -96,7 +96,7 @@ class ForumScreen extends StatelessWidget {
                    padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
                    child: InkWell(
                      onTap: (){
-                       Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumDetailScreen()));
+                       Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumDetailScreen(title: list[i].name, subcategory: list[i].sysName)));
                      },
                      child: Column(
                        crossAxisAlignment: CrossAxisAlignment.start,

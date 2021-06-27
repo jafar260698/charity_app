@@ -518,7 +518,7 @@ class ApiProvider {
         headers: headers,
       );
       var res=_response(response);
-      responseJson=ForumCategory.fromJson(res);
+      responseJson=ForumDetail.fromJson(res);
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
     }

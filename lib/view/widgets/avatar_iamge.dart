@@ -1,3 +1,4 @@
+import 'package:charity_app/utils/device_size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +15,8 @@ class AvatarImage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: size,
-      height: size,
+      width: SizeConfig.calculateBlockVertical(size),
+      height: SizeConfig.calculateBlockVertical(size),
       decoration: new BoxDecoration(
         color: Colors.grey,
         image: new DecorationImage(
