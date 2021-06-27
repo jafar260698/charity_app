@@ -7,6 +7,7 @@ import 'package:charity_app/view/screens/home/article/article_screen.dart';
 import 'package:charity_app/view/screens/home/diagnose/diagnose_screen.dart';
 import 'package:charity_app/view/screens/home/for_mother/for_mother.dart';
 import 'package:charity_app/view/screens/home/forum/forum_screen.dart';
+import 'package:charity_app/view/screens/home/general_search_screen.dart';
 import 'package:charity_app/view/screens/home/home_viewmodel.dart';
 import 'package:charity_app/view/screens/home/inclusion/inclusion_screen.dart';
 import 'package:charity_app/view/screens/home/resource/resource_screen.dart';
@@ -65,17 +66,37 @@ class HomeWithoutDrawerScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(30),
-                child: SearchFieldUI(
-                  controller: model.search,
-                  text: '',
-                  inputAction: TextInputAction.done,
-                  hintText: getTranslated(context,'search'),
-                  suffixIcon: IconButton(
-                    splashRadius: 25,
-                    onPressed: () {
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => GeneralSearchScreen()));
+                  },
+                  child: TextField(
+                    readOnly: true,
+                    focusNode: FocusNode(),
+                    controller: model.search,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                        borderSide: BorderSide(color: Colors.black26),
+                      ),
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.withOpacity(0.5)),
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      hintText: getTranslated(context,'search'),
+                      enabled: false,
+                      suffixIcon: IconButton(
+                        splashRadius: 25,
+                        onPressed: () {
 
-                    },
-                    icon: Icon(FlevaIcons.search),
+                        },
+                        icon: Icon(FlevaIcons.search),
+                      ),
+                    ),
                   ),
                 ),
               ),

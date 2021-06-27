@@ -13,7 +13,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 
 class GeneralSearchScreen extends StatelessWidget {
-  TextEditingController pinfl = new TextEditingController();
+  TextEditingController search = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class GeneralSearchScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 10,right: 10),
                   child: SearchFieldUI(
-                    controller: pinfl,
+                    controller: search,
                     text: '',
                     keyboardType: TextInputType.number,
                     inputAction: TextInputAction.done,
