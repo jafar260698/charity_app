@@ -25,7 +25,6 @@ class ForumViewModel extends BaseViewModel{
   }
 
   Future<void> getForumCategory() async{
-    _isLoading=true;
       _apiProvider.getForumCategory('ru').then((value) => {
         _forumCategory=value
       }).catchError((error) {
@@ -43,7 +42,6 @@ class ForumViewModel extends BaseViewModel{
     }).catchError((error) {
       print("Error: $error");
     }).whenComplete(() => {
-      _isLoading=false,
       notifyListeners()
     });
   }
