@@ -2,12 +2,19 @@
 import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/model/forum/forum_detail.dart';
 import 'package:charity_app/persistance/api_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 
 class ForumDetailViewModel extends BaseViewModel{
 
   ApiProvider _apiProvider=new ApiProvider();
-  UserData _userData=new UserData();
+
+
+  TextEditingController _titleController=new TextEditingController();
+  TextEditingController _noteController=new TextEditingController();
+
+  TextEditingController get titleController => _titleController;
+  TextEditingController get noteController => _noteController;
 
   bool _isLoading = false;
   bool get isLoading=> _isLoading;

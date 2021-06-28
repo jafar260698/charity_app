@@ -126,10 +126,7 @@ class ResourceScreen extends StatelessWidget {
         color: AppColor.primary,
       ),
       child: Container(
-        height: MediaQuery
-            .of(context)
-            .size
-            .height,
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           color: Color.fromRGBO(244, 244, 244, 1.0),
           borderRadius: BorderRadius.only(

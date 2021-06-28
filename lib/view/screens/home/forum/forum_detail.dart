@@ -47,7 +47,7 @@ class ForumDetailScreen extends StatelessWidget {
                     color: AppColor.white,
                     child: Padding(
                       padding: EdgeInsets.all(20),
-                      child: mainUI(model),
+                      child: mainUI(model,context),
                     ),
                   ),
                 ),
@@ -65,7 +65,7 @@ class ForumDetailScreen extends StatelessWidget {
             ],
             initialActiveIndex: 0,
             onTap: (int i) => {
-             Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumAddScreen())),
+             Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumAddScreen(subCategory: subcategory,))),
           },
           ),
         ),
@@ -77,7 +77,7 @@ class ForumDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget mainUI(ForumDetailViewModel viewModel){
+  Widget mainUI(ForumDetailViewModel viewModel,BuildContext context ){
     if(viewModel.isLoading){
       return Container();
     }else{
@@ -145,7 +145,7 @@ class ForumDetailScreen extends StatelessWidget {
              );
         }
       );
-      else Text('Data not found',style: AppThemeStyle.appBarStyle16);
+      else Text(getTranslated(context, 'data_not_found'),style: AppThemeStyle.appBarStyle16);
     }
   }
 }

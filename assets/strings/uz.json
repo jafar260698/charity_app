@@ -58,5 +58,11 @@
   "email_is_empty": "Email must not be empty",
   "password_is_empty": "Password must not be empty",
   "username_is_empty": "Password must not be empty",
-  "phone_number_is_empty": "Password must not be empty"
+  "phone_number_is_empty": "Password must not be empty",
+  "title_is_empty": "Password must not be empty",
+  "note_is_empty": "Password must not be empty",
+  "add_forum": "Добавить Форум",
+  "title": "Название",
+  "description": "Описание",
+  "data_not_found": "Data not found"
 }
