@@ -302,45 +302,50 @@ class ArticleScreen extends StatelessWidget {
           return Container(
             child: Column(
               children: [
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0),
-                  ),
-                  color: Colors.white,
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 90.0,
-                        width: 90.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25.0),
-                          image: DecorationImage(
-                            image: AssetImage('assets/image/beauty.png'),
-                            fit: BoxFit.fill,
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ArticleDetailScreen(article: data)));
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    color: Colors.white,
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 90.0,
+                          width: 90.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25.0),
+                            image: DecorationImage(
+                              image: AssetImage('assets/image/beauty.png'),
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              data.name,
-                              style: AppThemeStyle.resendCodeStyle,
-                              textAlign: TextAlign.start,
-                            ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                            Text(
-                              data.description,
-                              style: AppThemeStyle.titleFormStyle,
-                              textAlign: TextAlign.start,
-                            ),
-                          ],
+                        SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                data.name,
+                                style: AppThemeStyle.resendCodeStyle,
+                                textAlign: TextAlign.start,
+                              ),
+                              SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                              Text(
+                                data.description,
+                                style: AppThemeStyle.titleFormStyle,
+                                textAlign: TextAlign.start,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 Padding(
