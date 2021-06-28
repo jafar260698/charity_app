@@ -136,7 +136,7 @@ class HomeWithoutDrawerScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   CardIcon(operation:getTranslated(context,'article'),iconPath: "assets/svg/services/article.svg",onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ArticleScreen()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ArticleScreen(category: model.category)));
                   }),
                   CardIcon(operation:getTranslated(context,'forum'),iconPath: "assets/svg/services/forum.svg",onTap: (){
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumScreen(existArrow: true)));

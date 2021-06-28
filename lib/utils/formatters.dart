@@ -11,3 +11,9 @@ String dateFormatter(DateTime date) {
 
   return formatter.format(date);
 }
+
+String dateFormatter2(DateTime date) {
+  final formatter = DateFormat('dd.MM.yyyy');
+
+  return formatter.format(date);
+}

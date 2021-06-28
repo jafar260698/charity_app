@@ -1,6 +1,7 @@
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/model/category.dart';
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/utils/formatters.dart';
 import 'package:charity_app/view/screens/home/article/article_detail.dart';
 import 'package:charity_app/view/screens/home/article/article_screen_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
@@ -28,7 +29,7 @@ class ArticleScreen extends StatelessWidget {
             appBarTitle: "",
             appBarIncome: getTranslated(context, 'article'),
             bottom: PreferredSize(
-              preferredSize: Size.fromHeight(70.0), // here the desired height
+              preferredSize: Size.fromHeight(SizeConfig.calculateBlockVertical(70.0)), // here the desired height
               child: Align(
                 alignment: Alignment.center,
                 child: Container(
@@ -69,15 +70,16 @@ class ArticleScreen extends StatelessWidget {
           ),
           body: TabBarView(
             children: List<Widget>.generate(category.length, (int index) {
-              if(index!=1){
-                return getMainUI(context);
-              }else return getSecondMainUI(context);
+              return getSecondMainUI(context,model);
+              // if(index!=1){
+              //   return getMainUI(context);
+              // } else return getSecondMainUI(context,model);
             }),
           ),
         ),
       ),
       onModelReady: (model){
-
+        model.getAllArticle('razvitie');
       },
       viewModelBuilder: () => ArticleViewModel(),
     );
@@ -261,107 +263,127 @@ class ArticleScreen extends StatelessWidget {
     );
   }
 
-  getSecondMainUI(context){
+  getSecondMainUI(context,ArticleViewModel viewmodel){
     return Container(
       decoration: BoxDecoration(
-        color: Color.fromRGBO(98, 190, 184, 1),
+        color: AppColor.primary,
       ),
-      child: Expanded(
-        child: ClipRRect(
+      child: Container(
+        height: MediaQuery
+            .of(context)
+            .size
+            .height,
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(244, 244, 244, 1.0),
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40), topRight: Radius.circular(40)),
-          child: Container(
-            color: Color.fromRGBO(244, 244, 244, 1),
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      color: Colors.white,
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 90.0,
-                            width: 90.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25.0),
-                              image: DecorationImage(
-                                image: AssetImage('assets/image/beauty.png'),
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 10),
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Детский церебральный ",
-                                  style: AppThemeStyle.resendCodeStyle,
-                                  textAlign: TextAlign.start,
-                                ),
-                                SizedBox(height: 10),
-                                Text(
-                                  "Причины, симптомы\nпрофилактика ",
-                                  style: AppThemeStyle.titleFormStyle,
-                                  textAlign: TextAlign.start,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 20,right: 20),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Row(
-                                  children: <Widget>[
-                                    Icon(FlevaIcons.eye_outline,size: 18),
-                                    SizedBox(width: 4),
-                                    Text("605",style: AppThemeStyle.title12,)
-                                  ]
-                              ),
-                              SizedBox(width: 30),
-                              Row(
-                                  children: <Widget>[
-                                    Icon(Ionicons.heart_outline,size: 18),
-                                    SizedBox(width: 4),
-                                    Text("19",style: AppThemeStyle.title12,)
-                                  ]
-                              ),
-                            ],
-                          ),
-                          Row(
-                              children: <Widget>[
-                                Icon(Ionicons.time_outline,size: 18),
-                                SizedBox(width: 4),
-                                Text("2019/11/25",style: AppThemeStyle.title12,),
-                              ]
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                  ],
-                ),
-              ),
-            ),
+            topLeft: Radius.circular(40),
+            topRight: Radius.circular(40),
           ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: getListUI(context, viewmodel),
         ),
       ),
     );
+  }
+
+  Widget getListUI(BuildContext context,ArticleViewModel model){
+    if(model.isLoading){
+      return CupertinoActivityIndicator();
+    }
+    if(model.article.data!=null&&model.article.data.length>0)
+      return ListView.builder(
+        itemCount: model.article.data.length,
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        itemBuilder:(context,i){
+          var data=model.article.data[i];
+          return Container(
+            child: Column(
+              children: [
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                  color: Colors.white,
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 90.0,
+                        width: 90.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25.0),
+                          image: DecorationImage(
+                            image: AssetImage('assets/image/beauty.png'),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              data.name,
+                              style: AppThemeStyle.resendCodeStyle,
+                              textAlign: TextAlign.start,
+                            ),
+                            SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                            Text(
+                              data.description,
+                              style: AppThemeStyle.titleFormStyle,
+                              textAlign: TextAlign.start,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 20,right: 20),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Row(
+                              children: <Widget>[
+                                Icon(FlevaIcons.eye_outline,size: 18),
+                                SizedBox(width: 4),
+                                Text('${data.views}',style: AppThemeStyle.title12,)
+                              ]
+                          ),
+                          SizedBox(width: 30),
+                          Row(
+                              children: <Widget>[
+                                Icon(Ionicons.heart_outline,size: 18),
+                                SizedBox(width: 4),
+                                Text('${data.likes}',style: AppThemeStyle.title12,)
+                              ]
+                          ),
+                        ],
+                      ),
+                      Row(
+                          children: <Widget>[
+                            Icon(Ionicons.time_outline,size: 18),
+                            SizedBox(width: 4),
+                            Text("${dateFormatter2(DateTime.fromMillisecondsSinceEpoch(data.createdAt * 1000))}", style: AppThemeStyle.title12,),
+                          ]
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+              ],
+            ),
+          );
+        }
+    );
+    else Text(getTranslated(context, 'data_not_found'),style: AppThemeStyle.appBarStyle16);
   }
 }
