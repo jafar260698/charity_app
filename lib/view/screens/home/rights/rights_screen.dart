@@ -25,7 +25,7 @@ class RightScreen extends StatelessWidget {
             appBarTitle: "",
             appBarIncome: getTranslated(context,'rules'),
             bottom: PreferredSize(
-              preferredSize: Size.fromHeight(SizeConfig.calculateBlockVertical(70.0)), // here the desired height
+              preferredSize: Size.fromHeight(SizeConfig.calculateBlockVertical(80.0)), // here the desired height
               child: Align(
                 alignment: Alignment.center,
                 child: Container(
