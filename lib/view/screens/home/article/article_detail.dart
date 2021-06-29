@@ -16,6 +16,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:stacked/stacked.dart';
@@ -57,10 +58,30 @@ class ArticleDetailScreen extends StatelessWidget {
               ),
             ],
           ),
+          bottomNavigationBar: BottomNavigationBar(
+            onTap: model.onTabTapped,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: model.currentIndex,
+            items: [
+              BottomNavigationBarItem(
+                icon: new Icon(Ionicons.heart_outline),
+                 title: Text('')
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/svg/sending.svg'),
+                  title: Text('')),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.share_outlined),
+                  title: Text('')),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.bookmark_outline),
+                  title: Text(''))
+            ],
+          ),
         ),
       ),
       onModelReady: (model){
-
+        model.initContext(context);
       },
       viewModelBuilder: () => ArticleDetailViewModel(),
     );
@@ -81,27 +102,21 @@ class ArticleDetailScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 20,right: 20),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
-                      children: [
-                        Row(
-                            children: <Widget>[
-                              Icon(FlevaIcons.eye_outline,size: 18),
-                              SizedBox(width: 4),
-                              Text('3',style: AppThemeStyle.title12,)
-                            ]
-                        ),
-                        SizedBox(width: 30),
-                        Row(
-                            children: <Widget>[
-                              Icon(Ionicons.heart_outline,size: 18),
-                              SizedBox(width: 4),
-                              Text('4',style: AppThemeStyle.title12,)
-                            ]
-                        ),
-                      ],
+                        children: <Widget>[
+                          Icon(FlevaIcons.eye_outline,size: 18),
+                          SizedBox(width: 4),
+                          Text('3',style: AppThemeStyle.title12,)
+                        ]
+                    ),
+                    Row(
+                        children: <Widget>[
+                          Icon(Ionicons.heart_outline,size: 18),
+                          SizedBox(width: 4),
+                          Text('4',style: AppThemeStyle.title12,)
+                        ]
                     ),
                     Row(
                         children: <Widget>[
@@ -165,4 +180,6 @@ class ArticleDetailScreen extends StatelessWidget {
       );
     }
   }
+
+
 }

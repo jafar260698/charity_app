@@ -15,8 +15,9 @@ import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class ArticleScreen extends StatelessWidget {
   final List<Category> category;
+  final bool existArrow;
 
-  const ArticleScreen({Key key, this.category}) : super(key: key);
+  const ArticleScreen({Key key, this.category,this.existArrow}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +95,7 @@ class ArticleScreen extends StatelessWidget {
     return AppBar(
       elevation: 1.0,
       shadowColor: Colors.black45,
-      automaticallyImplyLeading: false,
+      automaticallyImplyLeading: existArrow ? true : false,
       centerTitle: true,
       title: Column(
         children: [
@@ -351,27 +352,21 @@ class ArticleScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 20,right: 20),
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
-                        children: [
-                          Row(
-                              children: <Widget>[
-                                Icon(FlevaIcons.eye_outline,size: 18),
-                                SizedBox(width: 4),
-                                Text('${data.views}',style: AppThemeStyle.title12,)
-                              ]
-                          ),
-                          SizedBox(width: 30),
-                          Row(
-                              children: <Widget>[
-                                Icon(Ionicons.heart_outline,size: 18),
-                                SizedBox(width: 4),
-                                Text('${data.likes}',style: AppThemeStyle.title12,)
-                              ]
-                          ),
-                        ],
+                          children: <Widget>[
+                            Icon(FlevaIcons.eye_outline,size: 18),
+                            SizedBox(width: 4),
+                            Text('${data.views}',style: AppThemeStyle.title12,)
+                          ]
+                      ),
+                      Row(
+                          children: <Widget>[
+                            Icon(Ionicons.heart_outline,size: 18),
+                            SizedBox(width: 4),
+                            Text('${data.likes}',style: AppThemeStyle.title12,)
+                          ]
                       ),
                       Row(
                           children: <Widget>[
