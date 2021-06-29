@@ -157,27 +157,16 @@ class ServiceProviderScreen extends StatelessWidget {
           itemBuilder: (context,i) {
             var data=model.links.data[i];
             return Card(
+              elevation: 0.0,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25.0),
+                borderRadius: BorderRadius.circular(20.0),
               ),
               color: Colors.white,
               child: Row(
                 children: [
-                  Container(
-                    height: 90.0,
-                    width: 90.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25.0),
-                      image: DecorationImage(
-                        image: AssetImage('assets/image/home_image2.png'),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

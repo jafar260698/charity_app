@@ -18,7 +18,17 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<SearchViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
-        appBar: widgetAppBarTitle(context),
+        appBar: AppBar(
+          centerTitle: true,
+          elevation: 0,
+          title: Text('', style: AppThemeStyle.appBarStyle),
+          leading: IconButton(
+            iconSize: 18.0,
+            splashRadius: 20,
+            icon: Icon(Icons.arrow_back_ios,),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ),
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.all(20),
