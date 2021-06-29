@@ -40,7 +40,7 @@ class HomeWithoutDrawerScreen extends StatelessWidget {
             children: [
               SizedBox(height: SizeConfig.calculateBlockVertical(10)),
               Container(
-                height: SizeConfig.calculateBlockVertical(220),
+                height: SizeConfig.calculateBlockVertical(200),
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     padding: EdgeInsets.only(left: 20,right: 10),
@@ -48,7 +48,7 @@ class HomeWithoutDrawerScreen extends StatelessWidget {
                     itemBuilder: (context,index){
                       return Container(
                         margin: EdgeInsets.only(right: 10),
-                        height: SizeConfig.calculateBlockVertical(220),
+                        height: SizeConfig.calculateBlockVertical(200),
                         width: MediaQuery.of(context).size.width*0.85,
                         decoration: BoxDecoration(
                             image: DecorationImage(

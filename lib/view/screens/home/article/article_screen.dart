@@ -29,7 +29,7 @@ class ArticleScreen extends StatelessWidget {
             appBarTitle: "",
             appBarIncome: getTranslated(context, 'article'),
             bottom: PreferredSize(
-              preferredSize: Size.fromHeight(SizeConfig.calculateBlockVertical(70.0)), // here the desired height
+              preferredSize: Size.fromHeight(SizeConfig.calculateBlockVertical(80.0)), // here the desired height
               child: Align(
                 alignment: Alignment.center,
                 child: Container(
@@ -319,7 +319,7 @@ class ArticleScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25.0),
                             image: DecorationImage(
-                              image: AssetImage('assets/image/beauty.png'),
+                              image: data.authorPhoto==null?AssetImage('assets/image/article_image.png'):NetworkImage(data.authorPhoto),
                               fit: BoxFit.fill,
                             ),
                           ),

@@ -36,5 +36,4 @@ class ArticleViewModel extends BaseViewModel{
     });
   }
 
-
 }
