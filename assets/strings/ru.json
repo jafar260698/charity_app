@@ -64,5 +64,6 @@
   "add_forum": "Добавить Форум",
   "title": "Название",
   "description": "Описание",
-  "data_not_found": "Data not found"
-}
+  "data_not_found": "Data not found",
+  "email_low": "email",
+  "password_low" : "password"}

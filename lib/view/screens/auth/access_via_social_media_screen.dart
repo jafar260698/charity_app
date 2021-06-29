@@ -34,7 +34,8 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
   User _user;
 
   bool _success;
-  bool isLoading=false;
+  bool _isLoading=false;
+  bool get isLoading=>_isLoading;
 
   TextEditingController emailController=new TextEditingController();
   TextEditingController passwordController=new TextEditingController();
@@ -193,7 +194,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
               onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
               inputAction: TextInputAction.done,
               text: getTranslated(context, 'email'),
-              hintText: getTranslated(context, 'comment'),
+              hintText: getTranslated(context, 'email_low'),
             ),
             SizedBox(height: SizeConfig.calculateBlockVertical(5)),
             TextFieldUI(
@@ -201,7 +202,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
               onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
               inputAction: TextInputAction.done,
               text: getTranslated(context, 'password'),
-              hintText: getTranslated(context, 'comment'),
+              hintText: getTranslated(context, 'password_low'),
             ),
             SizedBox(height: SizeConfig.calculateBlockVertical(30)),
             BtnUIIcon(
@@ -292,7 +293,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
   void _signInWithEmailAndPassword() async {
     try{
       setState(() {
-        isLoading = true;
+        _isLoading = true;
       });
       final User user = (await _auth.createUserWithEmailAndPassword(
         email: emailController.text,
@@ -315,7 +316,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
       ToastUtils.toastInfoGeneral('Exception: $ex', context);
     }finally{
       setState(() {
-        isLoading = false;
+        _isLoading = false;
       });
     }
 

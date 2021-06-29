@@ -31,10 +31,12 @@ class _HomeScreen extends State<HomeScreen> {
             onDrawerCall: (DrawerIndex drawerIndexdata) {
               //changeIndex(drawerIndexdata);
             },
+            username: model.username,
             screenView: HomeWithoutDrawerScreen(),
           ),    ),
       ),
       onModelReady: (model){
+        model.initData();
         model.getCategory();
       },
       viewModelBuilder: () => HomeViewModel(),

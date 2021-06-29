@@ -53,7 +53,7 @@ class SettingsScreen extends StatelessWidget {
                        crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Бибигуль Ахметова",
+                          model.username,
                           textAlign: TextAlign.start,
                           style: AppThemeStyle.listStyle,
                         ),
@@ -198,7 +198,9 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
       ),
-      onModelReady: (model) => {model.setContext(context)},
+      onModelReady: (model) => {
+        model.setContext(context)
+      },
       viewModelBuilder: ()=>SettingsViewModel(),
     );
   }

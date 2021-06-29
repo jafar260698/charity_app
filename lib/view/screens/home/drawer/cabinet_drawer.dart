@@ -64,7 +64,7 @@ class CabinetDrawer extends StatelessWidget {
                                 SizedBox(width: SizeConfig.calculateBlockHorizontal(10)),
                                 Expanded(
                                   child: Text(
-                                    "Бибигуль\n Ахметова",
+                                    model.username,
                                     textAlign: TextAlign.start,
                                     style: AppThemeStyle.listStyle,
                                   ),
@@ -290,6 +290,7 @@ class CabinetDrawer extends StatelessWidget {
               ),
             ),
         onModelReady: (model){
+          model.initData();
           model.getCategory();
         },
         viewModelBuilder: () => DrawerViewModel());

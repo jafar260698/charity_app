@@ -17,6 +17,10 @@ class DrawerViewModel extends BaseViewModel{
   List<Category> _category;
   List<Category> get category=>_category;
 
+
+  String _username='';
+  String get username=>_username;
+
   bool _isLoadingCategory = false;
   bool get isLoadingCategory=> _isLoadingCategory;
 
@@ -30,6 +34,11 @@ class DrawerViewModel extends BaseViewModel{
       _isLoadingCategory=false,
       notifyListeners()
     });
+  }
+
+  Future<void> initData() async{
+    _username=  await _userData.getUsername();
+    notifyListeners();
   }
 
   Future<void> logOut(BuildContext context) async{

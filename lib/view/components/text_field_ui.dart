@@ -81,7 +81,7 @@ class _TextFieldState extends State<TextFieldUI> {
               borderRadius: BorderRadius.circular(10.0),
             ),
             filled: false,
-            hintText: '',
+            hintText: widget.hintText,
             hintStyle: TextStyle(color: Color(0xff272836).withOpacity(0.5)),
             labelText: widget.labelText,
             helperText: widget.helperText,

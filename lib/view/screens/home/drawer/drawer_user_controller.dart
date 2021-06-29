@@ -14,6 +14,7 @@ class DrawerUserController extends StatefulWidget {
     this.menuView,
     this.drawerIsOpen,
     this.screenIndex,
+    this.username
   }) : super(key: key);
 
   final double drawerWidth;
@@ -23,7 +24,7 @@ class DrawerUserController extends StatefulWidget {
   final AnimatedIconData animatedIconData;
   final Widget menuView;
   final DrawerIndex screenIndex;
-
+  final String username;
   @override
   _DrawerUserControllerState createState() => _DrawerUserControllerState();
 }

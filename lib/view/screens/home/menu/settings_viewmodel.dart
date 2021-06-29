@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:charity_app/localization/language.dart';
+import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 
 class SettingsViewModel extends BaseViewModel{
+  UserData _userData=new UserData();
   BuildContext context;
   int _selectLanguage = 0;
   Language language;
@@ -24,6 +26,11 @@ class SettingsViewModel extends BaseViewModel{
   bool _permissionNotification=true;
   bool get permissionNotification=>_permissionNotification;
 
+  String _lang='';
+  String get lang=>_lang;
+
+  String _username='';
+  String get username=>_username;
 
   // image settings
   File _imageFile;
@@ -32,6 +39,18 @@ class SettingsViewModel extends BaseViewModel{
 
   void setContext(BuildContext context) async {
     this.context = context;
+    initData();
+  }
+
+  Future<void> initData()async{
+    _lang= await _userData.getLang();
+    if(_lang=="ru"){
+      _radioValue=2;
+    }else{
+      _radioValue=1;
+    }
+    _username=  await _userData.getUsername();
+    notifyListeners();
   }
 
   Future<void> newCommentFunc(bool data) async {
