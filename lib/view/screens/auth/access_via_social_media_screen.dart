@@ -1,4 +1,5 @@
 
+import 'dart:convert';
 import 'dart:io';
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
@@ -8,7 +9,6 @@ import 'package:charity_app/view/components/btn_ui_icon.dart';
 import 'package:charity_app/view/components/text_field_ui.dart';
 import 'package:charity_app/view/screens/auth/register_screen.dart';
 import 'package:charity_app/view/theme/app_color.dart';
-import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -112,7 +112,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   text: getTranslated(context,'via_facebook'),
                                   icon: SvgPicture.asset('assets/svg/auth/facebook.svg'),
                                   ontap: () {
-                                    loginViaFacebook();
+                                     loginViaFacebook();
                                     //Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
                                   },
                                 ),
@@ -261,8 +261,9 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
       );
 
       await FirebaseAuth.instance.signInWithCredential(credential);
+      User userData=FirebaseAuth.instance.currentUser;
       _isSignIn=false;
-      gotoNextScreen(_user);
+      gotoNextScreen(userData);
     }
   }
 
@@ -271,16 +272,19 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
     final result = await facebookLogin.logIn(['email']);
     final token = result.accessToken.token;
     final graphResponse = await http.get(Uri.parse('https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email&access_token=${token}'));
-    //final profile = JSON.decode(graphResponse.body);
+    var profile = jsonDecode(graphResponse.body);
     print(graphResponse.body);
     switch (result.status) {
       case FacebookLoginStatus.loggedIn:
         final credential=FacebookAuthProvider.credential(token);
         _auth.signInWithCredential(credential);
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: profile['name']??"",email: profile['email']??"",password: profile['id']??"",phoneNumber: "",)));
         break;
       case FacebookLoginStatus.cancelledByUser:
+        ToastUtils.toastInfoGeneral("${FacebookLoginStatus.cancelledByUser}", context);
         break;
       case FacebookLoginStatus.error:
+        ToastUtils.toastInfoGeneral("${FacebookLoginStatus.error}", context);
         break;
     }
   }

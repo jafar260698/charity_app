@@ -5,8 +5,10 @@ import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/bottom_modal_sheet.dart';
 import 'package:charity_app/view/screens/auth/splash_screen.dart';
+import 'package:charity_app/view/screens/home/article/article_screen.dart';
 import 'package:charity_app/view/screens/home/diagnose/diagnose_screen.dart';
 import 'package:charity_app/view/screens/home/for_mother/for_mother.dart';
+import 'package:charity_app/view/screens/home/forum/forum_screen.dart';
 import 'package:charity_app/view/screens/home/inclusion/inclusion_screen.dart';
 import 'package:charity_app/view/screens/home/menu/faq_screen.dart';
 import 'package:charity_app/view/screens/home/menu/favourite_menu_screen.dart';
@@ -64,7 +66,7 @@ class CabinetDrawer extends StatelessWidget {
                                 SizedBox(width: SizeConfig.calculateBlockHorizontal(10)),
                                 Expanded(
                                   child: Text(
-                                    model.username,
+                                    model.username??'',
                                     textAlign: TextAlign.start,
                                     style: AppThemeStyle.listStyle,
                                   ),
@@ -181,12 +183,14 @@ class CabinetDrawer extends StatelessWidget {
                                       SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                       InkWell(
                                           onTap: (){
-
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ArticleScreen(category: model.category,existArrow: true,)));
                                           },
                                           child: Text(getTranslated(context,'article'),style: AppThemeStyle.buttonWhite16)),
                                       SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                       InkWell(
-                                          onTap: (){},
+                                          onTap: (){
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumScreen(existArrow: true)));
+                                          },
                                           child: Text(getTranslated(context,'forum'),style: AppThemeStyle.buttonWhite16)),
 
                                     ],
