@@ -169,35 +169,36 @@ class DiagnoseScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25.0),
                       image: DecorationImage(
-                        image: AssetImage('assets/image/beauty.png'),
+                        image: AssetImage('assets/image/home_image2.png'),
                         fit: BoxFit.fill,
                       ),
                     ),
                   ),
                   SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          data.name,
-                          style: AppThemeStyle.resendCodeStyle,
-                          textAlign: TextAlign.start,
-                        ),
-                        SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                        Text(
-                          data.description,
-                          style: AppThemeStyle.titleFormStyle,
-                          textAlign: TextAlign.start,
-                        ),
-                      ],
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            data.name,
+                            style: AppThemeStyle.appBarStyle16,
+                            textAlign: TextAlign.start,
+                          ),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                          Text(
+                            data.description,
+                            style: AppThemeStyle.titleStyle,
+                            textAlign: TextAlign.start,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
             );
-
           });
     }
   }

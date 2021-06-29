@@ -18,7 +18,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../widgets/get_widget_family.dart';
 import '../../widgets/get_widget_logo.dart';
-import 'login_screen.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -82,9 +81,9 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                   ontap: () {
                                     if(Platform.isAndroid){
                                       ToastUtils.toastInfoGeneral("Работает только в приложении для iOS",context);
+                                    }else{
+                                      // IOS function
                                     }
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
-
                                   },
                                 ),
                                 SizedBox(height: SizeConfig.calculateBlockVertical(8.0)),
@@ -244,7 +243,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
 
 
   Future<void> gotoNextScreen(User user) async{
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: user.displayName??"",email: user.email??"",password: user.uid??"",phoneNumber: user.phoneNumber??"",)));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: user.displayName??"",email: user.email??"",password: "",phoneNumber: user.phoneNumber??"",)));
   }
 
   Future<void> loginViaGoogle() async{

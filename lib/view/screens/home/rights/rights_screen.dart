@@ -4,6 +4,7 @@ import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/screens/home/resource/resource_viewmodel.dart';
 import 'package:charity_app/view/screens/home/rights/rights_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
+import 'package:charity_app/view/theme/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -156,29 +157,46 @@ class RightScreen extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           itemBuilder: (context,i) {
             var data=model.links.data[i];
-            return Padding(
-              padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 5),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
+            return Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              color: Colors.white,
+              child: Row(
                 children: [
-                  Text(
-                    data.title,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: AppColor.sometimes,
-                      decoration: TextDecoration.underline,
+                  Container(
+                    height: 90.0,
+                    width: 90.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25.0),
+                      image: DecorationImage(
+                        image: AssetImage('assets/image/home_image2.png'),
+                        fit: BoxFit.fill,
+                      ),
                     ),
-                    textAlign: TextAlign.start,
                   ),
-                  SizedBox(height: SizeConfig.calculateBlockVertical(5)),
-                  Text(
-                    data.description,
-                    textAlign: TextAlign.start,
+                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            data.title,
+                            style: AppThemeStyle.appBarStyle16,
+                            textAlign: TextAlign.start,
+                          ),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                          Text(
+                            data.description,
+                            style: AppThemeStyle.titleStyle,
+                            textAlign: TextAlign.start,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  Divider(thickness: 1, color: Colors.black54),
-                  SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                 ],
               ),
             );
