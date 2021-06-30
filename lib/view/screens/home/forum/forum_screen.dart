@@ -70,7 +70,7 @@ class ForumScreen extends StatelessWidget {
        itemCount: model.forumCategory.length,
        shrinkWrap: true,
        itemBuilder: (context,i){
-         List<ForumSubCategory> list = new List<ForumSubCategory>();
+         List<ForumSubCategory> list = [];
          list.addAll(model.forumSubCategory.where((element) => element.category==model.forumCategory[i].sysName));
          return Column(
            crossAxisAlignment: CrossAxisAlignment.start,

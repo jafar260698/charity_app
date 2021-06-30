@@ -14,7 +14,7 @@ class ForumViewModel extends BaseViewModel{
   List<ForumSubCategory> _forumSubCategory;
   List<ForumSubCategory> get forumSubCategory=>_forumSubCategory;
 
-  bool _isLoading = false;
+  bool _isLoading = true;
   bool get isLoading=> _isLoading;
 
   Future<void> fetchAllData() async {
@@ -23,23 +23,22 @@ class ForumViewModel extends BaseViewModel{
   }
 
   Future<void> getForumCategory() async{
-      _apiProvider.getForumCategory('ru').then((value) => {
+    _isLoading=true;
+    _apiProvider.getForumCategory('ru').then((value) => {
         _forumCategory=value
       }).catchError((error) {
         print("Error: $error");
       }).whenComplete(() => {
-        _isLoading=false,
-        notifyListeners()
     });
   }
 
   Future<void> getForumSubCategory() async{
-    _isLoading=true;
     _apiProvider.getForumSubCategory('ru').then((value) => {
       _forumSubCategory=value
     }).catchError((error) {
       print("Error: $error");
     }).whenComplete(() => {
+      _isLoading=false,
       notifyListeners()
     });
   }

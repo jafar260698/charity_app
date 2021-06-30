@@ -2,9 +2,11 @@
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/utils/formatters.dart';
+import 'package:charity_app/view/components/no_data.dart';
 import 'package:charity_app/view/components/search_field_ui.dart';
 import 'package:charity_app/view/screens/home/article/article_detail.dart';
 import 'package:charity_app/view/screens/home/article/search/search_viewmodel.dart';
+import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:fleva_icons/fleva_icons.dart';
@@ -55,6 +57,7 @@ class SearchScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: SizeConfig.calculateBlockVertical(30)),
+                getSecondMainUI(context, model),
               ],
             ),
           ),
@@ -67,7 +70,33 @@ class SearchScreen extends StatelessWidget {
     );
   }
 
-  Widget mainUI(SearchViewModel viewModel){
+  getSecondMainUI(context,SearchViewModel model){
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColor.primary,
+      ),
+      child: Container(
+        height: MediaQuery
+            .of(context)
+            .size
+            .height,
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(244, 244, 244, 1.0),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(40),
+            topRight: Radius.circular(40),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: getListUI(model),
+        ),
+      ),
+    );
+  }
+
+
+  Widget getListUI(SearchViewModel viewModel){
     if(viewModel.isLoading)
       return Container();
     else{
@@ -162,7 +191,7 @@ class SearchScreen extends StatelessWidget {
               );
             }
         );
-      else Text('Data not found',style: AppThemeStyle.appBarStyle16);
+      else Center(child: EmptyData());
     }
   }
 

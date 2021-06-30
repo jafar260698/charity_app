@@ -1,5 +1,6 @@
 
 import 'package:charity_app/localization/language_constants.dart';
+import 'package:charity_app/utils/constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/utils/formatters.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
@@ -99,7 +100,7 @@ class ForumDetailScreen extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AvatarImage(imageUrl: data.user.avatar==null ? null : data.user.avatar,size:50.0),
+                        AvatarImage(imageUrl: data.user.avatar==null ? null :"${Constants.MAIN_HTTP+data.user.avatar}", size:50.0),
                         SizedBox(width: SizeConfig.calculateBlockHorizontal(10)),
                         Expanded(
                           child: Column(
