@@ -1,5 +1,4 @@
 
-import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/model/forum/forum_category.dart';
 import 'package:charity_app/model/forum/forum_sub_category.dart';
 import 'package:charity_app/persistance/api_provider.dart';
@@ -8,7 +7,6 @@ import 'package:stacked/stacked.dart';
 class ForumViewModel extends BaseViewModel{
 
   ApiProvider _apiProvider=new ApiProvider();
-  UserData _userData=new UserData();
 
   List<ForumCategory> _forumCategory;
   List<ForumCategory> get forumCategory=>_forumCategory;

@@ -65,7 +65,7 @@ class ForumDetailScreen extends StatelessWidget {
             ],
             initialActiveIndex: 0,
             onTap: (int i) => {
-             Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumAddScreen(subCategory: subcategory,))),
+             Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForumAddScreen(subCategory: subcategory))),
           },
           ),
         ),
