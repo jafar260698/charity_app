@@ -279,10 +279,6 @@ class CabinetDrawer extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(height: SizeConfig.calculateBlockVertical(5)),
-                                Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: Text("Версия 1.21",style: AppThemeStyle.buttonWhite14)
-                                )
                               ],
                             ),
                           ),

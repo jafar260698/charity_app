@@ -71,7 +71,7 @@ class ArticleScreen extends StatelessWidget {
           ),
           body: TabBarView(
             children: List<Widget>.generate(category.length, (int index) {
-              return getSecondMainUI(context,model);
+              return getSecondMainUI(context,model,category[index].name);
               // if(index!=1){
               //   return getMainUI(context);
               // } else return getSecondMainUI(context,model);
@@ -264,7 +264,7 @@ class ArticleScreen extends StatelessWidget {
     );
   }
 
-  getSecondMainUI(context,ArticleViewModel viewmodel){
+  getSecondMainUI(context,ArticleViewModel viewmodel,String category){
     return Container(
       decoration: BoxDecoration(
         color: AppColor.primary,
@@ -283,13 +283,13 @@ class ArticleScreen extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.all(10),
-          child: getListUI(context, viewmodel),
+          child: getListUI(context, viewmodel,category),
         ),
       ),
     );
   }
 
-  Widget getListUI(BuildContext context,ArticleViewModel model){
+  Widget getListUI(BuildContext context,ArticleViewModel model,String category){
     if(model.isLoading){
       return CupertinoActivityIndicator();
     }

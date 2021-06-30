@@ -24,8 +24,7 @@ class RegisterViewModel extends BaseViewModel{
   bool _isLoading = false;
   bool get isLoading=> _isLoading;
 
-  var _phoneController = new MaskedTextController(
-      text: '', mask: '+0-000-000-00-00');
+  var _phoneController = new MaskedTextController(text: '', mask: '+0-000-000-00-00');
 
 
   TextEditingController _emailController=new TextEditingController();
@@ -84,6 +83,7 @@ class RegisterViewModel extends BaseViewModel{
       _apiProvider.registration(data).then((value) => {
         if(value.error==null||value.error.isEmpty){
           ToastUtils.toastInfoGeneral("${value.success}", context),
+         // auth(_usernameController.text.toString()),
           gotoNextPage(context)
         } else  ToastUtils.toastInfoGeneral("${value.error}", context),
 
@@ -94,6 +94,16 @@ class RegisterViewModel extends BaseViewModel{
         notifyListeners(),
       });
     }
+  }
+
+  Future<void> auth(String username) async {
+    _apiProvider.authorization(username).then((value) => {
+       print(value)
+    }).catchError((onError){
+
+    }).whenComplete(() => {
+
+    });
   }
 
   Future<void> gotoNextPage(BuildContext context)async {

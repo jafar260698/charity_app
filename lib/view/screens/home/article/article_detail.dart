@@ -1,6 +1,7 @@
 
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/model/article/article.dart';
+import 'package:charity_app/utils/constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/utils/formatters.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
@@ -64,7 +65,7 @@ class ArticleDetailScreen extends StatelessWidget {
             currentIndex: model.currentIndex,
             items: [
               BottomNavigationBarItem(
-                icon: new Icon(Ionicons.heart_outline),
+                icon: Icon(Ionicons.heart_outline),
                  title: Text('')
               ),
               BottomNavigationBarItem(
@@ -96,8 +97,9 @@ class ArticleDetailScreen extends StatelessWidget {
         child: Container(
           width: MediaQuery.of(context).size.width,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Детский церебральный паралич',style: AppThemeStyle.headline1),
+              Text(article.name,style: AppThemeStyle.headline1),
               SizedBox(height: SizeConfig.calculateBlockVertical(20)),
               Padding(
                 padding: EdgeInsets.only(left: 20,right: 20),
@@ -108,21 +110,21 @@ class ArticleDetailScreen extends StatelessWidget {
                         children: <Widget>[
                           Icon(FlevaIcons.eye_outline,size: 18),
                           SizedBox(width: 4),
-                          Text('3',style: AppThemeStyle.title12,)
+                          Text("${article.views}",style: AppThemeStyle.title12,)
                         ]
                     ),
                     Row(
                         children: <Widget>[
                           Icon(Ionicons.heart_outline,size: 18),
                           SizedBox(width: 4),
-                          Text('4',style: AppThemeStyle.title12,)
+                          Text('${article.likes}',style: AppThemeStyle.title12,)
                         ]
                     ),
                     Row(
                         children: <Widget>[
                           Icon(Ionicons.time_outline,size: 18),
                           SizedBox(width: 4),
-                          Text("${dateFormatter2(DateTime.fromMillisecondsSinceEpoch(123122 * 1000))}", style: AppThemeStyle.title12,),
+                          Text("${dateFormatter2(DateTime.fromMillisecondsSinceEpoch(article.createdAt * 1000))}", style: AppThemeStyle.title12,),
                         ]
                     )
                   ],
@@ -135,7 +137,7 @@ class ArticleDetailScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('assets/image/home_image2.png'),
+                        image: article.image!=null ? AvatarImage(imageUrl: Constants.MAIN_HTTP+article.image) : AssetImage('assets/image/home_image2.png'),
                     ),
                     color: Colors.blueAccent,
                     borderRadius: BorderRadius.circular(28)
@@ -145,7 +147,7 @@ class ArticleDetailScreen extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AvatarImage(imageUrl: '',size:50.0),
+                  AvatarImage(imageUrl: article.authorPhoto!=null ? AvatarImage(imageUrl: Constants.MAIN_HTTP+article.authorPhoto):'',size:50.0),
                   SizedBox(width: SizeConfig.calculateBlockHorizontal(10)),
                   Expanded(
                     child: Column(
@@ -153,13 +155,13 @@ class ArticleDetailScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'data.user.name',
+                          article.author,
                           textAlign: TextAlign.start,
                           style: AppThemeStyle.subtitleList2,
                         ),
                         SizedBox(height: SizeConfig.calculateBlockVertical(5)),
                         Text(
-                          'data.title',
+                          article.authorPosition,
                           style: AppThemeStyle.titleListPrimary,
                           textAlign: TextAlign.start,
                         ),
@@ -169,8 +171,8 @@ class ArticleDetailScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(height: SizeConfig.calculateBlockVertical(15)),
-              Text('Детский церебральный паралич (ДЦП) – группа заболеваний головного мозга, возникающих вследствие его недоразвития или повреждения в процессе беременности или родов, и проявляющихся двигательными расстройствами, нарушениями речи и психики.',style: AppThemeStyle.subtitleList2),
-              SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+              Text(article.description,style: AppThemeStyle.subtitleList2),
+              SizedBox(height: SizeConfig.calculateBlockVertical(12)),
               Text('Причины',style: AppThemeStyle.boldTitle,textAlign: TextAlign.start),
               SizedBox(height: SizeConfig.calculateBlockVertical(5)),
               Text('Преждевременные роды; осложнения во время родов; тугое обвитие пуповиной.',style: AppThemeStyle.subtitleList,textAlign: TextAlign.start),

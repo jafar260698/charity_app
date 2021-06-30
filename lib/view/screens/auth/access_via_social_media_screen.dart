@@ -168,7 +168,8 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                           if(snapshot.hasData){
                             User user=FirebaseAuth.instance.currentUser;
                               _user=user;
-                            return Text('${user.displayName}');
+                              print('${user.displayName}');
+                            return Text('');
                           }
                           return Text('');
                     }),

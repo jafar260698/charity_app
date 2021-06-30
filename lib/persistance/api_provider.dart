@@ -101,12 +101,16 @@ class ApiProvider {
 
   Future<Authorization> authorization(String username) async{
     var responseJson;
-
     try{
       final response= await client.get(Uri.parse('$baseUrl/user/authorization?username=$username'),
           headers: headers,
       );
       var res=_response(response);
+      print(response.request);
+      print(response.request.headers);
+      print(response.request.url);
+      print(response.body);
+      print(response.statusCode);
       responseJson=Authorization.fromJson(res);
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
