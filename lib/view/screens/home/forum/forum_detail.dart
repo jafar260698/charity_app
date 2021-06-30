@@ -35,21 +35,31 @@ class ForumDetailScreen extends StatelessWidget {
           backgroundColor: AppColor.primary,
           appBar: widgetAppBarTitle(context),
           body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
                   getTranslated(context,'forum'),
                   style: AppThemeStyle.headerWhite
               ),
               SizedBox(height: SizeConfig.calculateBlockVertical(30)),
-              Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
-                  child: Container(
-                    color: AppColor.white,
-                    child: Padding(
-                      padding: EdgeInsets.all(20),
-                      child: mainUI(model,context),
+              Container(
+                decoration: BoxDecoration(
+                  color: AppColor.primary,
+                ),
+                child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(244, 244, 244, 1.0),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
                     ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: mainUI(model,context),
                   ),
                 ),
               ),

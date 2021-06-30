@@ -9,13 +9,6 @@ class ForumDetailViewModel extends BaseViewModel{
 
   ApiProvider _apiProvider=new ApiProvider();
 
-
-  TextEditingController _titleController=new TextEditingController();
-  TextEditingController _noteController=new TextEditingController();
-
-  TextEditingController get titleController => _titleController;
-  TextEditingController get noteController => _noteController;
-
   bool _isLoading = false;
   bool get isLoading=> _isLoading;
 
@@ -24,7 +17,7 @@ class ForumDetailViewModel extends BaseViewModel{
 
   Future<void> getForumCategory(String subcategory) async{
     _isLoading=true;
-    _apiProvider.getForumDetail('ru',subcategory).then((value) => {
+    _apiProvider.getForumDetail('kz',subcategory).then((value) => {
       _forumDetail=value,
     }).catchError((error) {
       print("Error: $error");

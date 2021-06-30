@@ -29,15 +29,15 @@ class _CardIcon extends State<CardIcon>{
             ),
             elevation: 0,
             child: Container(
-              width: 80,
-              height: 80,
+              width: 70,
+              height: 70,
               child: Padding(
-                  padding: EdgeInsets.all(12),
+                  padding: EdgeInsets.all(10),
                   child: SvgPicture.asset(widget.iconPath)),
             ),
           ),
         ),
-        SizedBox(height: SizeConfig.calculateBlockVertical(6)),
+        SizedBox(height: SizeConfig.calculateBlockVertical(5)),
         Text(
           widget.operation,
           textAlign: TextAlign.center,

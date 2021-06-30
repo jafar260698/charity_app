@@ -44,12 +44,6 @@ class ForumAddScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: 40),
-                          child: Align(
-                              alignment: Alignment.center,
-                              child: getWidgetLogoHorizontal),
-                        ),
                         SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                         Text(
                           getTranslated(context, 'add_forum'),

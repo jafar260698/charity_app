@@ -31,7 +31,6 @@ class ForumAddViewModel extends BaseViewModel{
       param['subcategory']=subCategory;
       param['title']=titleController.text.toString();
       param['description']=noteController.text.toString();
-
       _isLoading=true;
       _apiProvider.postForum(param).then((value) => {
         if(value.error==null) {

@@ -10,6 +10,7 @@ import 'package:charity_app/view/screens/home/diagnose/diagnose_screen.dart';
 import 'package:charity_app/view/screens/home/for_mother/for_mother.dart';
 import 'package:charity_app/view/screens/home/forum/forum_screen.dart';
 import 'package:charity_app/view/screens/home/inclusion/inclusion_screen.dart';
+import 'package:charity_app/view/screens/home/menu/about_us.dart';
 import 'package:charity_app/view/screens/home/menu/faq_screen.dart';
 import 'package:charity_app/view/screens/home/menu/favourite_menu_screen.dart';
 import 'package:charity_app/view/screens/home/menu/settings_screen.dart';
@@ -90,7 +91,7 @@ class CabinetDrawer extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: (){
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => FaqScreen()));
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => AboutUseScreen()));
                                   },
                                   child: Padding(
                                     padding: EdgeInsets.only(

@@ -514,9 +514,11 @@ class ApiProvider {
   Future<ForumDetail> getForumDetail(String lang,String subcategory) async{
     var responseJson;
     try{
-      final response= await client.get(Uri.parse('$baseUrl/forum?language=ru&subcategory=$subcategory&page=1'),
+      final response= await client.get(Uri.parse('$baseUrl/forum?language=$lang&subcategory=$subcategory&page=1'),
         headers: headers,
       );
+      print(response.headers);
+      print(response.request.url);
       var res=_response(response);
       responseJson=ForumDetail.fromJson(res);
     } on FetchDataException{
