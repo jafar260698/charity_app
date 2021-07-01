@@ -66,7 +66,8 @@ class ForumScreen extends StatelessWidget {
    if(model.isLoading){
      return Container();
    }
-   if(model.forumCategory.length>0) return ListView.builder(
+   if(model.forumCategory!=null && model.forumCategory.length>0)
+     return ListView.builder(
        itemCount: model.forumCategory.length,
        shrinkWrap: true,
        itemBuilder: (context,i){

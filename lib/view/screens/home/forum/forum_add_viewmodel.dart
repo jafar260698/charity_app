@@ -32,6 +32,7 @@ class ForumAddViewModel extends BaseViewModel{
       param['title']=titleController.text.toString();
       param['description']=noteController.text.toString();
       _isLoading=true;
+      notifyListeners();
       _apiProvider.postForum(param).then((value) => {
         if(value.error==null) {
           ToastUtils.toastInfoGeneral(value.success, context),

@@ -17,7 +17,7 @@ class ForumDetailViewModel extends BaseViewModel{
 
   Future<void> getForumCategory(String subcategory) async{
     _isLoading=true;
-    _apiProvider.getForumDetail('kz',subcategory).then((value) => {
+    _apiProvider.getForumDetail('ru',subcategory).then((value) => {
       _forumDetail=value,
     }).catchError((error) {
       print("Error: $error");

@@ -4,6 +4,7 @@ import 'package:charity_app/utils/constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/utils/formatters.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
+import 'package:charity_app/view/components/no_data.dart';
 import 'package:charity_app/view/screens/home/forum/forum_add_screen.dart';
 import 'package:charity_app/view/screens/home/forum/forume_detail_viewmodel.dart';
 import 'package:charity_app/view/screens/home/resource/resource_screen.dart';
@@ -43,29 +44,25 @@ class ForumDetailScreen extends StatelessWidget {
                   style: AppThemeStyle.headerWhite
               ),
               SizedBox(height: SizeConfig.calculateBlockVertical(30)),
-              Container(
-                decoration: BoxDecoration(
-                  color: AppColor.primary,
-                ),
-                child: Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(244, 244, 244, 1.0),
-                    borderRadius: BorderRadius.only(
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40),
+                      topRight: Radius.circular(40)),
+                  child: Container(
+                    width: SizeConfig.screenWidth,
+                    color: AppColor.white,
+                    child: Padding(
+                      padding: EdgeInsets.all(20),
+                      child: mainUI(model,context),
                     ),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(20),
-                    child: mainUI(model,context),
                   ),
                 ),
               ),
             ],
           ),
           bottomNavigationBar: ConvexAppBar(
+            elevation: 0.2,
             style: TabStyle.reactCircle,
             color: Colors.black45,
             activeColor: AppColor.primary,
@@ -92,7 +89,7 @@ class ForumDetailScreen extends StatelessWidget {
     if(viewModel.isLoading){
       return Container();
     }else{
-      if(viewModel.forumDetail.data.length>0)
+      if(viewModel.forumDetail.data!=null&&viewModel.forumDetail.data.length>0)
         return ListView.builder(
           itemCount: viewModel.forumDetail.data.length,
           itemBuilder: (context,i){
@@ -156,7 +153,7 @@ class ForumDetailScreen extends StatelessWidget {
              );
         }
       );
-      else Text(getTranslated(context, 'data_not_found'),style: AppThemeStyle.appBarStyle16);
+      else return Container(child: EmptyData(),);
     }
   }
 }

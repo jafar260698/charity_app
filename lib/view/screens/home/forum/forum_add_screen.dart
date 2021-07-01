@@ -44,7 +44,7 @@ class ForumAddScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+                        SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                         Text(
                           getTranslated(context, 'add_forum'),
                           style: TextStyle(
@@ -106,7 +106,7 @@ class ForumAddScreen extends StatelessWidget {
                         children: [
                           BtnUI(
                             height: 55,
-                            isLoading: false,
+                            isLoading: model.isLoading,
                             textColor: Colors.white,
                             color: AppColor.primary,
                             text: getTranslated(context, 'create'),
@@ -114,7 +114,7 @@ class ForumAddScreen extends StatelessWidget {
                               model.postForum(context,subCategory);
                             },
                           ),
-                          SizedBox(height: 8),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(8)),
                         ],
                       ),
                     ),
