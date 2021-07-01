@@ -147,7 +147,7 @@ class ResourceScreen extends StatelessWidget {
     if(model.isLoading){
       return CupertinoActivityIndicator();
     } else{
-      if(model.links.data!=null&&model.links.data.length>0)
+      if(model.links?.data!=null&&model.links.data.length>0)
       return ListView.builder(
           itemCount: model.links.pages,
           shrinkWrap: true,

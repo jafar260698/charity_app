@@ -66,5 +66,6 @@
   "description": "Описание",
   "data_not_found": "Data not found",
   "email_low": "email",
-  "password_low" : "password"
+  "password_low" : "password",
+  "questionnaire": "Анкета"
 }

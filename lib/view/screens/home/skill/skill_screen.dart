@@ -151,7 +151,7 @@ class SkillScreen extends StatelessWidget {
     if(model.isLoading){
       return CupertinoActivityIndicator();
     } else{
-      if(model.skill.data!=null&&model.skill.data.length>0)
+      if(model.skill?.data!=null&&model.skill.data.length>0)
       return ListView.builder(
           itemCount: model.skill.pages,
           shrinkWrap: true,

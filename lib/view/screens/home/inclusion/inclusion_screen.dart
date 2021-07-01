@@ -152,7 +152,7 @@ class InclusionScreen extends StatelessWidget {
     if(model.isLoading){
       return CupertinoActivityIndicator();
     } else{
-      if(model.skillProvider.data!=null&&model.skillProvider.data.length>0)
+      if(model.skillProvider?.data!=null&&model.skillProvider.data.length>0)
         return ListView.builder(
           itemCount: model.skillProvider.pages,
           shrinkWrap: true,

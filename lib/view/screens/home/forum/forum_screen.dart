@@ -3,6 +3,7 @@ import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/model/forum/forum_sub_category.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
+import 'package:charity_app/view/components/no_data.dart';
 import 'package:charity_app/view/screens/home/forum/forum_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
@@ -43,6 +44,7 @@ class ForumScreen extends StatelessWidget {
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40)),
                   child: Container(
+                    width: SizeConfig.screenWidth,
                     color: AppColor.greyDisabled,
                     child: Padding(
                       padding: EdgeInsets.all(20),
@@ -66,7 +68,8 @@ class ForumScreen extends StatelessWidget {
    if(model.isLoading){
      return Container();
    }
-   if(model.forumCategory!=null && model.forumCategory.length>0)
+   print("${model.forumCategory}");
+   if(model.forumSubCategory!=null&&model.forumCategory!=null && model.forumCategory.length>0&&model.forumSubCategory.length>0)
      return ListView.builder(
        itemCount: model.forumCategory.length,
        shrinkWrap: true,
@@ -131,6 +134,6 @@ class ForumScreen extends StatelessWidget {
          );
        }
    );
-   else Text('Data not found',style: AppThemeStyle.appBarStyle16);
+   else return Container(child: EmptyData());
   }
 }
