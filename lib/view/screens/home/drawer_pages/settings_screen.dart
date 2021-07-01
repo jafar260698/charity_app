@@ -1,14 +1,15 @@
 
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/view/screens/home/menu/change_username_screen.dart';
-import 'package:charity_app/view/screens/home/menu/settings_viewmodel.dart';
+import 'package:charity_app/view/screens/home/drawer_pages/settings_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/blurred_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
+import 'change_username_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
 

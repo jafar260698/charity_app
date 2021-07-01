@@ -2,6 +2,7 @@
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/model/category.dart';
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/view/components/no_data.dart';
 import 'package:charity_app/view/screens/home/inclusion/inclusion_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
@@ -151,7 +152,8 @@ class InclusionScreen extends StatelessWidget {
     if(model.isLoading){
       return CupertinoActivityIndicator();
     } else{
-      return ListView.builder(
+      if(model.skillProvider.data!=null&&model.skillProvider.data.length>0)
+        return ListView.builder(
           itemCount: model.skillProvider.pages,
           shrinkWrap: true,
           physics: BouncingScrollPhysics(),
@@ -190,6 +192,7 @@ class InclusionScreen extends StatelessWidget {
               ),
             );
           });
+      else return Container(child: EmptyData());
     }
   }
 }

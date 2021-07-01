@@ -24,7 +24,7 @@ class SkillViewModel extends BaseViewModel{
 
   Future<void> getSkill() async{
     _isLoading=true;
-    _apiProvider.skill('ru').then((value) => {
+    _apiProvider.skill('kz').then((value) => {
       _skill=value,
     }).catchError((error){
       print("Error: $error");

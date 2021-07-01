@@ -24,7 +24,7 @@ class DiagnosesViewModel extends BaseViewModel{
 
   Future<void> getDiagnoses() async{
     _isLoading=true;
-    _apiProvider.getDiagnoses('ru').then((value) => {
+    _apiProvider.getDiagnoses('kz').then((value) => {
       _diagnoses=value,
     }).catchError((error){
       print("Error: $error");

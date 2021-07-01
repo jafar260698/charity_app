@@ -1,19 +1,16 @@
 
-
 import 'package:charity_app/localization/language_constants.dart';
-import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/bottom_modal_sheet.dart';
-import 'package:charity_app/view/screens/auth/splash_screen.dart';
 import 'package:charity_app/view/screens/home/article/article_screen.dart';
 import 'package:charity_app/view/screens/home/diagnose/diagnose_screen.dart';
+import 'package:charity_app/view/screens/home/drawer_pages/about_us.dart';
+import 'package:charity_app/view/screens/home/drawer_pages/faq_screen.dart';
+import 'package:charity_app/view/screens/home/drawer_pages/favourite_menu_screen.dart';
+import 'package:charity_app/view/screens/home/drawer_pages/settings_screen.dart';
 import 'package:charity_app/view/screens/home/for_mother/for_mother.dart';
 import 'package:charity_app/view/screens/home/forum/forum_screen.dart';
 import 'package:charity_app/view/screens/home/inclusion/inclusion_screen.dart';
-import 'package:charity_app/view/screens/home/menu/about_us.dart';
-import 'package:charity_app/view/screens/home/menu/faq_screen.dart';
-import 'package:charity_app/view/screens/home/menu/favourite_menu_screen.dart';
-import 'package:charity_app/view/screens/home/menu/settings_screen.dart';
 import 'package:charity_app/view/screens/home/resource/resource_screen.dart';
 import 'package:charity_app/view/screens/home/rights/rights_screen.dart';
 import 'package:charity_app/view/screens/home/service_provider/service_provider_screen.dart';

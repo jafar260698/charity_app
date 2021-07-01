@@ -2,7 +2,7 @@
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
-import 'package:charity_app/view/screens/home/menu/change_username_vievmodel.dart';
+import 'package:charity_app/view/screens/home/drawer_pages/change_username_vievmodel.dart';
 import 'package:charity_app/view/theme/my_themes.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:fleva_icons/fleva_icons.dart';

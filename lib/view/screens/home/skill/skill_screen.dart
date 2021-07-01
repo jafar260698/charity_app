@@ -1,6 +1,7 @@
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/model/category.dart';
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/view/components/no_data.dart';
 import 'package:charity_app/view/screens/home/skill/skill_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
@@ -150,6 +151,7 @@ class SkillScreen extends StatelessWidget {
     if(model.isLoading){
       return CupertinoActivityIndicator();
     } else{
+      if(model.skill.data!=null&&model.skill.data.length>0)
       return ListView.builder(
           itemCount: model.skill.pages,
           shrinkWrap: true,
@@ -189,6 +191,7 @@ class SkillScreen extends StatelessWidget {
               ),
             );
           });
+      else return Container(child: EmptyData());
     }
   }
 }

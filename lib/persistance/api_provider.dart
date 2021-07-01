@@ -598,7 +598,7 @@ class ApiProvider {
     var responseJson;
 
     try{
-      final response= await client.get(Uri.parse('$baseUrl/diagnoses?language=ru&page=1'),
+      final response= await client.get(Uri.parse('$baseUrl/diagnoses?language=$lang&page=1'),
         headers: headers,
       );
       var res=_response(response);

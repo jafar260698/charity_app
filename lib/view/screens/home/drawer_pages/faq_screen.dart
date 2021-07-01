@@ -1,13 +1,13 @@
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/no_data.dart';
-import 'package:charity_app/view/screens/home/menu/faq_viewmodel.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:stacked/stacked.dart';
+import 'faq_viewmodel.dart';
 
 class FaqScreen extends StatelessWidget {
 
@@ -121,6 +121,6 @@ class FaqScreen extends StatelessWidget {
             );
           }
       );
-      else return Container(child: EmptyData(),);
+      else return Container(child: EmptyData());
     }
 }
