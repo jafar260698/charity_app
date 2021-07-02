@@ -27,12 +27,6 @@ class SearchScreen extends StatelessWidget {
           centerTitle: true,
           elevation: 0,
           title: Text('', style: AppThemeStyle.appBarStyle),
-          leading: IconButton(
-            iconSize: 18.0,
-            splashRadius: 20,
-            icon: Icon(Icons.arrow_back_ios,),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
         ),
         body: SafeArea(
           child: Padding(
@@ -72,25 +66,17 @@ class SearchScreen extends StatelessWidget {
 
   getSecondMainUI(context,SearchViewModel model){
     return Container(
+      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: AppColor.primary,
+        color: Color.fromRGBO(244, 244, 244, 1.0),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(40),
+          topRight: Radius.circular(40),
+        ),
       ),
-      child: Container(
-        height: MediaQuery
-            .of(context)
-            .size
-            .height,
-        decoration: BoxDecoration(
-          color: Color.fromRGBO(244, 244, 244, 1.0),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(40),
-            topRight: Radius.circular(40),
-          ),
-        ),
-        child: Padding(
-          padding: EdgeInsets.all(10),
-          child: getListUI(model),
-        ),
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: getListUI(model),
       ),
     );
   }
@@ -98,10 +84,9 @@ class SearchScreen extends StatelessWidget {
 
   Widget getListUI(SearchViewModel viewModel){
     if(viewModel.isLoading)
-      return Container();
+      return Center(child: EmptyData());
     else{
-      if(viewModel.article.data.length>0)
-        return ListView.builder(
+      if(viewModel.article?.data!=null && viewModel.article.data.length>0) return ListView.builder(
             itemCount: viewModel.article.data.length,
             shrinkWrap: true,
             physics: BouncingScrollPhysics(),
@@ -191,8 +176,8 @@ class SearchScreen extends StatelessWidget {
               );
             }
         );
-      else Center(child: EmptyData());
     }
-  }
+    return Center(child: EmptyData());
+    }
 
 }

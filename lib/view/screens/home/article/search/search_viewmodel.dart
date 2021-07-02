@@ -18,7 +18,7 @@ class SearchViewModel extends BaseViewModel{
   Article _article;
   Article get article=>_article;
 
-  bool _isLoading = false;
+  bool _isLoading = true;
   bool get isLoading=> _isLoading;
 
 

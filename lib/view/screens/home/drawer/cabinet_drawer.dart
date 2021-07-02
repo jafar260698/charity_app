@@ -11,6 +11,7 @@ import 'package:charity_app/view/screens/home/drawer_pages/settings_screen.dart'
 import 'package:charity_app/view/screens/home/for_mother/for_mother.dart';
 import 'package:charity_app/view/screens/home/forum/forum_screen.dart';
 import 'package:charity_app/view/screens/home/inclusion/inclusion_screen.dart';
+import 'package:charity_app/view/screens/home/questionnaire/main/questionnaire_category_sceen.dart';
 import 'package:charity_app/view/screens/home/questionnaire/questionnaire_screen.dart';
 import 'package:charity_app/view/screens/home/resource/resource_screen.dart';
 import 'package:charity_app/view/screens/home/rights/rights_screen.dart';
@@ -194,7 +195,7 @@ class CabinetDrawer extends StatelessWidget {
                                       SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                       InkWell(
                                           onTap: (){
-                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => QuestionnaireScreen()));
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => QuestionnaireCategoryScreen(category: model.category)));
                                           },
                                           child: Text(getTranslated(context,'questionnaire'),style: AppThemeStyle.buttonWhite16)),
                                     ],

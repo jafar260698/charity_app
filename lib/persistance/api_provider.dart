@@ -490,7 +490,7 @@ class ApiProvider {
   Future<List<ForumCategory>> getForumCategory(String lang) async{
     var responseJson;
     try{
-      final response= await client.get(Uri.parse('$baseUrl/forum_category?language=ru'),
+      final response= await client.get(Uri.parse('$baseUrl/forum_category?language=$lang'),
         headers: headers,
       );
       var res=_response(response) as List;
@@ -504,7 +504,7 @@ class ApiProvider {
   Future<List<ForumSubCategory>> getForumSubCategory(String lang) async{
     var responseJson;
     try{
-      final response= await client.get(Uri.parse('$baseUrl/forum_subcategory?language=ru'),
+      final response= await client.get(Uri.parse('$baseUrl/forum_subcategory?language=$lang'),
         headers: headers,
       );
       var res=_response(response) as List;
@@ -563,11 +563,11 @@ class ApiProvider {
   }
 
   //questionnaire
-  Future<Questionnaire> getQuestionnaire(String lang) async{
+  Future<Questionnaire> getQuestionnaire(String lang,String category) async{
     var responseJson;
 
     try{
-      final response= await client.get(Uri.parse('$baseUrl/questionnaire?language=ru&page=1&category=razvitie'),
+      final response= await client.get(Uri.parse('$baseUrl/questionnaire?language=$lang&page=1&category=$category'),
         headers: headers,
       );
       var res=_response(response);

@@ -1,7 +1,12 @@
 
+import 'package:charity_app/model/questionnaire.dart';
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/view/components/no_data.dart';
 import 'package:charity_app/view/screens/auth/welcome_viewmodel.dart';
+import 'package:charity_app/view/screens/home/questionnaire/main/questionnaire_viewmodel.dart';
 import 'package:charity_app/view/screens/home/questionnaire/questionnaire_answer_screen.dart';
+import 'package:charity_app/view/theme/app_color.dart';
+import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:charity_app/view/widgets/custom/getWidgetLogoHorizontal.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,15 +14,18 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class QuestionnaireScreen extends StatelessWidget {
+  final Data data;
+
+  const QuestionnaireScreen({Key key, this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<WelcomeViewModel>.reactive(
+    return ViewModelBuilder<QuestionnaireViewModel>.reactive(
       builder:(context,model,child)=> Material(
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/image/main_back.png"),
+              image: AssetImage("assets/image/login_background.png"),
               fit: BoxFit.fill,
             ),
           ),
@@ -41,7 +49,7 @@ class QuestionnaireScreen extends StatelessWidget {
                   ),
                   SizedBox(height: SizeConfig.calculateBlockVertical(20.0)),
                   Text(
-                    "Эмоционально-волевое \nповедение \n\n 1-3 года",
+                    "${data.title} \n\n ${data.age} года",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: SizeConfig.calculateTextSize(24),
@@ -49,23 +57,63 @@ class QuestionnaireScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 100),
-                  Text(
-                    "Если вы указываете пальцем на что-то в другом конце комнаты, ваш ребенок наэто смотрит?",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      fontSize: SizeConfig.calculateTextSize(18 ),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-
+                  SizedBox(height: SizeConfig.calculateBlockVertical(100)),
+                  getListUI(context, model),
                 ],
               ),
             ),
           ),
         ),
       ),
-      viewModelBuilder: ()=>WelcomeViewModel(),
+      viewModelBuilder: ()=>QuestionnaireViewModel(),
     );
   }
+
+  getListUI(context,QuestionnaireViewModel model) {
+      if(data.questions!=null&&data.questions.length>0)
+        return ListView.builder(
+            itemCount: data.questions.length,
+            shrinkWrap: true,
+            physics: BouncingScrollPhysics(),
+            itemBuilder: (context,i) {
+              var ss=data.questions[i];
+              return Container(
+                child: Column(
+                  children: [
+                    Text(
+                      ss,
+                      textAlign: TextAlign.start,
+                      style: AppThemeStyle.subtitleList,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children:<Widget> [
+                      //   Transform.scale(
+                      //     scale: 1.5,
+                      //     child: new Radio(
+                      //       activeColor: AppColor.primary,
+                      //       value: 2,
+                      //       groupValue: model.radioValue,
+                      //       onChanged: model.handleRadioValueChange,
+                      //     ),
+                      //   ),
+                      //   SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+                      //   Transform.scale(
+                      //   scale: 1.5,
+                      //   child: new Radio(
+                      //     value: 1,
+                      //     activeColor: AppColor.primary,
+                      //     groupValue: model.radioValue,
+                      //     onChanged: model.handleRadioValueChange,
+                      //   ),
+                      // ),
+                        ],
+                    ),
+                  ],
+                ),
+              );
+            });
+      else return Container(child: EmptyData());
+  }
+
 }
