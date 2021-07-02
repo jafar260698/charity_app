@@ -39,7 +39,7 @@ class QuestionnaireScreen extends StatelessWidget {
                           child: getWidgetLogoHorizontal),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: SizeConfig.calculateBlockVertical(20.0)),
                   Text(
                     "Эмоционально-волевое \nповедение \n\n 1-3 года",
                     textAlign: TextAlign.center,

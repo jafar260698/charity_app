@@ -14,5 +14,4 @@ class Utils{
     Locale _locale = await setLocale(language);
     MyApp.setLocale(context, _locale);
   }
-
 }
