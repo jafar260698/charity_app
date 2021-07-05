@@ -83,8 +83,8 @@ class RegisterViewModel extends BaseViewModel{
       _apiProvider.registration(data).then((value) => {
         if(value.error==null||value.error.isEmpty){
           ToastUtils.toastInfoGeneral("${value.success}", context),
-         // auth(_usernameController.text.toString()),
-          gotoNextPage(context)
+          auth(context,_usernameController.text.toString()),
+          //gotoNextPage(context)
         } else  ToastUtils.toastInfoGeneral("${value.error}", context),
 
     }).catchError((onError){
@@ -96,22 +96,24 @@ class RegisterViewModel extends BaseViewModel{
     }
   }
 
-  Future<void> auth(String username) async {
+  Future<void> auth(BuildContext context,String username) async {
     _apiProvider.authorization(username).then((value) => {
+       _userData.setToken(value.auth_token),
+       gotoNextPage(context),
        print(value)
     }).catchError((onError){
-
+      ToastUtils.toastErrorGeneral("Error $onError", context);
     }).whenComplete(() => {
 
     });
   }
 
   Future<void> gotoNextPage(BuildContext context)async {
-    _userData.setUsername(_usernameController.text.toString().trim());
-    _userData.setEmail(_emailController.text.toString().trim());
-    _userData.setPassword(_passwordController.text.toString().trim());
-    _userData.setPhoneNumber(_phoneController.text.toString().trim());
-    _userData.setUserType(type??'');
+    // _userData.setUsername(_usernameController.text.toString().trim());
+    // _userData.setEmail(_emailController.text.toString().trim());
+    // _userData.setPassword(_passwordController.text.toString().trim());
+    // _userData.setPhoneNumber(_phoneController.text.toString().trim());
+    // _userData.setUserType(type??'');
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => PermissionForNotification()));
   }
 

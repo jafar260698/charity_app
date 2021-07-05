@@ -18,6 +18,7 @@ import 'package:charity_app/model/skill_provider.dart';
 import 'package:charity_app/model/user/user_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 import 'exceptions.dart';
 
 class ApiProvider {
@@ -26,7 +27,6 @@ class ApiProvider {
   BuildContext context;
 
   final baseUrl = 'https://ozimplatform.kz/api';
-  final baseOFDUrl = 'https://api.ofd.uz/';
 
   final baseHeader = {
     HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
@@ -83,14 +83,21 @@ class ApiProvider {
     return responseJson;
   }
 
-  Future<User> getUser() async{
+  Future<User> getUser(String token) async{
     var responseJson;
-
     try{
-      final response= await client.post(Uri.parse('$baseUrl/user'),
-          headers: headers,
-          body: jsonEncode(null)
+      final response= await client.get(Uri.parse('$baseUrl/user'),
+          headers: {
+            HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
+            'language': 'ru',
+           'authorization': token,
+          },
       );
+
+      print(response.request);
+      print(response.request.headers);
+      print(response.request.url);
+      print(response.body.toString());
       var res=_response(response);
       responseJson=User.fromJson(res);
     } on FetchDataException{
@@ -103,14 +110,18 @@ class ApiProvider {
     var responseJson;
     try{
       final response= await client.get(Uri.parse('$baseUrl/user/authorization?username=$username'),
-          headers: headers,
+          headers: {
+            'language': 'ru',
+            'authorization': 'null',
+            HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
+          },
       );
-      var res=_response(response);
       print(response.request);
       print(response.request.headers);
       print(response.request.url);
-      print(response.body);
+      print(response.body.toString());
       print(response.statusCode);
+      var res=_response(response);
       responseJson=Authorization.fromJson(res);
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
@@ -134,14 +145,24 @@ class ApiProvider {
     return responseJson;
   }
 
-  Future<BaseResponses> changeUser(Map<String,dynamic> data) async{
+  Future<BaseResponses> changeUser(Map<String,dynamic> data,String token) async{
     var responseJson;
 
     try{
       final response= await client.post(Uri.parse('$baseUrl/user'),
-          headers: headers,
+          headers: {
+            'language': 'ru',
+            'authorization': token,
+            HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
+          },
           body: jsonEncode(data)
       );
+
+      print(response.request);
+      print(jsonEncode(data));
+      print(response.request.headers);
+      print(response.request.url);
+      print(response.body);
       var res=_response(response);
       responseJson=BaseResponses.fromJson(res);
     } on FetchDataException{
@@ -150,14 +171,27 @@ class ApiProvider {
     return responseJson;
   }
 
-  Future<BaseResponses> changeUserAvatar(Map<String,dynamic> data) async{
+  Future<BaseResponses> changeUserAvatar(File file,String filepath,String token) async{
     var responseJson;
 
     try{
-      final response= await client.post(Uri.parse('$baseUrl/user/avatar/'),
-          headers: headers,
-          body: jsonEncode(data)
-      );
+
+      var uri = Uri.parse('$baseUrl/user/avatar/');
+      var request = new http.MultipartRequest("POST", uri);
+      //request.files.add(new http.MultipartFile.fromBytes('avatar', await File.fromUri(Uri.parse(filepath)).readAsBytes(), contentType: MediaType('image', 'jpeg')));
+
+      http.MultipartFile multipartFile = await http.MultipartFile.fromPath(
+          'avatar', filepath);
+
+      request.files.add(multipartFile);
+
+      http.Response response = await http.Response.fromStream(await request.send());
+
+      print(response.request.url);
+      print(response.request.headers.toString());
+      print(response.statusCode);
+      print(response.body);
+
       var res=_response(response);
       responseJson=BaseResponses.fromJson(res);
     } on FetchDataException{

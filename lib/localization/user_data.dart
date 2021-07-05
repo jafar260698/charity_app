@@ -92,6 +92,16 @@ class UserData {
     return prefs.getString('userType');
   }
 
+  Future<void> setAvatar(String userType) async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.setString('avatar', userType);
+  }
+
+  Future<String> getAvatar() async {
+    final SharedPreferences prefs = await _prefs;
+    return prefs.getString('avatar');
+  }
+
   Future<void> clearData() async {
     final SharedPreferences prefs = await _prefs;
     prefs.remove('token');

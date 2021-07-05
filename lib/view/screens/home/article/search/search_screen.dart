@@ -149,21 +149,21 @@ class SearchScreen extends StatelessWidget {
                           Row(
                               children: <Widget>[
                                 Icon(FlevaIcons.eye_outline,size: 18),
-                                SizedBox(width: 4),
+                                SizedBox(width: SizeConfig.calculateBlockVertical(5)),
                                 Text('${data.views}',style: AppThemeStyle.title12,)
                               ]
                           ),
                           Row(
                               children: <Widget>[
                                 Icon(Ionicons.heart_outline,size: 18),
-                                SizedBox(width: 4),
+                                SizedBox(width: SizeConfig.calculateBlockVertical(5)),
                                 Text('${data.likes}',style: AppThemeStyle.title12,)
                               ]
                           ),
                           Row(
                               children: <Widget>[
                                 Icon(Ionicons.time_outline,size: 18),
-                                SizedBox(width: 4),
+                                SizedBox(width: SizeConfig.calculateBlockVertical(5)),
                                 Text("${dateFormatter2(DateTime.fromMillisecondsSinceEpoch(data.createdAt * 1000))}", style: AppThemeStyle.title12,),
                               ]
                           )

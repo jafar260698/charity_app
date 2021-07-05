@@ -57,12 +57,12 @@ class ChangeUsernameScreen extends StatelessWidget {
               SizedBox(height: SizeConfig.calculateBlockVertical(40)),
               BtnUI(
                 height: 55,
-                isLoading: false,
                 textColor: Colors.white,
                 color: AppThemeStyle.primaryColor,
+                isLoading: model.isLoading,
                 text: getTranslated(context, 'save'),
                 ontap: () {
-
+                  model.changeUsername(context);
                 },
               ),
             ],

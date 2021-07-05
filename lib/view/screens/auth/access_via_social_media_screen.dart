@@ -2,11 +2,14 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:charity_app/localization/language_constants.dart';
+import 'package:charity_app/localization/user_data.dart';
+import 'package:charity_app/persistance/api_provider.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/utils/toast_utils.dart';
 import 'package:charity_app/view/components/bottom_modal_sheet.dart';
 import 'package:charity_app/view/components/btn_ui_icon.dart';
 import 'package:charity_app/view/components/text_field_ui.dart';
+import 'package:charity_app/view/screens/auth/permission_for_notification.dart';
 import 'package:charity_app/view/screens/auth/register_screen.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
@@ -27,6 +30,9 @@ class AccessViaSocialMediaScreen extends StatefulWidget {
 }
 
 class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
+  ApiProvider  _apiProvider=new ApiProvider();
+  UserData _userData=new UserData();
+
   final googleSignIn=GoogleSignIn();
   final FirebaseAuth _auth=FirebaseAuth.instance;
   bool _isSignIn=false;
@@ -244,7 +250,16 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
 
 
   Future<void> gotoNextScreen(User user) async{
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: user.displayName??"",email: user.email??"",password: "",phoneNumber: user.phoneNumber??"",)));
+    _apiProvider.authorization(user.email??"").then((value) => {
+      print(value),
+      _userData.setToken(value.auth_token),
+      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PermissionForNotification())),
+    }).catchError((onError){
+      print(onError);
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: user.displayName??"",email: user.email??"",password: "",phoneNumber: user.phoneNumber??"",)));
+    }).whenComplete(() => {
+
+    });
   }
 
   Future<void> loginViaGoogle() async{
@@ -278,7 +293,16 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
       case FacebookLoginStatus.loggedIn:
         final credential=FacebookAuthProvider.credential(token);
         _auth.signInWithCredential(credential);
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: profile['name']??"",email: profile['email']??"",password: profile['id']??"",phoneNumber: "",)));
+        _apiProvider.authorization(profile['email']??"").then((value) => {
+          print(value),
+          _userData.setToken(value.auth_token),
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PermissionForNotification())),
+        }).catchError((onError){
+          print(onError);
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: profile['name']??"",email: profile['email']??"",password: profile['id']??"",phoneNumber: "",)));
+        }).whenComplete(() => {
+
+        });
         break;
       case FacebookLoginStatus.cancelledByUser:
         ToastUtils.toastInfoGeneral("${FacebookLoginStatus.cancelledByUser}", context);
@@ -305,9 +329,18 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
       )).user;
 
       if (user != null) {
+        _apiProvider.authorization(user.email??"").then((value) => {
+          print(value),
+          _userData.setToken(value.auth_token),
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PermissionForNotification())),
+        }).catchError((onError){
+          print(onError);
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: user.displayName??"",email: user.email??"",password: passwordController.text.toString(),phoneNumber: user.phoneNumber??"",)));
+        }).whenComplete(() => {
+
+        });
         setState(() {
           _success = true;
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen(username: user.displayName??"",email: user.email??"",password: passwordController.text.toString(),phoneNumber: user.phoneNumber??"",)));
         });
       } else {
         setState(() {
@@ -323,7 +356,6 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
         _isLoading = false;
       });
     }
-
 
   }
 

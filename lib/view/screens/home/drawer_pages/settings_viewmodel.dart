@@ -32,6 +32,10 @@ class SettingsViewModel extends BaseViewModel{
   String _username='';
   String get username=>_username;
 
+
+  String _imageUrl='';
+  String get imageUrl=>_imageUrl;
+
   // image settings
   File _imageFile;
   final _picker = ImagePicker();
@@ -50,6 +54,7 @@ class SettingsViewModel extends BaseViewModel{
       _radioValue=1;
     }
     _username=  await _userData.getUsername();
+    _imageUrl=  await _userData.getAvatar();
     notifyListeners();
   }
 

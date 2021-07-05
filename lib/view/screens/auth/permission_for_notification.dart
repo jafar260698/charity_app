@@ -1,7 +1,9 @@
 
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/localization/user_data.dart';
+import 'package:charity_app/persistance/api_provider.dart';
 import 'package:charity_app/utils/device_size_config.dart';
+import 'package:charity_app/utils/toast_utils.dart';
 import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/home/bottom_navigation.dart';
 import 'package:charity_app/view/theme/app_color.dart';
@@ -17,6 +19,7 @@ class PermissionForNotification extends StatefulWidget {
 
 class _PermissionForNotification extends State<PermissionForNotification>  with WidgetsBindingObserver{
   UserData _userData=new UserData();
+  ApiProvider _apiProvider=new ApiProvider();
 
   Future<String> permissionStatusFuture;
   var permGranted = "granted";
@@ -29,6 +32,9 @@ class _PermissionForNotification extends State<PermissionForNotification>  with 
     super.initState();
     permissionStatusFuture = getCheckNotificationPermStatus();
     WidgetsBinding.instance.addObserver(this);
+    _userData.getToken().then((value) => {
+      getUser(context, value),
+    });
   }
 
   @override
@@ -189,5 +195,19 @@ class _PermissionForNotification extends State<PermissionForNotification>  with 
         ),
       ),
     );
+  }
+
+  Future<void> getUser(BuildContext context,String token) async {
+    _apiProvider.getUser(token).then((value) => {
+      print(value.email),
+       _userData.setUsername(value.name??''),
+       _userData.setEmail(value.email??''),
+      _userData.setPhoneNumber(value.phone??''),
+      _userData.setAvatar(value.avatar??""),
+    }).catchError((onError){
+      ToastUtils.toastErrorGeneral("Error $onError", context);
+    }).whenComplete(() => {
+
+    });
   }
 }

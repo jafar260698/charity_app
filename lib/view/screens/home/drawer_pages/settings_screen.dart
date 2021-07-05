@@ -8,7 +8,6 @@ import 'package:charity_app/view/widgets/blurred_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
 import 'change_username_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -44,7 +43,7 @@ class SettingsScreen extends StatelessWidget {
                   InkWell(
                     onTap: (){
                       model.pickFile();
-                    }, child: BlurredAvatar(imageUrl: 'https://news.berkeley.edu/wp-content/uploads/2020/03/Maryam-Karimi-01-750.jpg',size:70.0)),
+                    }, child: BlurredAvatar(imageUrl: model.imageUrl!=null ? 'https://ozimplatform.kz/api/'+model.imageUrl : 'null',size:70.0)),
                   SizedBox(width: 10),
                   InkWell(
                     onTap: (){
@@ -70,8 +69,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: SizeConfig.calculateBlockVertical(20)),
-              SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+              SizedBox(height: SizeConfig.calculateBlockVertical(40)),
               Padding(
                 padding: EdgeInsets.only(left: 30,right: 30),
                 child: Column(
@@ -205,5 +203,4 @@ class SettingsScreen extends StatelessWidget {
       viewModelBuilder: ()=>SettingsViewModel(),
     );
   }
-
 }
