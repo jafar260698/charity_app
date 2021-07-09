@@ -1,11 +1,12 @@
 
 import 'package:charity_app/localization/user_data.dart';
-import 'package:charity_app/model/skill_provider.dart';
 import 'package:charity_app/persistance/api_provider.dart';
 import 'package:charity_app/view/screens/other/comment_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:charity_app/model/article/article.dart';
+
 
 class ArticleDetailViewModel extends BaseViewModel{
 
@@ -14,8 +15,6 @@ class ArticleDetailViewModel extends BaseViewModel{
   BuildContext context;
   Data article;
 
-  SkillProvider _skillProvider;
-  SkillProvider get skillProvider=>_skillProvider;
 
   int articleId;
 

@@ -1,5 +1,4 @@
 
-
 import 'package:charity_app/model/category.dart';
 
 class Article {

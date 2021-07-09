@@ -77,7 +77,7 @@ class ArticleDetailScreen extends StatelessWidget {
         ),
       ),
       onModelReady: (model){
-        model.initContext(context,article.id);
+        model.initContext(context,article);
         model.articleView();
       },
       viewModelBuilder: () => ArticleDetailViewModel(),
