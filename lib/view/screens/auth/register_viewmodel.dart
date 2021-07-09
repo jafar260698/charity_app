@@ -83,7 +83,7 @@ class RegisterViewModel extends BaseViewModel{
       _apiProvider.registration(data).then((value) => {
         if(value.error==null||value.error.isEmpty){
           ToastUtils.toastInfoGeneral("${value.success}", context),
-          auth(context,_usernameController.text.toString()),
+          auth(context,_emailController.text.toString()),
           //gotoNextPage(context)
         } else  ToastUtils.toastInfoGeneral("${value.error}", context),
 

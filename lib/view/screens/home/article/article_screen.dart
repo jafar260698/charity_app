@@ -125,144 +125,6 @@ class ArticleScreen extends StatelessWidget {
     );
   }
 
-  getMainUI(context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColor.primary,
-      ),
-      child: Expanded(
-        child: ClipRRect(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40), topRight: Radius.circular(40)),
-          child: Container(
-            color: Color.fromRGBO(244, 244, 244, 1),
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    InkWell(
-                      onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ArticleDetailScreen()));
-                      },
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                        color: Colors.white,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              left: 20, right: 20, top: 10, bottom: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "Благотворительный фонд «ДАРА»",
-                                      style: AppThemeStyle.appBarStyle16,
-                                      textAlign: TextAlign.start,
-                                    ),
-                                  ),
-                                  Icon(
-                                    Icons.keyboard_arrow_down,
-                                    size: 30,
-                                  )
-                                ],
-                              ),
-                              SizedBox(height: 5),
-                              Divider(
-                                  thickness: 1,
-                                  color: Color.fromRGBO(98, 190, 184, 1)),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(Icons.location_on,
-                                      size: 24,
-                                      color: Color.fromRGBO(98, 190, 184, 1)),
-                                  SizedBox(width: 8.0),
-                                  Expanded(
-                                    child: Text(
-                                      "Г. Нур-Султан \n ул. А.Бокейхана, 1, «Назарбаев Центр»",
-                                      style: AppThemeStyle.titleListPrimary,
-                                      textAlign: TextAlign.start,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 5),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      color: Colors.white,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: 20, right: 20, top: 10, bottom: 5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "Благотворительный фонд «ДАРА»",
-                                    style: AppThemeStyle.resendCodeStyle,
-                                    textAlign: TextAlign.start,
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_down,
-                                  size: 30,
-                                )
-                              ],
-                            ),
-                            SizedBox(height: 5),
-                            Divider(
-                                thickness: 1,
-                                color: Color.fromRGBO(98, 190, 184, 1)),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(Icons.location_on,
-                                    size: 24,
-                                    color: Color.fromRGBO(98, 190, 184, 1)),
-                                SizedBox(width: 8.0),
-                                Expanded(
-                                  child: Text(
-                                    "Г. Нур-Султан \n ул. А.Бокейхана, 1, «Назарбаев Центр»",
-                                    style: AppThemeStyle.titleListPrimary,
-                                    textAlign: TextAlign.start,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 5),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 
   getSecondMainUI(context,ArticleViewModel viewmodel,String category){
     return Container(
@@ -326,25 +188,30 @@ class ArticleScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                        Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                data.name,
-                                style: AppThemeStyle.resendCodeStyle,
-                                textAlign: TextAlign.start,
-                              ),
-                              SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                              Text(
-                                data.description,
-                                style: AppThemeStyle.titleFormStyle,
-                                textAlign: TextAlign.start,
-                              ),
-                            ],
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  data.name,
+                                  style: AppThemeStyle.resendCodeStyle,
+                                  textAlign: TextAlign.start,
+                                ),
+                                SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                                Text(
+                                  data.description,
+                                  style: AppThemeStyle.titleFormStyle,
+                                  textAlign: TextAlign.start,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
+                        Align(
+                            alignment: Alignment.bottomRight,
+                            child: Icon(data.inBookmarks==false ? Icons.bookmark_outline:Icons.bookmark,color: AppColor.primary,))
                       ],
                     ),
                   ),

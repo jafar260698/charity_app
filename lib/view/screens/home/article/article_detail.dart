@@ -65,7 +65,7 @@ class ArticleDetailScreen extends StatelessWidget {
             currentIndex: model.currentIndex,
             items: [
               BottomNavigationBarItem(
-                icon: Icon(Ionicons.heart_outline),
+                icon: article.isLiked==false?Icon(Ionicons.heart_outline):Icon(Ionicons.heart),
                  title: Text('')
               ),
               BottomNavigationBarItem(
@@ -75,7 +75,7 @@ class ArticleDetailScreen extends StatelessWidget {
                   icon: Icon(Icons.share_outlined),
                   title: Text('')),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.bookmark_outline),
+                  icon: article.inBookmarks==false?Icon(Icons.bookmark_outline):Icon(Icons.bookmark),
                   title: Text(''))
             ],
           ),
