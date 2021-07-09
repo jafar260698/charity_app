@@ -1,28 +1,23 @@
 
-
-
-
 import 'package:charity_app/localization/user_data.dart';
-import 'package:charity_app/model/category.dart';
-import 'package:charity_app/model/faq.dart';
-import 'package:charity_app/model/links.dart';
 import 'package:charity_app/model/skill_provider.dart';
 import 'package:charity_app/persistance/api_provider.dart';
 import 'package:charity_app/view/screens/other/comment_screen.dart';
-import 'package:charity_app/view/screens/other/notification/notification_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ArticleDetailViewModel extends BaseViewModel{
 
   ApiProvider _apiProvider=new ApiProvider();
   UserData _userData=new UserData();
   BuildContext context;
+  Data article;
 
   SkillProvider _skillProvider;
   SkillProvider get skillProvider=>_skillProvider;
+
+  int articleId;
 
   bool _isLoading = false;
   bool get isLoading=> _isLoading;
@@ -31,8 +26,10 @@ class ArticleDetailViewModel extends BaseViewModel{
   int get currentIndex=>_currentIndex;
 
 
-  void initContext(BuildContext context){
+  void initContext(BuildContext context,Data article){
     this.context = context;
+    article=article;
+    articleId=article.id;
   }
 
   Future<void> onTabTapped(int index) async{
@@ -48,6 +45,7 @@ class ArticleDetailViewModel extends BaseViewModel{
           break;
         }
       case 2:
+
         break;
       case 3:
         break;
@@ -55,10 +53,12 @@ class ArticleDetailViewModel extends BaseViewModel{
     notifyListeners();
   }
 
-  Future<void> getInclusion() async{
+  Future<void> articleView() async {
+    Map<String,dynamic> data = new Map<String,dynamic>();
+    data['article_id']=articleId;
     _isLoading=true;
-    _apiProvider.inclusion('ru',1).then((value) => {
-      _skillProvider=value,
+    _apiProvider.articleView(data).then((value) => {
+
     }).catchError((error){
       print("Error: $error");
     }).whenComplete(() => {
@@ -67,5 +67,32 @@ class ArticleDetailViewModel extends BaseViewModel{
     });
   }
 
+  Future<void> addLike(int articleId) async {
+    Map<String,dynamic> data = new Map<String,dynamic>();
+    data['article_id']=articleId;
+    _isLoading=true;
+    _apiProvider.articleLike(data).then((value) => {
+
+    }).catchError((error){
+      print("Error: $error");
+    }).whenComplete(() => {
+      _isLoading=false,
+      notifyListeners()
+    });
+  }
+
+  Future<void> articleDislike(int articleId) async {
+    Map<String,dynamic> data = new Map<String,dynamic>();
+    data['article_id']=articleId;
+    _isLoading=true;
+    _apiProvider.articleLike(data).then((value) => {
+
+    }).catchError((error){
+      print("Error: $error");
+    }).whenComplete(() => {
+      _isLoading=false,
+      notifyListeners()
+    });
+  }
 
 }

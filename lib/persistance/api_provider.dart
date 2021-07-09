@@ -353,7 +353,7 @@ class ApiProvider {
     return responseJson;
   }
 
-  Future<BaseResponses> articleUnlike(Map<String,dynamic> data) async{
+  Future<BaseResponses> articleDislike(Map<String,dynamic> data) async{
     var responseJson;
     try{
       final response= await client.post(Uri.parse('$baseUrl/article/unlike'),
@@ -375,6 +375,9 @@ class ApiProvider {
           headers: headers,
           body: jsonEncode(data)
       );
+      print(response.request.url);
+      print(response.body);
+      print(response.headers);
       var res=_response(response);
       responseJson=BaseResponses.fromJson(res);
     } on FetchDataException{
@@ -444,12 +447,16 @@ class ApiProvider {
   }
 
   //article, comment
-  Future<SkillProvider> articleComment(Map<String,dynamic> data) async{
+  Future<SkillProvider> articleComment(String lang) async{
     var responseJson;
     try{
       final response= await client.get(Uri.parse('$baseUrl/article/comment'),
         headers: headers,
       );
+      print(response.request.url);
+      print(response.body);
+      print(response.headers);
+
       var res=_response(response);
       responseJson=SkillProvider.fromJson(res);
     } on FetchDataException{

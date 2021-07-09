@@ -16,7 +16,7 @@ class FaqViewModel extends BaseViewModel{
   bool get isLoading=> _isLoading;
 
 
-  Future<void> getFaqData() async{
+  Future<void> getFaqData() async {
     _isLoading=true;
     _userData.getLang().then((value) => {
       _apiProvider.getFaq(value).then((value) => {

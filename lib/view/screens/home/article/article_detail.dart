@@ -4,16 +4,11 @@ import 'package:charity_app/model/article/article.dart';
 import 'package:charity_app/utils/constants.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/utils/formatters.dart';
-import 'package:charity_app/view/components/btn_ui.dart';
 import 'package:charity_app/view/screens/home/article/article_detail_viemodel.dart';
-import 'package:charity_app/view/screens/home/forum/forum_add_screen.dart';
-import 'package:charity_app/view/screens/home/forum/forume_detail_viewmodel.dart';
-import 'package:charity_app/view/screens/home/resource/resource_screen.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -75,14 +70,15 @@ class ArticleDetailScreen extends StatelessWidget {
                   icon: Icon(Icons.share_outlined),
                   title: Text('')),
               BottomNavigationBarItem(
-                  icon: article.inBookmarks==false?Icon(Icons.bookmark_outline):Icon(Icons.bookmark),
+                  icon: article.inBookmarks==false ? Icon(Icons.bookmark_outline) : Icon(Icons.bookmark),
                   title: Text(''))
             ],
           ),
         ),
       ),
       onModelReady: (model){
-        model.initContext(context);
+        model.initContext(context,article.id);
+        model.articleView();
       },
       viewModelBuilder: () => ArticleDetailViewModel(),
     );

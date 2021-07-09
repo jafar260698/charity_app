@@ -10,14 +10,14 @@ class EmptyData extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image.asset(
-          "assets/image/search.png",
-          height: 80,
-          width: 93,
-        ),
-        SizedBox(
-          height: SizeConfig.calculateBlockVertical(18),
-        ),
+        // Image.asset(
+        //   "assets/image/search.png",
+        //   height: 80,
+        //   width: 93,
+        // ),
+        // SizedBox(
+        //   height: SizeConfig.calculateBlockVertical(18),
+        // ),
         Text(
           getTranslated(context, 'data_not_found'),
           style: TextStyle(
