@@ -40,7 +40,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
 
   bool _success;
   bool _isLoading=false;
-  bool get isLoading=>_isLoading;
+  bool _isLoadingFacebook=false;
 
   TextEditingController emailController=new TextEditingController();
   TextEditingController passwordController=new TextEditingController();
@@ -95,7 +95,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                 SizedBox(height: SizeConfig.calculateBlockVertical(8.0)),
                                 BtnUIIcon(
                                   height: 55,
-                                  isLoading: false,
+                                  isLoading: _isSignIn,
                                   textColor: Colors.white,
                                   color: AppColor.google,
                                   text: getTranslated(context,'via_google'),
@@ -111,7 +111,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                                 SizedBox(height: SizeConfig.calculateBlockVertical(8.0)),
                                 BtnUIIcon(
                                   height: 55,
-                                  isLoading: false,
+                                  isLoading: _isLoadingFacebook,
                                   textColor: Colors.white,
                                   color: AppColor.sometimes,
                                   text: getTranslated(context,'via_facebook'),
@@ -213,7 +213,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
             SizedBox(height: SizeConfig.calculateBlockVertical(30)),
             BtnUIIcon(
               height: 55,
-              isLoading: isLoading,
+              isLoading: _isLoading,
               textColor: Colors.white,
               color: AppColor.gmail,
               text: getTranslated(context,'via_email'),
@@ -263,10 +263,14 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
   }
 
   Future<void> loginViaGoogle() async{
-    _isSignIn=true;
+    setState(() {
+      _isSignIn=true;
+    });
     final user=await googleSignIn.signIn();
     if(user==null){
-      _isSignIn=false;
+      setState(() {
+        _isSignIn=false;
+      });
     }else{
       final googleAuth=await user.authentication;
 
@@ -277,12 +281,16 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
 
       await FirebaseAuth.instance.signInWithCredential(credential);
       User userData=FirebaseAuth.instance.currentUser;
-      _isSignIn=false;
-      gotoNextScreen(userData);
+      setState(() {
+        _isSignIn=false;
+      });      gotoNextScreen(userData);
     }
   }
 
   Future<void> loginViaFacebook() async{
+    setState(() {
+      _isLoadingFacebook=true;
+    });
     FacebookLogin facebookLogin = FacebookLogin();
     final result = await facebookLogin.logIn(['email']);
     final token = result.accessToken.token;
@@ -311,6 +319,10 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
         ToastUtils.toastInfoGeneral("${FacebookLoginStatus.error}", context);
         break;
     }
+
+    setState(() {
+      _isLoadingFacebook=false;
+    });
   }
 
   Future<void> logOutGoogle() async{

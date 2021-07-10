@@ -4,6 +4,7 @@ import 'package:charity_app/persistance/api_provider.dart';
 import 'package:charity_app/view/screens/other/comment_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import 'package:stacked/stacked.dart';
 import 'package:charity_app/model/article/article.dart';
 
@@ -44,12 +45,22 @@ class ArticleDetailViewModel extends BaseViewModel{
           break;
         }
       case 2:
-
+        onShareData(context,'${article.name} \n ${article.description}');
+        notifyListeners();
         break;
       case 3:
         break;
     }
     notifyListeners();
+  }
+  Future<void> onShareData(BuildContext context,String text) async {
+
+    final RenderBox box = context.findRenderObject();
+    {
+      await Share.share(text,
+          subject: text,
+          sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+    }
   }
 
   Future<void> articleView() async {

@@ -69,9 +69,10 @@ dependencies:
   #chat
   flutter_chat_ui: ^1.1.5
   flutter_firebase_chat_core: ^1.1.0
-  firebase_storage: ^8.0.4
   uuid: ^3.0.4
   file_picker: ^3.0.3
+  share: ^2.0.4
+
 
 dev_dependencies:
   flutter_test:
