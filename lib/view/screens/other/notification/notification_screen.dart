@@ -4,6 +4,7 @@ import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/column_message.dart';
 import 'package:charity_app/view/components/search_field_ui.dart';
 import 'package:charity_app/view/screens/other/notification/chat_screen.dart';
+import 'package:charity_app/view/screens/other/notification/chat_ui_screen.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/avatar_iamge.dart';
 import 'package:fleva_icons/fleva_icons.dart';
@@ -137,7 +138,7 @@ class _NotificationScreen extends State<NotificationScreen> {
         children: [
           ColumnMessage(
             onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChatScreen()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChatUIScreen()));
             },
             title: "",
             badge: "",
@@ -149,7 +150,7 @@ class _NotificationScreen extends State<NotificationScreen> {
           SizedBox(height: SizeConfig.calculateBlockVertical(20)),
           ColumnMessage(
             onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChatScreen()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChatUIScreen()));
             },
             title: "",
             badge: "",
