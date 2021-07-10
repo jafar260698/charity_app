@@ -70,7 +70,6 @@ class SearchFieldUI extends StatefulWidget {
 class _TextFieldState extends State<SearchFieldUI> {
   @override
   Widget build(BuildContext context) {
-    var theme = ThemeProvider.controllerOf(context).theme.data;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

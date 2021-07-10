@@ -2,7 +2,6 @@
 import 'package:charity_app/model/questionnaire.dart';
 import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/no_data.dart';
-import 'package:charity_app/view/screens/auth/welcome_viewmodel.dart';
 import 'package:charity_app/view/screens/home/questionnaire/main/questionnaire_viewmodel.dart';
 import 'package:charity_app/view/screens/home/questionnaire/questionnaire_answer_screen.dart';
 import 'package:charity_app/view/theme/app_color.dart';
@@ -47,7 +46,7 @@ class QuestionnaireScreen extends StatelessWidget {
                           child: getWidgetLogoHorizontal),
                     ),
                   ),
-                  SizedBox(height: SizeConfig.calculateBlockVertical(20.0)),
+                  SizedBox(height: SizeConfig.calculateBlockVertical(20)),
                   Text(
                     "${data.title} \n\n ${data.age} года",
                     textAlign: TextAlign.center,
@@ -65,20 +64,20 @@ class QuestionnaireScreen extends StatelessWidget {
           ),
         ),
       ),
-      viewModelBuilder: ()=>QuestionnaireViewModel(),
+      viewModelBuilder: () => QuestionnaireViewModel(),
     );
   }
 
   getListUI(context,QuestionnaireViewModel model) {
-      if(data.questions!=null&&data.questions.length>0)
-        return ListView.builder(
-            itemCount: data.questions.length,
-            shrinkWrap: true,
-            physics: BouncingScrollPhysics(),
-            itemBuilder: (context,i) {
-              var ss=data.questions[i];
-              return Container(
-                child: Column(
+      if(data.questions!=null&&data.questions.length>0) {
+        return Expanded(
+          child: ListView.builder(
+              itemCount: data.questions.length,
+              shrinkWrap: true,
+              physics: BouncingScrollPhysics(),
+              itemBuilder: (context,i) {
+                var ss=data.questions[i];
+                return Column(
                   children: [
                     Text(
                       ss,
@@ -86,34 +85,34 @@ class QuestionnaireScreen extends StatelessWidget {
                       style: AppThemeStyle.subtitleList,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children:<Widget> [
-                      //   Transform.scale(
-                      //     scale: 1.5,
-                      //     child: new Radio(
-                      //       activeColor: AppColor.primary,
-                      //       value: 2,
-                      //       groupValue: model.radioValue,
-                      //       onChanged: model.handleRadioValueChange,
-                      //     ),
-                      //   ),
-                      //   SizedBox(height: SizeConfig.calculateBlockVertical(20)),
-                      //   Transform.scale(
-                      //   scale: 1.5,
-                      //   child: new Radio(
-                      //     value: 1,
-                      //     activeColor: AppColor.primary,
-                      //     groupValue: model.radioValue,
-                      //     onChanged: model.handleRadioValueChange,
-                      //   ),
-                      // ),
+                        Transform.scale(
+                          scale: 1.5,
+                          child: new Radio(
+                            activeColor: AppColor.primary,
+                            value: 2,
+                            onChanged: (int value) { },
+                            groupValue: null,
+                          ),
+                        ),
+                        SizedBox(height: SizeConfig.calculateBlockVertical(20)),
+                        Transform.scale(
+                        scale: 1.5,
+                        child: new Radio(
+                          value: 1,
+                          activeColor: AppColor.primary,
+                          onChanged: (int value) { },
+                          groupValue: null,
+                        ),
+                      ),
                         ],
                     ),
                   ],
-                ),
-              );
-            });
-      else return Container(child: EmptyData());
+                );
+              }),
+        );
+      } else return Container(child: EmptyData());
   }
 
 }

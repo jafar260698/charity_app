@@ -21,8 +21,7 @@ class SearchViewModel extends BaseViewModel{
   bool _isLoading = true;
   bool get isLoading=> _isLoading;
 
-
-  Future<void> postSearch(BuildContext context,String search) async{
+  Future<void> postSearch(BuildContext context,String search) async {
       _isLoading=true;
       _apiProvider.searchArticle(search).then((value) => {
         _article=value
@@ -33,5 +32,4 @@ class SearchViewModel extends BaseViewModel{
         notifyListeners()
       });
     }
-
 }

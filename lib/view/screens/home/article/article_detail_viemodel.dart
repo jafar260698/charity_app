@@ -14,7 +14,7 @@ class ArticleDetailViewModel extends BaseViewModel{
   ApiProvider _apiProvider=new ApiProvider();
   UserData _userData=new UserData();
   BuildContext context;
-  Data article;
+  Data articleData;
 
 
   int articleId;
@@ -28,13 +28,12 @@ class ArticleDetailViewModel extends BaseViewModel{
 
   void initContext(BuildContext context,Data article){
     this.context = context;
-    article=article;
+    articleData=article;
     articleId=article.id;
   }
 
   Future<void> onTabTapped(int index) async{
     _currentIndex=index;
-    print(index);
     switch(index){
       case 0:
         break;
@@ -45,8 +44,7 @@ class ArticleDetailViewModel extends BaseViewModel{
           break;
         }
       case 2:
-        onShareData(context,'${article.name} \n ${article.description}');
-        notifyListeners();
+        onShareData(context,'${articleData.name} \n ${articleData.description}');
         break;
       case 3:
         break;

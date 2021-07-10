@@ -23,23 +23,30 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<SearchViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          elevation: 0,
-          title: Text('', style: AppThemeStyle.appBarStyle),
-        ),
         body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 10,right: 10),
-                  child: SearchFieldUI(
-                    controller: search,
-                    text: '',
-                    keyboardType: TextInputType.number,
-                    inputAction: TextInputAction.done,
+          child: Column(
+            children: [
+              SizedBox(height: SizeConfig.calculateBlockVertical(30)),
+              Padding(
+                padding: EdgeInsets.fromLTRB(30,20,30,20),
+                child: TextField(
+                  controller: search,
+                  autofocus: true,
+                  keyboardType: TextInputType.name,
+                  textInputAction: TextInputAction.done,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                      borderSide: BorderSide(color: Colors.black26),
+                    ),
+                    disabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.withOpacity(0.5)),
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
                     hintText: getTranslated(context,'search'),
                     suffixIcon: IconButton(
                       splashRadius: 25,
@@ -49,11 +56,14 @@ class SearchScreen extends StatelessWidget {
                       icon: Icon(FlevaIcons.search),
                     ),
                   ),
+                  onSubmitted:(query){
+                    model.postSearch(context, query);
+                  }
                 ),
-                SizedBox(height: SizeConfig.calculateBlockVertical(30)),
-                getSecondMainUI(context, model),
-              ],
-            ),
+              ),
+              SizedBox(height: SizeConfig.calculateBlockVertical(30)),
+              getSecondMainUI(context, model),
+            ],
           ),
         ),
       ),
@@ -67,15 +77,15 @@ class SearchScreen extends StatelessWidget {
   getSecondMainUI(context,SearchViewModel model){
     return Container(
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(244, 244, 244, 1.0),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(40),
-          topRight: Radius.circular(40),
-        ),
-      ),
+      // decoration: BoxDecoration(
+      //   color: Color.fromRGBO(244, 244, 244, 1.0),
+      //   borderRadius: BorderRadius.only(
+      //     topLeft: Radius.circular(40),
+      //     topRight: Radius.circular(40),
+      //   ),
+      // ),
       child: Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.only(right: 20,left: 20),
         child: getListUI(model),
       ),
     );
@@ -177,7 +187,7 @@ class SearchScreen extends StatelessWidget {
             }
         );
     }
-    return Center(child: EmptyData());
+      return Center(child: EmptyData());
     }
 
 }

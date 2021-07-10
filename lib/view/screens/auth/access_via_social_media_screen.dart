@@ -174,7 +174,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
                           if(snapshot.hasData){
                             User user=FirebaseAuth.instance.currentUser;
                               _user=user;
-                              print('${user.displayName}');
+                              print('${user.displayName} Email ${user.email}');
                             return Text('');
                           }
                           return Text('');
@@ -283,7 +283,8 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
       User userData=FirebaseAuth.instance.currentUser;
       setState(() {
         _isSignIn=false;
-      });      gotoNextScreen(userData);
+      });
+      gotoNextScreen(userData);
     }
   }
 
@@ -302,7 +303,7 @@ class _AccessViaSocialMediaScreen extends State<AccessViaSocialMediaScreen> {
         final credential=FacebookAuthProvider.credential(token);
         _auth.signInWithCredential(credential);
         _apiProvider.authorization(profile['email']??"").then((value) => {
-          print(value),
+            print(value),
           _userData.setToken(value.auth_token),
           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PermissionForNotification())),
         }).catchError((onError){

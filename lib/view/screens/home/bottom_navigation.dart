@@ -4,7 +4,7 @@ import 'package:charity_app/persistance/api_provider.dart';
 import 'package:charity_app/view/screens/home/forum/forum_screen.dart';
 import 'package:charity_app/view/screens/home/home_screen.dart';
 import 'package:charity_app/view/screens/home/article/search/search_screen.dart';
-import 'package:charity_app/view/screens/other/favourite_screen.dart';
+import 'package:charity_app/view/screens/home/favourite/favourite_screen.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
@@ -45,7 +45,7 @@ class _BottomNavigation extends State<BottomNavigation> {
       HomeScreen(),
       ArticleScreen(category: _category,existArrow: false),
       SearchScreen(),
-      FavouriteScreen(),
+      FavouriteScreen(category: _category),
       ForumScreen(existArrow: false),
     ];
     return Scaffold(

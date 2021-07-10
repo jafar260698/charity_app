@@ -253,4 +253,5 @@ class ArticleScreen extends StatelessWidget {
     );
     else Text(getTranslated(context, 'data_not_found'),style: AppThemeStyle.appBarStyle16);
   }
+
 }
