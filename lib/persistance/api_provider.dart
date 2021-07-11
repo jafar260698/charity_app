@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/model/article/article.dart';
+import 'package:charity_app/model/bookmark.dart';
 import 'package:charity_app/model/forum/forum_category.dart';
 import 'package:charity_app/model/forum/forum_detail.dart';
 import 'package:charity_app/model/forum/forum_sub_category.dart';
@@ -323,11 +324,11 @@ class ApiProvider {
     return responseJson;
   }
 
-  Future<Article> getArticleIndexBookMark() async{
+  Future<Article> getArticleIndexBookMark(String folder) async{
     var responseJson;
 
     try{
-      final response= await client.get(Uri.parse('$baseUrl/article/index_bookmark?folder=2&page=1'),
+      final response= await client.get(Uri.parse('$baseUrl/article/index_bookmark?folder=$folder&page=1'),
         headers: headers,
       );
       var res=_response(response);
@@ -387,14 +388,14 @@ class ApiProvider {
   }
 
   //article, bookmark, comment
-  Future<BaseResponses> getBookMark(Map<String,dynamic> data) async{
+  Future<BookMark> getBookMark(String token) async{
     var responseJson;
     try{
       final response= await client.get(Uri.parse('$baseUrl/article/bookmark?page=1'),
           headers: headers
       );
       var res=_response(response);
-      responseJson=BaseResponses.fromJson(res);
+      responseJson=BookMark.fromJson(res);
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
     }
