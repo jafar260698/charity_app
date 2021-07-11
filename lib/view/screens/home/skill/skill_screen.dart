@@ -1,17 +1,13 @@
 import 'package:charity_app/localization/language_constants.dart';
 import 'package:charity_app/model/category.dart';
-import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/view/components/custom/custom_card.dart';
 import 'package:charity_app/view/components/custom/custom_container.dart';
 import 'package:charity_app/view/components/no_data.dart';
 import 'package:charity_app/view/screens/home/skill/skill_viewmodel.dart';
-import 'package:charity_app/view/theme/app_color.dart';
-import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/custom/custom_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class SkillScreen extends StatelessWidget {
   final List<Category> category;

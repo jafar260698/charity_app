@@ -69,7 +69,7 @@ class FavouriteDetailScreen extends StatelessWidget {
     if(model.isLoading){
       return Container();
     }
-    if(model.article!=null&&model.article.data.length>0)
+    if(model.article!=null)
       return ListView.builder(
           itemCount: model.article.data.length,
           shrinkWrap: true,

@@ -71,14 +71,15 @@ class RegisterViewModel extends BaseViewModel{
         case 2: type="organization"; break;
         default: type="parent"; break;
       }
-
+      var lang= await _userData.getLang();
+      lang=lang=="uz" ? "kz" :"ru";
       Map<String,dynamic> data= Map<String,dynamic>();
       data["phone"]=_phoneController.text;
       data["name"]=_usernameController.text;
       data["email"]=_emailController.text;
       data["password"]=_passwordController.text;
       data["type"]=type;
-      data["language"]='ru';
+      data["language"]=lang;
 
       _apiProvider.registration(data).then((value) => {
         if(value.error==null||value.error.isEmpty){

@@ -26,8 +26,9 @@ class ForumAddViewModel extends BaseViewModel{
 
   Future<void> postForum(BuildContext context,String subCategory) async{
     if(checkTextFieldEmptyOrNot(context)){
+      var lang= await _userData.getLang();
       var param =new Map<String,dynamic>();
-      param['language']='ru';
+      param['language']=lang;
       param['subcategory']=subCategory;
       param['title']=titleController.text.toString();
       param['description']=noteController.text.toString();

@@ -8,6 +8,7 @@ import 'package:stacked/stacked.dart';
 class ForumDetailViewModel extends BaseViewModel{
 
   ApiProvider _apiProvider=new ApiProvider();
+  UserData _userData=new UserData();
 
   bool _isLoading = false;
   bool get isLoading=> _isLoading;
@@ -17,7 +18,8 @@ class ForumDetailViewModel extends BaseViewModel{
 
   Future<void> getForumCategory(String subcategory) async{
     _isLoading=true;
-    _apiProvider.getForumDetail('ru',subcategory).then((value) => {
+    var lang= await _userData.getLang();
+    _apiProvider.getForumDetail(lang,subcategory).then((value) => {
       _forumDetail=value,
     }).catchError((error) {
       print("Error: $error");

@@ -1,6 +1,4 @@
 
-
-
 import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/model/category.dart';
 import 'package:charity_app/model/faq.dart';
@@ -29,7 +27,8 @@ class ResourceViewModel extends BaseViewModel{
 
   Future<void> getCategory() async{
     _isLoadingCategory=true;
-      _apiProvider.getCategory("ru").then((value) => {
+    var lang= await _userData.getLang();
+    _apiProvider.getCategory(lang).then((value) => {
         _category=value,
       }).catchError((error){
         print("Error: $error");
@@ -41,7 +40,8 @@ class ResourceViewModel extends BaseViewModel{
 
   Future<void> getLinks(String category) async{
     _isLoading=true;
-    _apiProvider.getLinks('ru',category).then((value) => {
+    var lang= await _userData.getLang();
+    _apiProvider.getLinks(lang,category).then((value) => {
       _links=value,
     }).catchError((error){
       print("Error: $error");

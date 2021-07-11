@@ -25,7 +25,8 @@ class ForMotherViewModel extends BaseViewModel{
 
   Future<void> getInclusion() async{
     _isLoading=true;
-    _apiProvider.forMother('ru',1,"razvitie").then((value) => {
+    var lang= await _userData.getLang();
+    _apiProvider.forMother(lang,1,"razvitie").then((value) => {
       _skillProvider=value,
     }).catchError((error){
       print("Error: $error");

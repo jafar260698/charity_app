@@ -25,7 +25,8 @@ class InclusionViewModel extends BaseViewModel{
 
   Future<void> getInclusion() async{
     _isLoading=true;
-    _apiProvider.inclusion('ru',1).then((value) => {
+    var lang= await _userData.getLang();
+    _apiProvider.inclusion(lang,1).then((value) => {
       _skillProvider=value,
     }).catchError((error){
       print("Error: $error");

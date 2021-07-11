@@ -22,7 +22,6 @@ class CommentViewModel extends BaseViewModel{
         _comment=value,
       }).catchError((error) {
         print("Error: $error");
-
       }).whenComplete(() => {
         _isLoading=false,
         notifyListeners()

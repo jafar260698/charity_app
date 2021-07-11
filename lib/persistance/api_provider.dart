@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:charity_app/localization/user_data.dart';
 import 'package:charity_app/model/article/article.dart';
 import 'package:charity_app/model/bookmark.dart';
+import 'package:charity_app/model/favourite.dart';
 import 'package:charity_app/model/forum/forum_category.dart';
 import 'package:charity_app/model/forum/forum_detail.dart';
 import 'package:charity_app/model/forum/forum_sub_category.dart';
@@ -296,10 +297,10 @@ class ApiProvider {
   }
 
   //article
-  Future<Article> getArticle(String category) async{
+  Future<Article> getArticle(String lang,String category) async{
     var responseJson;
     try{
-      final response= await client.get(Uri.parse('$baseUrl/article?language=ru&category=$category&page=1'),
+      final response= await client.get(Uri.parse('$baseUrl/article?language=$lang&category=$category&page=1'),
         headers: headers,
       );
       var res=_response(response);
@@ -335,7 +336,7 @@ class ApiProvider {
       print(response.request.headers.toString());
 
       var res=_response(response);
-      responseJson=Article.fromJson(res);
+      responseJson=Favourite.fromJson(res);
     } on FetchDataException{
       throw FetchDataException("No Internet connection");
     }

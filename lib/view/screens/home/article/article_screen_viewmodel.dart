@@ -23,10 +23,10 @@ class ArticleViewModel extends BaseViewModel{
   bool _isLoading = false;
   bool get isLoading=> _isLoading;
 
-
   Future<void> getAllArticle(String category) async{
     _isLoading=true;
-    _apiProvider.getArticle(category).then((value) => {
+    var lang= await _userData.getLang();
+    _apiProvider.getArticle(lang,category).then((value) => {
       _article=value
     }).catchError((error){
       print("Error: $error");

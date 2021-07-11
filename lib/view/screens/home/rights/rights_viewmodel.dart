@@ -23,7 +23,8 @@ class RightViewModel extends BaseViewModel{
 
   Future<void> getRights() async{
     _isLoading=true;
-    _apiProvider.rights('ru').then((value) => {
+    var lang= await _userData.getLang();
+    _apiProvider.rights(lang).then((value) => {
       _links=value,
     }).catchError((error){
       print("Error: $error");

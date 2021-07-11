@@ -26,7 +26,8 @@ class QuestionnaireViewModel extends BaseViewModel{
 
   Future<void> getQuestionnaire() async{
     _isLoading=true;
-    _apiProvider.getQuestionnaire('ru','razvitie').then((value) => {
+    var lang= await _userData.getLang();
+    _apiProvider.getQuestionnaire(lang,'razvitie').then((value) => {
       _questionnaire=value,
     }).catchError((error){
       print("Error: $error");

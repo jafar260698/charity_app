@@ -1,14 +1,13 @@
-
 import 'package:charity_app/model/category.dart';
 
-class Article {
+class Favourite {
   List<Data> data;
   int page;
   int pages;
 
-  Article({this.data, this.page, this.pages});
+  Favourite({this.data, this.page, this.pages});
 
-  Article.fromJson(Map<String, dynamic> json) {
+  Favourite.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
       data = new List<Data>();
       json['data'].forEach((v) {
@@ -45,7 +44,7 @@ class Data {
   bool isLiked;
   bool inBookmarks;
   List<Null> comments;
-  num createdAt;
+  String createdAt;
 
   Data(
       {this.id,
@@ -83,7 +82,7 @@ class Data {
     if (json['comments'] != null) {
       comments = new List<Null>();
       json['comments'].forEach((v) {
-        //comments.add(new Null.fromJson(v));
+       // comments.add(new Null.fromJson(v));
       });
     }
     createdAt = json['created_at'];

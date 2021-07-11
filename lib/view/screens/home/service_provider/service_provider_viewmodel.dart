@@ -23,7 +23,8 @@ class ServiceProviderViewModel extends BaseViewModel{
 
   Future<void> getServiceProvider() async{
     _isLoading=true;
-    _apiProvider.serviceProvider('ru').then((value) => {
+    var lang= await _userData.getLang();
+    _apiProvider.serviceProvider(lang).then((value) => {
       _links=value,
     }).catchError((error){
       print("Error: $error");
