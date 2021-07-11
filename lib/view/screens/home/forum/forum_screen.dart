@@ -68,6 +68,7 @@ class ForumScreen extends StatelessWidget {
    if(model.isLoading){
      return Container();
    }
+   //&&model.forumSubCategory.length>0&&model.forumCategory.length>0
    if(model.forumSubCategory!=null&&model.forumCategory!=null)
      return ListView.builder(
        itemCount: model.forumCategory.length,
@@ -75,7 +76,7 @@ class ForumScreen extends StatelessWidget {
        itemBuilder: (context,i){
          List<ForumSubCategory> list = [];
          list.addAll(model.forumSubCategory.where((element) => element.category==model.forumCategory[i].sysName));
-         return Column(
+         if(list.length>0) return Column(
            crossAxisAlignment: CrossAxisAlignment.start,
            children: <Widget>[
              BtnUI(
@@ -131,6 +132,7 @@ class ForumScreen extends StatelessWidget {
              ),
            ],
          );
+         return Container(child: EmptyData());
        }
    );
    else return Container(child: EmptyData());

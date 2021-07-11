@@ -29,7 +29,9 @@ class UserData {
 
   Future<String> getLang() async {
     final SharedPreferences prefs = await _prefs;
-    return prefs.getString('lang');
+    var lang=prefs.getString('lang');
+    lang=lang=="uz" ? "kz" : "ru";
+    return lang;
   }
 
 

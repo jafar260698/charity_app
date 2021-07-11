@@ -539,6 +539,9 @@ class ApiProvider {
       final response= await client.get(Uri.parse('$baseUrl/forum_category?language=$lang'),
         headers: headers,
       );
+      print(response.request.url);
+      print(response.request.headers.toString());
+
       var res=_response(response) as List;
       responseJson=res.map((e) =>ForumCategory.fromJson(e)).toList();
     } on FetchDataException{
@@ -553,6 +556,9 @@ class ApiProvider {
       final response= await client.get(Uri.parse('$baseUrl/forum_subcategory?language=$lang'),
         headers: headers,
       );
+
+      print(response.request.url);
+      print(response.request.headers.toString());
       var res=_response(response) as List;
       responseJson=res.map((e) =>ForumSubCategory.fromJson(e)).toList();
     } on FetchDataException{
