@@ -5,6 +5,7 @@ import 'package:charity_app/utils/device_size_config.dart';
 import 'package:charity_app/utils/formatters.dart';
 import 'package:charity_app/view/components/no_data.dart';
 import 'package:charity_app/view/screens/home/article/article_detail.dart';
+import 'package:charity_app/view/screens/home/favourite/favourite_detail_screen.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
@@ -80,7 +81,7 @@ class FavouriteScreen extends StatelessWidget {
             var data=model.article.data[i];
             return InkWell(
               onTap: (){
-
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => FavouriteDetailScreen(folder: data.id,)));
               },
               child: Card(
                 elevation: 0,
@@ -107,14 +108,17 @@ class FavouriteScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              data.name,
-                              style: AppThemeStyle.resendCodeStyle,
+                              "${getTranslated(context,'folder')}"+data.name,
+                              style: AppThemeStyle.titleStyle,
                               textAlign: TextAlign.start,
                             ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(10)),
-                            Text("${data.createdAt.substring(0,10)}",
-                              style: AppThemeStyle.titleFormStyle,
-                              textAlign: TextAlign.start,
+                            SizedBox(height: SizeConfig.calculateBlockVertical(15)),
+                            Align(
+                              alignment: Alignment.bottomRight,
+                              child: Text("${data.createdAt.substring(0,10)}",
+                                style: AppThemeStyle.titleFormStyle,
+                                textAlign: TextAlign.end,
+                              ),
                             ),
                           ],
                         ),

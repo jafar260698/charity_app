@@ -331,6 +331,9 @@ class ApiProvider {
       final response= await client.get(Uri.parse('$baseUrl/article/index_bookmark?folder=$folder&page=1'),
         headers: headers,
       );
+      print(response.request.url);
+      print(response.request.headers.toString());
+
       var res=_response(response);
       responseJson=Article.fromJson(res);
     } on FetchDataException{

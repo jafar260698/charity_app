@@ -1,28 +1,29 @@
 
 import 'package:charity_app/localization/language_constants.dart';
-import 'package:charity_app/model/forum/forum_sub_category.dart';
 import 'package:charity_app/utils/device_size_config.dart';
-import 'package:charity_app/view/components/btn_ui.dart';
+import 'package:charity_app/utils/formatters.dart';
 import 'package:charity_app/view/components/no_data.dart';
-import 'package:charity_app/view/screens/home/forum/forum_viewmodel.dart';
+import 'package:charity_app/view/screens/home/article/article_detail.dart';
+import 'package:charity_app/view/screens/home/favourite/favourite_detail_viewmodel.dart';
 import 'package:charity_app/view/theme/app_color.dart';
 import 'package:charity_app/view/theme/themes.dart';
 import 'package:charity_app/view/widgets/app_bar_auth.dart';
+import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:stacked/stacked.dart';
 
 
+class FavouriteDetailScreen extends StatelessWidget {
+  final int folder;
 
-class ForumDetailScreen extends StatelessWidget {
-  final bool existArrow;
-
-  const ForumDetailScreen({Key key, this.existArrow}) : super(key: key);
+  const FavouriteDetailScreen({Key key, this.folder}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<ForumViewModel>.reactive(
+    return ViewModelBuilder<FavouriteDetailViewModel>.reactive(
       builder: (context, model, child) =>  ModalProgressHUD(
         inAsyncCall: model.isLoading,
         color: Colors.white,
@@ -30,10 +31,9 @@ class ForumDetailScreen extends StatelessWidget {
         progressIndicator: CupertinoActivityIndicator(),
         child: Scaffold(
           backgroundColor: AppColor.primary,
-          appBar: existArrow ? widgetAppBarTitle(context):null,
+          appBar: widgetAppBarTitle(context),
           body: Column(
             children: <Widget>[
-              SizedBox(height: existArrow ? SizeConfig.calculateBlockVertical(0):SizeConfig.calculateBlockVertical(60)),
               Text(
                   getTranslated(context,'favourite'),
                   style: AppThemeStyle.headerWhite
@@ -59,80 +59,109 @@ class ForumDetailScreen extends StatelessWidget {
         ),
       ),
       onModelReady: (model){
-        model.fetchAllData();
+        model.getFavourite(folder.toString());
       },
-      viewModelBuilder: () => ForumViewModel(),
+      viewModelBuilder: () => FavouriteDetailViewModel(),
     );
   }
 
-  Widget getMainUI(ForumViewModel model,BuildContext context){
+  Widget getMainUI(FavouriteDetailViewModel model,BuildContext context){
     if(model.isLoading){
       return Container();
     }
-    if(model.forumSubCategory!=null&&model.forumCategory!=null)
+    if(model.article!=null&&model.article.data.length>0)
       return ListView.builder(
-          itemCount: model.forumCategory.length,
+          itemCount: model.article.data.length,
           shrinkWrap: true,
           itemBuilder: (context,i){
-            List<ForumSubCategory> list = [];
-            list.addAll(model.forumSubCategory.where((element) => element.category==model.forumCategory[i].sysName));
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                BtnUI(
-                  height: SizeConfig.calculateBlockVertical(50),
-                  align: Alignment.centerLeft,
-                  isLoading: false,
-                  textColor: Colors.white,
-                  color: AppColor.primary,
-                  text: model.forumCategory[i].name,
-                  ontap: () {
-
-                  },
-                ),
-                SizedBox(height: SizeConfig.calculateBlockVertical(5.0)),
-                ListView.builder(
-                  itemCount: list.length,
-                  shrinkWrap: true,
-                  physics: ClampingScrollPhysics(),
-                  itemBuilder:(context,i){
-                    return Padding(
-                      padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 5),
-                      child: InkWell(
-                        onTap: (){
-
-                        },
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  list[i].name,
-                                  style: AppThemeStyle.appBarStyle16,
-                                  textAlign: TextAlign.start,
-                                ),
-                                Icon(Icons.arrow_forward_ios,size: 16,)
-                              ],
-                            ),
-                            SizedBox(height: SizeConfig.calculateBlockVertical(5.0)),
-                            Text(
-                              "77 тем   Посл. cообщ. 20.02.2021 ",
-                              textAlign: TextAlign.start,
-                            ),
-                            Divider(thickness: 1,color: Colors.black54,),
-                            SizedBox(height:5),
-                          ],
-                        ),
+            var data=model.article.data[i];
+            return Container(
+              child: Column(
+                children: [
+                  InkWell(
+                    onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ArticleDetailScreen(article: data)));
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
                       ),
-                    );
-                  },
-                ),
-              ],
-            );
-          }
+                      color: Colors.white,
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 90.0,
+                            width: 90.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25.0),
+                              image: DecorationImage(
+                                image: data.authorPhoto==null?AssetImage('assets/image/article_image.png'):NetworkImage(data.authorPhoto),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.all(10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    data.name,
+                                    style: AppThemeStyle.resendCodeStyle,
+                                    textAlign: TextAlign.start,
+                                  ),
+                                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                                  Text(
+                                    data.description,
+                                    style: AppThemeStyle.titleFormStyle,
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Align(
+                              alignment: Alignment.bottomRight,
+                              child: Icon(data.inBookmarks==false ? Icons.bookmark_outline:Icons.bookmark,color: AppColor.primary,))
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 20,right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                            children: <Widget>[
+                              Icon(FlevaIcons.eye_outline,size: 18),
+                              SizedBox(width: 4),
+                              Text('${data.views}',style: AppThemeStyle.title12,)
+                            ]
+                        ),
+                        Row(
+                            children: <Widget>[
+                              Icon(Ionicons.heart_outline,size: 18),
+                              SizedBox(width: 4),
+                              Text('${data.likes}',style: AppThemeStyle.title12,)
+                            ]
+                        ),
+                        Row(
+                            children: <Widget>[
+                              Icon(Ionicons.time_outline,size: 18),
+                              SizedBox(width: 4),
+                              Text("${dateFormatter2(DateTime.fromMillisecondsSinceEpoch(data.createdAt * 1000))}", style: AppThemeStyle.title12,),
+                            ]
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: SizeConfig.calculateBlockVertical(10)),
+                ],
+              ),
+            );          }
       );
     else return Container(child: EmptyData());
   }

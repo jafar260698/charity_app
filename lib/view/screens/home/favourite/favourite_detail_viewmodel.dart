@@ -10,7 +10,7 @@ class FavouriteDetailViewModel extends BaseViewModel{
   UserData _userData=new UserData();
 
   Article _article;
-  Article get article=>_article;
+  Article get article =>_article;
 
   bool _isLoading = false;
   bool get isLoading=> _isLoading;
@@ -18,8 +18,8 @@ class FavouriteDetailViewModel extends BaseViewModel{
 
   Future<void> getFavourite(String category) async {
     _isLoading=true;
-    _apiProvider.getArticle(category).then((value) => {
-
+    _apiProvider.getArticleIndexBookMark(category).then((value) => {
+      _article=value,
     }).catchError((error){
       print("Error: $error");
     }).whenComplete(() => {
