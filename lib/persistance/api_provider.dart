@@ -33,13 +33,23 @@ class ApiProvider {
   final baseHeader = {
     HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
   };
-
+  // default '\$2y\$10\$nTX/1eBIlQQ0cu4rjt2ea.axCqSMY65dh./.OX0Vtet3w7dGaYfLW'
   var headers = {
     'language': 'ru',
-    'authorization': '\$2y\$10\$nTX/1eBIlQQ0cu4rjt2ea.axCqSMY65dh./.OX0Vtet3w7dGaYfLW',
+    'authorization': getToken(),
     HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
   };
 
+
+  static Future<String> getToken() async {
+    var token = await UserData().getToken();
+    return token;
+  }
+
+  static Future<String> getLang() async {
+    var lang = await UserData().getLang();
+    return lang;
+  }
 
   Future<Map<String, dynamic>> baseBody(String type, Map<String, dynamic> params) async{
     Map<String, dynamic> body = new HashMap();
@@ -108,7 +118,7 @@ class ApiProvider {
     return responseJson;
   }
 
-  Future<Authorization> authorization(String username) async{
+  Future<Authorization> authorization(String username) async {
     var responseJson;
     try{
       final response= await client.get(Uri.parse('$baseUrl/user/authorization?username=$username'),

@@ -76,8 +76,8 @@ class HomeWithoutDrawerScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
-                          borderSide: BorderSide(color: Colors.black26),
                         ),
+                        fillColor: Colors.white,
                         disabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
