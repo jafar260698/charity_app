@@ -41,7 +41,11 @@ class _CardIcon extends State<CardIcon>{
         Text(
           widget.operation,
           textAlign: TextAlign.center,
-          style: AppThemeStyle.titleFormStyle,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: Colors.grey
+          ),
         )
       ],
     );

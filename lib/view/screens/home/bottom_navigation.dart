@@ -54,6 +54,7 @@ class _BottomNavigation extends State<BottomNavigation> {
         style: TabStyle.reactCircle,
         color: Colors.black45,
         activeColor: AppColor.primary,
+        elevation: 0,
         backgroundColor: Colors.white,
         items: [
           TabItem(icon: Ionicons.home_outline),

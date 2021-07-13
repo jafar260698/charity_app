@@ -180,6 +180,12 @@ class AppThemeStyle {
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w500,
   );
+  static TextStyle title12Grey = TextStyle(
+    fontSize: 13,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w500,
+    color: Colors.grey
+  );
 
   static TextStyle titleColor14 = TextStyle(
     fontSize: 14,

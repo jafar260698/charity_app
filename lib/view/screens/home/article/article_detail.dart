@@ -104,25 +104,25 @@ class ArticleDetailScreen extends StatelessWidget {
                   children: [
                     Row(
                         children: <Widget>[
-                          Icon(FlevaIcons.eye_outline,size: 18),
+                          Icon(Ionicons.time_outline,size: 18,color: Colors.grey),
                           SizedBox(width: 4),
-                          Text("${article.views}",style: AppThemeStyle.title12,)
+                          Text("${dateFormatter2(DateTime.fromMillisecondsSinceEpoch(article.createdAt * 1000))}", style: AppThemeStyle.title12Grey),
                         ]
                     ),
                     Row(
                         children: <Widget>[
-                          Icon(Ionicons.heart_outline,size: 18),
+                          Icon(Icons.remove_red_eye_outlined,size: 18,color: Colors.grey),
                           SizedBox(width: 4),
-                          Text('${article.likes}',style: AppThemeStyle.title12,)
+                          Text("${article.views}",style: AppThemeStyle.title12Grey)
                         ]
                     ),
                     Row(
                         children: <Widget>[
-                          Icon(Ionicons.time_outline,size: 18),
+                          Icon(FlevaIcons.heart_outline,size: 18,color: Colors.grey),
                           SizedBox(width: 4),
-                          Text("${dateFormatter2(DateTime.fromMillisecondsSinceEpoch(article.createdAt * 1000))}", style: AppThemeStyle.title12,),
+                          Text('${article.likes}',style: AppThemeStyle.title12Grey)
                         ]
-                    )
+                    ),
                   ],
                 ),
               ),

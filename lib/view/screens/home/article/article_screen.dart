@@ -170,6 +170,7 @@ class ArticleScreen extends StatelessWidget {
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => ArticleDetailScreen(article: data)));
                   },
                   child: Card(
+                    elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25.0),
                     ),
@@ -196,13 +197,13 @@ class ArticleScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   data.name,
-                                  style: AppThemeStyle.resendCodeStyle,
+                                  style: AppThemeStyle.subtitleList2,
                                   textAlign: TextAlign.start,
                                 ),
                                 SizedBox(height: SizeConfig.calculateBlockVertical(10)),
                                 Text(
                                   data.description,
-                                  style: AppThemeStyle.titleFormStyle,
+                                  style: AppThemeStyle.subtitleList,
                                   textAlign: TextAlign.start,
                                 ),
                               ],
@@ -223,23 +224,24 @@ class ArticleScreen extends StatelessWidget {
                     children: [
                       Row(
                           children: <Widget>[
-                            Icon(FlevaIcons.eye_outline,size: 18),
+                            Icon(Icons.remove_red_eye_outlined,size: 18,color: Colors.grey,),
                             SizedBox(width: 4),
-                            Text('${data.views}',style: AppThemeStyle.title12,)
+                            Text('${data.views}',style: AppThemeStyle.title12Grey,)
                           ]
                       ),
                       Row(
                           children: <Widget>[
-                            Icon(Ionicons.heart_outline,size: 18),
+                            Icon(FlevaIcons.heart_outline,size: 18,color: Colors.grey),
                             SizedBox(width: 4),
-                            Text('${data.likes}',style: AppThemeStyle.title12,)
+                            Text('${data.likes}',style: AppThemeStyle.title12Grey,)
                           ]
                       ),
+                      SizedBox(width: 10),
                       Row(
                           children: <Widget>[
-                            Icon(Ionicons.time_outline,size: 18),
+                            Icon(Ionicons.time_outline,size: 18,color: Colors.grey),
                             SizedBox(width: 4),
-                            Text("${dateFormatter2(DateTime.fromMillisecondsSinceEpoch(data.createdAt * 1000))}", style: AppThemeStyle.title12,),
+                            Text("${dateFormatter2(DateTime.fromMillisecondsSinceEpoch(data.createdAt * 1000))}", style: AppThemeStyle.title12Grey,),
                           ]
                       )
                     ],
