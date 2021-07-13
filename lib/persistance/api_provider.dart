@@ -36,7 +36,7 @@ class ApiProvider {
   // default '\$2y\$10\$nTX/1eBIlQQ0cu4rjt2ea.axCqSMY65dh./.OX0Vtet3w7dGaYfLW'
   var headers = {
     'language': 'ru',
-    'authorization': getToken(),
+    'authorization': '\$2y\$10\$nTX/1eBIlQQ0cu4rjt2ea.axCqSMY65dh./.OX0Vtet3w7dGaYfLW',
     HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
   };
 
@@ -118,7 +118,7 @@ class ApiProvider {
     return responseJson;
   }
 
-  Future<Authorization> authorization(String username) async {
+  Future<Authorization> authorization(String username) async{
     var responseJson;
     try{
       final response= await client.get(Uri.parse('$baseUrl/user/authorization?username=$username'),
