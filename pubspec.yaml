@@ -64,7 +64,7 @@ dependencies:
   flutter_vector_icons: ^0.3.0
   ionicons: ^0.1.1
   cupertino_icons: ^1.0.2
-  flutter_svg: ^0.19.3
+  flutter_svg: ^0.22.0
 
   #chat
   flutter_chat_ui: ^1.1.5

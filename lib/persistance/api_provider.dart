@@ -80,8 +80,6 @@ class ApiProvider {
         body: jsonEncode(data)
       );
 
-      print(response.request);
-      print(jsonEncode(data));
       print(response.request.headers);
       print(response.request.url);
       print(response.body);
